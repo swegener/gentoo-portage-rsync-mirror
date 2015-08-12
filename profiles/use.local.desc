@@ -3322,7 +3322,6 @@ kde-misc/networkmanagement:openconnect - Build support for the OpenConnect VPN c
 kde-misc/plasma-nm:modemmanager - Enable support for mobile broadband devices
 kde-misc/plasma-nm:openconnect - Build support for the OpenConnect VPN client
 kde-misc/tellico:addressbook - Add support for kdepim addressbook (kabc)
-kde-misc/tellico:nepomuk - Enable Nepomuk based semantic desktop support (deprecated)
 kde-plasma/kdeplasma-addons:ibus - Use ibus input method via app-i18n/ibus
 kde-plasma/kdeplasma-addons:scim - Enable applets that use app-i18n/scim
 kde-plasma/kfilemetadata:epub - Adds support for reading EPUB ebook metadata
@@ -3639,7 +3638,6 @@ media-gfx/digikam:addressbook - Add support for kdepim
 media-gfx/digikam:linguas_ha - Hausa translation
 media-gfx/digikam:linguas_mi - Maori translation
 media-gfx/digikam:linguas_ven - Venda translation
-media-gfx/digikam:nepomuk - Enable Nepomuk based semantic desktop support (deprecated)
 media-gfx/digikam:themedesigner - Build the digikam theme designer
 media-gfx/digikam:thumbnails - Enable thumbnails database support
 media-gfx/digikam:video - Pull in mplayerthumbs to enable video thumbnails
@@ -4099,7 +4097,6 @@ media-sound/amarok:embedded - Use libmysqld, MySQL embedded server library. Try 
 media-sound/amarok:lastfm - Enable Last.fm streaming services support through media-libs/liblastfm
 media-sound/amarok:mp3tunes - Enable mp3tunes integration
 media-sound/amarok:mtp - Enable support for libMTP (Plays4Sure) devices access through libmtp
-media-sound/amarok:nepomuk - Enable Nepomuk based semantic desktop support (deprecated)
 media-sound/amarok:ofa - Use media-libs/libofa to compute MusicDNS acoustic fingerprints (used by MusicBrainz)
 media-sound/amarok:utils - Build the utils - old media-sound/amarok-utils
 media-sound/amsynth:dssi - Enable support for DSSI Soft Synth Interface
