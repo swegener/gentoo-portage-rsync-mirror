@@ -3216,11 +3216,9 @@ kde-apps/okular:mobi - Add mobipocket support
 kde-apps/oxygen-icons:sources - Additionally install the svg sources of the bitmap icons (needed for redistribution)
 kde-apps/poxml:extras - Build po2xml and swappo tools
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
-kde-base/kactivities:nepomuk - Enable Nepomuk based semantic desktop support (deprecated)
 kde-base/kde-meta:kdepim - Pull in KDE PIM
 kde-base/kde-meta:sdk - Pull in developer-specific meta-packages
 kde-base/kdebase-startkde:wallpapers - Install the KDE wallpapers
-kde-base/kdebindings-meta:csharp - Enable C# language bindings for KDE and Qt
 kde-base/kdelibs:nepomuk - Enable Nepomuk based semantic desktop support (deprecated)
 kde-base/kdelibs:opengl - Enable OpenGL support for Plasma (GLApplet)
 kde-base/kdepim-common-libs:google - Google service integration via net-libs/libkgapi
@@ -3242,12 +3240,10 @@ kde-base/kdm:consolekit - Enables support for authorization using consolekit
 kde-base/kfilemetadata:epub - Adds support for reading EPUB ebook metadata
 kde-base/kfilemetadata:mobi - Adds support for reading MOBI ebook metadata
 kde-base/kimono:akonadi - Compile bindings for Akonadi
-kde-base/kimono:nepomuk - Compile bindings for Nepomuk
 kde-base/kimono:plasma - Compile bindings for KDE's Plasma
 kde-base/klipper:prison - Enable support for barcodes/QRcodes
 kde-base/korundum:akonadi - Compile bindings for Akonadi
 kde-base/korundum:kate - Compile bindings for KDE Advanced Text Editor
-kde-base/korundum:nepomuk - Compile bindings for Nepomuk
 kde-base/korundum:okular - Compile bindings for kde-base/okular
 kde-base/kwin:gles - Enable support for GLES.
 kde-base/libplasmaclock:kdepim - KDE PIM integration via kde-base/kdepimlibs
