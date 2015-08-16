@@ -48,6 +48,11 @@ DEPEND="${CDEPEND}
 DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
 	README.testsuite TODO )
 MY_LIBDIR=/usr/lib
+PATCHES=(
+	"${FILESDIR}/${PV}-0001-Revert-lvm-Don-t-activate-LVs-with-act.patch"
+	"${FILESDIR}/${PV}-0002-Replace-echo-n-with-printf-in-code-wit.patch"
+	"${FILESDIR}/${PV}-0003-syncheck-Look-for-echo-n-usage-in-modu.patch"
+	)
 QA_MULTILIB_PATHS="
 	usr/lib/dracut/dracut-install
 	usr/lib/dracut/skipcpio
@@ -92,6 +97,8 @@ optfeature() {
 #
 
 src_prepare() {
+	epatch "${PATCHES[@]}"
+
 	local libdirs="/$(get_libdir) /usr/$(get_libdir)"
 	if [[ ${SYMLINK_LIB} = yes ]]; then
 		# Preserve lib -> lib64 symlinks in initramfs
@@ -197,7 +204,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if linux-info_get_any_version && linux_config_src_exists; then
+	if linux-info_get_any_version && linux_config_exists; then
 		ewarn ""
 		ewarn "If the following test report contains a missing kernel"
 		ewarn "configuration option, you should reconfigure and rebuild your"
