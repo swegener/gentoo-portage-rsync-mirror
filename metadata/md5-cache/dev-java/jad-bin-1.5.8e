@@ -1,7 +1,6 @@
 DEFINED_PHASES=install
 DEPEND=app-arch/unzip
 DESCRIPTION=Jad - The fast JAva Decompiler
-EAPI=0
 HOMEPAGE=http://www.kpdus.com/jad.html
 KEYWORDS=x86 amd64 -ppc
 LICENSE=freedist

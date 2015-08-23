@@ -1,6 +1,5 @@
 DEFINED_PHASES=compile install
 DESCRIPTION=Web Server vulnerability scanner
-EAPI=0
 HOMEPAGE=http://www.cirt.net/Nikto2
 IUSE=ssl
 KEYWORDS=~amd64 ~ppc sparc x86

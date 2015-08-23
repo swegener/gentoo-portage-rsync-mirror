@@ -1,6 +1,5 @@
 DEFINED_PHASES=compile install
 DESCRIPTION=yEnc encoder/decoder package
-EAPI=0
 HOMEPAGE=http://www.yencode.org
 IUSE=nls
 KEYWORDS=x86 ppc ~sparc arm ~amd64

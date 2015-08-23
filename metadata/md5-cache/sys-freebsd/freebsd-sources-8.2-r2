@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install postinst unpack
 DEPEND=virtual/pmake virtual/pmake
 DESCRIPTION=FreeBSD kernel sources
-EAPI=0
 HOMEPAGE=http://www.freebsd.org/
 IUSE=symlink profile
 KEYWORDS=~sparc-fbsd ~x86-fbsd

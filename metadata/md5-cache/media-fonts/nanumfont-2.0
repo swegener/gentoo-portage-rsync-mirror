@@ -1,7 +1,6 @@
 DEFINED_PHASES=install postinst postrm setup
 DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
 DESCRIPTION=Korean monospace font distributed by NHN
-EAPI=0
 HOMEPAGE=http://dev.naver.com/projects/nanumfont
 IUSE=X
 KEYWORDS=amd64 x86

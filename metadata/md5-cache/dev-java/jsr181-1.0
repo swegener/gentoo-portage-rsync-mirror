@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install preinst setup unpack
 DEPEND=>=virtual/jdk-1.6 app-arch/unzip >=virtual/jre-1.6 >=dev-java/java-config-2.2.0
 DESCRIPTION=JSR 181 API classes
-EAPI=0
 HOMEPAGE=http://jax-ws.dev.java.net/
 IUSE=elibc_FreeBSD
 KEYWORDS=amd64 ppc x86 ~x86-fbsd

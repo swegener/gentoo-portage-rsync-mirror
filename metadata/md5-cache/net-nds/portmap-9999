@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install setup unpack
 DEPEND=tcpd? ( >=sys-apps/tcp-wrappers-7.6-r7 ) dev-vcs/git
 DESCRIPTION=Netkit - portmapper
-EAPI=0
 HOMEPAGE=ftp://ftp.porcupine.org/pub/security/index.html
 IUSE=selinux tcpd
 LICENSE=BSD GPL-2

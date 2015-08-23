@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install unpack
 DEPEND=sys-apps/sed slang? ( sys-libs/slang )
 DESCRIPTION=Genetic Algorithm Utility Library
-EAPI=0
 HOMEPAGE=http://GAUL.sourceforge.net/
 IUSE=debug slang
 KEYWORDS=~x86 ~amd64

@@ -1,7 +1,6 @@
 DEFINED_PHASES=install postinst postrm setup
 DEPEND=X? ( x11-apps/mkfontdir media-fonts/encodings )
 DESCRIPTION=font to view stroke order diagrams for Kanji, Kana and etc
-EAPI=0
 HOMEPAGE=http://sites.google.com/site/nihilistorguk/
 IUSE=X
 KEYWORDS=~amd64 ~x86

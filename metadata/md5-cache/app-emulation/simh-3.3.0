@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install unpack
 DEPEND=net-libs/libpcap app-arch/unzip
 DESCRIPTION=a simulator for historical computers such as Vax, PDP-11 etc.)
-EAPI=0
 HOMEPAGE=http://simh.trailing-edge.com/
 KEYWORDS=x86
 LICENSE=MIT

@@ -1,6 +1,5 @@
 DEFINED_PHASES=compile install unpack
 DESCRIPTION=qmail-lint checks your qmail configuration for common problems
-EAPI=0
 HOMEPAGE=http://www.qmail.org/
 KEYWORDS=~hppa ~ppc ~sparc ~x86
 LICENSE=qmail-nelson
