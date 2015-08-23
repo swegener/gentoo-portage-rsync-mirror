@@ -1,6 +1,7 @@
 DEFINED_PHASES=compile install postinst unpack
 DEPEND=>=sys-libs/ncurses-5.2 nls? ( sys-devel/gettext ) !ncurses? ( slang? ( sys-libs/slang ) )
 DESCRIPTION=GNU GPL'd Pico clone with more functionality
+EAPI=0
 HOMEPAGE=http://www.nano-editor.org/
 IUSE=debug justify minimal ncurses nls slang spell unicode
 KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc ~sparc-fbsd x86 ~x86-fbsd

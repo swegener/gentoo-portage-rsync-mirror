@@ -1,6 +1,7 @@
 DEFINED_PHASES=compile install
 DEPEND=ncurses? ( sys-libs/ncurses ) ssl? ( dev-libs/openssl ) !dev-util/ninja
 DESCRIPTION=Ninja IRC Client
+EAPI=0
 HOMEPAGE=http://ninja.qoop.org/
 IUSE=ncurses ipv6 ssl
 KEYWORDS=amd64 ppc ~ppc64 ~sparc x86

@@ -1,6 +1,7 @@
 DEFINED_PHASES=compile install postinst postrm preinst setup
 DEPEND=kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
 DESCRIPTION=Driver for Intel 536EP modem
+EAPI=0
 HOMEPAGE=http://developer.intel.com/design/modems/products/536ep.htm
 IUSE=kernel_linux
 KEYWORDS=x86

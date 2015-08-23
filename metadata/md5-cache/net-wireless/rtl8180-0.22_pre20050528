@@ -1,6 +1,7 @@
 DEFINED_PHASES=compile install postinst postrm preinst setup unpack
 DEPEND=net-wireless/wireless-tools kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources )
 DESCRIPTION=Driver for the rtl8180 wireless chipset
+EAPI=0
 HOMEPAGE=http://rtl8180-sa2400.sourceforge.net
 IUSE=kernel_linux
 KEYWORDS=~x86 ~ppc

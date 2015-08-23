@@ -1,6 +1,7 @@
 DEFINED_PHASES=compile install unpack
 DEPEND==sci-biology/emboss-6.0.1* !<sci-biology/emboss-6.0.1 X? ( x11-libs/libX11 ) png? ( sys-libs/zlib media-libs/libpng >=media-libs/gd-1.8 )
 DESCRIPTION=EMBOSS integrated version of MSE - Multiple Sequence Screen Editor
+EAPI=0
 HOMEPAGE=http://emboss.sourceforge.net/
 IUSE=X png
 KEYWORDS=amd64 ~ppc x86
