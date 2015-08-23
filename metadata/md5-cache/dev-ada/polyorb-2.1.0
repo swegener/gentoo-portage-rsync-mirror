@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install postinst setup
 DEPEND=ssl? ( dev-libs/openssl ) virtual/ada >=app-eselect/eselect-gnat-1.3
 DESCRIPTION=A CORBA implementation for Ada
-EAPI=0
 HOMEPAGE=http://libre.adacore.com/polyorb/
 IUSE=doc ssl
 KEYWORDS=~x86 ~amd64

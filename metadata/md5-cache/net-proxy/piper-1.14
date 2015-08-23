@@ -1,6 +1,5 @@
 DEFINED_PHASES=compile install
 DESCRIPTION=Piper (a tool for manipulating SOCKS5 servers)
-EAPI=0
 HOMEPAGE=http://www.qwirx.com/
 KEYWORDS=~x86 ~amd64 ~ppc
 LICENSE=GPL-2

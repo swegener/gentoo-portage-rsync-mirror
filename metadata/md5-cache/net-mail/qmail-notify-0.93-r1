@@ -1,6 +1,5 @@
 DEFINED_PHASES=compile install postinst
 DESCRIPTION=Delayed delivery notification for qmail
-EAPI=0
 HOMEPAGE=http://untroubled.org/qmail-notify/
 KEYWORDS=amd64 ~hppa ~ppc sparc x86
 LICENSE=GPL-2

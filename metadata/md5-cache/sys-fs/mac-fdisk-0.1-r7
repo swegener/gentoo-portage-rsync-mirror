@@ -1,6 +1,5 @@
 DEFINED_PHASES=compile install unpack
 DESCRIPTION=Mac/PowerMac disk partitioning utility
-EAPI=0
 HOMEPAGE=ftp://ftp.mklinux.apple.com/pub/Other_Tools/
 KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2

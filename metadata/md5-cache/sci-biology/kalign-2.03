@@ -1,6 +1,5 @@
 DEFINED_PHASES=install unpack
 DESCRIPTION=Global and progressive multiple sequence alignment
-EAPI=0
 HOMEPAGE=http://msa.cgb.ki.se/
 KEYWORDS=amd64 x86
 LICENSE=GPL-2

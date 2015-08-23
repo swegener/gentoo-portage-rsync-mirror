@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install
 DEPEND=sys-libs/ncurses sys-apps/help2man
 DESCRIPTION=CELL spu ps and top alike utilities
-EAPI=0
 HOMEPAGE=http://sourceforge/projects/libspe
 KEYWORDS=~ppc ~ppc64
 LICENSE=GPL-2

@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install unpack
 DEPEND=>=app-arch/rpm2targz-9.0.0.3g
 DESCRIPTION=A simple BIND key generator
-EAPI=0
 HOMEPAGE=http://fedora.redhat.com/projects/config-tools/
 KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=public-domain

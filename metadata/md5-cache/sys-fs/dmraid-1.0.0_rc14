@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install postinst setup unpack
 DEPEND=>=sys-fs/lvm2-2.02.45 selinux? ( sys-libs/libselinux sys-libs/libsepol )
 DESCRIPTION=Device-mapper RAID tool and library
-EAPI=0
 HOMEPAGE=http://people.redhat.com/~heinzm/sw/dmraid/
 IUSE=static selinux
 KEYWORDS=amd64 x86

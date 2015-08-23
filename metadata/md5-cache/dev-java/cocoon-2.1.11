@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install postinst preinst setup unpack
 DEPEND=>=virtual/jdk-1.5 >=dev-java/java-config-2.2.0 >=dev-java/ant-core-1.8.2 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=A Web Publishing Framework for Apache
-EAPI=0
 HOMEPAGE=http://cocoon.apache.org/
 IUSE=elibc_FreeBSD doc elibc_FreeBSD
 KEYWORDS=~x86 ~ppc ~amd64

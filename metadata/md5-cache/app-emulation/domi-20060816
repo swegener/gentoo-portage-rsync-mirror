@@ -1,7 +1,6 @@
 DEFINED_PHASES=install unpack
 DEPEND=app-emulation/xen-tools app-arch/rpm sys-block/parted sys-apps/yum sys-fs/lvm2 sys-fs/multipath-tools
 DESCRIPTION=Scripts for building Xen domains
-EAPI=0
 HOMEPAGE=http://www.bytesex.org
 KEYWORDS=~x86
 LICENSE=GPL-2
