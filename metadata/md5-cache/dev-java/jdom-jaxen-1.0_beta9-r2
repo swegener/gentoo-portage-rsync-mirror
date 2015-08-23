@@ -1,6 +1,7 @@
 DEFINED_PHASES=compile install preinst setup unpack
 DEPEND=>=virtual/jdk-1.4 app-arch/unzip ~dev-java/jdom-1.0_beta9 =dev-java/jaxen-1.1* dev-java/saxpath >=dev-java/java-config-2.2.0
 DESCRIPTION=Jaxen binding for jdom
+EAPI=0
 HOMEPAGE=http://www.jdom.org
 IUSE=elibc_FreeBSD
 KEYWORDS=amd64 ppc ppc64 ~x86

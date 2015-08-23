@@ -1,6 +1,7 @@
 DEFINED_PHASES=compile install postinst
 DEPEND=>=sys-kernel/linux-headers-2.6.16
 DESCRIPTION=Run a command with a new system hostname
+EAPI=0
 HOMEPAGE=http://code.google.com/p/chname
 KEYWORDS=amd64 ~x86
 LICENSE=GPL-2
