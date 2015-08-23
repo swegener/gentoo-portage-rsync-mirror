@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install preinst setup
 DEPEND=>=virtual/jdk-1.4 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 DESCRIPTION=TouchGraph provides a set of interfaces for graph visualization
-EAPI=0
 HOMEPAGE=http://touchgraph.sourceforge.net
 IUSE=elibc_FreeBSD source
 KEYWORDS=amd64 ~ppc x86

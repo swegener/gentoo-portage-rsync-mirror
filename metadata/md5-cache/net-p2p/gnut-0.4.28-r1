@@ -1,6 +1,5 @@
 DEFINED_PHASES=install unpack
 DESCRIPTION=Text-mode gnutella client
-EAPI=0
 HOMEPAGE=http://www.gnutelliums.com/linux_unix/gnut/
 KEYWORDS=x86 ppc
 LICENSE=GPL-2

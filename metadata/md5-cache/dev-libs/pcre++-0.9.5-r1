@@ -1,7 +1,6 @@
 DEFINED_PHASES=install unpack
 DEPEND=dev-libs/libpcre !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A C++ support library for libpcre
-EAPI=0
 HOMEPAGE=http://www.daemon.de/PCRE
 KEYWORDS=~alpha amd64 arm hppa ~ia64 ~mips ppc ppc64 s390 sh sparc x86
 LICENSE=LGPL-2.1

@@ -1,6 +1,5 @@
 DEFINED_PHASES=install postinst
 DESCRIPTION=Mister House, an open source home automation program with X10 support
-EAPI=0
 HOMEPAGE=http://misterhouse.sf.net/
 IUSE=tk mysql
 KEYWORDS=amd64 x86

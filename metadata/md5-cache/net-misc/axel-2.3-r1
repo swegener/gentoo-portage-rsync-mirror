@@ -1,7 +1,6 @@
 DEFINED_PHASES=compile install postinst unpack
 DEPEND=nls? ( virtual/libintl ) nls? ( sys-devel/gettext )
 DESCRIPTION=light Unix download accelerator
-EAPI=0
 HOMEPAGE=http://axel.alioth.debian.org/
 IUSE=debug nls
 KEYWORDS=amd64 ~hppa ppc ~ppc64 sparc x86 ~x86-fbsd

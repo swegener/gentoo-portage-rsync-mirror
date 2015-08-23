@@ -1,6 +1,5 @@
 DEFINED_PHASES=install postinst postrm preinst setup
 DESCRIPTION=distributed.net client
-EAPI=0
 HOMEPAGE=http://www.distributed.net
 KEYWORDS=-* x86
 LICENSE=distributed.net GPL-2
