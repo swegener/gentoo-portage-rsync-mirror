@@ -1,5 +1,6 @@
 DEFINED_PHASES=install
 DESCRIPTION=Documentation for Smarty, a template engine for PHP
+EAPI=0
 HOMEPAGE=http://smarty.php.net/docs.php
 KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=LGPL-2.1

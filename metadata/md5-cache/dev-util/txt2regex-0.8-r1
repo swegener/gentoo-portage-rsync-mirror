@@ -1,6 +1,7 @@
 DEFINED_PHASES=install unpack
 DEPEND=nls? ( sys-devel/gettext )
 DESCRIPTION=A Regular Expression wizard that converts human sentences to regexs
+EAPI=0
 HOMEPAGE=http://txt2regex.sourceforge.net/
 IUSE=nls cjk
 KEYWORDS=alpha amd64 hppa ~mips ~ppc sparc x86

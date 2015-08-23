@@ -1,6 +1,7 @@
 DEFINED_PHASES=compile install postinst unpack
 DEPEND=dev-lang/perl
 DESCRIPTION=Adds color to gcc output
+EAPI=0
 HOMEPAGE=http://schlueters.de/colorgcc.html
 KEYWORDS=alpha amd64 ~hppa ~mips ppc sparc x86
 LICENSE=GPL-2

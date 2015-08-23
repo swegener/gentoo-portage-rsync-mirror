@@ -1,6 +1,7 @@
 DEFINED_PHASES=compile install preinst setup unpack
 DEPEND=>=virtual/jdk-1.4 =dev-java/junit-3.8* !<sys-devel/gettext-0.18.1.1-r3 || ( >=sys-devel/automake-1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-java/java-config-2.2.0 source? ( app-arch/zip )
 DESCRIPTION=A visitor combinator framework for Java
+EAPI=0
 HOMEPAGE=http://www.cwi.nl/htbin/sen1/twiki/bin/view/SEN1/ATermLibrary
 IUSE=elibc_FreeBSD source doc
 KEYWORDS=amd64 ~ppc x86

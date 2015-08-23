@@ -1,5 +1,6 @@
 DEFINED_PHASES=compile install postinst unpack
 DESCRIPTION=a DNS daemon which is designed to serve DNSBL zones
+EAPI=0
 HOMEPAGE=http://www.corpit.ru/mjt/rbldnsd.html
 IUSE=ipv6 zlib
 KEYWORDS=amd64 hppa ~sparc x86 ~x86-fbsd
