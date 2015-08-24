@@ -18,9 +18,9 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mpv-player/mpv.git"
 	inherit git-r3
 else
-	SRC_URI+=" https://github.com/mpv-player/mpv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
-	DOCS+=( RELEASE_NOTES )
+	SRC_URI+=" http://dev.gentoo.org/~yngwin/distfiles/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
+	#DOCS+=( RELEASE_NOTES )
 fi
 
 # See Copyright in source tarball and bug #506946. Waf is BSD, libmpv is ISC.
@@ -226,7 +226,6 @@ src_configure() {
 		$(use_enable drm)
 		$(use_enable jpeg)
 		$(use_enable raspberry-pi rpi)
-		$(use_enable raspberry-pi rpi-gles)
 
 		# hwaccels
 		$(use_enable vaapi vaapi-hwaccel)
