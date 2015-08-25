@@ -14,10 +14,11 @@ SRC_URI="http://www.sno.phy.queensu.ca/~phil/exiftool/${MY_P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x64-macos"
+IUSE="doc"
 
 SRC_TEST="do"
 
 src_install() {
 	perl-module_src_install
-	dohtml -r html/
+	use doc && dohtml -r html/
 }
