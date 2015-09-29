@@ -17,13 +17,11 @@ SRC_URI="http://central.maven.org/maven2/com/sun/xml/${MY_PN}/${MY_PN}/${PV}/${M
 
 LICENSE="CDDL"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd"
 IUSE=""
 
+RDEPEND=">=virtual/jre-1.6"
 DEPEND=">=virtual/jdk-1.6
-	app-arch/unzip
-	${CDEPEND}"
-RDEPEND=">=virtual/jre-1.6
-	${CDEPEND}"
+	app-arch/unzip"
 
 JAVA_SRC_DIR="com"
