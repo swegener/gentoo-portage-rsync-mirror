@@ -34,8 +34,7 @@ src_configure() {
 }
 
 src_install() {
-	exeinto /usr/lib  # FHS: internal binaries
-	newexe {,${PN}-}add-xscreensaver
+	newbin {,${PN}-}add-xscreensaver
 
 	default
 }
