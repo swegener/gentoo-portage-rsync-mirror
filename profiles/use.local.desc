@@ -1830,10 +1830,6 @@ dev-lang/mono:xen - Make mono generate code that is considerably faster on xen V
 dev-lang/nqp:moar - Build the MoarVM backend (experimental/broken)
 dev-lang/nqp:parrot - Build the parrot backend (default)
 dev-lang/orc:pax_kernel - Apply patch needed for pax enabled kernels.
-dev-lang/path64:assembler - Build PathAS
-dev-lang/path64:debugger - Build PathDB
-dev-lang/path64:native - Use EKOPath/Path64 for bootstraping
-dev-lang/path64:valgrind - Use dev-util/valgrind for memory debbuging
 dev-lang/perl:ithreads - Enable Perl threads, has some compatibility problems
 dev-lang/php:cli - Enable CLI SAPI
 dev-lang/php:embed - Enable embed SAPI
@@ -3203,8 +3199,6 @@ gnome-extra/zeitgeist:fts - Enable the full text search extension
 gnome-extra/zeitgeist:plugins - Use gnome-extra/zeitgeist-datasources to enable numerous packages to inject events
 gnome-extra/zeitgeist:sql-debug - Enable SQL debugging
 gnome-extra/zeitgeist:telepathy - Enable telepathy framework as data source
-gnome-extra/zeitgeist-datahub:download - Monitor XDG download directory
-gnome-extra/zeitgeist-datahub:telepathy - Telepathy logging support for 1-to-1 chats, calls and file transfers
 gnome-extra/zeitgeist-datasources:bzr - Zeitgeist plugin for dev-vcs/bzr as data source
 gnome-extra/zeitgeist-datasources:chromium - Zeitgeist plugin for www-client/chromium as data source
 gnome-extra/zeitgeist-datasources:emacs - Zeitgeist plugin for emacs as data source
