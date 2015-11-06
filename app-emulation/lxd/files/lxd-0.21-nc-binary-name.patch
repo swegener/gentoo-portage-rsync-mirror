@@ -1,5 +1,5 @@
---- lxd/migration/rsync.go.orig	2015-08-21 12:05:15.098768663 -0500
-+++ lxd/migration/rsync.go	2015-08-21 12:06:15.899764506 -0500
+--- lxd/rsync.go.orig	2015-09-17 21:00:29.290772099 -0500
++++ lxd/rsync.go	2015-09-17 21:00:54.737770359 -0500
 @@ -73,7 +73,7 @@
  	 * command (i.e. the command to run on --server). However, we're
  	 * hardcoding that at the other end, so we can just ignore it.
