@@ -8,13 +8,13 @@ DESCRIPTION="Fast, dense and secure container management"
 HOMEPAGE="https://linuxcontainers.org/lxd/introduction/"
 EGO_PN_PARENT="github.com/lxc"
 EGO_PN="${EGO_PN_PARENT}/lxd"
-SRC_URI="http://961db08fe45d5f5dd062-b8a7a040508aea6d369676e49b80719d.r29.cf2.rackcdn.com/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~stasibear/distfiles/${P}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
 PLOCALES="de fr ja"
-IUSE="+criu +daemon +image +lvm nls test"
+IUSE="+daemon nls test"
 
 # IUSE and PLOCALES must be defined before l10n inherited
 inherit bash-completion-r1 eutils golang-build l10n systemd user vcs-snapshot
@@ -37,20 +37,12 @@ RDEPEND="
 	daemon? (
 		app-admin/cgmanager
 		app-arch/xz-utils
-		app-emulation/lxc[cgmanager]
+		app-emulation/lxc[cgmanager,seccomp]
 		net-analyzer/openbsd-netcat
 		net-misc/bridge-utils
+		net-misc/rsync[xattr]
+		sys-apps/iproute2
 		virtual/acl
-		criu? (
-			sys-process/criu
-		)
-		image? (
-			app-crypt/gnupg
-			>=dev-lang/python-3.2
-		)
-		lvm? (
-			sys-fs/lvm2
-		)
 	)
 "
 
@@ -63,17 +55,18 @@ RDEPEND="
 # - since 0.15 gccgo is a supported compiler ('make gccgo').  It would
 #   be preferable for that support to go into the golang-build eclass not
 #   this package directly.
+# - integrate "lxd shutdown" into initscript as custom action (default "stop"
+#   action should _not_ stop containers amirite?)
+#   "Perform a clean shutdown of LXD and all running containers"
 
 src_prepare() {
 	cd "${S}/src/${EGO_PN}"
 
 	epatch "${FILESDIR}/${P}-dont-go-get.patch"
 
-	if use daemon; then
-		# Upstream requires the openbsd flavor of netcat (with -U), but
-		# Gentoo installs that with a renamed binary
-		epatch "${FILESDIR}/${P}-nc-binary-name.patch"
-	fi
+	# Upstream requires the openbsd flavor of netcat (with -U), but
+	# Gentoo installs that with a renamed binary
+	epatch "${FILESDIR}/${P}-nc-binary-name.patch"
 
 	# Warn on unhandled locale changes
 	l10n_find_plocales_changes po "" .po
@@ -116,8 +109,6 @@ src_install() {
 
 	cd "src/${EGO_PN}"
 
-	use image && dobin scripts/lxd-images
-
 	if use nls; then
 		for lingua in ${PLOCALES}; do
 			if use linguas_${lingua}; then
@@ -155,10 +146,24 @@ pkg_postinst() {
 	# Ubuntu also defines an lxd user but it appears unused (the daemon
 	# must run as root)
 
+	einfo
+	einfo "Though not strictly required, some features are enabled at run-time"
+	einfo "when the relevant helper programs are detected:"
+	einfo "- sys-apps/apparmor"
+	einfo "- sys-fs/btrfs-progs"
+	einfo "- sys-fs/lvm2"
+	einfo "- sys-fs/zfs"
+	einfo "- sys-process/criu"
+	einfo
+	einfo "Since these features can't be disabled at build-time they are"
+	einfo "not USE-conditional."
+
 	if test -n "${REPLACING_VERSIONS}"; then
 		einfo
 		einfo "If you are upgrading from version 0.14 or older, note that the --tcp"
 		einfo "is no longer available in /etc/conf.d/lxd.  Instead, configure the"
-		einfo "listen address/port by setting the core.https_address profile option."
+		einfo "listen address/port by setting the core.https_address server option."
 	fi
+
+	einfo
 }
