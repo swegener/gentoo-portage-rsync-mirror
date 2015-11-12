@@ -92,3 +92,12 @@
 
   Package-Manager: portage-2.2.20.1
 
+*vice-2.4.20 (12 Nov 2015)
+
+  12 Nov 2015; Michael Sterrett <mr_bones_@gentoo.org>
+  +files/vice-2.4.20-autotools.patch, +files/vice-2.4.20-format.patch,
+  +files/vice-2.4.20-xf86extensions.patch, metadata.xml, +vice-2.4.20.ebuild:
+  restore mistakenly removed stable ebuild (bug #565442)
+
+  Package-Manager: portage-2.2.20.1
+

@@ -68,3 +68,19 @@
 
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+*annogen-0.1.0-r2 (11 Nov 2015)
+
+  11 Nov 2015; Patrice Clement <monsieurp@gentoo.org> -annogen-0.1.0.ebuild,
+  -annogen-0.1.0-r1.ebuild, +annogen-0.1.0-r2.ebuild:
+  Do away with hacks and make use of java-pkg-simple. Keywords for
+  ppc+ppc64+x86.
+
+  Package-Manager: portage-2.2.20.1
+  Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+
+  11 Nov 2015; Patrice Clement <monsieurp@gentoo.org> annogen-0.1.0-r2.ebuild:
+  Stable for amd64.
+
+  Package-Manager: portage-2.2.20.1
+  Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+

@@ -54,3 +54,9 @@
 
   Bug: https://bugs.gentoo.org/552720
 
+  11 Nov 2015; Patrice Clement <monsieurp@gentoo.org> piccolo-1.04.ebuild:
+  Keyword for ppc+ppc64+x86.
+
+  Package-Manager: portage-2.2.20.1
+  Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+
