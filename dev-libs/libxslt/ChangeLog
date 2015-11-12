@@ -88,3 +88,23 @@
   01 Oct 2015; Mike Frysinger <vapier@gentoo.org> libxslt-1.1.28-r4.ebuild:
   mark 1.1.28-r4 arm64/m68k/s390/sh stable
 
+*libxslt-1.1.28-r5 (11 Nov 2015)
+
+  11 Nov 2015; Gilles Dartiguelongue <eva@gentoo.org>
+  +files/libxslt-1.1.28-attribute-type-preprocessing.patch,
+  +files/libxslt-1.1.28-broken-fprintf-parameters.patch,
+  +files/libxslt-1.1.28-disable-static-modules.patch,
+  +files/libxslt-1.1.28-exslt-str-replace.patch,
+  +files/libxslt-1.1.28-fix-quoting-xlocale.patch,
+  +files/libxslt-1.1.28-seed-pseudo-random-generator.patch,
+  +files/libxslt-1.1.28-simplify-python.patch, +libxslt-1.1.28-r5.ebuild:
+  apply several upstream patches, bug #558822
+
+  Apply security fixes, bug #558822 as well as patches from upstream as listed
+  in debian package.
+
+  Also rework python detection with AM_PATH_PYTHON for easier multiple python
+  support in the future. Handle examples like in libxml2.
+
+  Package-Manager: portage-2.2.24
+

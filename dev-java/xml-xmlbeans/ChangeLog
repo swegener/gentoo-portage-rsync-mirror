@@ -61,3 +61,11 @@
 
   Bug: https://bugs.gentoo.org/552720
 
+  11 Nov 2015; Patrice Clement <monsieurp@gentoo.org>
+  +files/xml-xmlbeans-2.6.0-SchemaCompiler.java.patch,
+  xml-xmlbeans-2.6.0.ebuild:
+  Add a patch to get compilation to work with Java 8.
+
+  Package-Manager: portage-2.2.20.1
+  Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+

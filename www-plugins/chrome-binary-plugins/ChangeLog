@@ -345,3 +345,15 @@
 
   Package-Manager: portage-2.2.23_p18
 
+*chrome-binary-plugins-48.0.2560.0_alpha1 (11 Nov 2015)
+*chrome-binary-plugins-46.0.2490.86_p1 (11 Nov 2015)
+
+  11 Nov 2015; Mike Gilbert <floppym@gentoo.org>
+  -chrome-binary-plugins-46.0.2490.80_p1.ebuild,
+  +chrome-binary-plugins-46.0.2490.86_p1.ebuild,
+  -chrome-binary-plugins-48.0.2552.0_alpha1.ebuild,
+  +chrome-binary-plugins-48.0.2560.0_alpha1.ebuild:
+  automated update
+
+  Package-Manager: portage-2.2.23_p26
+

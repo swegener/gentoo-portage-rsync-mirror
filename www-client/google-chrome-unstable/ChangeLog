@@ -204,3 +204,12 @@
 
   Package-Manager: portage-2.2.23_p18
 
+*google-chrome-unstable-48.0.2560.0_p1 (11 Nov 2015)
+
+  11 Nov 2015; Mike Gilbert <floppym@gentoo.org>
+  -google-chrome-unstable-48.0.2552.0_p1.ebuild,
+  +google-chrome-unstable-48.0.2560.0_p1.ebuild:
+  automated update
+
+  Package-Manager: portage-2.2.23_p26
+
