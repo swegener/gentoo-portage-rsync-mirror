@@ -67,3 +67,8 @@
   Package-Manager: portage-2.2.20.1
   RepoMan-Options: --include-arches="x86"
 
+  12 Nov 2015; Hans de Graaff <graaff@gentoo.org> -ruby-xslt-0.9.9-r2.ebuild:
+  cleanup
+
+  Package-Manager: portage-2.2.20.1
+

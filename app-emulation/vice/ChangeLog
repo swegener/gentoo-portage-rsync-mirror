@@ -101,3 +101,8 @@
 
   Package-Manager: portage-2.2.20.1
 
+  12 Nov 2015; Michael Sterrett <mr_bones_@gentoo.org> vice-2.4.22.ebuild:
+  add readline slot dep
+
+  Package-Manager: portage-2.2.20.1
+
