@@ -329,3 +329,16 @@
   python-3.4.3-r3.ebuild, python-3.5.0-r2.ebuild:
   Correct SLOT use after subslot introduction
 
+  12 Nov 2015; Mike Gilbert <floppym@gentoo.org> python-2.7.9-r1.ebuild,
+  python-2.7.10.ebuild, python-2.7.10-r2.ebuild, python-2.7.10-r3.ebuild,
+  python-3.3.5-r1.ebuild, python-3.3.5-r2.ebuild, python-3.3.5-r3.ebuild,
+  python-3.4.3.ebuild, python-3.4.3-r2.ebuild, python-3.4.3-r3.ebuild,
+  python-3.5.0-r1.ebuild, python-3.5.0-r2.ebuild:
+  Set PYTHON_SITEDIR manually
+
+  The eclass change in fd4001e9 causes python_export to call ${PYTHON}
+  to obtain PYTHON_SITEDIR. This returns an empty string if ${PYTHON}
+  has not yet been merged.
+
+  Package-Manager: portage-2.2.23_p26
+

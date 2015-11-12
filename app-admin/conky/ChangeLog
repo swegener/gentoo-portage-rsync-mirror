@@ -99,3 +99,10 @@
   Package-Manager: portage-2.2.22
   RepoMan-Options: --include-arches="arm"
 
+  11 Nov 2015; Daniel Pielmeier <billie@gentoo.org> conky-1.10.0.ebuild:
+  Make IPV6 kernel option check nonfatal
+
+  This fixes bug 565350. Thanks to Jan Pobrislo for the report.
+
+  Package-Manager: portage-2.2.20.1
+

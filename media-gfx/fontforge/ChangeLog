@@ -105,3 +105,17 @@
   Package-Manager: portage-2.2.20.1
   RepoMan-Options: --include-arches="x86"
 
+  12 Nov 2015; Mike Gilbert <floppym@gentoo.org> fontforge-20150612-r1.ebuild:
+  Do not depend on libxkbui
+
+  Bug: https://bugs.gentoo.org/565462
+
+  Package-Manager: portage-2.2.23_p26
+
+*fontforge-20150824 (12 Nov 2015)
+
+  12 Nov 2015; Mike Gilbert <floppym@gentoo.org> +fontforge-20150824.ebuild:
+  Bump to 20150824
+
+  Package-Manager: portage-2.2.23_p26
+
