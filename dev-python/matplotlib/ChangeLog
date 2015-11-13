@@ -168,3 +168,18 @@
   Package-Manager: portage-2.2.23
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+  12 Nov 2015; Agostino Sarubbo <ago@gentoo.org> matplotlib-1.4.3.ebuild:
+  ppc stable wrt bug #543914
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="ppc"
+
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> -matplotlib-1.4.2.ebuild:
+  Drop old
+
+  obsoletes:
+  Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=522840
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

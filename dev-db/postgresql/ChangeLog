@@ -292,3 +292,22 @@
 
   Package-Manager: portage-2.2.23
 
+*postgresql-9.5_beta2 (12 Nov 2015)
+
+  12 Nov 2015; Aaron W. Swenson <titanofold@gentoo.org>
+  +postgresql-9.5_beta2.ebuild:
+  Add 9.5 Beta 2
+
+  Many bugs and issues reported by our users and contributors have been
+  fixed since the release of Beta1. These include:
+
+  * Many documentation fixes and improvements
+  * Rename PQsslAttributes() to PQsslAttributeNames()
+  * Pass extra data to pgworkers for context
+  * Fix other issues with parallel workers
+  * Fix multiple issues with BRIN indexes
+  * Fix problems with commit timestamps and replication
+  * Put back ssl_renegotiation_limit, set to 0
+
+  Package-Manager: portage-2.2.20.1
+

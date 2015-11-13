@@ -54,3 +54,19 @@
 
   Bug: https://bugs.gentoo.org/552720
 
+*nagios-check_logfiles-3.7.3.1 (12 Nov 2015)
+
+  12 Nov 2015; Ian Delaney <idella4@gentoo.org>
+  +nagios-check_logfiles-3.7.3.1.ebuild:
+  Adding ebuild for version 3.7.3.1
+
+  Obsoletes bug #391827
+
+  Package-Manager: portage-2.2.24
+  Signed-off-by: Nicholas Vinson <nvinson234@gmail.com>
+
+  12 Nov 2015; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  Adding nvinson234@gmail.com as co-proxy
+
+  Package-Manager: portage-2.2.24
+

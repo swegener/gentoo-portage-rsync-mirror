@@ -136,3 +136,22 @@
 
   Package-Manager: portage-2.2.23
 
+*lxd-0.22 (12 Nov 2015)
+
+  12 Nov 2015; Erik Mackdanz <stasibear@gentoo.org>
+  +files/lxd-0.22-dont-go-get.patch, +files/lxd-0.22-nc-binary-name.patch,
+  +files/lxd-0.22.confd, +files/lxd-0.22.initd, +lxd-0.22.ebuild:
+  bump to 0.22
+
+  init script adds shutdown action (stop daemon + containers)
+
+  Package-Manager: portage-2.2.24
+
+  12 Nov 2015; Erik Mackdanz <stasibear@gentoo.org>
+  -files/lxd-0.18-dont-go-get.patch, -files/lxd-0.18-nc-binary-name.patch,
+  -files/lxd-0.18.confd, -files/lxd-0.18.initd, -lxd-0.18.ebuild,
+  metadata.xml:
+  clean up old
+
+  Package-Manager: portage-2.2.24
+

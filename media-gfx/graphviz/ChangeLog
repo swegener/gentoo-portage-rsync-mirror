@@ -117,3 +117,9 @@
   Package-Manager: portage-2.2.23
   RepoMan-Options: --include-arches="arm"
 
+  12 Nov 2015; Agostino Sarubbo <ago@gentoo.org> graphviz-2.38.0-r1.ebuild:
+  ppc stable wrt bug #529462
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="ppc"
+

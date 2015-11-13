@@ -171,3 +171,18 @@
 
   Package-Manager: portage-2.2.23
 
+  12 Nov 2015; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  add := dep on libvpx
+
+  Package-Manager: portage-2.2.24
+  Signed-off-by: Alexis Ballier <aballier@gentoo.org>
+
+*ffmpeg-2.8.2 (12 Nov 2015)
+
+  12 Nov 2015; Alexis Ballier <aballier@gentoo.org> +ffmpeg-2.8.2.ebuild,
+  +files/libvpx15.patch:
+  bump to 2.8.2 and backport upstream fix to build with libvpx 1.5
+
+  Package-Manager: portage-2.2.24
+  Signed-off-by: Alexis Ballier <aballier@gentoo.org>
+

@@ -88,3 +88,15 @@
   Package-Manager: portage-2.2.23
   RepoMan-Options: --include-arches="arm"
 
+  12 Nov 2015; Agostino Sarubbo <ago@gentoo.org> quazip-0.7.1.ebuild:
+  ppc stable wrt bug #561478
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="ppc"
+
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> -quazip-0.6.2-r1.ebuild:
+  Drop old
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

@@ -112,3 +112,37 @@
 
   Package-Manager: portage-2.2.20.1
 
+*libpng-1.6.19 (12 Nov 2015)
+*libpng-1.5.24 (12 Nov 2015)
+*libpng-1.2.54 (12 Nov 2015)
+
+  12 Nov 2015; Lars Wendler <polynomial-c@gentoo.org> +libpng-1.2.54.ebuild,
+  +libpng-1.5.24.ebuild, +libpng-1.6.19.ebuild:
+  Security bump.
+
+  See http://sourceforge.net/p/png-mng/mailman/message/34615043/
+
+  Package-Manager: portage-2.2.24
+  Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
+  12 Nov 2015; Lars Wendler <polynomial-c@gentoo.org> -libpng-1.2.53.ebuild,
+  -libpng-1.5.23.ebuild, -libpng-1.6.16.ebuild, -libpng-1.6.17.ebuild:
+  Removed old.
+
+  Package-Manager: portage-2.2.24
+  Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
+  13 Nov 2015; Agostino Sarubbo <ago@gentoo.org> libpng-1.2.54.ebuild,
+  libpng-1.5.24.ebuild, libpng-1.6.19.ebuild:
+  amd64 stable wrt bug #565678
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="amd64"
+
+  13 Nov 2015; Agostino Sarubbo <ago@gentoo.org> libpng-1.2.54.ebuild,
+  libpng-1.5.24.ebuild, libpng-1.6.19.ebuild:
+  x86 stable wrt bug #565678
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="x86"
+

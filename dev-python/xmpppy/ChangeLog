@@ -93,3 +93,11 @@
 
   Package-Manager: portage-2.2.23
 
+  12 Nov 2015; Sergey Popov <pinkbyte@gentoo.org> xmpppy-0.5.0_rc1-r2.ebuild:
+  set SLOT on dev-python/pydns dependency explicitly
+
+  Reported-by: Anton Bolshakov <blshkv@pentoo.ch>
+  Gentoo-Bug: 564994
+
+  Package-Manager: portage-2.2.23
+

@@ -55,3 +55,10 @@
 
   Bug: https://bugs.gentoo.org/552720
 
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> btparser-0.24.ebuild,
+  btparser-0.25.ebuild:
+  Use eclass functions to obtain build variables
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

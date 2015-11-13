@@ -74,3 +74,9 @@
   Package-Manager: portage-2.2.20.1
   RepoMan-Options: --include-arches="x86"
 
+  12 Nov 2015; Agostino Sarubbo <ago@gentoo.org> pgf-3.0.1.ebuild:
+  ppc stable wrt bug #522588
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="ppc"
+
