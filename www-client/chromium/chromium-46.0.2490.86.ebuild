@@ -18,7 +18,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 
 LICENSE="BSD hotwording? ( no-source-code )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="cups gnome gnome-keyring hidpi hotwording kerberos neon pic +proprietary-codecs pulseaudio selinux +tcmalloc"
 RESTRICT="proprietary-codecs? ( bindist )"
 
@@ -139,7 +139,7 @@ are not displayed properly:
 Depending on your desktop environment, you may need
 to install additional packages to get icons on the Downloads page.
 
-For KDE, the required package is kde-apps/oxygen-icons.
+For KDE, the required package is kde-frameworks/oxygen-icons.
 
 For other desktop environments, try one of the following:
 - x11-themes/gnome-icon-theme

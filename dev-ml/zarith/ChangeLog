@@ -26,3 +26,11 @@
   Package-Manager: portage-2.2.24
   Signed-off-by: Alexis Ballier <aballier@gentoo.org>
 
+*zarith-1.4.1 (12 Nov 2015)
+
+  12 Nov 2015; Alexis Ballier <aballier@gentoo.org> +zarith-1.4.1.ebuild:
+  bump to 1.4.1
+
+  Package-Manager: portage-2.2.24
+  Signed-off-by: Alexis Ballier <aballier@gentoo.org>
+

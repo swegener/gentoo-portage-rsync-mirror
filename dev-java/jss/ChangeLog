@@ -90,3 +90,8 @@
   Package-Manager: portage-2.2.20.1
   RepoMan-Options: --include-arches="x86"
 
+  12 Nov 2015; James Le Cuirot <chewi@gentoo.org> -jss-4.3.ebuild:
+  Remove old
+
+  Package-Manager: portage-2.2.20.1
+

@@ -106,3 +106,7 @@
   08 Nov 2015; Michał Górny <mgorny@gentoo.org> +pypy-bin-4.0.0.ebuild:
   Add binpackages for 4.0.0
 
+  12 Nov 2015; Michał Górny <mgorny@gentoo.org> pypy-bin-2.4.0.ebuild,
+  pypy-bin-2.5.1-r1.ebuild, pypy-bin-2.6.0-r1.ebuild, pypy-bin-4.0.0.ebuild:
+  dev-python/pypy*: Fix epython.py module first install
+

@@ -68,3 +68,13 @@
   Package-Manager: portage-2.2.23
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> dbus-python-1.2.0-r1.ebuild:
+  Use impl specific python-config
+
+  thanks iGentoo for the patch
+
+  Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=565546
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

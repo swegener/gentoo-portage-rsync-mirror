@@ -165,3 +165,13 @@
 
   Package-Manager: portage-2.2.20.1
 
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> keystone-8.0.0.ebuild,
+  keystone-2015.2.9999.ebuild:
+  Raise max version of dev-python/cryptography
+
+  Tested by upstream
+  https://review.openstack.org/#/c/244199/
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

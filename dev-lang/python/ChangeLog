@@ -342,3 +342,34 @@
 
   Package-Manager: portage-2.2.23_p26
 
+  12 Nov 2015; Michał Górny <mgorny@gentoo.org> -python-2.7.9-r2.ebuild,
+  -python-3.4.0.ebuild, -python-3.4.2.ebuild:
+  Remove redundant ebuilds
+
+  12 Nov 2015; Michał Górny <mgorny@gentoo.org> python-2.7.9-r1.ebuild,
+  python-2.7.10.ebuild, python-2.7.10-r2.ebuild, python-2.7.10-r3.ebuild,
+  python-3.3.5-r1.ebuild, python-3.3.5-r2.ebuild, python-3.3.5-r3.ebuild,
+  python-3.4.1.ebuild, python-3.4.3.ebuild, python-3.4.3-r2.ebuild,
+  python-3.4.3-r3.ebuild, python-3.5.0-r1.ebuild, python-3.5.0-r2.ebuild:
+  Fix epython.py module first install
+
+  Fix the issues in obtaining sitedir for epython.py module install when
+  dev-lang/python is not yet installed.
+
+  12 Nov 2015; Michał Górny <mgorny@gentoo.org> python-2.7.10-r3.ebuild:
+  Fix py version ref for python_export in 2.7
+
+  12 Nov 2015; Michał Górny <mgorny@gentoo.org> python-2.7.9-r1.ebuild,
+  python-2.7.10.ebuild, python-2.7.10-r2.ebuild:
+  Copy the 2.7 EPYTHON fix to older versions
+
+  13 Nov 2015; Agostino Sarubbo <ago@gentoo.org> python-2.7.10.ebuild:
+  alpha stable wrt bug #561524
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="alpha"
+
+  13 Nov 2015; Michał Górny <mgorny@gentoo.org> -python-2.7.9-r1.ebuild,
+  -python-3.4.1.ebuild:
+  Remove more old versions
+

@@ -75,3 +75,22 @@
   Package-Manager: portage-2.2.24
   RepoMan-Options: --ignore-arches
 
+  12 Nov 2015; Agostino Sarubbo <ago@gentoo.org> HTML-Scrubber-0.150.0.ebuild:
+  ppc stable wrt bug #564688
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="ppc"
+
+  12 Nov 2015; Agostino Sarubbo <ago@gentoo.org> HTML-Scrubber-0.150.0.ebuild:
+  x86 stable wrt bug #564688
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="x86"
+
+  13 Nov 2015; Patrice Clement <monsieurp@gentoo.org>
+  -HTML-Scrubber-0.90.0-r1.ebuild:
+  Remove vulnerable version. Fixes security bug 564688.
+
+  Package-Manager: portage-2.2.20.1
+  Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+

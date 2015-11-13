@@ -238,3 +238,40 @@
   Package-Manager: portage-2.2.23
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> cryptography-0.5.4.ebuild,
+  cryptography-0.6.1.ebuild, cryptography-0.7.1-r1.ebuild,
+  cryptography-0.7.2.ebuild, cryptography-0.8.ebuild,
+  cryptography-0.8.1.ebuild, cryptography-0.8.2.ebuild,
+  cryptography-0.9.2.ebuild, cryptography-0.9.3.ebuild,
+  cryptography-1.0.ebuild, cryptography-1.0.1.ebuild,
+  cryptography-1.0.1-r1.ebuild, -files/0.7-setup.patch:
+  Drop vulnerable versions
+
+  Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=561696
+
+  obsoletes:
+  Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=561604
+  Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=559648
+  Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=521796
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> -cryptography-0.5.4.ebuild,
+  -cryptography-0.6.1.ebuild, -cryptography-0.7.1-r1.ebuild,
+  -cryptography-0.7.2.ebuild, -cryptography-0.8.ebuild,
+  -cryptography-0.8.1.ebuild, -cryptography-0.8.2.ebuild,
+  -cryptography-0.9.2.ebuild, -cryptography-0.9.3.ebuild,
+  -cryptography-1.0.ebuild, -cryptography-1.0.1.ebuild,
+  -cryptography-1.0.1-r1.ebuild:
+  Drop empty files
+
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> cryptography-1.0.2.ebuild,
+  cryptography-1.1.ebuild:
+  Move to virtual for modules with mixed support
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

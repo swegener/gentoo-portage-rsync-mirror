@@ -70,3 +70,11 @@
 
   Package-Manager: portage-2.2.20.1
 
+*py3status-2.7 (12 Nov 2015)
+
+  12 Nov 2015; Ultrabug <ultrabug@gentoo.org> -py3status-2.6.ebuild,
+  +py3status-2.7.ebuild:
+  version bump
+
+  Package-Manager: portage-2.2.24
+

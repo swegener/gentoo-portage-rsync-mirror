@@ -125,3 +125,7 @@
   08 Nov 2015; Michał Górny <mgorny@gentoo.org> +pypy-4.0.0.ebuild:
   */pypy: Bump to 4.0.0 (p.masked for testing & binpkg build)
 
+  12 Nov 2015; Michał Górny <mgorny@gentoo.org> pypy-2.4.0.ebuild,
+  pypy-2.5.1.ebuild, pypy-2.6.0.ebuild, pypy-4.0.0.ebuild:
+  Fix epython.py module first install
+
