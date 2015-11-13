@@ -242,3 +242,13 @@
 
   Package-Manager: portage-2.2.23
 
+  12 Nov 2015; Bernard Cafarelli <voyageur@gentoo.org> llvm-3.7.0-r2.ebuild,
+  llvm-9999.ebuild:
+  fix libxml2 detection for USE=-xml, bug #564804
+
+  libxml2 search is now correctly disabled for USE=-xml
+  lldb requires libxml2
+  Port some fixes to live ebuild
+
+  Package-Manager: portage-2.2.24
+

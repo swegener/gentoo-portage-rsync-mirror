@@ -88,3 +88,7 @@
 
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+  12 Nov 2015; Michał Górny <mgorny@gentoo.org> jython-2.5.3-r3.ebuild,
+  jython-2.7.0.ebuild:
+  Fix epython.py module first install
+

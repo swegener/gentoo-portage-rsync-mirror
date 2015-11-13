@@ -138,3 +138,15 @@
   Package-Manager: portage-2.2.23
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+*ipaddress-1.0.15 (12 Nov 2015)
+
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> ipaddress-1.0.14.ebuild,
+  +ipaddress-1.0.15.ebuild:
+  Version Bump and impl cleanup
+
+  As this is a backport, packages should use the standard libraries
+  and depend on the virtual
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

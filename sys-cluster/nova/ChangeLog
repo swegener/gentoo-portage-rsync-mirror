@@ -207,3 +207,24 @@
 
   This reverts commit 1256b776acc0ebd280f5d40824f74257d5ee6e97.
 
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> nova-12.0.0.ebuild,
+  nova-2015.2.9999.ebuild:
+  Raise max version of dev-python/cryptography
+
+  Tested by upstream
+  https://review.openstack.org/#/c/244199/
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> nova-12.0.0.ebuild,
+  nova-2015.1.1-r3.ebuild, nova-2015.1.2.ebuild, nova-2015.1.9999.ebuild,
+  nova-2015.2.9999.ebuild:
+  Style enhancements
+
+  Chop DESCRIPTION
+  Fix indention for tab=4 spaces
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

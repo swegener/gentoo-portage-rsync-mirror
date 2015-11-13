@@ -132,3 +132,9 @@
 
   Package-Manager: portage-2.2.20.1
 
+  12 Nov 2015; Agostino Sarubbo <ago@gentoo.org> openvpn-2.3.8.ebuild:
+  ppc stable wrt bug #556874
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="ppc"
+

@@ -596,10 +596,7 @@ app-emulation/libvirt:virtualbox - Support management of VirtualBox virtualisati
 app-emulation/libvirt:wireshark-plugins - Build the net-analyzer/wireshark plugin for the Libvirt RPC protocol
 app-emulation/libvirt:xen - Support management of Xen virtualisation (app-emulation/xen)
 app-emulation/lxc:cgmanager - Enable support for cgroup management using app-admin/cgmanager
-app-emulation/lxd:btrfs - Add support for managing instance/snapshot disk using btrfs subvolumes
-app-emulation/lxd:criu - Add support for live-migrateable containers
 app-emulation/lxd:daemon - Build the system daemon, not just the client tool
-app-emulation/lxd:lvm - Allow using the Logical Volume Manager as pool for disk image storage
 app-emulation/open-vm-tools:doc - Generate API documentation
 app-emulation/open-vm-tools:fuse - Build vmblock-fuse in favor of FUSE based blocking mechanism for DnD
 app-emulation/open-vm-tools:grabbitmqproxy - Enable grabbitmqproxy
@@ -3298,7 +3295,6 @@ kde-apps/okular:chm - Enable support for Microsoft Compiled HTML Help files
 kde-apps/okular:dpi - DPI detection support for PDF rendering via x11-libs/libkscreen
 kde-apps/okular:ebook - Add E-Book support
 kde-apps/okular:mobi - Add mobipocket support
-kde-apps/oxygen-icons:sources - Additionally install the svg sources of the bitmap icons (needed for redistribution)
 kde-apps/step:qalculate - Enable the libqalculate library for unit conversion
 kde-base/kde-meta:kdepim - Pull in KDE PIM
 kde-base/kde-meta:sdk - Pull in developer-specific meta-packages
@@ -3368,15 +3364,22 @@ kde-base/smokeqt:qwt - Compile bindings for x11-libs/qwt.
 kde-base/smokeqt:webkit - Compile bindings for dev-qt/qtwebkit.
 kde-base/smokeqt:xmlpatterns - Compile bindings for dev-qt/qtxmlpatterns.
 kde-base/systemsettings:kscreen - Use kde-misc/kscreen for screen management
+kde-frameworks/kded:man - Build and install man pages
 kde-frameworks/kdesignerplugin:designer - Build KF5 widgets plugin for QtDesigner
 kde-frameworks/kdesignerplugin:webkit - Build kdewebkit plugin for QtDesigner
 kde-frameworks/kfilemetadata:epub - Adds support for reading EPUB ebook metadata
 kde-frameworks/kimageformats:eps - Support the EPS graphics file format
 kde-frameworks/kinit:caps - Capabilities support for improved security and better OOM handling
+kde-frameworks/kinit:man - Build and install man pages
+kde-frameworks/kio:kwallet - Enable permanent storage of passwords for kpasswdserver with kde-frameworks/kwallet
+kde-frameworks/knotifications:speech - Enable text-to-speech notification support
 kde-frameworks/knotifyconfig:phonon - Add sound support via media-libs/phonon
+kde-frameworks/kservice:man - Build and install man pages
+kde-frameworks/ktextwidgets:speech - Enable text-to-speech support
 kde-frameworks/kwallet:gpg - Support wallets with GnuPG encryption in addition to the default blowfish-encrypted file
 kde-frameworks/kxmlgui:attica - Enable support for kde-frameworks/attica
 kde-frameworks/networkmanager-qt:teamd - Enable Teamd control support
+kde-frameworks/oxygen-icons:sources - Additionally install the svg sources of the bitmap icons (needed for redistribution)
 kde-frameworks/plasma:egl - Enable EGL support
 kde-frameworks/plasma:gles2 - Use GLES 2.0 or later instead of full OpenGL
 kde-frameworks/sonnet:aspell - Enable the app-text/aspell spell-checking backend
@@ -3400,6 +3403,7 @@ kde-plasma/kinfocenter:pci - Show advanced PCI information
 kde-plasma/kinfocenter:samba - Show information about Samba mounts, shares and log entries
 kde-plasma/kmenuedit:hotkeys - Enable support for hotkey editing
 kde-plasma/kwin:gles2 - Use OpenGL ES 2 instead of full GL
+kde-plasma/kwin:multimedia - Enable effect video button in desktop effects KCM
 kde-plasma/libksysguard:processui - Enables the Interface to view process libs.
 kde-plasma/plasma-desktop:evdev - Enable configuration module for desktop input devices.
 kde-plasma/plasma-desktop:gtk2 - Add support for gtk+2-based applications using legacy xembed systray icons via libappindicator.
@@ -6609,7 +6613,6 @@ sci-chemistry/molequeue:zeromq - Build with net-libs/zeromq support
 sci-chemistry/mopac7:gmxmopac7 - Add support library for gromacs
 sci-chemistry/pdb2pqr:opal - Add web interface via opal
 sci-chemistry/pdb2pqr:pdb2pka - Install experimental pdb2pka interface
-sci-chemistry/pymol:apbs - Install the apbs plugin
 sci-chemistry/pymol:web - Install Pymodule needed for web app support
 sci-chemistry/raster3d:gd - libgd support for PNG and JPEG output
 sci-chemistry/vmd:cuda - Use nvidia cuda toolkit for speeding up computations

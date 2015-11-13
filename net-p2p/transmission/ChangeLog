@@ -125,3 +125,9 @@
 
   Package-Manager: portage-2.2.23_p4
 
+  12 Nov 2015; Agostino Sarubbo <ago@gentoo.org> transmission-2.84-r3.ebuild:
+  ppc stable wrt bug #562240
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="ppc"
+

@@ -111,3 +111,6 @@
 
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+  12 Nov 2015; Michał Górny <mgorny@gentoo.org> pypy3-2.4.0.ebuild:
+  dev-python/pypy*: Fix epython.py module first install
+

@@ -77,3 +77,11 @@
 
   Package-Manager: portage-2.2.24
 
+*debootstrap-1.0.75 (12 Nov 2015)
+
+  12 Nov 2015; Jeroen Roovers <jer@gentoo.org> -debootstrap-1.0.73.ebuild,
+  +debootstrap-1.0.75.ebuild:
+  Version bump.
+
+  Package-Manager: portage-2.2.24
+

@@ -54,3 +54,10 @@
 
   Bug: https://bugs.gentoo.org/552720
 
+*pecl-uuid-1.0.4 (12 Nov 2015)
+
+  12 Nov 2015; Brian Evans <grknight@gentoo.org> +pecl-uuid-1.0.4.ebuild:
+  Version bump: add php7-0; drop php5-4
+
+  Package-Manager: portage-2.2.24
+

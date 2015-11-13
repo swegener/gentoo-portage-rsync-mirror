@@ -157,3 +157,22 @@
 
   Package-Manager: portage-2.2.20.1
 
+  12 Nov 2015; Keri Harris <keri@gentoo.org> -swi-prolog-7.3.7.ebuild,
+  -swi-prolog-7.3.8.ebuild:
+  remove old development versions
+
+  Package-Manager: portage-2.2.20.1
+
+*swi-prolog-7.3.11 (12 Nov 2015)
+
+  12 Nov 2015; Keri Harris <keri@gentoo.org> +swi-prolog-7.3.11.ebuild:
+  bump 7.3 development version
+
+  Package-Manager: portage-2.2.20.1
+
+  12 Nov 2015; Agostino Sarubbo <ago@gentoo.org> swi-prolog-7.2.3-r1.ebuild:
+  ppc stable wrt bug #565490
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="ppc"
+

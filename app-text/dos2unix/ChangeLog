@@ -137,3 +137,15 @@
   Package-Manager: portage-2.2.23
   RepoMan-Options: --include-arches="arm"
 
+  12 Nov 2015; Agostino Sarubbo <ago@gentoo.org> dos2unix-7.3-r1.ebuild:
+  ppc stable wrt bug #525826
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="ppc"
+
+  12 Nov 2015; Justin Lecher <jlec@gentoo.org> -dos2unix-6.0.6.ebuild:
+  Drop old
+
+  Package-Manager: portage-2.2.23
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

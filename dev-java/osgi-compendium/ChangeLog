@@ -54,3 +54,10 @@
 
   Bug: https://bugs.gentoo.org/552720
 
+  12 Nov 2015; Patrice Clement <monsieurp@gentoo.org>
+  osgi-compendium-4.3.1.ebuild:
+  Update SRC_URI and HOMEPAGE URLs. Lift fetch restrictions. Fixes bug 565498.
+
+  Package-Manager: portage-2.2.20.1
+  Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+
