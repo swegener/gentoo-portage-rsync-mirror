@@ -110,3 +110,10 @@
   Package-Manager: portage-2.2.20.1
   RepoMan-Options: --include-arches="sparc"
 
+*pango-1.38.1 (14 Nov 2015)
+
+  14 Nov 2015; Pacho Ramos <pacho@gentoo.org> +pango-1.38.1.ebuild:
+  Version bump
+
+  Package-Manager: portage-2.2.24
+
