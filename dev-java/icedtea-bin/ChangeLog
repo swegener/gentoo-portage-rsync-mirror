@@ -149,3 +149,10 @@
 
   Package-Manager: portage-2.2.20.1
 
+  15 Nov 2015; James Le Cuirot <chewi@gentoo.org> icedtea-bin-7.2.6.2.ebuild:
+  Forgot to update the RDEPENDs
+
+  It's largely guesswork, to be honest! :|
+
+  Package-Manager: portage-2.2.20.1
+
