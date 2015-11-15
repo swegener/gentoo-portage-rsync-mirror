@@ -73,3 +73,13 @@
 
   Package-Manager: portage-2.2.20.1
 
+*rack-cache-1.5.1 (15 Nov 2015)
+
+  15 Nov 2015; Hans de Graaff <graaff@gentoo.org> +rack-cache-1.5.1.ebuild:
+  add 1.5.1
+
+  Drop arm,ppc,ppc64,x86,prefix due to new dependency
+  on dev-ruby/maxitest, bug 565818
+
+  Package-Manager: portage-2.2.20.1
+
