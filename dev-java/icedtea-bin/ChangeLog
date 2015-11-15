@@ -156,3 +156,15 @@
 
   Package-Manager: portage-2.2.20.1
 
+*icedtea-bin-6.1.13.9 (15 Nov 2015)
+
+  15 Nov 2015; James Le Cuirot <chewi@gentoo.org>
+  +icedtea-bin-6.1.13.9.ebuild:
+  Version bump to 6.1.13.9
+
+  Sorry for changing the X/awt flag again but upstream preferred the
+  term headless, which is technically more accurate than awt, so I
+  compromised and went with headless-awt.
+
+  Package-Manager: portage-2.2.20.1
+
