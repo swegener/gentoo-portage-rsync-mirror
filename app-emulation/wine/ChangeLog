@@ -230,3 +230,13 @@
 
   Package-Manager: portage-2.2.23
 
+*wine-1.7.54-r1 (15 Nov 2015)
+
+  15 Nov 2015; NP-Hardass <NP-Hardass@gentoo.org> -wine-1.7.54.ebuild,
+  +wine-1.7.54-r1.ebuild, wine-9999.ebuild:
+  Revbump 1.7.54. Fixes bug due to move of .desktop file
+
+  Thanks to karolherbst for reporting
+
+  Package-Manager: portage-2.2.23
+
