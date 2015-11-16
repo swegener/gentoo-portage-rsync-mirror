@@ -246,3 +246,11 @@
   Package-Manager: portage-2.2.20.1
   RepoMan-Options: --include-arches="x86"
 
+  16 Nov 2015; Matthew Thode <prometheanfire@gentoo.org>
+  nova-2015.2.9999.ebuild:
+  updating liberty caps
+
+  https://review.openstack.org/#/c/232918/35/upper-constraints.txt
+
+  Package-Manager: portage-2.2.20.1
+
