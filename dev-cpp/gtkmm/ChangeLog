@@ -122,3 +122,10 @@
   Package-Manager: portage-2.2.20.1
   RepoMan-Options: --include-arches="ppc"
 
+  16 Nov 2015; Agostino Sarubbo <ago@gentoo.org> gtkmm-2.24.4-r2.ebuild,
+  gtkmm-3.16.0.ebuild:
+  ia64 stable wrt bug #565086
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="ia64"
+
