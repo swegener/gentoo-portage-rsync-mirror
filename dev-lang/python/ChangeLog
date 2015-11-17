@@ -373,3 +373,17 @@
   -python-3.4.1.ebuild:
   Remove more old versions
 
+*python-3.5.0-r3 (17 Nov 2015)
+*python-3.4.3-r4 (17 Nov 2015)
+*python-3.3.5-r4 (17 Nov 2015)
+*python-2.7.10-r4 (17 Nov 2015)
+
+  17 Nov 2015; Michał Górny <mgorny@gentoo.org> -python-2.7.10-r3.ebuild,
+  +python-2.7.10-r4.ebuild, -python-3.3.5-r3.ebuild, +python-3.3.5-r4.ebuild,
+  -python-3.4.3-r3.ebuild, +python-3.4.3-r4.ebuild, -python-3.5.0-r2.ebuild,
+  +python-3.5.0-r3.ebuild:
+  Add symlinks for python-exec wrapping of execs
+
+  Add symlinks to make it possible to wrap Python executable aliases
+  (python, python-config, pydoc...) via python-exec.
+
