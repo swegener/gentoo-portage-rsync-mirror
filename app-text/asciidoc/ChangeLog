@@ -116,3 +116,24 @@
 
   Signed-off-by: Marc Joliet <marcec@gmx.de>
 
+  16 Nov 2015; Marc Joliet <marcec@gmx.de> -asciidoc-8.6.5.ebuild:
+  drop old 8.6.5
+
+  It uses the deprecated EAPI 3, the deprecated python eclass, and supports
+  fewer
+  KEYWORDS than the newer versions.
+
+  Signed-off-by: Marc Joliet <marcec@gmx.de>
+
+  16 Nov 2015; Marc Joliet <marcec@gmx.de> -asciidoc-8.6.8-r1.ebuild:
+  drop old 8.6.8-r1
+
+  Signed-off-by: Marc Joliet <marcec@gmx.de>
+
+  16 Nov 2015; Marc Joliet <marcec@gmx.de> -asciidoc-8.6.9.ebuild:
+  drop old 8.6.9
+
+  It suffers from bug #483336, which was fixed in -r1.
+
+  Signed-off-by: Marc Joliet <marcec@gmx.de>
+
