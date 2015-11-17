@@ -121,3 +121,13 @@
 
   Package-Manager: portage-2.2.24
 
+*emacs-vcs-25.0.50_pre20151113 (17 Nov 2015)
+
+  17 Nov 2015; Ulrich Müller <ulm@gentoo.org>
+  +emacs-vcs-25.0.50_pre20151113.ebuild:
+  New snapshot.
+
+  Add a snapshot of the fork point of master and emacs-25 branch.
+
+  Package-Manager: portage-2.2.24
+
