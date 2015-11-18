@@ -113,3 +113,9 @@
 
   As requested by @monsieurp
 
+  18 Nov 2015; Agostino Sarubbo <ago@gentoo.org> spice-0.12.6-r1.ebuild:
+  x86 stable wrt bug #562890
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="x86"
+
