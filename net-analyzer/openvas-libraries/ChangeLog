@@ -86,3 +86,10 @@
   Package-Manager: portage-2.2.25
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+  18 Nov 2015; Justin Lecher <jlec@gentoo.org>
+  files/openvas-libraries-8.0.5-underlinking.patch:
+  Update patch to work with ld.bfd
+
+  Package-Manager: portage-2.2.25
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
