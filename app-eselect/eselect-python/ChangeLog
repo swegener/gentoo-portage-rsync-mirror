@@ -79,3 +79,7 @@
   eselect-python-20151117.ebuild, eselect-python-99999999.ebuild:
   Preserve previous python[23] selection
 
+  17 Nov 2015; Michał Górny <mgorny@gentoo.org>
+  eselect-python-20151117.ebuild, eselect-python-99999999.ebuild:
+  Update blockers to match revbumped pythons
+
