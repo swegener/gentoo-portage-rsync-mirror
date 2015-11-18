@@ -387,3 +387,15 @@
   Add symlinks to make it possible to wrap Python executable aliases
   (python, python-config, pydoc...) via python-exec.
 
+*python-2.7.10-r3 (17 Nov 2015)
+*python-2.7.10-r1 (17 Nov 2015)
+
+  17 Nov 2015; Mike Gilbert <floppym@gentoo.org> -python-2.7.10.ebuild,
+  +python-2.7.10-r1.ebuild, -python-2.7.10-r2.ebuild,
+  +python-2.7.10-r3.ebuild:
+  Revbump 2.7.10
+
+  This ensures nobody gets bitten by f1d0291c.
+
+  Package-Manager: portage-2.2.24_p19
+
