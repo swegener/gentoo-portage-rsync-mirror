@@ -119,3 +119,16 @@
   Package-Manager: portage-2.2.20.1
   RepoMan-Options: --include-arches="x86"
 
+  18 Nov 2015; Matthias Maier <tamiko@gentoo.org> -files/spice-0.12.5-fix-asse
+  rt-in-mjpeg_encoder_adjust_params_to_bit_rate.patch,
+  -files/spice-0.12.5-fix-crash-when-clearing-surface-memory.patch,
+  -files/spice-0.12.5-server-dont-assert-on-invalid-client-message.patch,
+  -spice-0.12.5-r1.ebuild:
+  drop vulnerable (bug #562890, CVE-2015-{5260,5261})
+
+  Drop vulnerable version 0.12.5
+
+  Gentoo-Bug: 562890
+
+  Package-Manager: portage-2.2.24
+
