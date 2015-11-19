@@ -635,3 +635,16 @@
 
   Package-Manager: portage-2.2.20.1
 
+  19 Nov 2015; Michael Orlitzky <mjo@gentoo.org> -php-5.6.15-r2.ebuild:
+  remove old revision of php-5.6.15.
+
+  Package-Manager: portage-2.2.20.1
+
+  19 Nov 2015; Michael Orlitzky <mjo@gentoo.org> -php-5.5.29.ebuild,
+  -php-5.6.13.ebuild:
+  remove two superceded versions with security vulnerabilities.
+
+  Gentoo-Bug: 562882
+
+  Package-Manager: portage-2.2.20.1
+
