@@ -157,3 +157,10 @@
   Package-Manager: portage-2.2.25
   RepoMan-Options: --ignore-arches
 
+  23 Nov 2015; Justin Lecher <jlec@gentoo.org> -click-4.0-r1.ebuild,
+  -click-4.1.ebuild, -files/click-4.0-docbuild.patch:
+  Drop old
+
+  Package-Manager: portage-2.2.25
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
