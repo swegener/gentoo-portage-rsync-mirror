@@ -56,3 +56,13 @@
 
   Bug: https://bugs.gentoo.org/552720
 
+*lensfun-0.3.2 (21 Nov 2015)
+
+  21 Nov 2015; Markus Meier <maekke@gentoo.org> +lensfun-0.3.2.ebuild:
+  version bump, bug #565906
+
+  Reported by DrSlony
+  Bug: 565906
+
+  Package-Manager: portage-2.2.25
+
