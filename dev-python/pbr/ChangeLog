@@ -326,3 +326,9 @@
   Package-Manager: portage-2.2.25
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+  23 Nov 2015; Justin Lecher <jlec@gentoo.org> pbr-0.8.2-r1.ebuild:
+  Keyword under ALLARCHES policy
+
+  Package-Manager: portage-2.2.25
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
