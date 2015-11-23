@@ -169,3 +169,15 @@
   Package-Manager: portage-2.2.25
   RepoMan-Options: --ignore-arches
 
+  23 Nov 2015; Justin Lecher <jlec@gentoo.org> -colorama-0.3.2.ebuild:
+  Drop old
+
+  Package-Manager: portage-2.2.25
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
+  23 Nov 2015; Justin Lecher <jlec@gentoo.org> colorama-0.3.3.ebuild:
+  Chop DESCRIPTION to 80 chars
+
+  Package-Manager: portage-2.2.25
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

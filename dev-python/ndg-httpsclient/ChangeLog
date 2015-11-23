@@ -143,3 +143,9 @@
   Package-Manager: portage-2.2.25
   RepoMan-Options: --ignore-arches
 
+  23 Nov 2015; Justin Lecher <jlec@gentoo.org> -ndg-httpsclient-0.3.2.ebuild:
+  Drop old
+
+  Package-Manager: portage-2.2.25
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
