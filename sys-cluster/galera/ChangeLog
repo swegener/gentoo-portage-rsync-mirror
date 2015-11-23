@@ -114,3 +114,9 @@
 
   Package-Manager: portage-2.2.25
 
+  22 Nov 2015; Markus Meier <maekke@gentoo.org> galera-25.3.12.ebuild:
+  add ~arm, bug #544378
+
+  Package-Manager: portage-2.2.25
+  RepoMan-Options: --include-arches="arm"
+
