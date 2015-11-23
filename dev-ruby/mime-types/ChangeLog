@@ -81,3 +81,10 @@
 
   Package-Manager: portage-2.2.20.1
 
+  23 Nov 2015; Agostino Sarubbo <ago@gentoo.org> mime-types-1.25.1.ebuild,
+  mime-types-2.6.2.ebuild:
+  amd64 stable wrt bug #566438
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="amd64"
+
