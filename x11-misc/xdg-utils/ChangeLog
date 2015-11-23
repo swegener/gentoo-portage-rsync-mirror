@@ -88,3 +88,9 @@
 
   Package-Manager: portage-2.2.25
 
+  23 Nov 2015; Agostino Sarubbo <ago@gentoo.org> xdg-utils-1.1.1.ebuild:
+  amd64 stable wrt bug #558676
+
+  Package-Manager: portage-2.2.20.1
+  RepoMan-Options: --include-arches="amd64"
+
