@@ -87,3 +87,6 @@
 
   Package-Manager: portage-2.2.24
 
+  23 Nov 2015; Sean Vig <sean.v.775@gmail.com> pyflakes-1.0.0.ebuild:
+  Fix location of patch
+
