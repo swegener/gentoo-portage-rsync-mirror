@@ -90,3 +90,15 @@
   +net-tools-1.60_p20151124144947.ebuild, net-tools-9999.ebuild:
   version bump
 
+  24 Nov 2015; Mikle Kolyada <zlogene@gentoo.org>
+  net-tools-1.60_p20141019041918-r1.ebuild:
+  amd64 stable wrt bug #566720
+
+  Package-Manager: portage-2.2.20.1
+
+  24 Nov 2015; Mikle Kolyada <zlogene@gentoo.org>
+  net-tools-1.60_p20141019041918-r1.ebuild:
+  x86 stable wrt bug #566720
+
+  Package-Manager: portage-2.2.20.1
+
