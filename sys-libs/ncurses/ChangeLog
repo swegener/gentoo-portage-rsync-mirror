@@ -271,3 +271,6 @@
   This breaks when building ncurses-6.0:0 on a system that has SLOT=5
   already installed.
 
+  24 Nov 2015; Mike Frysinger <vapier@gentoo.org> metadata.xml:
+  standardize various metadata.xml style
+
