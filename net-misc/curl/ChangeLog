@@ -86,3 +86,14 @@
 
   Package-Manager: portage-2.2.20.1
 
+  25 Nov 2015; Anthony G. Basile <blueness@gentoo.org> -curl-7.44.0.ebuild,
+  -curl-7.44.0-r1.ebuild:
+  remove older unstable versions
+
+  Package-Manager: portage-2.2.20.1
+
+  25 Nov 2015; Anthony G. Basile <blueness@gentoo.org> curl-7.45.0.ebuild:
+  remove dependency on =net-libs/gnutls-2.12* which is off the tree
+
+  Package-Manager: portage-2.2.20.1
+
