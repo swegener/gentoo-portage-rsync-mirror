@@ -88,3 +88,13 @@
   Package-Manager: portage-2.2.25
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+*texmaker-4.5 (26 Nov 2015)
+
+  26 Nov 2015; Stephen Bosch <stephen.bosch@gmail.com>
+  +files/texmaker-4.5-modern-styles.patch, +files/texmaker-4.5-unbundle.patch,
+  +texmaker-4.5.ebuild:
+  version bump to 4.5 #566790
+
+  26 Nov 2015; Stephen Bosch <stephen.bosch@gmail.com> texmaker-4.5.ebuild:
+  make qt5 default
+
