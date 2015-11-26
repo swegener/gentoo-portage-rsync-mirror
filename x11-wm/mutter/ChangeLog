@@ -153,3 +153,9 @@
 
   Package-Manager: portage-2.2.25
 
+  26 Nov 2015; Gilles Dartiguelongue <eva@gentoo.org> mutter-3.18.2.ebuild:
+  requires clutter[X], a couple of places in the code require clutter-x11 even
+  if configure does not check for it
+
+  Package-Manager: portage-2.2.26
+
