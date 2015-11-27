@@ -110,3 +110,8 @@
   pypy-bin-2.5.1-r1.ebuild, pypy-bin-2.6.0-r1.ebuild, pypy-bin-4.0.0.ebuild:
   dev-python/pypy*: Fix epython.py module first install
 
+  27 Nov 2015; Michał Górny <mgorny@gentoo.org>
+  -files/2.3-21_all_distutils_c++.patch, -pypy-bin-2.4.0.ebuild,
+  -pypy-bin-2.5.1-r1.ebuild:
+  Remove old
+
