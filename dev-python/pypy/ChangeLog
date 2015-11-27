@@ -129,3 +129,8 @@
   pypy-2.5.1.ebuild, pypy-2.6.0.ebuild, pypy-4.0.0.ebuild:
   Fix epython.py module first install
 
+  27 Nov 2015; Michał Górny <mgorny@gentoo.org>
+  -files/2.3-21_all_distutils_c++.patch, -files/2.3.1-shared-lib.patch,
+  -pypy-2.4.0.ebuild, -pypy-2.5.1.ebuild:
+  Remove old
+
