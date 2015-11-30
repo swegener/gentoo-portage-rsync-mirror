@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 
 # Python testsuite fails when built against dev-python/django-1.8.5
@@ -24,7 +24,7 @@ IUSE="doc examples test"
 PY2_USEDEP=$(python_gen_usedep python2_7)
 RDEPEND=">=dev-python/celery-3.1.15[${PYTHON_USEDEP}]
 	>dev-python/django-1.4[${PYTHON_USEDEP}]
-	<=dev-python/django-1.7.11[${PYTHON_USEDEP}]
+	<dev-python/django-1.9[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -42,8 +42,6 @@ DEPEND="${RDEPEND}
 PY27_REQUSE="$(python_gen_useflags 'python2.7')"
 REQUIRED_USE="
 	doc? ( ${PY27_REQUSE} )"
-
-PATCHES=( "${FILESDIR}/${P}-py3-test-failures.patch" )
 
 python_compile_all() {
 	use doc && emake -C docs html
