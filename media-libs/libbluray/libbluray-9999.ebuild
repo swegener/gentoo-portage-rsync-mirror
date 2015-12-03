@@ -60,31 +60,21 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf
-	if multilib_is_native_abi && use java; then
-		export JAVACFLAGS="$(java-pkg_javac-args)"
-		append-cflags "$(java-pkg_get-jni-cflags)"
-		myconf="--enable-bdjava"
-	else
-		myconf="--disable-bdjava"
-	fi
-
 	ECONF_SOURCE="${S}" econf \
 		--disable-optimizations \
 		$(multilib_native_use_enable utils examples) \
+		$(multilib_native_use_enable java bdjava) \
 		$(use_with fontconfig) \
 		$(use_with truetype freetype) \
 		$(use_enable static-libs static) \
 		$(use_enable udf) \
-		$(use_with xml libxml2) \
-		${myconf}
+		$(use_with xml libxml2)
 }
 
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi && use utils; then
-		dobin index_dump mobj_dump mpls_dump
 		cd .libs/
 		dobin index_dump mobj_dump mpls_dump bd_info bdsplice clpi_dump hdmv_test libbluray_test list_titles sound_dump
 		if use java; then
@@ -93,8 +83,7 @@ multilib_src_install() {
 	fi
 
 	if multilib_is_native_abi && use java; then
-		java-pkg_dojar "${BUILD_DIR}"/.libs/${PN}-j2se-${PV}.jar
-		doenvd "${FILESDIR}"/90${PN}
+		java-pkg_dojar "${BUILD_DIR}"/.libs/${PN}-j2se-*.jar
 	fi
 }
 
