@@ -97,3 +97,12 @@
 
   Package-Manager: portage-2.2.26
 
+  05 Dec 2015; Justin Lecher <jlec@gentoo.org>
+  +files/gegl-0.3.4-underlinking.patch, gegl-0.3.4.ebuild, metadata.xml:
+  Fix underlinking
+
+  Gnome-Bugs: https://bugzilla.gnome.org/show_bug.cgi?id=759065
+
+  Package-Manager: portage-2.2.25
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
