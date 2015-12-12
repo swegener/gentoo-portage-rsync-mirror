@@ -8,7 +8,7 @@ DESCRIPTION="Fast, dense and secure container management"
 HOMEPAGE="https://linuxcontainers.org/lxd/introduction/"
 EGO_PN_PARENT="github.com/lxc"
 EGO_PN="${EGO_PN_PARENT}/lxd"
-SRC_URI="http://961db08fe45d5f5dd062-b8a7a040508aea6d369676e49b80719d.r29.cf2.rackcdn.com/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~stasibear/distfiles/${P}.tar.bz2"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
@@ -19,9 +19,12 @@ IUSE="+daemon nls test"
 # IUSE and PLOCALES must be defined before l10n inherited
 inherit bash-completion-r1 eutils golang-build l10n systemd user vcs-snapshot
 
+# The compiler is forced in golang-base:
+# DEPEND=">=dev-lang/go-1.4.2:="
+# ... so the dep is omitted here (and I disagree with := in this case)
+
 DEPEND="
 	dev-go/go-crypto
-	>=dev-lang/go-1.4.2:=
 	dev-libs/protobuf
 	dev-vcs/git
 	nls? ( sys-devel/gettext )
@@ -55,12 +58,9 @@ RDEPEND="
 # - since 0.15 gccgo is a supported compiler ('make gccgo').  It would
 #   be preferable for that support to go into the golang-build eclass not
 #   this package directly.
-# - integrate "lxd shutdown" into initscript as custom action (default "stop"
-#   action should _not_ stop containers amirite?)
-#   "Perform a clean shutdown of LXD and all running containers"
 
 src_prepare() {
-	cd "${S}/src/${EGO_PN}"
+	cd "${S}/src/${EGO_PN}" || die "Failed to change to deep src dir"
 
 	epatch "${FILESDIR}/${P}-dont-go-get.patch"
 
@@ -75,7 +75,7 @@ src_prepare() {
 src_compile() {
 	golang-build_src_compile
 
-	cd "${S}/src/${EGO_PN}"
+	cd "${S}/src/${EGO_PN}" || die "Failed to change to deep src dir"
 
 	if use daemon; then
 		# Build binaries
@@ -101,11 +101,7 @@ src_install() {
 
 	cd "${S}"
 	dobin bin/lxc
-	if use daemon; then
-		dobin bin/fuidshift
-
-		dosbin bin/lxd
-	fi
+	use daemon && dosbin bin/lxd
 
 	cd "src/${EGO_PN}"
 
@@ -152,18 +148,10 @@ pkg_postinst() {
 	einfo "- sys-apps/apparmor"
 	einfo "- sys-fs/btrfs-progs"
 	einfo "- sys-fs/lvm2"
+	einfo "- sys-fs/lxcfs"
 	einfo "- sys-fs/zfs"
 	einfo "- sys-process/criu"
 	einfo
 	einfo "Since these features can't be disabled at build-time they are"
 	einfo "not USE-conditional."
-
-	if test -n "${REPLACING_VERSIONS}"; then
-		einfo
-		einfo "If you are upgrading from version 0.14 or older, note that the --tcp"
-		einfo "is no longer available in /etc/conf.d/lxd.  Instead, configure the"
-		einfo "listen address/port by setting the core.https_address server option."
-	fi
-
-	einfo
 }
