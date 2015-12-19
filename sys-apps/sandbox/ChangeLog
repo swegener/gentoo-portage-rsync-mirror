@@ -86,3 +86,8 @@
   27 Sep 2015; Mike Frysinger <vapier@gentoo.org> +sandbox-2.9.ebuild:
   version bump
 
+*sandbox-2.10 (19 Dec 2015)
+
+  19 Dec 2015; Mike Frysinger <vapier@gentoo.org> +sandbox-2.10.ebuild:
+  version bump to 2.10
+
