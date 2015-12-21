@@ -277,3 +277,6 @@
   21 Dec 2015; Patrick Lauer <patrick@gentoo.org> ncurses-5.9-r101.ebuild:
   Whitespace
 
+  21 Dec 2015; Michał Górny <mgorny@gentoo.org> ncurses-5.9-r4.ebuild:
+  Fix slot in blocker in 5.9-r4
+
