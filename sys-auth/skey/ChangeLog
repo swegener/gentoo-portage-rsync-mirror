@@ -132,3 +132,6 @@
 
   Package-Manager: portage-2.2.26
 
+  21 Dec 2015; Patrick Lauer <patrick@gentoo.org> skey-1.1.5-r10.ebuild:
+  Turn PATCHES into bash array
+
