@@ -346,3 +346,13 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  22 Dec 2015; Matthias Maier <tamiko@gentoo.org> -files/libvirtd.confd-r4,
+  -files/libvirtd.init-r14, -libvirt-1.2.18-r1.ebuild:
+  remove vulnerable 1.2.18 (CVE-2015-5313, bug #568870)
+
+  This is a cleanup for CVE-2015-5313 bug 568870.
+
+  Gentoo-Bugs: 568870
+
+  Package-Manager: portage-2.2.26
+
