@@ -265,3 +265,9 @@
 
   Package-Manager: portage-2.2.26
 
+  25 Dec 2015; Jeroen Roovers <jer@gentoo.org>
+  +files/wireshark-2.1.0-sse4_2.patch, wireshark-99999999.ebuild:
+  Update sse4_2 patch.
+
+  Package-Manager: portage-2.2.26
+
