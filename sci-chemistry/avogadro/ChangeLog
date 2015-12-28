@@ -84,3 +84,11 @@
   Package-Manager: portage-2.2.26
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+*avogadro-1.0.3-r2 (28 Dec 2015)
+
+  28 Dec 2015; Justin Lecher <jlec@gentoo.org> +avogadro-1.0.3-r2.ebuild,
+  +files/1.0.1-gl2ps.patch:
+  Revert "sci-chemistry/avogadro: Drop old"
+
+  This reverts commit 0db137e6da3ecb14cebbb6ac595c235cba1c38b1.
+
