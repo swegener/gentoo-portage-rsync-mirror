@@ -64,3 +64,8 @@
 
   Package-Manager: portage-2.2.26
 
+  28 Dec 2015; Slawomir Lis <slis@gentoo.org> +files/std-c11.patch:
+  fixed patch lost #569976, #569628
+
+  Package-Manager: portage-2.2.26
+
