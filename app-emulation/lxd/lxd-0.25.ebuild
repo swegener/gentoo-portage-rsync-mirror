@@ -19,9 +19,12 @@ IUSE="+daemon nls test"
 # IUSE and PLOCALES must be defined before l10n inherited
 inherit bash-completion-r1 eutils golang-build l10n systemd user vcs-snapshot
 
+# The compiler is forced in golang-base:
+# DEPEND=">=dev-lang/go-1.4.2:="
+# ... so the dep is omitted here (and I disagree with := in this case)
+
 DEPEND="
 	dev-go/go-crypto
-	>=dev-lang/go-1.4.2:=
 	dev-libs/protobuf
 	dev-vcs/git
 	nls? ( sys-devel/gettext )
@@ -57,7 +60,7 @@ RDEPEND="
 #   this package directly.
 
 src_prepare() {
-	cd "${S}/src/${EGO_PN}"
+	cd "${S}/src/${EGO_PN}" || die "Failed to change to deep src dir"
 
 	epatch "${FILESDIR}/${P}-dont-go-get.patch"
 
@@ -72,7 +75,7 @@ src_prepare() {
 src_compile() {
 	golang-build_src_compile
 
-	cd "${S}/src/${EGO_PN}"
+	cd "${S}/src/${EGO_PN}" || die "Failed to change to deep src dir"
 
 	if use daemon; then
 		# Build binaries
@@ -98,11 +101,7 @@ src_install() {
 
 	cd "${S}"
 	dobin bin/lxc
-	if use daemon; then
-		dobin bin/fuidshift
-
-		dosbin bin/lxd
-	fi
+	use daemon && dosbin bin/lxd
 
 	cd "src/${EGO_PN}"
 
@@ -149,6 +148,7 @@ pkg_postinst() {
 	einfo "- sys-apps/apparmor"
 	einfo "- sys-fs/btrfs-progs"
 	einfo "- sys-fs/lvm2"
+	einfo "- sys-fs/lxcfs"
 	einfo "- sys-fs/zfs"
 	einfo "- sys-process/criu"
 	einfo

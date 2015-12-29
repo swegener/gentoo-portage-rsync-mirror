@@ -6,11 +6,14 @@
 DAEMON=/usr/sbin/lxd
 PIDFILE=/run/lxd.pid
 
-extra_commands="shutdown"
+extra_commands="stopall"
 
 depend() {
-    need cgmanager
     need net
+    use lxcfs
+
+    # remove with 2.0 release
+    need cgmanager
 }
 
 start() {
@@ -28,14 +31,18 @@ start() {
 }
 
 stop() {
-    ebegin "Stopping lxd server"
-    start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
-    eend $?
+    if [[ $RC_GOINGDOWN = YES ]] || [[ $RC_REBOOT = YES ]]; then
+	stopall
+    else
+	ebegin "Stopping lxd service (but not containers)"
+	start-stop-daemon --stop --quiet -R TERM/45 -p ${PIDFILE}
+	eend $?
+    fi
 }
 
-shutdown() {
-    ebegin "Stopping lxd server and containers"
-    if ${DAEMON} shutdown; then
+stopall() {
+    ebegin "Stopping lxd service and containers"
+    if "${DAEMON}" shutdown; then
 	/etc/init.d/lxd zap
 	rm -f ${PIDFILE}
     fi
