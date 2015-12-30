@@ -89,3 +89,6 @@
 
   Package-Manager: portage-2.2.23
 
+  30 Dec 2015; Thomas Raschbacher <lordvan@gentoo.org> clamav-0.99.ebuild:
+  block older versions because of bug #567680
+
