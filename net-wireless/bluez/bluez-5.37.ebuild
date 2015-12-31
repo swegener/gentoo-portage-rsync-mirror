@@ -3,9 +3,9 @@
 # $Id$
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_3,3_4} )
+PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils multilib python-any-r1 readme.gentoo systemd udev user multilib-minimal
+inherit autotools eutils multilib python-single-r1 readme.gentoo systemd udev user multilib-minimal
 
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
 HOMEPAGE="http://www.bluez.org"
@@ -14,7 +14,8 @@ SRC_URI="mirror://kernel/linux/bluetooth/${P}.tar.xz"
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0/3"
 KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~x86"
-IUSE="cups debug +obex +readline selinux systemd test +udev"
+IUSE="cups doc debug extra-tools +obex +readline selinux systemd test test-programs +udev"
+REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} ) test-programs? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="
 	>=dev-libs/glib-2.28:2
@@ -30,21 +31,24 @@ CDEPEND="
 		!app-emulation/emul-linux-x86-soundlibs[-abi_x86_32]
 	)
 "
+TEST_DEPS="${PYTHON_DEPS}
+		>=dev-python/dbus-python-1[${PYTHON_USEDEP}]
+		|| (
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
+			dev-python/pygobject:2[${PYTHON_USEDEP}]
+		)
+"
+
 DEPEND="${CDEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig
 	test? (
-		$(python_gen_any_dep '
-			>=dev-python/dbus-python-1[${PYTHON_USEDEP}]
-			|| (
-				dev-python/pygobject:3[${PYTHON_USEDEP}]
-				dev-python/pygobject:2[${PYTHON_USEDEP}]
-			)
-		')
+		${TEST_DEPS}
 	)
 "
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-bluetooth )
+	test-programs? ( ${TEST_DEPS} )
 "
 DOC_CONTENTS="
 	If you want to use rfcomm as a normal user, you need to add the user
@@ -53,7 +57,10 @@ DOC_CONTENTS="
 
 pkg_setup() {
 	enewgroup plugdev
-	use test && python-any-r1_pkg_setup
+
+	if use test || use test-programs; then
+		python-single-r1_pkg_setup
+	fi
 
 	if ! use udev; then
 		ewarn
@@ -120,7 +127,6 @@ multilib_src_configure() {
 		--enable-pie \
 		--enable-threads \
 		--enable-library \
-		$(multilib_native_use_enable test) \
 		--enable-tools \
 		--enable-manpages \
 		--enable-monitor \
@@ -128,6 +134,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable obex) \
 		$(multilib_native_use_enable readline client) \
 		$(multilib_native_use_enable systemd) \
+		$(multilib_native_use_enable test-programs test) \
 		$(systemd_with_unitdir) \
 		$(multilib_native_use_enable udev) \
 		$(multilib_native_use_enable udev sixaxis)
@@ -150,16 +157,35 @@ multilib_src_install() {
 	if multilib_is_native_abi; then
 		emake DESTDIR="${D}" install
 
-		# Upstream doesn't install this, bug #524640
-		# http://permalink.gmane.org/gmane.linux.bluez.kernel/53115
-		# http://comments.gmane.org/gmane.linux.bluez.kernel/54564
-		# gatttool is only built with readline, bug #530776
-		use readline && dobin attrib/gatttool
-		dobin tools/hex2hcd
+		# Only install extra-tools when relevant USE flag is enabled
+		if use extra-tools; then
+			ewarn "Upstream doesn't support using this tools and their bugs are"
+			ewarn "likely to be ignored forever, also that tools can break"
+			ewarn "without previous announcement."
+			ewarn "Upstream also states all this tools are not really needed,"
+			ewarn "then, if you still need to rely on them, you must ask them"
+			ewarn "to either install that tool by default or add the needed"
+			ewarn "functionality to the existing 'official' tools."
+			ewarn "Please report this issues to:"
+			ewarn "http://www.bluez.org/development/lists/"
 
-		# Unittests are not that useful once installed
-		if use test ; then
-			rm -r "${ED}"/usr/$(get_libdir)/bluez/test || die
+			# Upstream doesn't install this, bug #524640
+			# http://permalink.gmane.org/gmane.linux.bluez.kernel/53115
+			# http://comments.gmane.org/gmane.linux.bluez.kernel/54564
+			# gatttool is only built with readline, bug #530776
+			if use readline; then
+				dobin attrib/gatttool
+				dobin tools/btmgmt
+			fi
+			dobin tools/hex2hcd
+		fi
+
+		# Unittests are not that useful once installed, so make them optional
+		if use test-programs; then
+			python_fix_shebang "${ED}"/usr/$(get_libdir)/bluez/test
+			for i in $(find "${ED}"/usr/$(get_libdir)/bluez/test -maxdepth 1 -type f ! -name "*.*"); do
+				dosym "${i}" /usr/bin/bluez-"${i##*/}"
+			done
 		fi
 	else
 		emake DESTDIR="${D}" \
@@ -187,7 +213,7 @@ multilib_src_install_all() {
 	newinitd "${FILESDIR}"/rfcomm-init.d-r2 rfcomm
 
 	einstalldocs
-
+	use doc && dodoc doc/*.txt
 	readme.gentoo_create_doc
 }
 
