@@ -77,3 +77,8 @@
 
   Signed-off-by: Sven Wegener <swegener@gentoo.org>
 
+  31 Dec 2015; Sven Wegener <swegener@gentoo.org> urjtag-0.10-r1.ebuild:
+  Remove ftd2xx from release ebuild
+
+  Signed-off-by: Sven Wegener <swegener@gentoo.org>
+
