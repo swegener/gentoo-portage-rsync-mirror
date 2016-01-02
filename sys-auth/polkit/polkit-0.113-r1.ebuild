@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,28 +11,29 @@ SRC_URI="http://www.freedesktop.org/software/${PN}/releases/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
-IUSE="examples gtk +introspection jit kde nls pam selinux systemd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+IUSE="examples gtk +introspection jit kde nls pam selinux systemd test"
 
 CDEPEND="
-	ia64? ( =dev-lang/spidermonkey-1.8.5*[-debug] )
-	hppa? ( =dev-lang/spidermonkey-1.8.5*[-debug] )
-	mips? ( =dev-lang/spidermonkey-1.8.5*[-debug] )
-	!hppa? ( !ia64? ( !mips? ( dev-lang/spidermonkey:17[-debug,jit=] ) ) )
-	>=dev-libs/glib-2.32
+	dev-lang/spidermonkey:0/mozjs185[-debug]
+	>=dev-libs/glib-2.32:2
 	>=dev-libs/expat-2:=
-	introspection? ( >=dev-libs/gobject-introspection-1 )
+	introspection? ( >=dev-libs/gobject-introspection-1:= )
 	pam? (
 		sys-auth/pambase
 		virtual/pam
 		)
-	systemd? ( sys-apps/systemd:0= )"
+	systemd? ( sys-apps/systemd:0= )
+"
 DEPEND="${CDEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
+	dev-util/gtk-doc-am
 	dev-util/intltool
-	virtual/pkgconfig"
+	sys-devel/gettext
+	virtual/pkgconfig
+"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-policykit )
 "
@@ -45,7 +46,8 @@ PDEPEND="
 		kde-plasma/polkit-kde-agent
 		sys-auth/polkit-kde-agent
 		) )
-	!systemd? ( sys-auth/consolekit[policykit] )"
+	!systemd? ( sys-auth/consolekit[policykit] )
+"
 
 QA_MULTILIB_PATHS="
 	usr/lib/polkit-1/polkit-agent-helper-1
@@ -62,8 +64,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.112-0001-backend-Handle-invalid-object-paths-in-RegisterAuthe.patch" # bug 551316
 	sed -i -e 's|unix-group:wheel|unix-user:0|' src/polkitbackend/*-default.rules || die #401513
+
+	# Drop upstream hack around standard gtk-doc behavior, bug #552170
+	sed -i -e 's/@ENABLE_GTK_DOC_TRUE@//' docs/polkit/Makefile.in || die
 }
 
 src_configure() {
@@ -76,10 +80,11 @@ src_configure() {
 		$(use_enable introspection) \
 		--disable-examples \
 		$(use_enable nls) \
-		$(if use hppa || use ia64 || use mips; then echo --with-mozjs=mozjs185; else echo --with-mozjs=mozjs-17.0; fi) \
+		--with-mozjs=mozjs185 \
 		"$(systemd_with_unitdir)" \
 		--with-authfw=$(usex pam pam shadow) \
 		$(use pam && echo --with-pam-module-dir="$(getpam_mod_dir)") \
+		$(use_enable test) \
 		--with-os-type=gentoo
 }
 
@@ -87,15 +92,7 @@ src_compile() {
 	default
 
 	# Required for polkitd on hardened/PaX due to spidermonkey's JIT
-	local f='src/polkitbackend/.libs/polkitd test/polkitbackend/.libs/polkitbackendjsauthoritytest'
-	local m=''
-	# Only used when USE="jit" is enabled for 'dev-lang/spidermonkey:17' wrt #485910
-	has_version 'dev-lang/spidermonkey:17[jit]' && m='m'
-	# hppa, ia64 and mips uses spidermonkey-1.8.5 which requires different pax-mark flags
-	use hppa && m='mr'
-	use ia64 && m='mr'
-	use mips && m='mr'
-	[ -n "$m" ] && pax-mark ${m} ${f}
+	pax-mark mr src/polkitbackend/.libs/polkitd test/polkitbackend/.libs/polkitbackendjsauthoritytest
 }
 
 src_install() {
