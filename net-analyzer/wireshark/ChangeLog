@@ -339,3 +339,16 @@
   Package-Manager: portage-2.2.26
   RepoMan-Options: --ignore-arches
 
+  02 Jan 2016; Jeroen Roovers <jer@gentoo.org> wireshark-2.0.1.ebuild:
+  Stable for HPPA (bug #570564).
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --ignore-arches
+
+  02 Jan 2016; Agostino Sarubbo <ago@gentoo.org> wireshark-2.0.1.ebuild:
+  amd64 stable wrt bug #570564
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="amd64"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
