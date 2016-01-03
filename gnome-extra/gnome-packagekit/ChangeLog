@@ -62,3 +62,9 @@
 
   Package-Manager: portage-2.2.26
 
+  03 Jan 2016; Gilles Dartiguelongue <eva@gentoo.org>
+  -gnome-packagekit-3.12.2.ebuild:
+  clean up old revision
+
+  Package-Manager: portage-2.2.26
+
