@@ -10,3 +10,11 @@
 
   Package-Manager: portage-2.2.26
 
+*taskd-1.1.0-r1 (03 Jan 2016)
+
+  03 Jan 2016; Marc Schiffbauer <mschiff@gentoo.org> +files/taskd.logrotate,
+  -taskd-1.1.0.ebuild, +taskd-1.1.0-r1.ebuild:
+  revbump: added logrotate, minor improvements
+
+  Package-Manager: portage-2.2.26
+
