@@ -77,3 +77,11 @@
 
   Package-Manager: portage-2.2.26
 
+  12 Jan 2016; Ian Delaney <idella4@gentoo.org> metadata.xml:
+  update metadata.xml
+
+  Remove inactive maintianers, switch to maintainer-needed herd for now,
+  decision reached in discussion with tamiko
+
+  Package-Manager: portage-2.2.26
+
