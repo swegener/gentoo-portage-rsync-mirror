@@ -198,3 +198,6 @@
 
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+  12 Jan 2016; William Hubbs <williamh@gentoo.org> -openrc-0.19.ebuild:
+  remove old version
+
