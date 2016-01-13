@@ -156,3 +156,12 @@
   Package-Manager: portage-2.2.26
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+*ansible-2.0.0.1-r1 (13 Jan 2016)
+
+  13 Jan 2016; Matthew Thode <prometheanfire@gentoo.org>
+  -ansible-2.0.0.1.ebuild, +ansible-2.0.0.1-r1.ebuild, ansible-9999.ebuild,
+  metadata.xml:
+  statically importing paramiko now :(
+
+  Package-Manager: portage-2.2.26
+
