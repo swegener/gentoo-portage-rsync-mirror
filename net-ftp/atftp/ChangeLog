@@ -71,3 +71,12 @@
 
   Package-Manager: portage-2.2.26
 
+*atftp-0.7-r5 (14 Jan 2016)
+
+  14 Jan 2016; David Seifert <soap@gentoo.org> -atftp-0.7-r4.ebuild,
+  +atftp-0.7-r5.ebuild, +files/atftp-0.7-CFLAGS.patch,
+  files/atftp-0.7-illreply.patch:
+  Add missing die, format patch for -p1, EAPI=6
+
+  Package-Manager: portage-2.2.26
+
