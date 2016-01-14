@@ -136,3 +136,8 @@
 
   Package-Manager: portage-2.2.26_p103
 
+  14 Jan 2016; Mike Gilbert <floppym@gentoo.org> metadata.xml:
+  Clarify meaning of static USE flag
+
+  Package-Manager: portage-2.2.26_p103
+
