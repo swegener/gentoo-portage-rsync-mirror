@@ -4,17 +4,17 @@
 
 EAPI=5
 
-inherit eutils fdo-mime gnome2-utils qmake-utils subversion
+inherit eutils fdo-mime gnome2-utils qmake-utils
 
 MY_P=${PN}-${PV%0}-src
 
 DESCRIPTION="Qt5 application to design electric diagrams"
 HOMEPAGE="http://qelectrotech.org/"
-ESVN_REPO_URI="svn://svn.tuxfamily.org/svnroot/qet/qet/trunk"
+SRC_URI="http://download.tuxfamily.org/qet/tags/20151127/${MY_P}.tar.gz"
 
 LICENSE="CC-BY-3.0 GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 RDEPEND="
