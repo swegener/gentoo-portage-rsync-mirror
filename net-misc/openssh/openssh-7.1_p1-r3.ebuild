@@ -1,17 +1,17 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI="4"
+EAPI=5
 inherit eutils user flag-o-matic multilib autotools pam systemd versionator
 
 # Make it more portable between straight releases
 # and _p? releases.
 PARCH=${P/_}
 
-HPN_PATCH="${PN}-7.0p1-hpnssh14v5.tar.xz"
+HPN_PATCH="${PARCH}-hpnssh14v9.tar.xz"
 LDAP_PATCH="${PN}-lpk-6.8p1-0.3.14.patch.xz"
-X509_VER="8.6" X509_PATCH="${PN}-${PV//_/}+x509-${X509_VER}.diff.gz"
+X509_VER="8.6" X509_PATCH="${PN}-${PV//_}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="http://www.openssh.org/"
@@ -19,7 +19,6 @@ SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
 	mirror://gentoo/${PN}-6.8_p1-sctp.patch.xz
 	${HPN_PATCH:+hpn? (
 		mirror://gentoo/${HPN_PATCH}
-		https://dev.gentoo.org/~polynomial-c/${HPN_PATCH}
 		mirror://sourceforge/hpnssh/${HPN_PATCH}
 	)}
 	${LDAP_PATCH:+ldap? ( mirror://gentoo/${LDAP_PATCH} )}
@@ -142,6 +141,8 @@ src_prepare() {
 		save_version HPN
 	fi
 
+	epatch "${FILESDIR}"/${PN}-7.1_p1-CVE-2016-0777.patch
+
 	tc-export PKG_CONFIG
 	local sed_args=(
 		-e "s:-lcrypto:$(${PKG_CONFIG} --libs openssl):"
@@ -205,12 +206,6 @@ src_configure() {
 
 	# The seccomp sandbox is broken on x32, so use the older method for now. #553748
 	use amd64 && [[ ${ABI} == "x32" ]] && myconf+=( --with-sandbox=rlimit )
-
-	# Special settings for Gentoo/FreeBSD 9.0 or later (see bug #391011)
-	if use elibc_FreeBSD && version_is_at_least 9.0 "$(uname -r|sed 's/\(.\..\).*/\1/')" ; then
-		myconf+=( --disable-utmp --disable-wtmp --disable-wtmpx )
-		append-ldflags -lutil
-	fi
 
 	econf "${myconf[@]}"
 }
@@ -313,12 +308,16 @@ pkg_postinst() {
 		elog "Make sure to update any configs that you might have.  Note that xinetd might"
 		elog "be an alternative for you as it supports USE=tcpd."
 	fi
-	if has_version "<${CATEGORY}/${PN}-7.1_p1" ; then #557388
+	if has_version "<${CATEGORY}/${PN}-7.1_p1" ; then #557388 #555518
 		elog "Starting with openssh-7.0, support for ssh-dss keys were disabled due to their"
 		elog "weak sizes.  If you rely on these key types, you can re-enable the key types by"
 		elog "adding to your sshd_config or ~/.ssh/config files:"
 		elog "	PubkeyAcceptedKeyTypes=+ssh-dss"
 		elog "You should however generate new keys using rsa or ed25519."
+
+		elog "Starting with openssh-7.0, the default for PermitRootLogin changed from 'yes'"
+		elog "to 'prohibit-password'.  That means password auth for root users no longer works"
+		elog "out of the box.  If you need this, please update your sshd_config explicitly."
 	fi
 	if ! use ssl && has_version "${CATEGORY}/${PN}[ssl]" ; then
 		elog "Be aware that by disabling openssl support in openssh, the server and clients"
