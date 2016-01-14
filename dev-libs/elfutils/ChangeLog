@@ -131,3 +131,6 @@
   11 Jan 2016; Mike Frysinger <vapier@gentoo.org> +elfutils-0.165.ebuild:
   version bump to 0.165
 
+  14 Jan 2016; Mike Frysinger <vapier@gentoo.org> elfutils-0.165.ebuild:
+  require new glibc for newer elf.h defs #571814
+
