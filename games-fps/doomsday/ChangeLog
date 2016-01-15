@@ -69,3 +69,8 @@
 
   Package-Manager: portage-2.2.26
 
+  14 Jan 2016; Michael Sterrett <mr_bones_@gentoo.org> doomsday-1.15.7.ebuild:
+  use qmake-utils instead of qt5-build (bug #571918)
+
+  Package-Manager: portage-2.2.26
+
