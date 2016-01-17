@@ -81,3 +81,9 @@
 
   Package-Manager: portage-2.2.26
 
+  17 Jan 2016; Markus Meier <maekke@gentoo.org> File-Map-0.640.0.ebuild:
+  arm stable, bug #571598
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="arm"
+
