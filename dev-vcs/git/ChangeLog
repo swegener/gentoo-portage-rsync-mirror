@@ -499,3 +499,13 @@
 
   Package-Manager: portage-2.2.26
 
+*git-2.7.0-r2 (17 Jan 2016)
+
+  17 Jan 2016; Andreas K. Hüttel <dilfridge@gentoo.org>
+  +files/git-2.7.0-mediawiki-500pages.patch, -git-2.7.0-r1.ebuild,
+  +git-2.7.0-r2.ebuild, git-9999.ebuild, git-9999-r1.ebuild,
+  git-9999-r2.ebuild, git-9999-r3.ebuild:
+  Add yet another needed MediaWiki patch
+
+  Package-Manager: portage-2.2.26
+

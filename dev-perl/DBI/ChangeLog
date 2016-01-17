@@ -115,3 +115,8 @@
 
   Package-Manager: portage-2.2.26
 
+  17 Jan 2016; Mikle Kolyada <zlogene@gentoo.org> DBI-1.634.0.ebuild:
+  ppc64 stable wrt bug #570738
+
+  Package-Manager: portage-2.2.26
+

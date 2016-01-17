@@ -109,3 +109,9 @@
 
   Package-Manager: portage-2.2.26
 
+  17 Jan 2016; Mikle Kolyada <zlogene@gentoo.org>
+  Cache-Memcached-1.300.0-r1.ebuild:
+  ppc64 stable wrt bug #570028
+
+  Package-Manager: portage-2.2.26
+
