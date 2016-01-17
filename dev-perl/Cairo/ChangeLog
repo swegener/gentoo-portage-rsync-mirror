@@ -108,3 +108,8 @@
 
   Package-Manager: portage-2.2.26
 
+  17 Jan 2016; Mikle Kolyada <zlogene@gentoo.org> Cairo-1.106.0.ebuild:
+  ppc64 stable wrt bug #570086
+
+  Package-Manager: portage-2.2.26
+
