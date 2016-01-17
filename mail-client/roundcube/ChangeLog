@@ -158,3 +158,10 @@
   Package-Manager: portage-2.2.26
   RepoMan-Options: --include-arches="arm"
 
+  17 Jan 2016; Agostino Sarubbo <ago@gentoo.org> roundcube-1.1.4.ebuild:
+  ppc stable wrt bug #570336
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="ppc"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+

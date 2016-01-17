@@ -101,3 +101,8 @@
 
   Package-Manager: portage-2.2.26
 
+  17 Jan 2016; Mikle Kolyada <zlogene@gentoo.org> Clone-0.380.0.ebuild:
+  ppc64 stable wrt bug #570198
+
+  Package-Manager: portage-2.2.26
+
