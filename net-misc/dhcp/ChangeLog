@@ -134,3 +134,9 @@
 
   Package-Manager: portage-2.2.26
 
+  17 Jan 2016; Markus Meier <maekke@gentoo.org> dhcp-4.3.3_p1.ebuild:
+  arm stable, bug #571832
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="arm"
+
