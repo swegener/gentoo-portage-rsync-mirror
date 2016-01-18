@@ -644,3 +644,18 @@
 
   Package-Manager: portage-2.2.26
 
+  18 Jan 2016; Ian Delaney <idella4@gentoo.org> mpv-9999.ebuild:
+  omit obsolete etc/* entries from DOCS array in 9999
+
+  Build system is mature enough to install files under etc/* from sources
+  into docdir automatically.
+
+  Package-Manager: portage-2.2.26
+
+*mpv-0.15.0 (18 Jan 2016)
+
+  18 Jan 2016; Ian Delaney <idella4@gentoo.org> +mpv-0.15.0.ebuild:
+  version bump to 0.15.0
+
+  Package-Manager: portage-2.2.26
+
