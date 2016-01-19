@@ -63,3 +63,8 @@
 
   Package-Manager: portage-2.2.26
 
+  19 Jan 2016; Ulrich Müller <ulm@gentoo.org> upx-ucl-3.91.ebuild:
+  Update for UPX-exception license renaming.
+
+  Package-Manager: portage-2.2.26
+
