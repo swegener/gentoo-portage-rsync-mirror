@@ -729,3 +729,22 @@
 
   Package-Manager: portage-2.2.26
 
+*gentoo-sources-3.14.58-r1 (20 Jan 2016)
+
+  20 Jan 2016; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-3.14.58-r1.ebuild:
+  Patch for >3.14.58 to ensure that thread joining a session keyring does not
+  leak the keyring reference. CVE-2016-0728.
+
+  Package-Manager: portage-2.2.26
+
+*gentoo-sources-3.12.52-r1 (20 Jan 2016)
+
+  20 Jan 2016; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-3.12.52-r1.ebuild:
+  Patch for >3.12.52 to ensure that thread joining a session keyring does not
+  leak the
+  keyring reference. CVE-2016-0728.
+
+  Package-Manager: portage-2.2.26
+
