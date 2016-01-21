@@ -104,3 +104,8 @@
 
   Package-Manager: portage-2.2.26
 
+  21 Jan 2016; Slawomir Lis <slis@gentoo.org> +files/test-cmakelists.patch:
+  added assimp test patch
+
+  Package-Manager: portage-2.2.26
+
