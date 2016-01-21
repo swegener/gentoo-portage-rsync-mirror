@@ -65,3 +65,12 @@
 
   Package-Manager: portage-2.2.26
 
+*iedera-1.05-r1 (21 Jan 2016)
+
+  21 Jan 2016; David Seifert <soap@gentoo.org>
+  +files/iedera-1.05-fix-buildsystem.patch, -iedera-1.05.ebuild,
+  +iedera-1.05-r1.ebuild:
+  Remove hardcoded {C,CXX,LD}FLAGS from configure.ac
+
+  Package-Manager: portage-2.2.27
+
