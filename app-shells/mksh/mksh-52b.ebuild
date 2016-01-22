@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -11,7 +11,7 @@ HOMEPAGE="http://mirbsd.de/mksh"
 SRC_URI="http://www.mirbsd.org/MirOS/dist/mir/mksh/${PN}-R${PV}.tgz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="static"
 DEPEND="static? ( dev-libs/klibc )"
 RDEPEND=""
@@ -27,7 +27,7 @@ src_compile() {
 	fi
 	export CPPFLAGS="${CPPFLAGS} -DMKSH_DEFAULT_PROFILEDIR=\\\"${EPREFIX}/etc\\\""
 	# we can't assume lto existing/enabled, so we add a fallback
-	sh Build.sh -r -c lto || sh Rebuild.sh || die
+	sh Build.sh -r -c lto || sh Build.sh -r || die
 }
 
 src_install() {
@@ -39,4 +39,11 @@ src_install() {
 
 src_test() {
 	./test.sh || die
+}
+
+pkg_postinst() {
+	ebegin "Updating /etc/shells"
+	( grep -v "^/bin/mksh$" "${ROOT}"etc/shells; echo "/bin/mksh" ) > "${T}"/shells
+	mv -f "${T}"/shells "${ROOT}"etc/shells
+	eend $?
 }
