@@ -613,3 +613,19 @@
 
   Package-Manager: portage-2.2.27_p47
 
+  22 Jan 2016; Mike Gilbert <floppym@gentoo.org> chromium-48.0.2564.82.ebuild,
+  chromium-49.0.2623.0.ebuild:
+  Reduce disk requirements
+
+  The tarball size has fixed in recent releases.
+
+  Package-Manager: portage-2.2.27_p47
+
+  22 Jan 2016; Richard Freeman <rich0@gentoo.org>
+  chromium-48.0.2564.82.ebuild:
+  amd64 stable
+
+  Bug: 572542
+
+  Package-Manager: portage-2.2.26
+
