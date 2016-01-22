@@ -111,3 +111,9 @@
 
   Package-Manager: portage-2.2.26
 
+  22 Jan 2016; Andreas K. Huettel <dilfridge@gentoo.org>
+  -mod_perl-2.0.8-r2.ebuild:
+  Remove old
+
+  Package-Manager: portage-2.2.27
+
