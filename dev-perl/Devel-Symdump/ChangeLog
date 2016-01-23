@@ -1,5 +1,5 @@
 # ChangeLog for dev-perl/Devel-Symdump
-# Copyright 1999-2015 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2016 Gentoo Foundation; Distributed under the GPL v2
 # (auto-generated from git log)
 
 *Devel-Symdump-2.140.0 (09 Aug 2015)
@@ -62,4 +62,10 @@
   Version bump, fixes tests
 
   Package-Manager: portage-2.2.26
+
+  23 Jan 2016; Markus Meier <maekke@gentoo.org> Devel-Symdump-2.150.0.ebuild:
+  arm stable, bug #570862
+
+  Package-Manager: portage-2.2.27
+  RepoMan-Options: --include-arches="arm"
 
