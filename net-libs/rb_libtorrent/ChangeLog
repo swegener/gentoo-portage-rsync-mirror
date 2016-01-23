@@ -112,3 +112,8 @@
   23 Jan 2016; RobinDX <robin9800xt@gmail.com> +rb_libtorrent-1.0.8.ebuild:
   version bump 1.0.8
 
+  23 Jan 2016; Manuel Rüger <mrueg@gentoo.org> rb_libtorrent-1.0.8.ebuild:
+  Whitespace
+
+  Package-Manager: portage-2.2.27
+
