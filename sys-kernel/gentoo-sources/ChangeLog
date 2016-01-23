@@ -788,3 +788,38 @@
 
   Package-Manager: portage-2.2.26
 
+*gentoo-sources-4.3.4 (23 Jan 2016)
+
+  23 Jan 2016; Mike Pagano <mpagano@gentoo.org> +gentoo-sources-4.3.4.ebuild:
+  Linux 4.3.4. Includes patch for CVE-2016-0728
+
+  Package-Manager: portage-2.2.26
+
+  23 Jan 2016; Mike Pagano <mpagano@gentoo.org> gentoo-sources-4.3.4.ebuild:
+  Fix header
+
+  Package-Manager: portage-2.2.26
+
+*gentoo-sources-3.10.95 (23 Jan 2016)
+
+  23 Jan 2016; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-3.10.95.ebuild:
+  Linux 3.10.95. Includes patch for CVE-2016-0728
+
+  Package-Manager: portage-2.2.26
+
+*gentoo-sources-4.1.16 (23 Jan 2016)
+
+  23 Jan 2016; Mike Pagano <mpagano@gentoo.org> +gentoo-sources-4.1.16.ebuild:
+  Linux 4.1.16. Includes patch for CVE-2016-0728
+
+  Package-Manager: portage-2.2.26
+
+*gentoo-sources-3.14.59 (23 Jan 2016)
+
+  23 Jan 2016; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-3.14.59.ebuild:
+  Linux 3.14.59. Includes patch for CVE-2016-0728
+
+  Package-Manager: portage-2.2.26
+

@@ -94,3 +94,10 @@
   Package-Manager: portage-2.2.26
   Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
 
+  23 Jan 2016; Patrice Clement <monsieurp@gentoo.org>
+  +files/3.4.3-build.xml.patch, +files/3.4.3-remove-registrykey.patch:
+  Add missing patches. Fixes bug 572714.
+
+  Package-Manager: portage-2.2.26
+  Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+
