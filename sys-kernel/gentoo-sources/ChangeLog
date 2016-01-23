@@ -748,3 +748,43 @@
 
   Package-Manager: portage-2.2.26
 
+  22 Jan 2016; Mikle Kolyada <zlogene@gentoo.org>
+  gentoo-sources-3.12.52-r1.ebuild, gentoo-sources-3.14.58-r1.ebuild,
+  gentoo-sources-3.18.25-r1.ebuild, gentoo-sources-4.1.15-r1.ebuild:
+  amd64 stable wrt bug 572384
+
+  Package-Manager: portage-2.2.26
+
+  22 Jan 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.2.4.ebuild,
+  -gentoo-sources-4.2.5.ebuild, -gentoo-sources-4.2.6.ebuild,
+  -gentoo-sources-4.2.7.ebuild, -gentoo-sources-4.2.8.ebuild:
+  Remove old, unsupported and vulnerable kernel.
+
+  Package-Manager: portage-2.2.26
+
+  22 Jan 2016; Mike Pagano <mpagano@gentoo.org>
+  -gentoo-sources-3.18.21.ebuild, -gentoo-sources-3.18.22.ebuild,
+  -gentoo-sources-3.18.23.ebuild, -gentoo-sources-3.18.24.ebuild,
+  -gentoo-sources-3.18.25.ebuild:
+  Remove vulnerable versions
+
+  Package-Manager: portage-2.2.26
+
+  22 Jan 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.1.13.ebuild,
+  -gentoo-sources-4.1.14.ebuild, -gentoo-sources-4.1.15.ebuild:
+  Remove vulnerable versions
+
+  Package-Manager: portage-2.2.26
+
+  22 Jan 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.3.0.ebuild,
+  -gentoo-sources-4.3.2.ebuild, -gentoo-sources-4.3.3.ebuild:
+  Remove vulnerable versions
+
+  Package-Manager: portage-2.2.26
+
+  22 Jan 2016; Mike Pagano <mpagano@gentoo.org>
+  -gentoo-sources-3.14.57.ebuild, -gentoo-sources-3.14.58.ebuild:
+  Remove vulnerable versions
+
+  Package-Manager: portage-2.2.26
+
