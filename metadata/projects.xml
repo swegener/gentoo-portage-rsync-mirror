@@ -1008,7 +1008,7 @@
   </project>
   <project>
     <email>emacs@gentoo.org</email>
-    <name>Gentoo Emacs/Elisp Project</name>
+    <name>Gentoo Emacs Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Emacs</url>
     <description>The Gentoo Emacs Project handles Emacs and Elisp related packages in the Gentoo package tree.</description>
     <subproject ref="gnu-emacs@gentoo.org" inherit-members="1"/>
