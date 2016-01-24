@@ -276,3 +276,23 @@
 
   Package-Manager: portage-2.2.27
 
+  24 Jan 2016; Agostino Sarubbo <ago@gentoo.org> icedtea-bin-7.2.6.4.ebuild:
+  amd64 stable wrt bug #572716
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="amd64"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
+  24 Jan 2016; Agostino Sarubbo <ago@gentoo.org> icedtea-bin-7.2.6.4.ebuild:
+  x86 stable wrt bug #572716
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="x86"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
+  24 Jan 2016; James Le Cuirot <chewi@gentoo.org> -icedtea-bin-7.2.6.3.ebuild,
+  metadata.xml:
+  Remove vulnerable version wrt bug #572716
+
+  Package-Manager: portage-2.2.27
+
