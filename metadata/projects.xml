@@ -4091,6 +4091,40 @@
     </member>
   </project>
   <project>
+    <email>udev-bugs@gentoo.org</email>
+    <name>Udev</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Udev</url>
+    <description>The purpose of this project is to maintain sys-fs/udev and related packages.</description>
+    <member>
+      <email>blueness@gentoo.org</email>
+      <name>Anthony G. Basile</name>
+    </member>
+    <member>
+      <email>floppym@gentoo.org</email>
+      <name>Mike Gilbert</name>
+    </member>
+    <member>
+      <email>polynomial-c@gentoo.org</email>
+      <name>Lars Wendler</name>
+    </member>
+    <member>
+      <email>robbat2@gentoo.org</email>
+      <name>Robin Johnson</name>
+    </member>
+    <member>
+      <email>ssuominen@gentoo.org</email>
+      <name>Samuli Suominen</name>
+    </member>
+    <member>
+      <email>williamh@gentoo.org</email>
+      <name>William Hubbs</name>
+    </member>
+    <member>
+      <email>zzam@gentoo.org</email>
+      <name>Matthias Schwarzott</name>
+    </member>
+  </project>
+  <project>
     <email>undertakers@gentoo.org</email>
     <name>Undertakers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Undertakers</url>
