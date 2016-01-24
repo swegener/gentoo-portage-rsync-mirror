@@ -832,3 +832,28 @@
   Package-Manager: portage-2.2.26
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  24 Jan 2016; Mike Pagano <mpagano@gentoo.org>
+  -gentoo-sources-3.12.49.ebuild, -gentoo-sources-3.12.50.ebuild,
+  -gentoo-sources-3.12.52.ebuild:
+  Remove vulnerable versions.
+
+  Package-Manager: portage-2.2.26
+
+  24 Jan 2016; Mike Pagano <mpagano@gentoo.org>
+  -gentoo-sources-3.10.92.ebuild, -gentoo-sources-3.10.93.ebuild,
+  -gentoo-sources-3.10.94.ebuild:
+  Remove vulnerable versions.
+
+  Package-Manager: portage-2.2.26
+
+  24 Jan 2016; Mike Pagano <mpagano@gentoo.org>
+  -gentoo-sources-3.14.56.ebuild:
+  Remove vulnerable versions.
+
+  Package-Manager: portage-2.2.26
+
+  24 Jan 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.4.0.ebuild:
+  Remove vulnerable version.
+
+  Package-Manager: portage-2.2.26
+
