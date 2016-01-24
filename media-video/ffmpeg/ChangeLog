@@ -280,3 +280,9 @@
   Package-Manager: portage-2.2.26
   Signed-off-by: Alexis Ballier <aballier@gentoo.org>
 
+  24 Jan 2016; Alexis Ballier <aballier@gentoo.org> ffmpeg-9999.ebuild:
+  change nvenc dep to nvidia_video_sdk
+
+  Package-Manager: portage-2.2.27
+  Signed-off-by: Alexis Ballier <aballier@gentoo.org>
+
