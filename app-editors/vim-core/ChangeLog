@@ -139,3 +139,6 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+  25 Jan 2016; Tim Harder <radhermit@gentoo.org> vim-core-7.4.769.ebuild:
+  fix tarball manifest for 7.4.769
+
