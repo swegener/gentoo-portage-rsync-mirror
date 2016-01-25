@@ -90,3 +90,17 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+*pycountry-1.19 (25 Jan 2016)
+
+  25 Jan 2016; Ian Delaney <idella4@gentoo.org> metadata.xml,
+  +pycountry-1.19.ebuild:
+  bump to 1.19, add Python 3.5 support
+
+  Package-Manager: portage-2.2.27
+
+  25 Jan 2016; Ian Delaney <idella4@gentoo.org> -pycountry-1.12.ebuild,
+  -pycountry-1.13.ebuild, -pycountry-1.14.ebuild:
+  remove old
+
+  Package-Manager: portage-2.2.27
+

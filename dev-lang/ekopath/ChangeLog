@@ -159,3 +159,9 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+*ekopath-6.0.661_p20160124 (25 Jan 2016)
+
+  25 Jan 2016; Michał Górny <mgorny@gentoo.org>
+  +ekopath-6.0.661_p20160124.ebuild:
+  Snapshot bump
+
