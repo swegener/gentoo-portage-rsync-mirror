@@ -249,3 +249,10 @@
 
   Package-Manager: portage-2.2.27
 
+  26 Jan 2016; Kristian Fiskerstrand <k_f@gentoo.org> -gnupg-2.0.27.ebuild,
+  -gnupg-2.0.27-r1.ebuild, -gnupg-2.0.29.ebuild, -gnupg-2.1.8.ebuild,
+  -gnupg-2.1.9.ebuild, -gnupg-2.1.10.ebuild:
+  Remove some old versions
+
+  Package-Manager: portage-2.2.27
+
