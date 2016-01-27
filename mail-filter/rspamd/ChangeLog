@@ -55,3 +55,8 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+*rspamd-1.1.1-r1 (27 Jan 2016)
+
+  27 Jan 2016; Dirkjan Ochtman <djc@gentoo.org> +rspamd-1.1.1-r1.ebuild:
+  add jit USE flag (fixes bug 572682)
+
