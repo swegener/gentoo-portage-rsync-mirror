@@ -183,3 +183,10 @@
   Package-Manager: portage-2.2.27
   RepoMan-Options: --ignore-arches
 
+  30 Jan 2016; Tobias Klausmann <klausman@gentoo.org> nss-3.21-r2.ebuild:
+  add alpha keyword
+
+  Gentoo-Bug: 571086
+
+  Package-Manager: portage-2.2.27
+
