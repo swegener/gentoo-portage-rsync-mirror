@@ -494,3 +494,18 @@
 
   Package-Manager: portage-2.2.27
 
+*nvidia-drivers-361.18-r3 (31 Jan 2016)
+*nvidia-drivers-358.16-r3 (31 Jan 2016)
+*nvidia-drivers-352.79-r2 (31 Jan 2016)
+*nvidia-drivers-346.96-r4 (31 Jan 2016)
+*nvidia-drivers-340.96-r3 (31 Jan 2016)
+*nvidia-drivers-304.131-r2 (31 Jan 2016)
+
+  31 Jan 2016; Jeroen Roovers <jer@gentoo.org> +files/nvidia-settings.desktop,
+  +nvidia-drivers-304.131-r2.ebuild, +nvidia-drivers-340.96-r3.ebuild,
+  +nvidia-drivers-346.96-r4.ebuild, +nvidia-drivers-352.79-r2.ebuild,
+  +nvidia-drivers-358.16-r3.ebuild, +nvidia-drivers-361.18-r3.ebuild:
+  Fix desktop file (bug #562910)
+
+  Package-Manager: portage-2.2.27
+
