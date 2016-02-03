@@ -79,3 +79,9 @@
 
   Package-Manager: portage-2.2.27
 
+  03 Feb 2016; Markus Meier <maekke@gentoo.org> latexdiff-1.1.0.ebuild:
+  arm stable, bug #572632
+
+  Package-Manager: portage-2.2.27
+  RepoMan-Options: --include-arches="arm"
+
