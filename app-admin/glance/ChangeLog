@@ -356,3 +356,9 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  05 Feb 2016; Matthew Thode <prometheanfire@gentoo.org>
+  -glance-11.0.1.ebuild:
+  cleanup for bug 573844
+
+  Package-Manager: portage-2.2.26
+

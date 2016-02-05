@@ -132,3 +132,21 @@
 
   Package-Manager: portage-2.2.27
 
+  05 Feb 2016; Agostino Sarubbo <ago@gentoo.org> asterisk-11.21.1.ebuild:
+  amd64 stable wrt bug #573924
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="amd64"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
+  05 Feb 2016; Agostino Sarubbo <ago@gentoo.org> asterisk-11.21.1.ebuild:
+  x86 stable wrt bug #573924
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="x86"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
+  05 Feb 2016; Tony Vroon <chainsaw@gentoo.org> -asterisk-11.17.1.ebuild:
+  Remove vulnerable ebuild now that stabilisation is complete for security bug
+  #573924.
+
