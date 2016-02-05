@@ -244,3 +244,10 @@
   RepoMan-Options: --include-arches="amd64"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  05 Feb 2016; Tobias Klausmann <klausman@gentoo.org> postfix-3.0.3-r1.ebuild:
+  add alpha keyword
+
+  Gentoo-Bug: 573080
+
+  Package-Manager: portage-2.2.27
+
