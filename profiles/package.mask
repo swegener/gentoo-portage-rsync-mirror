@@ -30,6 +30,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Wolfram Schlich <wschlich@gentoo.org> (06 Feb 2016)
+# Mask live ebuild
+=net-im/mcabber-9999
+
 # Davide Pesavento <pesa@gentoo.org> (06 Feb 2016)
 # Masked for removal in 30 days. Doesn't build against recent PyQt4
 # versions, bug 527572, not trivial to fix. Upstream doesn't seem to
@@ -258,10 +262,6 @@ media-sound/mimd
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Fails to build, bug #514826. Removal in a month.
 sys-cluster/gfs-kernel
-
-# Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
-# Fails to build, bug #514832. Removal in a month.
-x11-misc/matchbox-panel-manager
 
 # Pacho Ramos <pacho@gentoo.org> (06 Jan 2016)
 # Unmaintained, security issues, bug #515272. Removal in a month.
