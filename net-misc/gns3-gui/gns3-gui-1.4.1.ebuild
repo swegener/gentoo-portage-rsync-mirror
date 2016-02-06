@@ -14,7 +14,7 @@ SRC_URI="https://github.com/GNS3/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="+qt4 qt5"
 
 REQUIRED_USE="
@@ -28,6 +28,7 @@ RDEPEND="
 	>=dev-python/ws4py-0.3.4[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/paramiko-1.15.1[${PYTHON_USEDEP}]
+	>=dev-python/psutil-3.0.0[${PYTHON_USEDEP}]
 	>=net-misc/gns3-converter-1.2.3[${PYTHON_USEDEP}]
 	=net-misc/gns3-server-$PV[${PYTHON_USEDEP}]
 	qt4? (
