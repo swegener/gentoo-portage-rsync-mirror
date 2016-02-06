@@ -188,3 +188,9 @@
   Package-Manager: portage-2.2.27
   RepoMan-Options: --ignore-arches
 
+  06 Feb 2016; Jeroen Roovers <jer@gentoo.org> pillow-3.1.1.ebuild:
+  Stable for PPC64 (bug #573958).
+
+  Package-Manager: portage-2.2.27
+  RepoMan-Options: --ignore-arches
+
