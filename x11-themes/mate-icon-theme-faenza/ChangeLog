@@ -71,3 +71,12 @@
 
   Package-Manager: portage-2.2.26
 
+  09 Feb 2016; NP-Hardass <NP-Hardass@gentoo.org>
+  mate-icon-theme-faenza-1.10.1.ebuild:
+  Resolve bug #574254
+
+  https://github.com/mate-desktop/mate-icon-theme-faenza/issues/13
+  Gentoo-Bug: 574254
+
+  Package-Manager: portage-2.2.26
+
