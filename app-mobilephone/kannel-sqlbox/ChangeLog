@@ -90,3 +90,10 @@
 
   Package-Manager: portage-2.2.26
 
+  09 Feb 2016; Ulrich Müller <ulm@gentoo.org> kannel-sqlbox-1.5.0-r1.ebuild:
+  QA] Don't install license file.
+
+  Bug: 493712
+
+  Package-Manager: portage-2.2.27
+
