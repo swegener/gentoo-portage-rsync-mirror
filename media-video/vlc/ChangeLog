@@ -204,3 +204,12 @@
   Package-Manager: portage-2.2.27
   Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 
+  09 Feb 2016; Lars Wendler <polynomial-c@gentoo.org>
+  +files/vlc-2.2.2-qt5widgets.patch, vlc-2.2.2.ebuild:
+  Fixed compilation with qt5 (bug #574256).
+
+  Patch provided by Nick Andrade in bug #574064
+
+  Package-Manager: portage-2.2.27
+  Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+

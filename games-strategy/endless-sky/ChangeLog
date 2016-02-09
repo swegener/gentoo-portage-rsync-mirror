@@ -17,3 +17,18 @@
 
   Package-Manager: portage-2.2.26
 
+  09 Feb 2016; Patrice Clement <monsieurp@gentoo.org>
+  endless-sky-0.8.11.ebuild:
+  Fix DESCRIPTION length.
+
+  Package-Manager: portage-2.2.26
+  Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+
+  09 Feb 2016; Matthew Brewer <tomboy64@sina.cn> endless-sky-0.8.11.ebuild:
+  fix SRC_URI to point to upstream's repo
+
+  Fixes 574292 - Thanks coacher.
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --ignore-arches
+

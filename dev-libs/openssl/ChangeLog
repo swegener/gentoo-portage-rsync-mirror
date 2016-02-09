@@ -342,3 +342,14 @@
   +openssl-1.0.2f-r1.ebuild:
   carry cloudflare's chacha20poly1305 patch
 
+  09 Feb 2016; Robin H. Johnson <robbat2@gentoo.org>
+  -files/openssl-1.0.2e-chacha20poly1305.patch, openssl-1.0.2e-r1.ebuild,
+  openssl-1.0.2f-r1.ebuild:
+  move large patch to mirrors.
+
+  Package-Manager: portage-2.2.27
+
+  09 Feb 2016; Jason A. Donenfeld <zx2c4@gentoo.org>
+  -openssl-1.0.2e-r1.ebuild, -openssl-1.0.2f-r1.ebuild:
+  the team didn't like my chacha patch
+
