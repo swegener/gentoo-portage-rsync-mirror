@@ -259,3 +259,11 @@
 
   Package-Manager: portage-2.2.26
 
+*neutron-7.0.3 (10 Feb 2016)
+
+  10 Feb 2016; Matthew Thode <prometheanfire@gentoo.org>
+  +neutron-7.0.3.ebuild:
+  bup
+
+  Package-Manager: portage-2.2.26
+
