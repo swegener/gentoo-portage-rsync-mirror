@@ -101,3 +101,19 @@
   Package-Manager: portage-2.2.26
   Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
 
+*jgoodies-looks-2.3.1-r1 (11 Feb 2016)
+*jgoodies-looks-1.2.2-r2 (11 Feb 2016)
+
+  11 Feb 2016; Patrice Clement <monsieurp@gentoo.org>
+  +files/jgoodies-looks-1.2.2-build.xml,
+  +files/jgoodies-looks-1.2.2-plastic.txt,
+  +files/jgoodies-looks-2.3.1-build.xml.patch,
+  +jgoodies-looks-1.2.2-r2.ebuild, +jgoodies-looks-2.3.1-r1.ebuild:
+  Add back jgoodies-looks:{1.2,2.0}.
+
+  Force because they were stabilised.
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --force
+  Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+
