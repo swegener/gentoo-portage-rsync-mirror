@@ -25,3 +25,10 @@
   Package-Manager: portage-2.2.27
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+  11 Feb 2016; Justin Lecher <jlec@gentoo.org> python-scsi-0_pre160211.ebuild,
+  python-scsi-9999.ebuild:
+  Add python3 support
+
+  Package-Manager: portage-2.2.27
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
