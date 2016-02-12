@@ -6,5 +6,5 @@ IUSE=+seccomp
 KEYWORDS=~amd64
 LICENSE=GPL-2
 SLOT=0
-SRC_URI=mirror://sourceforge/firejail/firejail-0.9.36.tar.bz2
+SRC_URI=mirror://sourceforge/firejail/firejail-0.9.38.tar.bz2
 _md5_=5cb3f57d6b6949e8d54c525b62eaa099
