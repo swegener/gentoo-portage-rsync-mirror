@@ -113,3 +113,8 @@
   Package-Manager: portage-2.2.26
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  13 Feb 2016; Ulrich Müller <ulm@gentoo.org> -pms-5-r2.ebuild:
+  Remove old.
+
+  Package-Manager: portage-2.2.27
+
