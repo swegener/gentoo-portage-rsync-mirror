@@ -459,3 +459,11 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  14 Feb 2016; Jeroen Roovers <jer@gentoo.org> postgresql-9.1.20.ebuild,
+  postgresql-9.2.15.ebuild, postgresql-9.3.11.ebuild, postgresql-9.4.6.ebuild,
+  postgresql-9.5.1.ebuild:
+  Stable for PPC64 (bug #574456).
+
+  Package-Manager: portage-2.2.27
+  RepoMan-Options: --ignore-arches
+
