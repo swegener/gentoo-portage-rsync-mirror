@@ -79,3 +79,10 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  14 Feb 2016; Justin Lecher <jlec@gentoo.org>
+  -files/muParser-1.32-build.patch, -muParser-2.2.2.ebuild:
+  Drop old
+
+  Package-Manager: portage-2.2.27
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+

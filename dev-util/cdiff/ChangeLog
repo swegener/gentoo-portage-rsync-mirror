@@ -101,3 +101,9 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  14 Feb 2016; Justin Lecher <jlec@gentoo.org> -cdiff-0.9.6.ebuild:
+  Drop old
+
+  Package-Manager: portage-2.2.27
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
