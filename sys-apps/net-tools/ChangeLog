@@ -178,3 +178,7 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+  15 Feb 2016; Mike Frysinger <vapier@gentoo.org>
+  net-tools-1.60_p20151124144947.ebuild, net-tools-9999.ebuild:
+  run install manually for prefix #567300
+
