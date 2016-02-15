@@ -149,3 +149,10 @@
 
   Package-Manager: portage-2.2.26
 
+  15 Feb 2016; Sergey Popov <pinkbyte@gentoo.org> ganeti-2.11.6-r2.ebuild:
+  amd64/x86 stable
+
+  Gentoo-Bug: 519730
+
+  Package-Manager: portage-2.2.27
+
