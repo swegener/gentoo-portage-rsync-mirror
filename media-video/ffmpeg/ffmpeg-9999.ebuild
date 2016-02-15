@@ -63,7 +63,7 @@ fi
 # or $(use_enable foo foo) if no :bar is set.
 # foo is added to IUSE.
 FFMPEG_FLAG_MAP=(
-		+bzip2:bzlib cpudetection:runtime-cpudetect debug doc gcrypt gnutls gmp
+		+bzip2:bzlib cpudetection:runtime-cpudetect debug gcrypt gnutls gmp
 		+gpl +hardcoded-tables +iconv lzma +network openssl +postproc
 		samba:libsmbclient sdl:ffplay sdl vaapi vdpau X:xlib xcb:libxcb
 		xcb:libxcb-shm xcb:libxcb-xfixes +zlib
@@ -97,7 +97,7 @@ FFMPEG_ENCODER_FLAG_MAP=(
 )
 
 IUSE="
-	alsa +encode examples jack libressl oss pic static-libs test v4l
+	alsa doc +encode jack oss pic static-libs test v4l
 	${FFMPEG_FLAG_MAP[@]%:*}
 	${FFMPEG_ENCODER_FLAG_MAP[@]%:*}
 "
@@ -212,10 +212,7 @@ RDEPEND="
 	modplug? ( >=media-libs/libmodplug-0.8.8.4-r1[${MULTILIB_USEDEP}] )
 	openal? ( >=media-libs/openal-1.15.1[${MULTILIB_USEDEP}] )
 	opengl? ( >=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}] )
-	openssl? (
-		!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
-		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
-	)
+	openssl? ( >=dev-libs/openssl-1.0.1h-r2:0[${MULTILIB_USEDEP}] )
 	opus? ( >=media-libs/opus-1.0.2-r2[${MULTILIB_USEDEP}] )
 	pulseaudio? ( >=media-sound/pulseaudio-2.1-r1[${MULTILIB_USEDEP}] )
 	librtmp? ( >=media-video/rtmpdump-2.4_p20131018[${MULTILIB_USEDEP}] )
@@ -249,17 +246,11 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	>=sys-devel/make-3.81
-	doc? ( app-text/texi2html )
-	fontconfig? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
-	gnutls? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
-	ieee1394? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
+	doc? ( sys-apps/texinfo )
+	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	ladspa? ( >=media-libs/ladspa-sdk-1.13-r2[${MULTILIB_USEDEP}] )
-	libv4l? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	cpu_flags_x86_mmx? ( >=dev-lang/yasm-1.2 )
-	librtmp? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
-	schroedinger? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	test? ( net-misc/wget sys-devel/bc )
-	truetype? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )
 	v4l? ( sys-kernel/linux-headers )
 "
 
@@ -410,6 +401,13 @@ multilib_src_configure() {
 		esac
 	fi
 
+	# doc
+	myconf+=(
+		$(multilib_native_use_enable doc)
+		$(multilib_native_use_enable doc htmlpages)
+		$(multilib_native_enable manpages)
+	)
+
 	set -- "${S}/configure" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
@@ -440,7 +438,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake V=1 DESTDIR="${D}" install install-man
+	emake V=1 DESTDIR="${D}" install install-doc
 
 	if multilib_is_native_abi; then
 		for i in "${FFTOOLS[@]}" ; do
@@ -454,10 +452,6 @@ multilib_src_install() {
 multilib_src_install_all() {
 	dodoc Changelog README.md CREDITS doc/*.txt doc/APIchanges
 	[ -f "RELEASE_NOTES" ] && dodoc "RELEASE_NOTES"
-	if use examples ; then
-		dodoc -r doc/examples
-		docompress -x /usr/share/doc/${PF}/examples
-	fi
 }
 
 multilib_src_test() {
