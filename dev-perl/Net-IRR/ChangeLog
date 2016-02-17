@@ -12,3 +12,12 @@
 
   Package-Manager: portage-2.2.27
 
+*Net-IRR-0.80.0-r1 (17 Feb 2016)
+
+  17 Feb 2016; Tony Vroon <chainsaw@gentoo.org> -Net-IRR-0.80.0.ebuild,
+  +Net-IRR-0.80.0-r1.ebuild:
+  Revised DEPEND, additional KEYWORDS and EAPI=6 based on review & suggestions
+  by Kent Fredric.
+
+  Package-Manager: portage-2.2.27
+

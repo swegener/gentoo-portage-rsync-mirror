@@ -302,3 +302,9 @@
   Package-Manager: portage-2.2.26
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  17 Feb 2016; Mike Frysinger <vapier@gentoo.org> glibc-2.21-r2.ebuild:
+  add upstream parallel build fix #574948
+
+  17 Feb 2016; Mike Frysinger <vapier@gentoo.org> glibc-2.21-r2.ebuild:
+  mark arm64/hppa/s390/sh stable #574880
+

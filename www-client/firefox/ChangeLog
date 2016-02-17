@@ -496,3 +496,10 @@
   Package-Manager: portage-2.2.27
   RepoMan-Options: --ignore-arches
 
+  17 Feb 2016; Ian Stakenvicius <axs@gentoo.org> firefox-44.0.2.ebuild:
+  44.0.2: bump nss dependency to >=3.21
+
+  Thanks to vthriller on github (sorry i botched the PR)
+
+  Package-Manager: portage-2.2.26
+
