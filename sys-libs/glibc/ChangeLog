@@ -296,3 +296,9 @@
   Package-Manager: portage-2.2.27
   Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 
+  17 Feb 2016; Agostino Sarubbo <ago@gentoo.org> glibc-2.21-r2.ebuild:
+  Stable for alpha/arm/ia64/ppc/ppc64/sparc wrt security bug #574880
+
+  Package-Manager: portage-2.2.26
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
