@@ -170,3 +170,9 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  19 Feb 2016; Miroslav Šulc <fordfrog@gentoo.org>
+  -tomcat-native-1.2.3.ebuild:
+  removed obsolete ebuild
+
+  Package-Manager: portage-2.2.27
+
