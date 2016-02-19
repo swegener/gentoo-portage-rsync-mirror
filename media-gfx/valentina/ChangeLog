@@ -32,3 +32,12 @@
 
   Package-Manager: portage-2.2.27
 
+*valentina-0.4.2-r3 (19 Feb 2016)
+
+  19 Feb 2016; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/fix-insecure-runpaths.patch, -valentina-0.4.2-r2.ebuild,
+  +valentina-0.4.2-r3.ebuild, valentina-9999.ebuild:
+  fixed qa warning about insecure runpaths
+
+  Package-Manager: portage-2.2.27
+
