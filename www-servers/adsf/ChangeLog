@@ -12,3 +12,8 @@
 
   Package-Manager: portage-2.2.26
 
+  19 Feb 2016; Michael Palimaka <kensington@gentoo.org> metadata.xml:
+  fix metadata per GLEP 67
+
+  Package-Manager: portage-2.2.27
+

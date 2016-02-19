@@ -176,3 +176,9 @@
 
   Package-Manager: portage-2.2.27
 
+  19 Feb 2016; James Le Cuirot <chewi@gentoo.org>
+  -tomcat-native-1.1.33-r1.ebuild:
+  Remove old
+
+  Package-Manager: portage-2.2.27
+
