@@ -41,3 +41,10 @@
 
   Package-Manager: portage-2.2.27
 
+  19 Feb 2016; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/disable-tests-compilation.patch, valentina-0.4.2-r3.ebuild,
+  valentina-9999.ebuild:
+  disabled compilation of tests
+
+  Package-Manager: portage-2.2.27
+
