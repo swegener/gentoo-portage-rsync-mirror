@@ -10,3 +10,8 @@
 
   Package-Manager: portage-2.2.27
 
+  20 Feb 2016; Michael Weber <xmw@gentoo.org> qlcplus-4.10.2b.ebuild:
+  Fix REQUIRED_USE (thanks Toralf Förster, bug 575242).
+
+  Package-Manager: portage-2.2.27
+
