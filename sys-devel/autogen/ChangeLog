@@ -95,3 +95,9 @@
   Package-Manager: portage-2.2.27
   RepoMan-Options: --ignore-arches
 
+  21 Feb 2016; Markus Meier <maekke@gentoo.org> autogen-5.18.4.ebuild:
+  arm stable, bug #575068
+
+  Package-Manager: portage-2.2.27
+  RepoMan-Options: --include-arches="arm"
+
