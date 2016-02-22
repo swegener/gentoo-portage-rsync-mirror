@@ -82,3 +82,9 @@
   21 Feb 2016; William Hubbs <williamh@gentoo.org> +pybugz-0.12.ebuild:
   version bump
 
+*pybugz-0.12.1 (22 Feb 2016)
+
+  22 Feb 2016; William Hubbs <williamh@gentoo.org> -pybugz-0.12.ebuild,
+  +pybugz-0.12.1.ebuild:
+  version bump
+
