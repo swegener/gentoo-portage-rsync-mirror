@@ -11,3 +11,16 @@
   Package-Manager: portage-2.2.27
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+*pastix-5.2.2.22 (23 Feb 2016)
+
+  23 Feb 2016; Justin Lecher <jlec@gentoo.org> -pastix-5.2.2_p9.ebuild,
+  +pastix-5.2.2.22.ebuild:
+  Version Bump
+
+  * drop SMP support for now
+
+  Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=575392
+
+  Package-Manager: portage-2.2.27
+  Signed-off-by: Justin Lecher <jlec@gentoo.org>
+
