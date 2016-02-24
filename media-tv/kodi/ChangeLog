@@ -180,3 +180,7 @@
   Package-Manager: portage-2.2.27
   Signed-off-by: Alexis Ballier <aballier@gentoo.org>
 
+  24 Feb 2016; Mike Frysinger <vapier@gentoo.org> kodi-14.1.ebuild,
+  kodi-15.2.ebuild, kodi-16.0.ebuild, kodi-9999.ebuild:
+  fix logic error in vaapi/gles check #464306#14
+
