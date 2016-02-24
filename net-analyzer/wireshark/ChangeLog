@@ -422,3 +422,8 @@
 
   Package-Manager: portage-2.2.27
 
+  24 Feb 2016; Jeroen Roovers <jer@gentoo.org> wireshark-99999999.ebuild:
+  Drop obsolete patch (bug #575090 by Garri).
+
+  Package-Manager: portage-2.2.27
+
