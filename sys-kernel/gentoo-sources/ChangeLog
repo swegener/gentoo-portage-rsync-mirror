@@ -986,3 +986,11 @@
 
   Package-Manager: portage-2.2.26
 
+*gentoo-sources-3.12.55 (26 Feb 2016)
+
+  26 Feb 2016; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-3.12.55.ebuild:
+  Linux patch 3.12.55
+
+  Package-Manager: portage-2.2.26
+
