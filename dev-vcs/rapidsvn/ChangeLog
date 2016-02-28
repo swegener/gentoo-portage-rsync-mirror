@@ -102,3 +102,9 @@
   Package-Manager: portage-2.2.27
   Signed-off-by: Justin Lecher <jlec@gentoo.org>
 
+  28 Feb 2016; Ryan Hill <rhill@gentoo.org> rapidsvn-0.12.1-r3.ebuild:
+  Patches work better if they actually get applied.
+
+  Package-Manager: portage-2.2.27
+  Signed-off-by: Ryan Hill <rhill@gentoo.org>
+
