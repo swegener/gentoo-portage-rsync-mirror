@@ -132,3 +132,11 @@
   Package-Manager: portage-2.2.27
   Signed-off-by: Alexis Ballier <aballier@gentoo.org>
 
+  28 Feb 2016; Alexis Ballier <aballier@gentoo.org>
+  freebsd-lib-10.2-r2.ebuild:
+  add DESTDIR support to gen_libc_ldscript function so that we can make the
+  ldscript SYSROOT relative when building a cross compiler.
+
+  Package-Manager: portage-2.2.27
+  Signed-off-by: Alexis Ballier <aballier@gentoo.org>
+

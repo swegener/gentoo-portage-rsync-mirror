@@ -67,3 +67,8 @@
   +phoronix-test-suite-6.2.1.ebuild:
   Add app-benchmarks/phoronix-test-suite 6.2.1
 
+  28 Feb 2016; Ulrich Müller <ulm@gentoo.org> metadata.xml:
+  metadata.xml: Add maintainer-needed comment to packages without maintainer.
+
+  Bug: 575810
+

@@ -228,3 +228,20 @@
 
   Package-Manager: portage-2.2.26
 
+  28 Feb 2016; Matthias Maier <tamiko@gentoo.org> doxygen-1.8.10-r1.ebuild,
+  doxygen-1.8.11.ebuild, doxygen-9999.ebuild:
+  Avoid a sandbox violation with (bug #564944)
+
+  Export VARTEXFONTS="${T}/fonts" such that kpathsea does not try to write to
+  /var/cache/fonts/pk/... during doc generation.
+
+  Package-Manager: portage-2.2.26
+
+*doxygen-1.8.11-r1 (28 Feb 2016)
+
+  28 Feb 2016; Matthias Maier <tamiko@gentoo.org> -doxygen-1.8.11.ebuild,
+  +doxygen-1.8.11-r1.ebuild, doxygen-9999.ebuild:
+  introduce slot-dependency on media-libs/libpng:0=
+
+  Package-Manager: portage-2.2.26
+
