@@ -177,3 +177,6 @@
 
   Package-Manager: portage-2.2.27
 
+  29 Feb 2016; Mike Frysinger <vapier@gentoo.org> linux-headers-4.3.ebuild:
+  mark 4.4 ia64/m68k/s390/sh/sparc stable #571528
+
