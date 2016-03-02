@@ -184,3 +184,7 @@
   kodi-15.2.ebuild, kodi-16.0.ebuild, kodi-9999.ebuild:
   fix logic error in vaapi/gles check #464306#14
 
+  02 Mar 2016; Mike Frysinger <vapier@gentoo.org> kodi-14.1.ebuild,
+  kodi-15.2.ebuild, kodi-16.0.ebuild, kodi-9999.ebuild:
+  require at least gles or opengl to be enabled #575626
+
