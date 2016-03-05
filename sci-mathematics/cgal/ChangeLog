@@ -85,3 +85,13 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+*cgal-4.6.1-r1 (05 Mar 2016)
+
+  05 Mar 2016; David Seifert <soap@gentoo.org> -cgal-4.6.1.ebuild,
+  +cgal-4.6.1-r1.ebuild:
+  Add missing dev-qt/qtsvg:4 dep when USE="qt4"
+
+  Gentoo-Bug: 575032
+
+  Package-Manager: portage-2.2.27
+
