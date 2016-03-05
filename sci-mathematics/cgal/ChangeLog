@@ -95,3 +95,24 @@
 
   Package-Manager: portage-2.2.27
 
+*cgal-4.7 (05 Mar 2016)
+
+  05 Mar 2016; David Seifert <soap@gentoo.org> +cgal-4.7.ebuild,
+  +files/cgal-4.7-fix-buildsystem.patch, metadata.xml:
+  Version bump to 4.7
+
+  * EAPI=6
+  * Depend on dev-cpp/eigen
+  * Subslot depend on dev-libs/boost (#573274)
+  * Change deps to QT5
+  * Add optional dep on dev-libs/ntl
+
+  Package-Manager: portage-2.2.27
+
+  05 Mar 2016; David Seifert <soap@gentoo.org> cgal-4.6.1-r1.ebuild:
+  Add subslot dependency on dev-libs/boost
+
+  Gentoo-Bug: 573274
+
+  Package-Manager: portage-2.2.27
+
