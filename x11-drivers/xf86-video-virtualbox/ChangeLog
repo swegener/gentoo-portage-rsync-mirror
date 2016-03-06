@@ -284,3 +284,10 @@
   Package-Manager: portage-2.2.27
   Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 
+  06 Mar 2016; Lars Wendler <polynomial-c@gentoo.org>
+  files/xf86-video-virtualbox-2.2.0-enable-opengl.patch:
+  Fixed application of opengl patch (#576598).
+
+  Package-Manager: portage-2.2.27
+  Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
