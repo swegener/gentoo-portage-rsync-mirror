@@ -74,3 +74,10 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+*ushare-1.1a-r7 (06 Mar 2016)
+
+  06 Mar 2016; Markos Chandras <hwoarang@gentoo.org> +ushare-1.1a-r7.ebuild:
+  Drop libdlna support. Bug #571078
+
+  Package-Manager: portage-2.2.27
+
