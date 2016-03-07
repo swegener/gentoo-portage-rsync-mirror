@@ -132,3 +132,13 @@
 
   Package-Manager: portage-2.2.26
 
+  07 Mar 2016; Lars Wendler <polynomial-c@gentoo.org>
+  +files/iputils-20150815-defines_and_libs.patch,
+  +files/iputils-20150815-handle_single_protocol_system.patch,
+  -files/iputils-20150815-ping6_crypto.patch,
+  -files/iputils-20150815-ping_default_ipv4.patch, iputils-20150815-r1.ebuild:
+  Replaced two patches with upstream equivalents.
+
+  Package-Manager: portage-2.2.27
+  Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
