@@ -78,3 +78,15 @@
 
   Bug: 575810
 
+  09 Mar 2016; Patrice Clement <monsieurp@gentoo.org>
+  +netkit-telnetd-0.17-r11:
+  version bump for new debian patchlevel
+
+  See-Also: https://packages.debian.org/source/stretch/netkit-telnet
+  Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
+
+  09 Mar 2016; Patrice Clement <monsieurp@gentoo.org> metadata.xml:
+  Assign package to new proxy maintainer Paolo Pedroni <paolo.pedroni@iol.it>.
+
+  Package-Manager: portage-2.2.26
+
