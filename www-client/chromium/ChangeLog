@@ -787,3 +787,11 @@
   Package-Manager: portage-2.2.26
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+*chromium-49.0.2623.87-r1 (10 Mar 2016)
+
+  10 Mar 2016; Mike Gilbert <floppym@gentoo.org>
+  +chromium-49.0.2623.87-r1.ebuild:
+  Uncomment arm64 syscalls patch
+
+  Package-Manager: portage-2.2.27_p81
+
