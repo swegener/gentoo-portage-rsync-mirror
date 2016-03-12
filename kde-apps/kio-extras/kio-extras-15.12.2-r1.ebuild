@@ -4,14 +4,14 @@
 
 EAPI=6
 
-KDE_HANDBOOK="true"
-KDE_TEST="forceoptional"
+KDE_HANDBOOK="forceoptional"
+KDE_TEST="optional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
 DESCRIPTION="KIO plugins present a filesystem-like view of arbitrary data"
 HOMEPAGE="https://projects.kde.org/projects/kde/workspace/kio-extras"
-KEYWORDS=" ~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="exif mtp openexr phonon samba +sftp slp"
 
 COMMON_DEPEND="
