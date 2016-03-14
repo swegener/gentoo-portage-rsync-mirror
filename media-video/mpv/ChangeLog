@@ -887,3 +887,12 @@
   Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
   Package-Manager: portage-2.2.27
 
+  14 Mar 2016; Ian Delaney <idella4@gentoo.org> mpv-9999.ebuild:
+  initial Mac OS X support in 9999 wrt bug 577332
+
+  Gentoo-Bug: https://bugs.gentoo.org/show_bug.cgi?id=577332
+  Closes: https://github.com/gentoo/gentoo/pull/1043
+
+  Package-Manager: portage-2.2.28
+  Closes: https://github.com/gentoo/gentoo/pull/1043
+
