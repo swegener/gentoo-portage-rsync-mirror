@@ -74,3 +74,14 @@
   Package-Manager: portage-2.2.28
   Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 
+*libsmbios-2.3.0-r1 (14 Mar 2016)
+
+  14 Mar 2016; Lars Wendler <polynomial-c@gentoo.org> -libsmbios-2.3.0.ebuild,
+  +libsmbios-2.3.0-r1.ebuild:
+  Don't build yum-plugin ever (fixes bug #577402).
+
+  Use some more python scripts via python-exec wrapper.
+
+  Package-Manager: portage-2.2.28
+  Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
