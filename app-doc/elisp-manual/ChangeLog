@@ -109,3 +109,9 @@
   Package-Manager: portage-2.2.26
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  14 Mar 2016; Ulrich Müller <ulm@gentoo.org> -elisp-manual-24.4.ebuild,
+  -files/elisp-manual-24.4-direntry.patch:
+  Remove old.
+
+  Package-Manager: portage-2.2.28
+
