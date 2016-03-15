@@ -1,29 +1,26 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI="5"
+
 inherit eutils linux-info multilib-minimal
 
-MY_P=v4l-utils-${PV}
+MY_P="v4l-utils-${PV}"
 
 DESCRIPTION="Separate libraries ebuild from upstream v4l-utils package"
-HOMEPAGE="http://git.linuxtv.org/v4l-utils.git"
-SRC_URI="http://linuxtv.org/downloads/v4l-utils/${MY_P}.tar.bz2"
+HOMEPAGE="https://git.linuxtv.org/v4l-utils.git"
+SRC_URI="https://linuxtv.org/downloads/v4l-utils/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2.1+"
-SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+SLOT="0/0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="jpeg"
 
 # The libraries only link to -ljpeg, therefore multilib depend only for virtual/jpeg.
 RDEPEND="jpeg? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
 	!media-tv/v4l2-ctl
-	!<media-tv/ivtv-utils-1.4.0-r2
-	abi_x86_32? (
-		!<=app-emulation/emul-linux-x86-medialibs-20130224-r5
-		!app-emulation/emul-linux-x86-medialibs[-abi_x86_32(-)]
-	)"
+	!<media-tv/ivtv-utils-1.4.0-r2"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/os-headers
@@ -34,6 +31,10 @@ S=${WORKDIR}/${MY_P}
 pkg_setup() {
 	CONFIG_CHECK="~SHMEM"
 	linux-info_pkg_setup
+}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-1.6.2-sysmacros.patch
 }
 
 multilib_src_configure() {
