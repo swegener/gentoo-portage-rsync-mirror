@@ -119,3 +119,9 @@
   RepoMan-Options: --include-arches="ppc"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  16 Mar 2016; Andreas K. Hüttel <dilfridge@gentoo.org>
+  -Mozilla-CA-20130114.ebuild:
+  Remove old
+
+  Package-Manager: portage-2.2.28
+
