@@ -1076,3 +1076,17 @@
   RepoMan-Options: --include-arches="ppc64"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  17 Mar 2016; Tobias Klausmann <klausman@gentoo.org> php-5.5.33.ebuild:
+  5.5.33-r0: add alpha keyword
+
+  Gentoo-Bug: 577376
+
+  Package-Manager: portage-2.2.28
+
+  17 Mar 2016; Tobias Klausmann <klausman@gentoo.org> php-5.6.19.ebuild:
+  5.6.19-r0: add alpha keyword
+
+  Gentoo-Bug: 577376
+
+  Package-Manager: portage-2.2.28
+
