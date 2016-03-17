@@ -364,3 +364,41 @@
 
   Package-Manager: portage-2.2.28
 
+  17 Mar 2016; Agostino Sarubbo <ago@gentoo.org>
+  tomcat-servlet-api-7.0.68.ebuild:
+  amd64 stable wrt bug #577626
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="amd64"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
+  17 Mar 2016; Agostino Sarubbo <ago@gentoo.org>
+  tomcat-servlet-api-8.0.32.ebuild:
+  amd64 stable wrt bug #577628
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="amd64"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
+  17 Mar 2016; Agostino Sarubbo <ago@gentoo.org>
+  tomcat-servlet-api-7.0.68.ebuild:
+  x86 stable wrt bug #577626
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="x86"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
+  17 Mar 2016; Agostino Sarubbo <ago@gentoo.org>
+  tomcat-servlet-api-8.0.32.ebuild:
+  x86 stable wrt bug #577628
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="x86"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
+  17 Mar 2016; Miroslav Šulc <fordfrog@gentoo.org>
+  -tomcat-servlet-api-8.0.30.ebuild:
+  removed obsolete ebuild
+
+  Package-Manager: portage-2.2.28
+
