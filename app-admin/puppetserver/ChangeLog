@@ -135,3 +135,15 @@
 
   Package-Manager: portage-2.2.26
 
+  18 Mar 2016; Matthew Thode <prometheanfire@gentoo.org>
+  files/puppetserver.initd:
+  add reload command
+
+  Package-Manager: portage-2.2.26
+
+  18 Mar 2016; Matthew Thode <prometheanfire@gentoo.org>
+  files/puppetserver.initd:
+  fixing init.d
+
+  Package-Manager: portage-2.2.26
+
