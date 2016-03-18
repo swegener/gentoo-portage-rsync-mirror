@@ -32,7 +32,7 @@ RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 # Respect {C,LD}FLAGS.
-PATCHES=( "${FILESDIR}/galera-3.13-strip-extra-cflags.patch" )
+PATCHES=( "${FILESDIR}/galera-3.15-strip-extra-cflags.patch" )
 
 pkg_preinst() {
 	if use garbd ; then
