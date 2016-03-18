@@ -1112,3 +1112,11 @@
 
   Package-Manager: portage-2.2.28
 
+*gentoo-sources-3.18.29 (17 Mar 2016)
+
+  17 Mar 2016; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-3.18.29.ebuild:
+  Linux patch 3.18.29
+
+  Package-Manager: portage-2.2.26
+
