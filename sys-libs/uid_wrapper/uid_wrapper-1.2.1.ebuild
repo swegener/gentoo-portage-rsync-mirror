@@ -1,15 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit cmake-multilib
 
-DESCRIPTION="A wrapper for the user, group and hosts NSS API"
-HOMEPAGE="https://cwrap.org/nss_wrapper.html"
-SRC_URI="https://ftp.samba.org/pub/cwrap/${P}.tar.gz"
-LICENSE="BSD"
+DESCRIPTION="A wrapper to fake privilege separation"
+HOMEPAGE="https://cwrap.org/uid_wrapper.html"
+SRC_URI="ftp://ftp.samba.org/pub/cwrap/${P}.tar.gz
+	https://ftp.samba.org/pub/cwrap/${P}.tar.gz"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~x86"
 IUSE="test"
