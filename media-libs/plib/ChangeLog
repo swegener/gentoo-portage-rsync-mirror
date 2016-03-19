@@ -127,3 +127,8 @@
   RepoMan-Options: --include-arches="sparc"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  19 Mar 2016; Michael Sterrett <mr_bones_@gentoo.org> -plib-1.8.5.ebuild:
+  clean old
+
+  Package-Manager: portage-2.2.26
+
