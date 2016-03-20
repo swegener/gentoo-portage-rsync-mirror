@@ -295,3 +295,10 @@
   Package-Manager: portage-2.2.26
   RepoMan-Options: --force
 
+  20 Mar 2016; Agostino Sarubbo <ago@gentoo.org> pytest-2.8.7.ebuild:
+  amd64 stable wrt bug #577826
+
+  Package-Manager: portage-2.2.26
+  RepoMan-Options: --include-arches="amd64"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
