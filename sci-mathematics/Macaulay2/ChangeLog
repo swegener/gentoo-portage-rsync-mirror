@@ -80,3 +80,12 @@
   Package-Manager: portage-2.2.27
   RepoMan-Options: --include-arches="arm"
 
+*Macaulay2-1.8.2.1-r1 (20 Mar 2016)
+
+  20 Mar 2016; Thomas Kahle <tomka@gentoo.org> +Macaulay2-1.8.2.1-r1.ebuild:
+  Fix .so install locations
+
+  Bug 577426, thanks ago.
+
+  Package-Manager: portage-2.2.26
+
