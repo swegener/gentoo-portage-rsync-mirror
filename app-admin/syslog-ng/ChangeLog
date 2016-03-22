@@ -202,3 +202,11 @@
 
   Package-Manager: portage-2.2.26
 
+*syslog-ng-3.7.3 (22 Mar 2016)
+
+  22 Mar 2016; Michael Sterrett <mr_bones_@gentoo.org>
+  +syslog-ng-3.7.3.ebuild:
+  version bump
+
+  Package-Manager: portage-2.2.26
+
