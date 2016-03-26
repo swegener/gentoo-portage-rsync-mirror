@@ -229,3 +229,11 @@
 
   Package-Manager: portage-2.2.27
 
+*oracle-jre-bin-1.8.0.77 (25 Mar 2016)
+
+  25 Mar 2016; James Le Cuirot <chewi@gentoo.org>
+  +oracle-jre-bin-1.8.0.77.ebuild:
+  Bump to 1.8.0.77 wrt security bug #578160
+
+  Package-Manager: portage-2.2.28
+
