@@ -10,3 +10,15 @@
 
   Package-Manager: portage-2.2.28
 
+  27 Mar 2016; Alex Brandt <alunduil@gentoo.org> metadata.xml:
+  add type to maintainer tag in metadata
+
+  I still wonder why the vim template doesn't include this in its
+  generation of metadata.xml but it can continue to wait.  Also, why does
+  repoman commit break the automatic linebreaking done by vim in commit
+  messages?
+
+  Looks like ft=conf instead of the normal commit type?
+
+  Package-Manager: portage-2.2.28
+
