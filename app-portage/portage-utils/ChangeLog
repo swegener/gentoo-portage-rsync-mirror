@@ -110,3 +110,8 @@
   22 Feb 2016; Mike Frysinger <vapier@gentoo.org> +portage-utils-0.62.ebuild:
   version bump to 0.62
 
+*portage-utils-0.63 (28 Mar 2016)
+
+  28 Mar 2016; Mike Frysinger <vapier@gentoo.org> +portage-utils-0.63.ebuild:
+  version bump to 0.63
+
