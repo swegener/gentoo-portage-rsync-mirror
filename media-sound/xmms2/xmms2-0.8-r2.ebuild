@@ -125,6 +125,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}"-audio4-p6.patch
 	epatch "${FILESDIR}/${P}"-audio4-p7.patch
 	epatch "${FILESDIR}/${P}"-rtvg.patch #424377
+	epatch "${FILESDIR}/${P}"-samba-4.patch
 
 	if has_version dev-libs/libcdio-paranoia; then
 		sed -i -e 's:cdio/cdda.h:cdio/paranoia/cdda.h:' src/plugins/cdda/cdda.c || die
