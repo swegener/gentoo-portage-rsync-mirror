@@ -81,3 +81,9 @@
 
   Package-Manager: portage-2.2.27
 
+  03 Apr 2016; Sergei Trofimovich <slyfox@gentoo.org>
+  -reflection-1.5.1.ebuild, -reflection-1.5.1.2.ebuild:
+  drop old
+
+  Package-Manager: portage-2.2.28
+
