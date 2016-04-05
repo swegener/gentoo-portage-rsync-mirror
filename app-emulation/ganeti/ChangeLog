@@ -180,3 +180,8 @@
 
   Package-Manager: portage-2.2.28
 
+  04 Apr 2016; Patrick McLean <chutzpah@gentoo.org> ganeti-2.15.2-r2.ebuild:
+  add call to epatch_user in 2.15.2-r2
+
+  Package-Manager: portage-2.2.28
+
