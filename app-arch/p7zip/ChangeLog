@@ -149,3 +149,10 @@
 
   Package-Manager: portage-2.2.26
 
+  10 Apr 2016; Lars Wendler <polynomial-c@gentoo.org>
+  +files/p7zip-15.14.1-darwin.patch:
+  Added missing darwin patch (bug #579482).
+
+  Package-Manager: portage-2.2.28
+  Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
