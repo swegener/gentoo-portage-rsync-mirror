@@ -44,3 +44,11 @@
 
   Signed-off-by: Ian Delaney <idella4@gentoo.org>
 
+  19 Apr 2016; Ian Delaney <idella4@gentoo.org> cherrytree-0.36.9-r1.ebuild:
+  reset configure phase from previous edit
+
+  src_configure phase reset to python_configure_all,
+  SRC_URI reduced by substituting with ${PN}
+
+  Package-Manager: portage-2.2.28
+
