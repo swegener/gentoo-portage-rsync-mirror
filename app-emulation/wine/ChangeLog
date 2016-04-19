@@ -391,3 +391,7 @@
 
   Package-Manager: portage-2.2.26
 
+  19 Apr 2016; Mike Frysinger <vapier@gentoo.org>
+  +files/wine-1.9.7-sysmacros.patch, wine-1.9.7.ebuild:
+  fix build w/newer glibc #580046
+
