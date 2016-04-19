@@ -6706,7 +6706,7 @@ sci-chemistry/vmd:gromacs - Add support for TNG file format
 sci-chemistry/vmd:msms - Add support for MSMS SAS calcualtion tool
 sci-chemistry/vmd:povray - Add support for povray raytracer for HQ images
 sci-chemistry/vmd:tachyon - Add support for tachyon raytracer for HQ images
-sci-chemistry/votca-csg:extras - Pull in extra applications from sci-chemistry/votca-csg-apps
+sci-chemistry/votca-csg:extras - Pull in extra applications from sci-chemistry/votca-csgapps
 sci-chemistry/votca-csg:gromacs - Add support for gromacs file formats through sci-chemistry/gromacs
 sci-chemistry/wxmacmolplt:flash - Add support for flash movie generation using media-libs/ming
 sci-electronics/geda:stroke - enable mouse gesture support
@@ -6938,7 +6938,7 @@ sci-mathematics/agda:cpphs - Use cpphs instead of cpp.
 sci-mathematics/agda:stdlib - Install the standard library.
 sci-mathematics/agda-stdlib:ffi - Install agda-lib-ffi for compilation using the MAlonzo backend
 sci-mathematics/bertini:optimization - Accept upstream's choices for -O option.
-sci-mathematics/cgal:mpfi - Enable support for multiple recision interval arithmetic via sci-mathematics/mpfi
+sci-mathematics/cgal:mpfi - Enable support for multiple recision interval arithmetic via sci-libs/mpfi
 sci-mathematics/cgal:ntl - Enable support for dev-libs/ntl
 sci-mathematics/coq:camlp5 - Build using camlp5. This is required for some plugins like Ssreflect.
 sci-mathematics/cvc3:isabelle - Add integration support for the Isabelle/HOL theorem prover.
@@ -6976,10 +6976,10 @@ sci-mathematics/minisat:extended-solver - Build extended version of SAT solver w
 sci-mathematics/msieve:ecm - Enable support for the GMP-ECM library
 sci-mathematics/normaliz:extras - Install sci-mathematics/Macaulay2 and sci-mathematics/singular packages as shipped by upstream
 sci-mathematics/nusmv:minisat - Enable support for MiniSat
-sci-mathematics/octave:glpk - Add support for sci-libs/glpk for linear programming
+sci-mathematics/octave:glpk - Add support for sci-mathematics/glpk for linear programming
 sci-mathematics/octave:gui - Enable the graphical user interface
 sci-mathematics/octave:jit - (EXPERIMENTAL) enable JIT compiler
-sci-mathematics/octave:qhull - Add support for sci-libs/qhull, to allow `delaunay', `convhull', and related functions
+sci-mathematics/octave:qhull - Add support for media-libs/qhull, to allow `delaunay', `convhull', and related functions
 sci-mathematics/octave:qrupdate - Add support for sci-libs/qrupdatefor QR and Cholesky update functions
 sci-mathematics/octave:sparse - Add enhanced support for sparse matrix algebra with SuiteSparse
 sci-mathematics/pari:data - Add additional data (elldata, galdata, seadata, nftables)
@@ -7367,7 +7367,7 @@ sys-cluster/charm:syncft - Compile with Charm++ fault tolerance support
 sys-cluster/charm:tcp - Use TCP (instead of UPD) for socket communication
 sys-cluster/cinder:api - Installs the initscripts for the cinder api service
 sys-cluster/cinder:iscsi - Allow using an iSCSI remote storage server as pool for disk image storage
-sys-cluster/cinder:lvm - Allow using the Logical Volume Manager (sys-apps/lvm2) as pool for disk image storage
+sys-cluster/cinder:lvm - Allow using the Logical Volume Manager (sys-fs/lvm2) as pool for disk image storage
 sys-cluster/cinder:memcached - Installs the memcached server
 sys-cluster/cinder:scheduler - Installs the initscripts for the cinder scheduler service
 sys-cluster/cinder:volume - Installs the initscripts for the cinder volume service
@@ -7440,7 +7440,7 @@ sys-cluster/openstack-meta:nova - Installs Openstack Nova
 sys-cluster/openstack-meta:swift - Installs Openstack Swift
 sys-cluster/pacemaker:cman - Enable sys-cluster/cman support.
 sys-cluster/pacemaker:heartbeat - Enable sys-cluster/heartbeat support.
-sys-cluster/pacemaker:smtp - Enable SMTP support via net-libs/libsmtp
+sys-cluster/pacemaker:smtp - Enable SMTP support via net-libs/libesmtp
 sys-cluster/resource-agents:libnet - Force use of net-libs/libnet
 sys-cluster/resource-agents:rgmanager - Install resources for sys-cluster/rgmanager
 sys-cluster/slurm:maui - Enable maui scheduler support
@@ -7516,7 +7516,7 @@ sys-devel/sparse:xml - Build the c2xml utility (requires dev-libs/libxml2).
 sys-firmware/amdgpu-ucode:legacy - Install firmware for older chipsets which are optionally supported by AMDGPU
 sys-firmware/ipxe:iso - Build a bootable ISO for using PXE
 sys-firmware/ipxe:lkrn - Build a linux kernel bootable file for using with grub/etc...
-sys-firmware/ipxe:qemu - Build the required PXE ROM images for app-emulation/qemu and app-emulation/qemu-kvm
+sys-firmware/ipxe:qemu - Build the required PXE ROM images for app-emulation/qemu
 sys-firmware/ipxe:undi - Build a Universal Network Device Interface driver chainloading your existing PXE NIC into iPXE
 sys-firmware/ipxe:usb - Build a bootable USB image for using PXE
 sys-firmware/ipxe:vmware - Build the PXE ROM images that VMWare uses
@@ -7877,7 +7877,7 @@ www-client/chromium:proprietary-codecs - Enable proprietary codecs like H.264, M
 www-client/chromium:system-ffmpeg - Use system ffmpeg instead of the bundled one
 www-client/chromium:tcmalloc - Use bundled tcmalloc instead of system malloc
 www-client/chromium:widevine - Unsupported closed-source DRM capability (required by Netflix VOD)
-www-client/dwb:gtk3 - Link against x11-libs/gtk SLOT 3 instead of x11-libs/gtk SLOT 2.
+www-client/dwb:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2.
 www-client/dwb:libsecret - Enable libsecret support to store login credentials
 www-client/elinks:bittorrent - Enable support for the BitTorrent protocol
 www-client/elinks:finger - Enable support for the finger protocol
@@ -7947,7 +7947,7 @@ www-client/surf:savedconfig - Without a saved config.h, this package depends on 
 www-client/uget:aria2 - Enable support for net-misc/aria2 through xmlrpc. You'll find the plugin in the app's settings.
 www-client/uget:gtk3 - Use x11-libs/gtk+:3 instead of x11-libs/gtk+:2
 www-client/uget:hide-temp-files - Make temporary files that are used while downloading hidden.
-www-client/vimb:gtk3 - Link against x11-libs/gtk SLOT 3 instead of x11-libs/gtk SLOT 2.
+www-client/vimb:gtk3 - Link against x11-libs/gtk+:3 instead of x11-libs/gtk+:2.
 www-client/w3m:lynxkeymap - If you prefer Lynx-like key binding
 www-client/weboob:fast-libs - Enable fast libs
 www-client/weboob:secure-updates - Enable secure updates
