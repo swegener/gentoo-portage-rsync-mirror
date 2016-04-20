@@ -241,3 +241,7 @@
 
   Package-Manager: portage-2.2.26
 
+  20 Apr 2016; Mike Frysinger <vapier@gentoo.org>
+  +files/udev-229-sysmacros.patch, udev-229-r2.ebuild:
+  add upstream fix for building w/glibc #580200
+
