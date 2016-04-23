@@ -4,19 +4,21 @@
 
 EAPI="5"
 
-DISTUTILS_OPTIONAL="true"
-GENTOO_DEPEND_ON_PERL="no"
+DISTUTILS_OPTIONAL=true
+DISTUTILS_SINGLE_IMPL=true
+GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 )
-inherit eutils distutils-r1 flag-o-matic multilib perl-module autotools
+inherit autotools eutils perl-module distutils-r1 flag-o-matic multilib
 
 DESCRIPTION="A system to store and display time-series data"
 HOMEPAGE="http://oss.oetiker.ch/rrdtool/"
-SRC_URI="http://oss.oetiker.ch/rrdtool/pub/${P}.tar.gz"
+SRC_URI="http://oss.oetiker.ch/rrdtool/pub/${P/_/-}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos ~x86-solaris"
-IUSE="dbi doc graph lua perl python rrdcgi ruby static-libs tcl tcpd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~amd64-linux ~ia64-linux ~x86-linux ~x86-macos ~x86-solaris"
+IUSE="dbi doc graph lua perl python rados rrdcgi ruby static-libs tcl tcpd"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 CDEPEND="
 	>=dev-libs/glib-2.28.7:2[static-libs(+)?]
@@ -30,6 +32,7 @@ CDEPEND="
 	lua? ( dev-lang/lua:*[deprecated] )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
+	rados? ( sys-cluster/ceph )
 	tcl? ( dev-lang/tcl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
 "
@@ -47,6 +50,8 @@ PDEPEND="
 	ruby? ( ~dev-ruby/rrdtool-bindings-${PV} )
 "
 
+S=${WORKDIR}/${P/_/-}
+
 python_compile() {
 	cd bindings/python || die
 	distutils-r1_python_compile
@@ -57,25 +62,45 @@ python_install() {
 	distutils-r1_python_install
 }
 
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
 src_prepare() {
+	# At the next version bump, please see if you actually still need this
+	# before adding versions
+	cp "${FILESDIR}"/${PN}-1.5.5-rrdrados.pod doc/rrdrados.pod || die
+
 	epatch \
-		"${FILESDIR}"/${PN}-1.4.7-configure.ac.patch \
 		"${FILESDIR}"/${PN}-1.4.9-disable-rrd_graph-cgi.patch \
 		"${FILESDIR}"/${PN}-1.4.9-disable-rrd_graph-perl.patch \
-		"${FILESDIR}"/${PN}-1.4.9-disable-rrd_graph-lua.patch \
-		"${FILESDIR}"/${PN}-1.4.9-disable-rrd_graph-python.patch
+		"${FILESDIR}"/${PN}-1.5.0_rc1-disable-rrd_graph-lua.patch \
+		"${FILESDIR}"/${PN}-1.5.0_rc1-disable-rrd_graph-python.patch \
+		"${FILESDIR}"/${PN}-1.6.0-configure.ac.patch
 
 	# bug 456810
 	# no time to sleep
 	sed -i \
 		-e 's|$LUA_CFLAGS|IGNORE_THIS_BAD_TEST|g' \
 		-e 's|^sleep 1$||g' \
+		-e '/^dnl.*png/s|^dnl||g' \
 		configure.ac || die
 
 	# Python bindings are built/installed manually
 	sed -i \
 		-e '/^all-local:/s| @COMP_PYTHON@||' \
 		bindings/Makefile.am || die
+
+	if ! use graph; then
+		sed -i \
+			-e '2s:rpn1::; 2s:rpn2::; 6s:create-with-source-4::;' \
+			-e '7s:xport1::; 7s:dcounter1::; 7s:vformatter1::' \
+			tests/Makefile.am || die
+	fi
+
+	echo ${PV/_rc*/} >> VERSION || die
+
+	export rd_cv_gcc_flag__Werror=no
 
 	eautoreconf
 }
@@ -95,6 +120,9 @@ src_configure() {
 	fi
 	if ! use dbi; then
 		myconf+=( "--disable-libdbi" )
+	fi
+	if ! use rados; then
+		myconf+=( "--disable-librados" )
 	fi
 
 	econf \
@@ -120,6 +148,11 @@ src_compile() {
 	use python && distutils-r1_src_compile
 }
 
+src_test() {
+	export LC_ALL=C
+	default
+}
+
 src_install() {
 	default
 
@@ -138,7 +171,7 @@ src_install() {
 		perl_delete_packlist
 	fi
 
-	dodoc CHANGES CONTRIBUTORS NEWS README THREADS TODO
+	dodoc CHANGES CONTRIBUTORS NEWS THREADS TODO
 
 	find "${ED}"usr -name '*.la' -exec rm -f {} +
 
@@ -149,18 +182,4 @@ src_install() {
 	newinitd "${FILESDIR}"/rrdcached.init rrdcached
 
 	use python && distutils-r1_src_install
-}
-
-pkg_postinst() {
-	ewarn "Since version 1.3, rrdtool dump emits completely legal xml.  Basically this"
-	ewarn "means that it contains an xml header and a DOCTYPE definition.  Unfortunately"
-	ewarn "this causes older versions of rrdtool restore to be unhappy."
-	ewarn
-	ewarn "To restore a new dump with an old rrdtool restore version, either remove"
-	ewarn "the xml header and the doctype by hand (both on the first line of the dump)"
-	ewarn "or use rrdtool dump --no-header."
-	ewarn
-	ewarn ">=net-analyzer/rrdtool-1.3 does not have any default font bundled. Thus if"
-	ewarn ">you've upgraded from rrdtool-1.2.x and don't have any font installed to make"
-	ewarn ">lables visible, please, install some font, e.g.  media-fonts/dejavu."
 }
