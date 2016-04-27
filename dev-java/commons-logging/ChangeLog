@@ -115,3 +115,14 @@
 
   Package-Manager: portage-2.2.28
 
+  27 Apr 2016; James Le Cuirot <chewi@gentoo.org>
+  -files/commons-logging-1.1-gentoo.patch,
+  -files/commons-logging-1.1-manifest,
+  -files/commons-logging-1.1-servletapi.patch,
+  -files/commons-logging-1.1.1-gentoo.patch,
+  -files/commons-logging-1.1.1-manifest,
+  -files/commons-logging-1.1.1-servletapi.patch:
+  Remove old files
+
+  Package-Manager: portage-2.2.28
+
