@@ -242,3 +242,11 @@
 
   Package-Manager: portage-2.2.26
 
+*puppet-agent-1.4.2 (27 Apr 2016)
+
+  27 Apr 2016; Matthew Thode <prometheanfire@gentoo.org>
+  -puppet-agent-1.4.1.ebuild, +puppet-agent-1.4.2.ebuild:
+  bup for bug 581372
+
+  Package-Manager: portage-2.2.26
+
