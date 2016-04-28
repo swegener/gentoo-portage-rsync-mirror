@@ -168,3 +168,9 @@
 
   Package-Manager: portage-2.2.26
 
+  28 Apr 2016; Matthew Thode <prometheanfire@gentoo.org>
+  +files/puppet-fix-tests-4.4.2.patch, puppet-4.4.2.ebuild:
+  fix patch for bug 581428
+
+  Package-Manager: portage-2.2.26
+
