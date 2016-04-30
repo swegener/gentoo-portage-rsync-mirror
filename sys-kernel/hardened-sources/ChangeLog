@@ -958,3 +958,22 @@
 
   Package-Manager: portage-2.2.26
 
+  30 Apr 2016; Anthony G. Basile <blueness@gentoo.org>
+  hardened-sources-4.4.8-r1.ebuild:
+  4.4.8-r1 stable on amd64 and x86
+
+  Package-Manager: portage-2.2.26
+
+  30 Apr 2016; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-4.4.6-r2.ebuild, -hardened-sources-4.4.7.ebuild,
+  -hardened-sources-4.4.8.ebuild:
+  remove older unstable versions
+
+  Package-Manager: portage-2.2.26
+
+  30 Apr 2016; Anthony G. Basile <blueness@gentoo.org>
+  -hardened-sources-4.1.7-r1.ebuild:
+  remove oldest stable version
+
+  Package-Manager: portage-2.2.26
+
