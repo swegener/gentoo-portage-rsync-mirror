@@ -104,3 +104,10 @@
 
   Package-Manager: portage-2.2.27
 
+  01 May 2016; William Hubbs <williamh@gentoo.org>
+  -gentoo-functions-0.7.ebuild, -gentoo-functions-0.8.ebuild,
+  -gentoo-functions-0.9.ebuild:
+  remove old versions
+
+  Package-Manager: portage-2.2.26
+
