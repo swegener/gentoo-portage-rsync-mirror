@@ -129,3 +129,9 @@
 
   Package-Manager: portage-2.2.27
 
+  02 May 2016; Brian Dolbec <dolsen@gentoo.org> layman-2.4.0.ebuild,
+  layman-9999.ebuild:
+  Adjust ssl-fetch dep to correct version
+
+  Package-Manager: portage-2.2.28_p104
+
