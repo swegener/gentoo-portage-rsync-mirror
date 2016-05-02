@@ -121,3 +121,11 @@
 
   Package-Manager: portage-2.2.27
 
+*layman-2.4.0 (02 May 2016)
+
+  02 May 2016; Devan Franchini <twitch153@gentoo.org> +layman-2.4.0.ebuild,
+  metadata.xml:
+  Creating new ebuild for layman-2.4.0 release
+
+  Package-Manager: portage-2.2.27
+
