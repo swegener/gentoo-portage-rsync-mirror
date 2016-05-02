@@ -215,3 +215,10 @@
   02 May 2016; Matt Turner <mattst88@gentoo.org> findutils-4.6.0.ebuild:
   alpha stable, bug 576010.
 
+  02 May 2016; Mike Frysinger <vapier@gentoo.org> findutils-4.6.0.ebuild:
+  mark 4.6.0 arm64/m68k/s390/sh stable
+
+  02 May 2016; Mike Frysinger <vapier@gentoo.org> -findutils-4.4.2-r1.ebuild,
+  -findutils-4.5.16.ebuild, -findutils-4.5.17.ebuild:
+  drop some old versions
+
