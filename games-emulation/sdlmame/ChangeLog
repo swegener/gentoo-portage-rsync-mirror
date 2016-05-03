@@ -150,3 +150,10 @@
 
   Package-Manager: portage-2.2.26
 
+*sdlmame-0.173 (03 May 2016)
+
+  03 May 2016; Michael Sterrett <mr_bones_@gentoo.org> +sdlmame-0.173.ebuild:
+  version bump (bug #573154)
+
+  Package-Manager: portage-2.2.26
+
