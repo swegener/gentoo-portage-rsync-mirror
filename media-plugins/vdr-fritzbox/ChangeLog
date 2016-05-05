@@ -78,3 +78,10 @@
 
   Package-Manager: portage-2.2.28
 
+  05 May 2016; Joerg Bornkessel <hd_brummy@gentoo.org>
+  vdr-fritzbox-1.5.3.ebuild:
+  depend boost has to compile with threads support, thx to T.Foerster on wrt
+  bug 566124
+
+  Package-Manager: portage-2.2.28
+
