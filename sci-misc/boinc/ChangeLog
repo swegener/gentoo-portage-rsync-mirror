@@ -221,3 +221,14 @@
 
   Package-Manager: portage-2.2.28
 
+*boinc-7.6.31-r2 (05 May 2016)
+*boinc-7.4.42-r3 (05 May 2016)
+*boinc-7.2.42-r1 (05 May 2016)
+
+  05 May 2016; David Seifert <soap@gentoo.org> -boinc-7.2.42.ebuild,
+  +boinc-7.2.42-r1.ebuild, -boinc-7.4.42-r2.ebuild, +boinc-7.4.42-r3.ebuild,
+  -boinc-7.6.31-r1.ebuild, +boinc-7.6.31-r2.ebuild, files/boinc.init:
+  Fix variable default statements in init scripts
+
+  Package-Manager: portage-2.2.28
+
