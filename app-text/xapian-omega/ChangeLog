@@ -223,3 +223,11 @@
 
   Package-Manager: portage-2.2.26
 
+*xapian-omega-1.2.23-r2 (07 May 2016)
+
+  07 May 2016; Anthony G. Basile <blueness@gentoo.org>
+  -xapian-omega-1.2.23-r1.ebuild, +xapian-omega-1.2.23-r2.ebuild:
+  backport commit 9be97c9 for the 1.2 branch
+
+  Package-Manager: portage-2.2.26
+

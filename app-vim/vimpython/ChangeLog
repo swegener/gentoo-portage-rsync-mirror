@@ -71,3 +71,6 @@
 
   Package-Manager: portage-2.2.26
 
+  07 May 2016; Tim Harder <radhermit@gentoo.org> vimpython-1.13-r1.ebuild:
+  drop unnecessary variables from revbump
+
