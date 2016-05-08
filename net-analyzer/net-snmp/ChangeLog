@@ -165,3 +165,10 @@
 
   Package-Manager: portage-2.2.27
 
+  07 May 2016; Andreas K. Hüttel <dilfridge@gentoo.org>
+  net-snmp-5.7.3-r1.ebuild, net-snmp-5.7.3-r2.ebuild,
+  net-snmp-5.7.3-r3.ebuild, net-snmp-5.7.3-r4.ebuild:
+  First package found so far that breaks with Perl 5.24
+
+  Package-Manager: portage-2.2.28
+
