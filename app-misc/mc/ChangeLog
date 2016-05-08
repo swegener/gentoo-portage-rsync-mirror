@@ -243,3 +243,11 @@
 
   Package-Manager: portage-2.2.28
 
+*mc-4.8.17 (08 May 2016)
+
+  08 May 2016; Sergei Trofimovich <slyfox@gentoo.org> +mc-4.8.17.ebuild,
+  mc-9999.ebuild:
+  bump up to 4.8.17
+
+  Package-Manager: portage-2.2.28
+
