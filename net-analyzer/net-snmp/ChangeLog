@@ -172,3 +172,9 @@
 
   Package-Manager: portage-2.2.28
 
+  08 May 2016; Jeroen Roovers <jer@gentoo.org> -net-snmp-5.7.3_pre5-r1.ebuild,
+  -net-snmp-5.7.3-r1.ebuild, -net-snmp-5.7.3-r2.ebuild:
+  Old.
+
+  Package-Manager: portage-2.2.28
+
