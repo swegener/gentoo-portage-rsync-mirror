@@ -110,3 +110,17 @@
   -thin-provisioning-tools-0.4.0.ebuild:
   drop old <0.4.1 versions
 
+  09 May 2016; Mike Frysinger <vapier@gentoo.org>
+  thin-provisioning-tools-0.4.1.ebuild, thin-provisioning-tools-0.5.3.ebuild:
+  enable verbose build #560882
+
+  09 May 2016; Mike Frysinger <vapier@gentoo.org>
+  thin-provisioning-tools-0.4.1.ebuild, thin-provisioning-tools-0.5.3.ebuild:
+  fix test builds #493440
+
+*thin-provisioning-tools-0.6.1 (09 May 2016)
+
+  09 May 2016; Mike Frysinger <vapier@gentoo.org>
+  +thin-provisioning-tools-0.6.1.ebuild:
+  version bump to #581082
+
