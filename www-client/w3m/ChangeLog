@@ -93,3 +93,11 @@
 
   Package-Manager: portage-2.2.26
 
+*w3m-0.5.3-r8 (12 May 2016)
+
+  12 May 2016; Mike Gilbert <floppym@gentoo.org> -w3m-0.5.3-r7.ebuild,
+  +w3m-0.5.3-r8.ebuild:
+  depend on ncurses:0 instead of ncurses:5
+
+  Package-Manager: portage-2.2.28_p106
+
