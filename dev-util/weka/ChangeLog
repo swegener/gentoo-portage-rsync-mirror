@@ -126,3 +126,8 @@
 
   Package-Manager: portage-2.2.26
 
+  15 May 2016; Amy Winston <amynka@gentoo.org> weka-3.8.0.ebuild:
+  add elog message
+
+  Package-Manager: portage-2.2.26
+
