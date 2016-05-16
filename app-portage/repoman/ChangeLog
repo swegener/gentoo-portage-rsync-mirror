@@ -10,3 +10,11 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+*repoman-2.3.0_rc1-r1 (16 May 2016)
+
+  16 May 2016; Brian Dolbec <dolsen@gentoo.org> -repoman-2.3.0_rc1.ebuild,
+  +repoman-2.3.0_rc1-r1.ebuild:
+  Bump, add missed lxml dep
+
+  Package-Manager: portage-2.3.0_rc1
+

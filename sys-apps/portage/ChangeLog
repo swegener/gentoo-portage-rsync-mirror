@@ -326,3 +326,17 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+*portage-2.3.0_rc1-r1 (16 May 2016)
+
+  16 May 2016; Brian Dolbec <dolsen@gentoo.org>
+  +files/portage-2.3.0_rc1.patch, -portage-2.3.0_rc1.ebuild,
+  +portage-2.3.0_rc1-r1.ebuild:
+  Fix portage upgrade traceback when repoman is not installed
+
+  Easy workaround, emerge repoman, upgrade portage, unmerge repoman.
+  Alternative, edit /usr/lib/pythonX.Y/site-packages/const.py edite
+  PORTAGE_PYM_PACKAGES
+  remove repoman from it.
+
+  Package-Manager: portage-2.3.0_rc1
+
