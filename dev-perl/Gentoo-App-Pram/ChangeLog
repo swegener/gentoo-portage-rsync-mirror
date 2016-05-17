@@ -15,3 +15,11 @@
 
   Package-Manager: portage-2.2.26
 
+  17 May 2016; Patrice Clement <monsieurp@gentoo.org>
+  Gentoo-App-Pram-0.1.0.ebuild:
+  Add dev-vcs/git dependency to DEPEND.
+
+  I forgot to add it in the first place!
+
+  Package-Manager: portage-2.2.28
+
