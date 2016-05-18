@@ -261,3 +261,13 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  18 May 2016; Mike Gilbert <floppym@gentoo.org> -files/tmux.terminfo.in,
+  -tmux-2.1-r1.ebuild:
+  Revert "app-misc/tmux: Add 2.1-r1 and ship terminfo file."
+
+  This reverts commit baec651ecb38580f8b39c79b16e4d6a13cdbe061.
+
+  The terminfo files collide with >=sys-libs/ncurses-6.0.
+
+  Bug: https://bugs.gentoo.org/583428
+
