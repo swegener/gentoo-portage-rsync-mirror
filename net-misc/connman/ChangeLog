@@ -177,3 +177,6 @@
 
   Closes: https://github.com/gentoo/gentoo/pull/1373
 
+  18 May 2016; Austin English <wizardedit@gentoo.org> files/connman.initd2:
+  use #!/sbin/openrc-run instead of #!/sbin/runscript
+

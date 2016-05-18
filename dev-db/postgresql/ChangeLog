@@ -705,3 +705,7 @@
 
   Package-Manager: portage-2.2.26
 
+  18 May 2016; Austin English <wizardedit@gentoo.org> files/postgresql.init,
+  files/postgresql.init-9.3, files/postgresql.init-pre_9.2:
+  use #!/sbin/openrc-run instead of #!/sbin/runscript
+
