@@ -336,3 +336,9 @@
   Package-Manager: portage-2.3.0_rc1
   RepoMan-Options: --ignore-arches
 
+  19 May 2016; Markus Meier <maekke@gentoo.org> mysql-5.6.30.ebuild:
+  arm stable, bug #580832
+
+  Package-Manager: portage-2.3.0_rc1
+  RepoMan-Options: --include-arches="arm"
+
