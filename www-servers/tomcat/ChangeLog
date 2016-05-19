@@ -530,3 +530,13 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+*tomcat-9.0.0_alpha6-r1 (19 May 2016)
+
+  19 May 2016; Miroslav Šulc <fordfrog@gentoo.org>
+  +files/tomcat-9.0.0_alpha6-processmanifest.patch,
+  -tomcat-9.0.0_alpha6.ebuild, +tomcat-9.0.0_alpha6-r1.ebuild:
+  backported patch from M7 which fixes NPE in
+  StandardJarScanner.processManifest()
+
+  Package-Manager: portage-2.3.0_rc1
+
