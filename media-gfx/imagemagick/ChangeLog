@@ -194,3 +194,11 @@
   Package-Manager: portage-2.3.0_rc1
   RepoMan-Options: --ignore-arches
 
+  20 May 2016; Tobias Klausmann <klausman@gentoo.org>
+  imagemagick-6.9.4.1.ebuild:
+  6.9.4.1-r0: add alpha keyword
+
+  Gentoo-Bug: 581990
+
+  Package-Manager: portage-2.3.0_rc1
+
