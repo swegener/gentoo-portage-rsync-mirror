@@ -195,3 +195,8 @@
 
   Package-Manager: portage-2.2.27
 
+*gd-2.2.0 (20 May 2016)
+
+  20 May 2016; Mike Frysinger <vapier@gentoo.org> +gd-2.2.0.ebuild:
+  version bump to 2.2.0
+
