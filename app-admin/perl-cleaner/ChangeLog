@@ -96,3 +96,8 @@
 
   Package-Manager: portage-2.2.28
 
+  23 May 2016; Pacho Ramos <pacho@gentoo.org> metadata.xml:
+  Reorder maintainers as talked with fuzzyray
+
+  Package-Manager: portage-2.3.0_rc1
+
