@@ -101,3 +101,9 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  24 May 2016; Markus Meier <maekke@gentoo.org> perl-cleaner-2.20.ebuild:
+  arm stable, bug #583122
+
+  Package-Manager: portage-2.3.0_rc1
+  RepoMan-Options: --include-arches="arm"
+
