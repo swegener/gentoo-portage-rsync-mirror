@@ -132,3 +132,8 @@
 
   Signed-off-by: Johannes Huber <johu@gentoo.org>
 
+  25 May 2016; Mikle Kolyada <zlogene@gentoo.org> libkonq-15.12.3.ebuild:
+  amd64 stable wrt bug #579992
+
+  Package-Manager: portage-2.2.28
+
