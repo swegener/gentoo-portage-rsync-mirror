@@ -130,3 +130,9 @@
   Package-Manager: portage-2.3.0_rc1
   RepoMan-Options: --ignore-arches
 
+  25 May 2016; Jeroen Roovers <jer@gentoo.org> grep-2.25.ebuild:
+  Stable for PPC64 (bug #583968).
+
+  Package-Manager: portage-2.3.0_rc1
+  RepoMan-Options: --ignore-arches
+
