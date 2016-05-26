@@ -197,3 +197,6 @@
 
   Package-Manager: portage-2.2.28
 
+  26 May 2016; Matt Turner <mattst88@gentoo.org> gettext-0.19.7.ebuild:
+  alpha stable, bug 583834.
+
