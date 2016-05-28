@@ -347,3 +347,10 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 
+  28 May 2016; Benda Xu <heroxbd@gentoo.org> portage-2.3.0_rc1-r1.ebuild:
+  use gentoo main tree on RAP.
+
+    prefix-rpath using prefix-portage is not affected.
+
+  Package-Manager: portage-2.2.28
+
