@@ -85,3 +85,10 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+*xar-1.6.1 (28 May 2016)
+
+  28 May 2016; Patrice Clement <monsieurp@gentoo.org> +xar-1.6.1.ebuild:
+  Version bump. EAPI 6 bump.
+
+  Package-Manager: portage-2.2.28
+

@@ -1062,3 +1062,11 @@
 
   Package-Manager: portage-2.3.0_rc1_p12
 
+  28 May 2016; Richard Freeman <rich0@gentoo.org>
+  chromium-51.0.2704.63.ebuild:
+  amd64 stable
+
+  Bug: 584310
+
+  Package-Manager: portage-2.2.28
+
