@@ -205,3 +205,7 @@
   iputils-99999999.ebuild:
   make -lresolv linkage dynamic #584132
 
+  01 Jun 2016; Mike Frysinger <vapier@gentoo.org> iputils-20121221-r2.ebuild,
+  iputils-20151218.ebuild, iputils-20160308.ebuild, iputils-99999999.ebuild:
+  update traceroute blocker after package move #584362
+
