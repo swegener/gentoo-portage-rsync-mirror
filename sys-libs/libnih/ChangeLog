@@ -115,3 +115,10 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  02 Jun 2016; Tobias Klausmann <klausman@gentoo.org> libnih-1.0.3-r3.ebuild:
+  1.0.3-r3: add alpha keyword
+
+  Gentoo-Bug: 570122
+
+  Package-Manager: portage-2.3.0_rc1
+
