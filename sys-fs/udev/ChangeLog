@@ -306,3 +306,18 @@
 
   Package-Manager: portage-2.3.0_rc1_p14
 
+  04 Jun 2016; William Hubbs <williamh@gentoo.org> udev-9999.ebuild:
+  sync live ebuild
+
+  Package-Manager: portage-2.2.28
+
+  04 Jun 2016; William Hubbs <williamh@gentoo.org> udev-230-r1.ebuild:
+  drop multilib from inherit in 230-r1
+
+  Package-Manager: portage-2.2.28
+
+  04 Jun 2016; William Hubbs <williamh@gentoo.org> udev-9999.ebuild:
+  sync live ebuild
+
+  Package-Manager: portage-2.2.28
+
