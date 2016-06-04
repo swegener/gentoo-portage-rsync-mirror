@@ -140,3 +140,37 @@
 
   Package-Manager: portage-2.2.28
 
+*spamassassin-3.4.1-r4 (03 Jun 2016)
+
+  03 Jun 2016; Michael Orlitzky <mjo@gentoo.org>
+  +spamassassin-3.4.1-r4.ebuild:
+  new major revision to install module man pages.
+
+  In bug 494260, it was reported that several man pages for
+  SpamAssassin's perl modules are missing. This turns out to be the
+  fault of the perl-module eclass, which deletes those man pages after
+  they've been installed in src_install. To fix it, at the very least,
+  would require avoiding perl-module_src_install().
+
+  It appears that we're not using too much functionality of that eclass,
+  especially once a workaround for src_install is in place. So in this
+  commit, I have removed the dependency on perl-module.eclass entirely
+  and configured/built/installed the package "manually." This fixes the
+  documentation bug.
+
+  Now with the eclass gone, it became possible to move to EAPI=6, and
+  this allowed even more code cleanup, such as the removal of
+  src_prepare() and the use of the default src_test(). The eutils eclass
+  is then no longer needed, and einstalldocs() can be used. After adding
+  "test" to IUSE, I noticed that the "doc" USE flag was redundant and
+  removed it.
+
+  Finally, the postinst message was updated to point to a new wiki page,
+  https://wiki.gentoo.org/wiki/SpamAssassin, which partially addresses
+  bug 532094 and gets rid of some outdated information.
+
+  Gentoo-Bug: 494260
+  Gentoo-Bug: 532094
+
+  Package-Manager: portage-2.2.28
+
