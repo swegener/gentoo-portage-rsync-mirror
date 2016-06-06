@@ -274,3 +274,8 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  06 Jun 2016; Fabian Groffen <grobian@gentoo.org> exim-4.87.ebuild:
+  forward keywords from 4.86.2 to 4.87
+
+  Package-Manager: portage-2.2.28
+
