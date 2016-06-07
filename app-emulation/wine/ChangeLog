@@ -528,3 +528,8 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  07 Jun 2016; Austin English <wizardedit@gentoo.org> wine-1.9.5-r1.ebuild:
+  remove extraneous whitespace
+
+  Package-Manager: portage-2.2.28
+
