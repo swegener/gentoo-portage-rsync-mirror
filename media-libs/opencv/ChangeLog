@@ -299,3 +299,15 @@
 
   Package-Manager: portage-2.2.28
 
+*opencv-2.4.12-r1 (09 Jun 2016)
+
+  09 Jun 2016; Amy Winston <amynka@gentoo.org>
+  files/opencv-2.4.12-git-autodetect.patch, +opencv-2.4.12-r1.ebuild:
+  eapi=6 bump
+
+  - Fix cuda bug #577410
+  - Add qt5 support
+  - Remove doc useflag bug #556198
+
+  Package-Manager: portage-2.2.28
+
