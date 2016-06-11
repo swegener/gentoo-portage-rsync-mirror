@@ -238,3 +238,9 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  11 Jun 2016; Markus Meier <maekke@gentoo.org> libmicrohttpd-0.9.49.ebuild:
+  arm stable, bug #584884
+
+  Package-Manager: portage-2.3.0_rc1
+  RepoMan-Options: --include-arches="arm"
+
