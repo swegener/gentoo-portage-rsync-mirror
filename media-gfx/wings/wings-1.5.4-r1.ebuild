@@ -14,25 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	>=dev-lang/erlang-18.1[wxwidgets]
+	>=dev-lang/erlang-17.0[wxwidgets]
+	>=media-libs/esdl-1.0.1
 	dev-libs/cl
 	media-libs/libsdl[opengl]
 "
 DEPEND="${RDEPEND}"
-
-src_prepare() {
-	sed -i \
-		-e '/include_lib/s|wings/|../|' \
-		plugins_src/primitives/wpc_knot.erl \
-		plugins_src/primitives/wpc_plane.erl \
-		plugins_src/primitives/wpc_spiral.erl \
-		plugins_src/primitives/wpc_torus.erl \
-		plugins_src/wp9_dialogs.erl \
-		src/wings_text.erl \
-		|| die
-
-	eapply_user
-}
 
 src_configure() {
 	export ERL_PATH="/usr/$(get_libdir)/erlang/lib/"
@@ -42,7 +29,7 @@ src_configure() {
 src_compile() {
 	# Work around parallel make issues
 	emake vsn.mk
-	for subdir in intl_tools src e3d icons plugins_src; do
+	for subdir in intl_tools src fonts_src e3d icons plugins_src; do
 		emake ESDL_PATH="${ESDL_PATH}" -C ${subdir}
 	done
 }
@@ -56,8 +43,6 @@ src_install() {
 	insinto ${WINGS_PATH}
 	doins -r e3d ebin fonts icons plugins psd shaders src textures tools
 
-	dosym ${WINGS_PATH} ${ERL_PATH}/${PN}
-	dosym ${ESDL_PATH} ${ERL_PATH}/esdl
 	newbin "${FILESDIR}"/wings.sh wings
 	dodoc AUTHORS README
 }
