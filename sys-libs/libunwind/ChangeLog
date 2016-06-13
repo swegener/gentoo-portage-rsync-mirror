@@ -83,3 +83,12 @@
   libunwind-1.0.1.ebuild, libunwind-1.0.1-r1.ebuild, libunwind-1.1.ebuild:
   savannah: switch to https URLs
 
+*libunwind-1.2_rc1 (13 Jun 2016)
+
+  13 Jun 2016; Yixun Lan <dlan@gentoo.org> +libunwind-1.2_rc1.ebuild:
+  version bump to 1.2_rc1, add arm64 support
+
+  Gentoo-Bug: 584720
+
+  Package-Manager: portage-2.3.0_rc1
+
