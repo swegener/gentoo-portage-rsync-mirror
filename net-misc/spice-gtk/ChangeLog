@@ -269,3 +269,8 @@
 
   Package-Manager: portage-2.2.28
 
+  14 Jun 2016; Matthias Maier <tamiko@gentoo.org> metadata.xml:
+  update metadata.xml
+
+  Package-Manager: portage-2.2.28
+
