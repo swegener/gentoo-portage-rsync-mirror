@@ -149,3 +149,22 @@
   Closes: https://github.com/gentoo/gentoo/pull/1673
   Package-Manager: portage-2.3.0_rc1
 
+*nftables-0.5-r4 (15 Jun 2016)
+
+  15 Jun 2016; Göktürk Yüksek <gokturk@gentoo.org> -nftables-0.5-r3.ebuild,
+  +nftables-0.5-r4.ebuild:
+  correct install utility function calls
+
+  Previous modification changed the cp command to:
+      instinto /usr/libexec/${PN}
+      doins "${FILESDIR}"/libexec/${PN}.sh
+
+  However, this change is incorrect as it strips the exec flag from ${PN}.sh.
+  This commit changes the insinto and doins to exeinto and doexe which fixes
+  the
+  problem.
+
+  Gentoo-bug: 586000
+
+  Package-Manager: portage-2.3.0_rc1
+
