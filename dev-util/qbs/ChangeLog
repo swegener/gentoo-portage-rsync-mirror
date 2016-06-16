@@ -160,3 +160,9 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  16 Jun 2016; Patrick Lauer <patrick@gentoo.org> qbs-1.4.5.ebuild,
+  qbs-1.5.1.ebuild:
+  Fix dependencies
+
+  Package-Manager: portage-2.3.0_rc1
+
