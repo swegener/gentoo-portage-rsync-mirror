@@ -152,3 +152,11 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  16 Jun 2016; Davide Pesavento <pesa@gentoo.org> qbs-1.4.5.ebuild,
+  qbs-1.5.1.ebuild:
+  qttest is also an RDEPEND when building with USE=test
+
+  https://bugs.gentoo.org/show_bug.cgi?id=581874
+
+  Package-Manager: portage-2.3.0_rc1
+
