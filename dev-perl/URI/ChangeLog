@@ -100,3 +100,10 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  20 Jun 2016; Tobias Klausmann <klausman@gentoo.org> URI-1.710.0.ebuild:
+  1.710.0-r0: add alpha keyword
+
+  Gentoo-Bug: 585422
+
+  Package-Manager: portage-2.3.0_rc1
+
