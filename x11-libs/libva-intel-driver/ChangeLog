@@ -176,3 +176,9 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  23 Jun 2016; Alexis Ballier <aballier@gentoo.org>
+  libva-intel-driver-1.7.1.ebuild, libva-intel-driver-9999.ebuild:
+  bump libva dep, bug #586812
+
+  Package-Manager: portage-2.3.0_rc1
+
