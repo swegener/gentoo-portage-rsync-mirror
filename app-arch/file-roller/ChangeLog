@@ -164,3 +164,8 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  25 Jun 2016; Pacho Ramos <pacho@gentoo.org> +3.6.0-packages.match:
+  Readd file removed by accident (#587016 by Toralf)
+
+  Package-Manager: portage-2.3.0_rc1
+
