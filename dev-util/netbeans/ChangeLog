@@ -85,3 +85,9 @@
 
   Package-Manager: portage-2.3.0
 
+  25 Jun 2016; Ulrich Müller <ulm@gentoo.org> netbeans-8.0.2.ebuild,
+  netbeans-8.1.ebuild:
+  Use L10N value "fil" rather than "tl" for Filipino.
+
+  Package-Manager: portage-2.3.0
+
