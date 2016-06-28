@@ -83,3 +83,22 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+*dosbox-0.74-r1 (28 Jun 2016)
+
+  28 Jun 2016; Austin English <wizardedit@gentoo.org> +dosbox-0.74-r1.ebuild,
+  +files/dosbox-0.74-clang.patch, files/dosbox-0.74-gcc46.patch,
+  +files/dosbox-0.74-wine-drive-z.patch,
+  +files/dosbox-0.74-wine-filenames.patch:
+  fix compiling with clang (#449060)
+
+  Also apply two patches needed by Wine using DOSBox (#586650)
+
+  Gentoo-Bug: https://bugs.gentoo.org/449060
+  Gentoo-Bug: https://bugs.gentoo.org/586650
+
+  Upstream-Bug: https://bugs.winehq.org/show_bug.cgi?id=18118
+  Upstream-Bug: https://bugs.winehq.org/show_bug.cgi?id=25887
+  Upstream-Bug: https://bugs.winehq.org/show_bug.cgi?id=26423
+
+  Package-Manager: portage-2.2.26
+
