@@ -130,3 +130,12 @@
 
   This reverts commit 143e036505e2b27b1aa5037d52a5f999391b4168.
 
+*dosbox-3989 (28 Jun 2016)
+
+  28 Jun 2016; Michael Sterrett <mr_bones_@gentoo.org> +dosbox-3989.ebuild:
+  add snapshot ebuild from upstream svn to provide a non-moving-target for
+  situations where the upstream release doesn't work (bugs #586650 and
+  #449060)
+
+  Package-Manager: portage-2.2.28
+
