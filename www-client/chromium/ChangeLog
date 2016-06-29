@@ -1180,3 +1180,8 @@
 
   Package-Manager: portage-portage_p2.3.0
 
+  28 Jun 2016; Mike Gilbert <floppym@gentoo.org> chromium-53.0.2774.3.ebuild:
+  use chromium-2.eclass
+
+  Package-Manager: portage-portage_p2.3.0
+
