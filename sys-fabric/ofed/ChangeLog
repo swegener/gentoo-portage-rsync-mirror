@@ -18,3 +18,8 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  30 Jun 2016; Patrick Lauer <patrick@gentoo.org> metadata.xml:
+  Remove unneeded useflag descriptions from metadata.xml
+
+  Package-Manager: portage-2.3.0
+
