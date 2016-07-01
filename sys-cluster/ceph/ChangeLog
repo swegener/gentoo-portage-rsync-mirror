@@ -313,3 +313,19 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+*ceph-10.2.2-r1 (30 Jun 2016)
+*ceph-9.2.1-r2 (30 Jun 2016)
+
+  30 Jun 2016; Patrick McLean <chutzpah@gentoo.org> +ceph-9.2.1-r2.ebuild,
+  +ceph-10.2.2-r1.ebuild, +files/ceph-CVE-2016-5009.patch:
+  Revision bump to 9.2.1-r2 and 10.2.2-r1 for CVE-2016-5009 (bug #587568)
+
+  Package-Manager: portage-2.3.0
+
+  30 Jun 2016; Patrick McLean <chutzpah@gentoo.org> -ceph-9.2.1.ebuild,
+  -ceph-9.2.1-r1.ebuild, -ceph-10.2.0.ebuild, -ceph-10.2.1.ebuild,
+  -ceph-10.2.2.ebuild:
+  Clean out old versions in the 9.2 and 10.2 series
+
+  Package-Manager: portage-2.3.0
+
