@@ -81,3 +81,9 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+*autotrace-0.31.1-r7 (02 Jul 2016)
+
+  02 Jul 2016; Aaron Bauman <bman@gentoo.org> +autotrace-0.31.1-r7.ebuild,
+  +files/autotrace-0.31.1-CVE-2013-1953.patch:
+  add patch for CVE-2013-1953 per security bug #466078
+
