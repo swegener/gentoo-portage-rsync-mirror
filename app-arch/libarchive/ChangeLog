@@ -180,3 +180,8 @@
 
   Package-Manager: portage-2.2.28
 
+  02 Jul 2016; Fabian Groffen <grobian@gentoo.org> libarchive-3.1.2-r5.ebuild:
+  fix compilation on OSX, it needs acl enabled
+
+  Package-Manager: portage-2.2.28
+
