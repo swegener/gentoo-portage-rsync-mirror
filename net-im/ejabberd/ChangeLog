@@ -177,3 +177,13 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+  03 Jul 2016; Amadeusz Żołnowski <aidecoe@gentoo.org> files/ejabberd-3.initd:
+  Add reload option to initd script
+
+  03 Jul 2016; Amadeusz Żołnowski <aidecoe@gentoo.org> ejabberd-16.04.ebuild:
+  Make ejabberd.service from upstream template
+
+  Gentoo-Bug: 587454
+
+  Package-Manager: portage-2.3.0
+
