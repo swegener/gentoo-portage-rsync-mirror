@@ -123,3 +123,8 @@
 
   Package-Manager: portage-2.3.0
 
+  03 Jul 2016; Sergei Trofimovich <slyfox@gentoo.org> rebar-2.6.1.ebuild:
+  keyword ~sparc, bug #583012
+
+  Package-Manager: portage-2.3.0
+
