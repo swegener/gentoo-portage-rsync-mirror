@@ -112,3 +112,9 @@
   Acked-by: Justin Lecher <jlec@gentoo.org>
   Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
 
+  02 Jul 2016; Andreas K. Hüttel <dilfridge@gentoo.org>
+  liblangtag-0.5.6.ebuild, liblangtag-0.5.8.ebuild:
+  Reset XDG_... env vars, bug 587036
+
+  Package-Manager: portage-2.3.0
+
