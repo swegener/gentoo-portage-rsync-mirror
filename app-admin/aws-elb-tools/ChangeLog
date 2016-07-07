@@ -70,3 +70,11 @@
 
   Package-Manager: portage-2.2.28
 
+  07 Jul 2016; Austin English <wizardedit@gentoo.org>
+  aws-elb-tools-1.0.15.1-r1.ebuild:
+  add missing call to eapply_user to aws-elb-tools-1.0.15.1-r1
+
+  Gentoo-Bug: https://bugs.gentoo.org/588240
+
+  Package-Manager: portage-2.2.28
+
