@@ -281,3 +281,10 @@
 
   Package-Manager: portage-2.2.28
 
+*rspec-core-3.5.1 (08 Jul 2016)
+
+  08 Jul 2016; Hans de Graaff <graaff@gentoo.org> +rspec-core-3.5.1.ebuild:
+  add 3.5.1
+
+  Package-Manager: portage-2.2.28
+
