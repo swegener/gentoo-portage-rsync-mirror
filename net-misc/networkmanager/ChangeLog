@@ -368,3 +368,9 @@
 
   Package-Manager: portage-2.3.0
 
+  08 Jul 2016; Jonathan Callen <jcallen@gentoo.org>
+  networkmanager-1.2.2.ebuild:
+  Fix build for non-native arches
+
+  Package-Manager: portage-2.3.0
+
