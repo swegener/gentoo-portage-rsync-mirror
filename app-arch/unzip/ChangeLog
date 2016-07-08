@@ -116,3 +116,8 @@
   02 May 2016; Matt Turner <mattst88@gentoo.org> unzip-6.0_p20.ebuild:
   alpha stable, bug 528082.
 
+  07 Jul 2016; Sergei Trofimovich <slyfox@gentoo.org> unzip-6.0_p20.ebuild:
+  allow user patches
+
+  Package-Manager: portage-2.3.0
+
