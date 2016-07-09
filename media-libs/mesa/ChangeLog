@@ -484,3 +484,8 @@
   mesa-11.2.2.ebuild, mesa-9999.ebuild:
   Use virtual/libelf
 
+*mesa-12.0.1 (08 Jul 2016)
+
+  08 Jul 2016; Matt Turner <mattst88@gentoo.org> +mesa-12.0.1.ebuild:
+  Version bump to 12.0.1.
+
