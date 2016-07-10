@@ -632,3 +632,13 @@
 
   Package-Manager: portage-2.2.28
 
+*wine-1.9.13 (10 Jul 2016)
+*wine-1.9.12 (10 Jul 2016)
+*wine-1.8.3 (10 Jul 2016)
+
+  10 Jul 2016; NP-Hardass <NP-Hardass@gentoo.org> +wine-1.8.3.ebuild,
+  +wine-1.9.12.ebuild, +wine-1.9.13.ebuild, wine-9999.ebuild:
+  Version bump to 1.8.3, 1.9.12, 1.9.13, update 9999
+
+  Package-Manager: portage-2.2.28
+
