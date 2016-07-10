@@ -6,11 +6,11 @@ EAPI="5"
 
 inherit eutils flag-o-matic toolchain-funcs
 
-LD64=ld64-253.3
-CCTOOLS_VERSION=877.5
+LD64=ld64-264.3.101
+CCTOOLS_VERSION=886
 CCTOOLS=cctools-${CCTOOLS_VERSION}
 LIBUNWIND=libunwind-35.3
-DYLD=dyld-360.14
+DYLD=dyld-360.18
 
 DESCRIPTION="Darwin assembler as(1) and static linker ld(1), Xcode Tools ${PV}"
 HOMEPAGE="http://www.opensource.apple.com/darwinsource/"
@@ -22,23 +22,20 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r2.tar.bz2
 	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.1-r1.tar.bz2
 	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.3-r1.tar.bz2
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r1.tar.bz2"
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r2.tar.bz2
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.2-r0.tar.bz2
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.3-r0.tar.bz2"
 
 LICENSE="APSL-2"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
-IUSE="test multitarget"
+IUSE="lto test multitarget"
 
 # ld64 can now only be compiled using llvm and libc++ since it massivley uses
 # C++11 language fatures. *But additionally* the as driver now defaults to
 # calling clang as the assembler on many platforms. This can be disabled using
 # -Wa,-Q but since it's default we make llvm a static runtime dependency.
-
-# Also, llvm lto and disassembler interfaces are now widely used in cctools.
-# Since we cannot compile with gcc any more and every llvm since 3.4 has
-# provided those interfaces, we no longer support disabling them. That
-# indirectly makes xar a static runtime dependency.
 RDEPEND="sys-devel/binutils-config
-	app-arch/xar
+	lto? ( app-arch/xar )
 	sys-devel/llvm
 	sys-libs/libcxx"
 DEPEND="${RDEPEND}
@@ -86,19 +83,18 @@ src_prepare() {
 
 	cd "${S}"/${LD64}/src
 	cp "${S}"/ld64-136-compile_stubs.h ld/compile_stubs.h
-	cp "${S}"/ld64-253.3-Makefile-2 Makefile
+	cp "${S}"/ld64-264.3.101-Makefile Makefile
 
+	epatch "${S}"/ld64-264.3.101-nolto.patch
 	epatch "${S}"/ld64-241.9-extraneous-includes.patch
 	epatch "${S}"/ld64-241.9-osatomic.patch
 	epatch "${S}"/ld64-236.3-crashreporter.patch
-	epatch "${S}"/ld64-253.3-nosnapshots.patch
-	epatch "${S}"/ld64-253.3-ppc.patch
-	epatch "${S}"/ld64-236.3-constant-types-2.patch
+	epatch "${S}"/ld64-264.3.101-nosnapshots.patch
+	epatch "${S}"/ld64-264.3.101-ppc.patch
+	epatch "${S}"/ld64-264.3.101-constant-types.patch
 	epatch "${S}"/ld64-241.9-register-names.patch
 	epatch "${S}"/ld64-241.9-get-comm-align.patch
 	epatch "${S}"/ld64-241.9-cc_md5.patch
-	epatch "${S}"/ld64-253.3-make_pair.patch
-	epatch "${S}"/ld64-253.3-delete-warning.patch
 
 	# provide missing headers from libunwind and dyld
 	mkdir -p include/{mach,mach-o/arm} || die
@@ -146,9 +142,12 @@ src_prepare() {
 	epatch "${S}"/${PN}-5.1-strnlen.patch
 	epatch "${S}"/${PN}-5.1-ppc.patch
 	epatch "${S}"/${PN}-5.1-thread-state-redefined.patch
-	epatch "${S}"/${PN}-5.1-makefile-target-warning.patch
-	epatch "${S}"/${PN}-7.0-lto-prefix.patch
+	epatch "${S}"/${PN}-7.3-make-j.patch
+	epatch "${S}"/${PN}-7.0-lto-prefix-2.patch
 	epatch "${S}"/${PN}-7.0-clang-as.patch
+	epatch "${S}"/${PN}-7.3-nolto.patch
+	epatch "${S}"/${PN}-7.3-nollvm.patch
+	epatch "${S}"/${PN}-7.3-no-developertools-dir.patch
 	cp ../${LD64}/src/other/prune_trie.h include/mach-o/ || die
 
 	# do not build profileable libstuff to save compile time
@@ -201,6 +200,9 @@ src_prepare() {
 }
 
 src_configure() {
+	ENABLE_LTO=0
+	use lto && ENABLE_LTO=1
+
 	# CPPFLAGS only affects ld64, cctools don't use 'em (which currently is
 	# what we want)
 	append-cppflags -DNDEBUG
@@ -241,14 +243,15 @@ src_configure() {
 compile_ld64() {
 	einfo "building ${LD64}"
 	cd "${S}"/${LD64}/src
-	emake || die "emake failed for ld64"
+	emake \
+		LTO=${ENABLE_LTO} \
+		|| die "emake failed for ld64"
 	use test && emake build_test
 }
 
 compile_cctools() {
 	einfo "building ${CCTOOLS}"
 	cd "${S}"/${CCTOOLS}
-	# -j1 because it fails too often with weird errors
 	# Suppress running dsymutil because it will warn about missing debug
 	# info which is expected when compiling without -g as we normally do.
 	# This might need some more thought if anyone ever wanted to build us
@@ -256,6 +259,8 @@ compile_cctools() {
 	emake \
 		LIB_PRUNETRIE="-L../../${LD64}/src -lprunetrie" \
 		EFITOOLS= \
+		LTO="${ENABLE_LTO}" \
+		LTO_LIBDIR=../../../lib \
 		COMMON_SUBDIRS='libstuff ar misc otool' \
 		SUBDIRS_32= \
 		LEGACY= \
@@ -263,7 +268,6 @@ compile_cctools() {
 		RC_CFLAGS="${CFLAGS}" \
 		OFLAG="${CCTOOLS_OFLAG}" \
 		DSYMUTIL=": disabled: dsymutil" \
-		-j1 \
 		|| die "emake failed for the cctools"
 	cd "${S}"/${CCTOOLS}/as
 	emake \
@@ -307,6 +311,22 @@ install_cctools() {
 		USRBINDIR=\"${EPREFIX}\"${BINPATH} \
 		LIBDIR=\"${EPREFIX}\"${LIBPATH} \
 		LOCLIBDIR=\"${EPREFIX}\"${LIBPATH}
+
+	# upstream is starting to replace classic binutils with llvm-integrated
+	# ones. nm and size are now symlinks to llvm-{nm,size} while the classic
+	# version is preserved as {nm,size}-classic. (BTW: otool is a symlink to
+	# otool-classic for now but a wrapper llvm-otool that is calling
+	# llvm-objdump is present already.)
+	# Since our binutils do not live in the same directory as the llvm
+	# installation, we have to rewrite the symlinks to the llvm tools.
+	# This also means, that these tools still appear to be versioned via
+	# binutils-config but actually always run the currently installed llvm
+	# tool.
+	for tool in nm size ; do
+		# ${EPREFIX}/usr/x86_64-apple-darwin15/binutils-bin/7.3/$tool
+		# -> ${EPREFIX}/bin/llvm-$tool
+		ln -sfn ../../../bin/llvm-$tool "${D}/${EPREFIX}/${BINPATH}/$tool"
+	done
 
 	cd "${ED}"${BINPATH}
 	insinto ${DATAPATH}/man/man1
