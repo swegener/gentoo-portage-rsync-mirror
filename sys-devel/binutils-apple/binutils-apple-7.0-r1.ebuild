@@ -22,23 +22,18 @@ SRC_URI="http://www.opensource.apple.com/tarballs/ld64/${LD64}.tar.gz
 	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-5.1-r2.tar.bz2
 	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.1-r1.tar.bz2
 	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-6.3-r1.tar.bz2
-	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r1.tar.bz2"
+	http://dev.gentoo.org/~grobian/distfiles/${PN}-patches-7.0-r2.tar.bz2"
 
 LICENSE="APSL-2"
 KEYWORDS="~ppc-macos ~x64-macos ~x86-macos"
-IUSE="test multitarget"
+IUSE="lto test multitarget"
 
 # ld64 can now only be compiled using llvm and libc++ since it massivley uses
 # C++11 language fatures. *But additionally* the as driver now defaults to
 # calling clang as the assembler on many platforms. This can be disabled using
 # -Wa,-Q but since it's default we make llvm a static runtime dependency.
-
-# Also, llvm lto and disassembler interfaces are now widely used in cctools.
-# Since we cannot compile with gcc any more and every llvm since 3.4 has
-# provided those interfaces, we no longer support disabling them. That
-# indirectly makes xar a static runtime dependency.
 RDEPEND="sys-devel/binutils-config
-	app-arch/xar
+	lto? ( app-arch/xar )
 	sys-devel/llvm
 	sys-libs/libcxx"
 DEPEND="${RDEPEND}
@@ -86,8 +81,9 @@ src_prepare() {
 
 	cd "${S}"/${LD64}/src
 	cp "${S}"/ld64-136-compile_stubs.h ld/compile_stubs.h
-	cp "${S}"/ld64-253.3-Makefile-2 Makefile
+	cp "${S}"/ld64-253.3-Makefile-3 Makefile
 
+	epatch "${S}"/ld64-253.3-nolto.patch
 	epatch "${S}"/ld64-241.9-extraneous-includes.patch
 	epatch "${S}"/ld64-241.9-osatomic.patch
 	epatch "${S}"/ld64-236.3-crashreporter.patch
@@ -146,9 +142,11 @@ src_prepare() {
 	epatch "${S}"/${PN}-5.1-strnlen.patch
 	epatch "${S}"/${PN}-5.1-ppc.patch
 	epatch "${S}"/${PN}-5.1-thread-state-redefined.patch
-	epatch "${S}"/${PN}-5.1-makefile-target-warning.patch
-	epatch "${S}"/${PN}-7.0-lto-prefix.patch
+	epatch "${S}"/${PN}-7.0-make-j.patch
+	epatch "${S}"/${PN}-7.0-lto-prefix-2.patch
 	epatch "${S}"/${PN}-7.0-clang-as.patch
+	epatch "${S}"/${PN}-7.0-nolto.patch
+	epatch "${S}"/${PN}-7.0-nollvm.patch
 	cp ../${LD64}/src/other/prune_trie.h include/mach-o/ || die
 
 	# do not build profileable libstuff to save compile time
@@ -201,6 +199,9 @@ src_prepare() {
 }
 
 src_configure() {
+	ENABLE_LTO=0
+	use lto && ENABLE_LTO=1
+
 	# CPPFLAGS only affects ld64, cctools don't use 'em (which currently is
 	# what we want)
 	append-cppflags -DNDEBUG
@@ -241,14 +242,15 @@ src_configure() {
 compile_ld64() {
 	einfo "building ${LD64}"
 	cd "${S}"/${LD64}/src
-	emake || die "emake failed for ld64"
+	emake \
+		LTO=${ENABLE_LTO} \
+		|| die "emake failed for ld64"
 	use test && emake build_test
 }
 
 compile_cctools() {
 	einfo "building ${CCTOOLS}"
 	cd "${S}"/${CCTOOLS}
-	# -j1 because it fails too often with weird errors
 	# Suppress running dsymutil because it will warn about missing debug
 	# info which is expected when compiling without -g as we normally do.
 	# This might need some more thought if anyone ever wanted to build us
@@ -256,6 +258,8 @@ compile_cctools() {
 	emake \
 		LIB_PRUNETRIE="-L../../${LD64}/src -lprunetrie" \
 		EFITOOLS= \
+		LTO="${ENABLE_LTO}" \
+		LTO_LIBDIR=../../../lib \
 		COMMON_SUBDIRS='libstuff ar misc otool' \
 		SUBDIRS_32= \
 		LEGACY= \
@@ -263,7 +267,6 @@ compile_cctools() {
 		RC_CFLAGS="${CFLAGS}" \
 		OFLAG="${CCTOOLS_OFLAG}" \
 		DSYMUTIL=": disabled: dsymutil" \
-		-j1 \
 		|| die "emake failed for the cctools"
 	cd "${S}"/${CCTOOLS}/as
 	emake \
