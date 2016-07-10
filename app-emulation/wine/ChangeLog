@@ -623,3 +623,12 @@
 
   Require dosbox that contains compatibility patches
 
+  10 Jul 2016; NP-Hardass <NP-Hardass@gentoo.org> wine-1.8-r2.ebuild,
+  wine-1.8.1-r2.ebuild, wine-1.8.2-r1.ebuild, wine-1.9.4-r2.ebuild,
+  wine-1.9.5-r2.ebuild, wine-1.9.6-r2.ebuild, wine-1.9.7-r2.ebuild,
+  wine-1.9.8-r1.ebuild, wine-1.9.9-r1.ebuild, wine-1.9.10-r1.ebuild,
+  wine-1.9.11-r1.ebuild, wine-9999.ebuild:
+  Fix STAGING_{MV,GV} in phases; thanks to mgorny
+
+  Package-Manager: portage-2.2.28
+
