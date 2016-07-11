@@ -22,6 +22,7 @@ app-office/texmaker qt5
 app-text/kchmviewer qt5
 dev-qt/designer webkit
 net-irc/quassel webkit
+kde-plasma/libksysguard detailedmemory
 
 # Ian Delaney <idella4@gentoo.org> (06 Apr 2016)
 # on behalf of Ilya Tumaykin <itumaykin+gentoo@gmail.com>
@@ -96,10 +97,6 @@ gnome-extra/zeitgeist-datasources -tomboy
 # masking libvirt for cfengine (bug #412253)
 net-misc/cfengine libvirt
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (28 Nov 2010)
-# sys-devel/llvm is keyworded on ppc
-#media-libs/mesa -llvm
-
 # Maciej Mrozowski <reavertm@gentoo.org> (26 Jun 2010)
 # Needs media-libs/simage keyworded, bug 325623
 media-libs/coin simage
@@ -107,3 +104,8 @@ media-libs/coin simage
 #nixnut <nixnut@gentoo.org> (24 jan 2009)
 #don't want zemberek for enchant for ppc32
 app-text/enchant zemberek
+
+# Chí-Thanh Christopher Nguyễn (11 Jul 2016)
+# Requires unkeyworded kde-frameworks packages
+net-irc/quassel qt5
+
