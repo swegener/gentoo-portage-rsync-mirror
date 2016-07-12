@@ -1646,3 +1646,35 @@
 
   Package-Manager: portage-2.2.28
 
+  12 Jul 2016; Mike Pagano <mpagano@gentoo.org>
+  -gentoo-sources-3.4.110.ebuild, -gentoo-sources-3.4.111.ebuild:
+  Clean up old, unsupported versions of 3.4.X kernel
+
+  Package-Manager: portage-2.2.28
+
+  12 Jul 2016; Mike Pagano <mpagano@gentoo.org>
+  -gentoo-sources-3.14.69.ebuild, -gentoo-sources-3.14.70.ebuild,
+  -gentoo-sources-3.14.71.ebuild, -gentoo-sources-3.14.72.ebuild:
+  Clean up old, unsupported versions of 3.14.X kernel
+
+  Package-Manager: portage-2.2.28
+
+  12 Jul 2016; Mike Pagano <mpagano@gentoo.org>
+  -gentoo-sources-3.18.33.ebuild, -gentoo-sources-3.18.34.ebuild,
+  -gentoo-sources-3.18.35.ebuild:
+  Clean up old, unsupported versions of 3.18.X kernel
+
+  Package-Manager: portage-2.2.28
+
+  12 Jul 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.1.24.ebuild,
+  -gentoo-sources-4.1.25.ebuild, -gentoo-sources-4.1.26.ebuild:
+  Clean up old, unsupported versions of 4.1.X kernel
+
+  Package-Manager: portage-2.2.28
+
+  12 Jul 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.6.0.ebuild,
+  -gentoo-sources-4.6.1.ebuild, -gentoo-sources-4.6.2.ebuild:
+  Clean up old, unsupported versions of 4.6.X kernel
+
+  Package-Manager: portage-2.2.28
+
