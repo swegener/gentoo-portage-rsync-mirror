@@ -97,3 +97,8 @@
 
   Package-Manager: portage-2.3.0
 
+  14 Jul 2016; Davide Pesavento <pesa@gentoo.org> -qscintilla-2.9.1.ebuild:
+  drop old unstable version
+
+  Package-Manager: portage-2.3.0
+
