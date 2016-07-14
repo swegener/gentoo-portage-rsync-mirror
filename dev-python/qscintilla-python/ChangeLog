@@ -99,3 +99,9 @@
 
   Package-Manager: portage-2.3.0
 
+  14 Jul 2016; Davide Pesavento <pesa@gentoo.org>
+  qscintilla-python-2.9.2.ebuild:
+  add python3_5
+
+  Package-Manager: portage-2.3.0
+
