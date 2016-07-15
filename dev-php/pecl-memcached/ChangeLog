@@ -128,3 +128,10 @@
 
   Package-Manager: portage-2.3.0
 
+  15 Jul 2016; Brian Evans <grknight@gentoo.org> -files/libmc-1.09-fix.diff,
+  -files/pecl-memcached-1.0.2-php54_zend.patch,
+  -pecl-memcached-1.0.2-r2.ebuild:
+  Drop old version and unused patches
+
+  Package-Manager: portage-2.3.0
+
