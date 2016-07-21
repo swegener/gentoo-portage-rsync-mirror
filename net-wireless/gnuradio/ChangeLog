@@ -119,3 +119,16 @@
 
   Package-Manager: portage-2.3.0
 
+*gnuradio-3.7.9.3 (21 Jul 2016)
+
+  21 Jul 2016; Zero_Chaos <zerochaos@gentoo.org> +gnuradio-3.7.9.3.ebuild:
+  bump 3.7.9.3 maint release
+
+  Package-Manager: portage-2.3.0
+
+  21 Jul 2016; Zero_Chaos <zerochaos@gentoo.org> -gnuradio-3.7.8.ebuild,
+  -gnuradio-3.7.9.ebuild, -gnuradio-3.7.9.2.ebuild:
+  minor cleanup of old ebuilds
+
+  Package-Manager: portage-2.3.0
+
