@@ -1240,3 +1240,11 @@
 
   Package-Manager: portage-2.3.0_p13
 
+*chromium-52.0.2743.82 (21 Jul 2016)
+
+  21 Jul 2016; Mike Gilbert <floppym@gentoo.org>
+  -chromium-52.0.2743.49.ebuild, +chromium-52.0.2743.82.ebuild:
+  stable channel bump (52.0.2743.82)
+
+  Package-Manager: portage-2.3.0_p15
+
