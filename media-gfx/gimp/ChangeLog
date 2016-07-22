@@ -244,3 +244,9 @@
 
   Package-Manager: portage-2.2.28
 
+  22 Jul 2016; Sebastian Pipping <sping@gentoo.org> gimp-2.9.2-r2.ebuild,
+  gimp-2.9.4.ebuild, gimp-9999.ebuild:
+  Sane XDG_DATA_DIRS (bug #587004)
+
+  Package-Manager: portage-2.2.28
+
