@@ -250,3 +250,9 @@
 
   Package-Manager: portage-2.2.28
 
+  22 Jul 2016; Sebastian Pipping <sping@gentoo.org>
+  +files/gimp-2.9.4-mkdir-makefile.patch, gimp-2.9.4.ebuild:
+  Fix build system (bug #589394)
+
+  Package-Manager: portage-2.2.28
+
