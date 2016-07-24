@@ -292,3 +292,9 @@
 
   Package-Manager: portage-2.2.28
 
+  24 Jul 2016; Jeroen Roovers <jer@gentoo.org> vlc-2.2.4.ebuild:
+  Stable for PPC64 (bug #584510).
+
+  Package-Manager: portage-2.3.0
+  RepoMan-Options: --ignore-arches
+
