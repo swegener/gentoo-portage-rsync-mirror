@@ -289,3 +289,8 @@
 
   Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
 
+  24 Jul 2016; Patrick Lauer <patrick@gentoo.org> syncthing-0.14.0.ebuild:
+  Whitespace
+
+  Package-Manager: portage-2.3.0
+
