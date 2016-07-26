@@ -84,3 +84,9 @@
 
   Package-Manager: portage-2.3.0
 
+  25 Jul 2016; Jason A. Donenfeld <zx2c4@gentoo.org>
+  wireguard-0.0.20160722.ebuild, wireguard-9999.ebuild:
+  add debug USE flag
+
+  Package-Manager: portage-2.3.0
+
