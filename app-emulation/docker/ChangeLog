@@ -361,3 +361,13 @@
 
   Package-Manager: portage-2.2.28
 
+  28 Jul 2016; William Hubbs <williamh@gentoo.org> -docker-1.12.0_rc5.ebuild:
+  remove old
+
+  Package-Manager: portage-2.2.28
+
+  28 Jul 2016; William Hubbs <williamh@gentoo.org> docker-9999.ebuild:
+  sync live ebuild
+
+  Package-Manager: portage-2.2.28
+
