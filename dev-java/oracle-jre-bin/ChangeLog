@@ -303,3 +303,11 @@
 
   Package-Manager: portage-2.3.0_rc1
 
+*oracle-jre-bin-1.8.0.102 (27 Jul 2016)
+
+  27 Jul 2016; James Le Cuirot <chewi@gentoo.org>
+  +oracle-jre-bin-1.8.0.102.ebuild:
+  Bump to 1.8.0.102 wrt security bug #589208
+
+  Package-Manager: portage-2.3.0
+

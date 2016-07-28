@@ -363,3 +363,14 @@
 
   Package-Manager: portage-2.2.28
 
+*oracle-jdk-bin-1.8.0.102 (27 Jul 2016)
+*oracle-jdk-bin-1.8.0.101 (27 Jul 2016)
+
+  27 Jul 2016; James Le Cuirot <chewi@gentoo.org>
+  +oracle-jdk-bin-1.8.0.101.ebuild, +oracle-jdk-bin-1.8.0.102.ebuild:
+  Version bumps wrt security bug #589208
+
+  This restores arm(64) that was accidentally dropped recently.
+
+  Package-Manager: portage-2.3.0
+
