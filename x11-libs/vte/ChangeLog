@@ -329,3 +329,13 @@
   Package-Manager: portage-2.3.0
   RepoMan-Options: --ignore-arches
 
+  30 Jul 2016; Pacho Ramos <pacho@gentoo.org> -vte-0.42.4.ebuild:
+  Drop old
+
+  Package-Manager: portage-2.3.0
+
+  30 Jul 2016; Pacho Ramos <pacho@gentoo.org> vte-0.44.2.ebuild:
+  x11-libs are not needed anymore (#588928 by Cedric Sodhi)
+
+  Package-Manager: portage-2.3.0
+
