@@ -203,3 +203,14 @@
   Package-Manager: portage-2.3.0
   RepoMan-Options: --ignore-arches
 
+  30 Jul 2016; Pacho Ramos <pacho@gentoo.org> -libgphoto2-2.5.9.ebuild:
+  Drop old
+
+  Package-Manager: portage-2.3.0
+
+  30 Jul 2016; Pacho Ramos <pacho@gentoo.org>
+  +files/libgphoto2-2.5.10-jpeg.patch, libgphoto2-2.5.10.ebuild:
+  Fix build with latest jpeg-turbo (#586336 by Ulenrich)
+
+  Package-Manager: portage-2.3.0
+
