@@ -98,3 +98,22 @@
 
   Package-Manager: portage-2.3.0
 
+  31 Jul 2016; David Seifert <soap@gentoo.org> texmacs-1.99.5.ebuild:
+  Depend on dev-qt/qtgui:4 unconditionally
+
+  Gentoo-bug: 590160
+
+  Package-Manager: portage-2.3.0
+
+  31 Jul 2016; David Seifert <soap@gentoo.org> texmacs-1.99.5.ebuild:
+  remove 'qt4' from IUSE
+
+  Package-Manager: portage-2.3.0
+
+  31 Jul 2016; Michael Palimaka <kensington@gentoo.org> texmacs-1.99.5.ebuild:
+  ensure correct version of qt binaries are called
+
+  Gentoo-bug: 590162
+
+  Package-Manager: portage-2.3.0
+
