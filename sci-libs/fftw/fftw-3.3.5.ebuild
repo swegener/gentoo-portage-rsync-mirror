@@ -12,7 +12,7 @@ DESCRIPTION="Fast C library for the Discrete Fourier Transform"
 HOMEPAGE="http://www.fftw.org/"
 
 if [[ ${PV} = *9999 ]]; then
-	inherit autotools git-r3
+	inherit autotools git-2
 	EGIT_REPO_URI="https://github.com/FFTW/fftw3.git"
 else
 	SRC_URI="http://www.fftw.org/${P}.tar.gz"
