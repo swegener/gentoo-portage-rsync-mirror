@@ -300,3 +300,13 @@
 
   Signed-off-by: Patrice Clement <monsieurp@gentoo.org>
 
+*spice-gtk-0.32 (02 Aug 2016)
+
+  02 Aug 2016; Matthias Maier <tamiko@gentoo.org> metadata.xml,
+  +spice-gtk-0.32.ebuild:
+  version bump to 0.32
+
+  Thanks to Yixun Lun (dlan) for all the work!
+
+  Package-Manager: portage-2.2.28
+
