@@ -185,3 +185,15 @@
   Package-Manager: portage-2.3.0
   RepoMan-Options: --ignore-arches
 
+*guile-2.0.12 (04 Aug 2016)
+
+  04 Aug 2016; Amy Winston <amynka@gentoo.org> +guile-2.0.12.ebuild:
+  version bump 2.0.12 bug #355355
+
+  Package-Manager: portage-2.2.28
+
+  04 Aug 2016; Amy Winston <amynka@gentoo.org> guile-2.0.12.ebuild:
+  remove unused useflag
+
+  Package-Manager: portage-2.2.28
+

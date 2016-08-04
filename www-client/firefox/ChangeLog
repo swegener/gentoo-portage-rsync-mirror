@@ -875,3 +875,10 @@
 
   Package-Manager: portage-2.2.28
 
+  04 Aug 2016; Ian Stakenvicius <axs@gentoo.org> firefox-45.3.0.ebuild:
+  45.3.0: convert LINGUAS to L10N
+
+  Bug: http://bugs.gentoo.org/587334
+
+  Package-Manager: portage-2.2.28
+
