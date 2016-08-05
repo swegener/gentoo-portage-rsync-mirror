@@ -512,3 +512,13 @@
 
   Package-Manager: portage-2.3.0
 
+  05 Aug 2016; James Le Cuirot <chewi@gentoo.org> icedtea-bin-3.1.0.ebuild:
+  Add missing nsplugin USE flag on icedtea-web dep
+
+  Package-Manager: portage-2.3.0
+
+  05 Aug 2016; James Le Cuirot <chewi@gentoo.org> icedtea-bin-3.1.0.ebuild:
+  Add missing dependency on libXcomposite, #584738
+
+  Package-Manager: portage-2.3.0
+
