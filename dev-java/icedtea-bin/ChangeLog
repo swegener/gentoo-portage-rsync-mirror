@@ -505,3 +505,10 @@
   license should be GPL-2-with-classpath-exception, not GPL-2-with-linking-
   exception
 
+*icedtea-bin-7.2.6.7 (04 Aug 2016)
+
+  04 Aug 2016; James Le Cuirot <chewi@gentoo.org> +icedtea-bin-7.2.6.7.ebuild:
+  Bump to 7.2.6.7, adds multilib for amd64
+
+  Package-Manager: portage-2.3.0
+
