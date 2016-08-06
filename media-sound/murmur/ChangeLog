@@ -180,3 +180,12 @@
   Package-Manager: portage-2.3.0
   Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 
+*murmur-1.2.16-r1 (06 Aug 2016)
+
+  06 Aug 2016; Lars Wendler <polynomial-c@gentoo.org>
+  +murmur-1.2.16-r1.ebuild:
+  Revbump to fix permission of murmur.ini (bug #559362).
+
+  Package-Manager: portage-2.3.0
+  Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
