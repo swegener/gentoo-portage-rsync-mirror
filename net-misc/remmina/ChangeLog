@@ -134,3 +134,14 @@
   Gentoo-Bug: 571026
   Closes: https://github.com/gentoo/gentoo/pull/2006
 
+  07 Aug 2016; David Seifert <soap@gentoo.org> remmina-1.2.0_rc14.ebuild:
+  elog optional runtime dependency
+
+  Inform the user that XDMCP support requires Xephyr to be installed.
+
+  Gentoo-Bug: 572472
+  Reported-by: WOLfgang Schricker <wols@wols.org>
+  Closes: https://github.com/gentoo/gentoo/pull/2011
+
+  Signed-off-by: David Seifert <soap@gentoo.org>
+

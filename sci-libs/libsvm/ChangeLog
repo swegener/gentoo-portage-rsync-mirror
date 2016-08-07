@@ -85,3 +85,11 @@
 
   Package-Manager: portage-2.3.0
 
+*libsvm-3.17-r3 (07 Aug 2016)
+
+  07 Aug 2016; David Seifert <soap@gentoo.org> -libsvm-3.17-r2.ebuild,
+  +libsvm-3.17-r3.ebuild:
+  Install scripts for all python impls
+
+  Package-Manager: portage-2.3.0
+
