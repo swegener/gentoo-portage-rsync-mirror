@@ -161,3 +161,9 @@
 
   This version is a major change from previous version.
 
+  10 Aug 2016; Brian Dolbec <dolsen@gentoo.org> -files/buildbot9..service,
+  +files/buildbot9.service:
+  Fix typo in files/buildbot9.service filename bug 590958
+
+  Package-Manager: portage-2.3.0
+
