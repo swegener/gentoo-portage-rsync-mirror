@@ -10,3 +10,8 @@
 
   Package-Manager: portage-2.3.0
 
+  10 Aug 2016; Brian Dolbec <dolsen@gentoo.org> jsonref-0.1.ebuild:
+  Switch SRC_URI to pypi for consistent hashsums bug 590956
+
+  Package-Manager: portage-2.3.0
+
