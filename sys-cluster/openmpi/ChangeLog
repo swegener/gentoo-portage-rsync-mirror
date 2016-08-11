@@ -133,3 +133,19 @@
 
   Package-Manager: portage-2.2.28
 
+*openmpi-1.10.3-r1 (11 Aug 2016)
+
+  11 Aug 2016; David Seifert <soap@gentoo.org> -openmpi-1.10.3.ebuild,
+  +openmpi-1.10.3-r1.ebuild:
+  Revbump for multilib support
+
+  Package-Manager: portage-2.3.0
+
+*openmpi-1.10.3 (11 Aug 2016)
+
+  11 Aug 2016; David Seifert <soap@gentoo.org> +openmpi-1.10.3.ebuild,
+  openmpi-1.10.3-r1.ebuild:
+  Reintroduce non-multilib version, unkeyword multilib
+
+  Package-Manager: portage-2.3.0
+
