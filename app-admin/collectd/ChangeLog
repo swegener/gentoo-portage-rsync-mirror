@@ -325,3 +325,14 @@
 
   Package-Manager: portage-2.3.0
 
+  10 Aug 2016; Thomas Deutschmann <whissi@gentoo.org>
+  collectd-5.5.1-r4.ebuild:
+  Adjust depedency on sci-libs/libsigrok
+
+  Requiring <sci-libs/libsigrok-0.4 when building sigrok plugin because
+  plugin doesn't build against recent sci-libs/libsigrok.
+
+  Bug: https://github.com/collectd/collectd/issues/1574
+
+  Package-Manager: portage-2.3.0
+
