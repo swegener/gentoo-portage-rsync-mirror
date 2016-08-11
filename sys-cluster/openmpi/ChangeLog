@@ -120,3 +120,16 @@
 
   Signed-off-by: David Seifert <soap@gentoo.org>
 
+*openmpi-1.10.3 (11 Aug 2016)
+
+  11 Aug 2016; Justin Bronder <jsbronder@gentoo.org> -openmpi-1.10.0.ebuild,
+  -openmpi-1.10.2.ebuild, +openmpi-1.10.3.ebuild:
+  bump 1.10.3
+
+  Package-Manager: portage-2.2.26
+
+  11 Aug 2016; Christoph Junghans <ottxor@gentoo.org> openmpi-1.10.3.ebuild:
+  fixed build error (bug #590446#c22)
+
+  Package-Manager: portage-2.2.28
+
