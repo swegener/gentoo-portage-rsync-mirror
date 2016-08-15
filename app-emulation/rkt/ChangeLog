@@ -197,3 +197,8 @@
 
   Package-Manager: portage-2.3.0
 
+  15 Aug 2016; Zac Medico <zmedico@gentoo.org> rkt-1.12.0.ebuild:
+  fix 1.12.0 to not require git, bug 591314
+
+  Package-Manager: portage-2.3.0
+
