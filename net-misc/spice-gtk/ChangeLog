@@ -332,3 +332,25 @@
 
   Package-Manager: portage-2.3.0
 
+*spice-gtk-0.32-r2 (17 Aug 2016)
+
+  17 Aug 2016; Yixun Lan <dlan@gentoo.org> +files/README.gentoo, metadata.xml,
+  +spice-gtk-0.32-r2.ebuild:
+  fine tune IUSEs
+
+  1) replace IUSE=gstreamer with IUSE="gstaudio gstvideo"
+     so we can control audio/video backend seperately
+     possible has the combination USE="gstvideo -gstaudio pulseaudio"
+
+  2) introduce gentoo.readme to suggest users install mjpeg,vpx,x264
+     gstreamer plugins
+
+  Package-Manager: portage-2.3.0
+
+*spice-gtk-9999 (17 Aug 2016)
+
+  17 Aug 2016; Yixun Lan <dlan@gentoo.org> +spice-gtk-9999.ebuild:
+  live ebuild added
+
+  Package-Manager: portage-2.3.0
+
