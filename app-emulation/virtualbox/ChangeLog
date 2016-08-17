@@ -484,3 +484,9 @@
   Package-Manager: portage-2.3.0
   Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 
+  17 Aug 2016; Lars Wendler <polynomial-c@gentoo.org> virtualbox-5.1.4.ebuild:
+  Fixed compilation with -pulseaudio (bug #591440).
+
+  Package-Manager: portage-2.3.0
+  Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+
