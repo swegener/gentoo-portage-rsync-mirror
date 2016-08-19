@@ -2,25 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit elisp-common autotools eutils python-single-r1
+[[ "${PV}" = "9999" ]] && inherit git-r3
+inherit elisp-common autotools python-single-r1
+
+if [[ "${PV}" = "9999" ]]; then
+	EGIT_REPO_URI="git://git.sv.gnu.org/lilypond.git"
+else
+	SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~x86"
+fi
 
 DESCRIPTION="GNU Music Typesetter"
-SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
 HOMEPAGE="http://lilypond.org/"
 
 LICENSE="GPL-3 FDL-1.3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~hppa ~x86"
 LANGS=" ca cs da de el eo es fi fr it ja nl ru sv tr uk vi zh_TW"
 IUSE="debug emacs profile vim-syntax ${LANGS// / linguas_}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=app-text/ghostscript-gpl-8.15
 	>=dev-scheme/guile-1.8.2:12[deprecated,regex]
-	media-fonts/urw-fonts
+	media-fonts/tex-gyre
 	media-libs/fontconfig
 	media-libs/freetype:2
 	>=x11-libs/pango-1.12.3
@@ -46,6 +52,8 @@ DEPEND="${RDEPEND}
 # Correct output data for tests isn't bundled with releases
 RESTRICT="test"
 
+DOCS=( DEDICATION HACKING README.txt ROADMAP )
+
 pkg_setup() {
 	# make sure >=metapost-1.803 is selected if it's installed, bug 498704
 	if [[ ${MERGE_TYPE} != binary ]] && has_version ">=dev-tex/metapost-1.803" ; then
@@ -59,8 +67,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.17.2-tex-docs.patch
-	epatch "${FILESDIR}"/${P}-fontforge.patch
+	default
 
 	if ! use vim-syntax ; then
 		sed -i 's/vim//' GNUmakefile.in || die
@@ -79,8 +86,6 @@ src_prepare() {
 	# remove bundled texinfo file (fixes bug #448560)
 	rm tex/texinfo.tex || die
 
-	epatch_user
-
 	eautoreconf
 }
 
@@ -88,13 +93,18 @@ src_configure() {
 	# documentation generation currently not supported since it requires a newer
 	# version of texi2html than is currently in the tree
 
-	econf \
-		--with-ncsb-dir=/usr/share/fonts/urw-fonts \
-		--disable-documentation \
-		--disable-optimising \
-		--disable-pipe \
-		$(use_enable debug debugging) \
+	local myeconfargs+=(
+		--with-texgyre-dir=/usr/share/fonts/tex-gyre
+		--disable-documentation
+		--disable-optimising
+		--disable-pipe
+		$(use_enable debug debugging)
 		$(use_enable profile profiling)
+	)
+
+	has_version ">=dev-scheme/guile-2" && myeconfargs+=( --enable-guile2 )
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -120,7 +130,7 @@ src_install () {
 
 	python_fix_shebang "${ED}"
 
-	dodoc AUTHORS.txt NEWS.txt README.txt
+	einstalldocs
 }
 
 pkg_postinst() {
