@@ -54,3 +54,9 @@
 
   Package-Manager: portage-2.2.28
 
+  20 Aug 2016; Anthony G. Basile <blueness@gentoo.org>
+  hamcrest-0.1.0_p20150103.ebuild:
+  stabilize 0.1.0_p20150103 on ppc, bug #587908
+
+  Package-Manager: portage-2.2.28
+
