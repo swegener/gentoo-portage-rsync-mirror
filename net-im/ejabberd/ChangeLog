@@ -229,3 +229,21 @@
 
   Package-Manager: portage-2.2.28
 
+  21 Aug 2016; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  -ejabberd-2.1.13-r2.ebuild, metadata.xml:
+  Remove old, vulnerable ejabberd version
+
+  Gentoo-Bug: 539040
+  Gentoo-Bug: 525478
+
+  Package-Manager: portage-2.3.0
+
+  21 Aug 2016; Amadeusz Żołnowski <aidecoe@gentoo.org>
+  -ejabberd-16.01-r1.ebuild, -files/ejabberd-16.01-ejabberdctl.patch,
+  metadata.xml:
+  Remove older, bundled version of ejabberd
+
+  Clean up unused flags in metadata.xml.
+
+  Package-Manager: portage-2.3.0
+
