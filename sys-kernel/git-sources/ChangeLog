@@ -430,3 +430,12 @@
 
   Package-Manager: portage-2.2.28
 
+  22 Aug 2016; Joshua Kinard <kumba@gentoo.org> git-sources-4.8_rc1.ebuild,
+  git-sources-4.8_rc2.ebuild, git-sources-4.8_rc3.ebuild:
+  Use new 'K_FROM_GIT' var added to kernel-2.eclass.
+
+  Signed-off-by: Joshua Kinard <kumba@gentoo.org>
+  Acked-by: Mike Pagano <mpagano@gentoo.org>
+
+  Package-Manager: portage-2.3.0
+
