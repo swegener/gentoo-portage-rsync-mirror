@@ -58,3 +58,11 @@
 
   Package-Manager: portage-2.3.0
 
+*libfastjson-0.99.4 (24 Aug 2016)
+
+  24 Aug 2016; Thomas Deutschmann <whissi@gentoo.org>
+  +libfastjson-0.99.4.ebuild, metadata.xml:
+  Bumped to v0.99.4
+
+  Package-Manager: portage-2.3.0
+
