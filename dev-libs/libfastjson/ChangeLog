@@ -66,3 +66,15 @@
 
   Package-Manager: portage-2.3.0
 
+  24 Aug 2016; Thomas Deutschmann <whissi@gentoo.org>
+  libfastjson-0.99.4.ebuild:
+  Adjust sys-devel/autoconf-archive requirement
+
+  In previous commit 4a52463e2acb5 I had a typo in the required sys-devel
+  /autoconf-archive
+  version. We only need >=sys-devel/autoconf-archive-2015.02.04 (the first
+  version
+  which contain AX_COMPILER_FLAGS).
+
+  Package-Manager: portage-2.3.0
+

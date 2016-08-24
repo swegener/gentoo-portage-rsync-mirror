@@ -72,3 +72,26 @@
 
   Bug: 575810
 
+*s3fs-1.80 (24 Aug 2016)
+
+  24 Aug 2016; Patrice Clement <monsieurp@gentoo.org> metadata.xml,
+  +s3fs-1.80.ebuild:
+  version bump to 1.80.
+
+  Courtesy of Juraj Variny <rini17@gmail.com>.
+
+  Gentoo-Bug: https://bugs.gentoo.org/589842
+  Package-Manager: portage-2.2.28
+
+  24 Aug 2016; Patrice Clement <monsieurp@gentoo.org> metadata.xml:
+  transfer maintainership to Juraj Variny.
+
+  Gentoo-Bug: https://bugs.gentoo.org/589884
+
+  Package-Manager: portage-2.2.28
+
+  24 Aug 2016; Patrice Clement <monsieurp@gentoo.org> metadata.xml:
+  Fix typo in metadata.xml dev-libs -> net-libs.
+
+  Package-Manager: portage-2.2.28
+
