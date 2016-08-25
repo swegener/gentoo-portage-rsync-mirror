@@ -79,3 +79,8 @@
   12 Mar 2016; Tim Harder <radhermit@gentoo.org> +s3ql-2.17.1.ebuild:
   version bump to 2.17.1
 
+*s3ql-2.20 (25 Aug 2016)
+
+  25 Aug 2016; Tim Harder <radhermit@gentoo.org> +s3ql-2.20.ebuild:
+  version bump to 2.20
+
