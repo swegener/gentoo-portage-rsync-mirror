@@ -247,3 +247,16 @@
 
   Package-Manager: portage-2.3.0
 
+  27 Aug 2016; Amadeusz Żołnowski <aidecoe@gentoo.org> ejabberd-16.04.ebuild:
+  Actually set suid bit on epam wrapper
+
+  Because setting suid bit was followed by changing owner suid is reset.
+  Change the order of commands.
+
+  It is a small change so I assume it can be made in stable ebuild.
+  Rev-bump will come after more bug fixes.
+
+  Gentoo-Bug: 592218
+
+  Package-Manager: portage-2.3.0
+
