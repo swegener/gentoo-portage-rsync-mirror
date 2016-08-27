@@ -15,7 +15,7 @@ SRC_URI="http://www.process-one.net/downloads/${PN}/${PV}/${P}.tgz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ia64 ppc ~sparc x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 REQUIRED_USE="mssql? ( odbc )"
 # TODO: Add 'tools' flag.
 IUSE="captcha debug full-xml hipe ldap mssql mysql nls odbc pam postgres redis
@@ -132,8 +132,12 @@ ejabberd_cert_install() {
 }
 
 # Get path to ejabberd lib directory.
+#
+# This is the path ./configure script Base for this path is path set in
+# ./configure script which is /usr/lib by default. If libdir is explicitely set
+# to something else than this should be adjusted here as well.
 get_ejabberd_path() {
-	echo "$(get_erl_libs)/${P}"
+	echo "/usr/$(get_libdir)/${P}"
 }
 
 # Make ejabberd.service for systemd from upstream provided template.
@@ -183,12 +187,19 @@ src_prepare() {
 	skip_docs
 	adjust_config
 	customize_epam_wrapper "${FILESDIR}/epam-wrapper"
+
+	# Fix bug #591862. ERL_LIBS should point directly to ejabberd directory
+	# rather than its parent which is default. That way ejabberd directory
+	# takes precedence is module lookup.
+	local ejabberd_erl_libs="$(get_ejabberd_path):$(get_erl_libs)"
+	sed -e "s|\(ERL_LIBS=\){{libdir}}.*|\1${ejabberd_erl_libs}|" \
+		-i "${S}/ejabberdctl.template" \
+		|| die 'failed to set ERL_LIBS in ejabberdctl.template'
 }
 
 src_configure() {
 	econf \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}/html" \
-		--libdir="${EPREFIX}$(get_erl_libs)" \
 		--enable-user=jabber \
 		$(use_enable debug) \
 		$(use_enable full-xml) \
@@ -276,5 +287,13 @@ pkg_postinst() {
 
 	if ! ejabberd_cert_exists; then
 		ejabberd_cert_install
+	fi
+
+	if use pam; then
+		# sfperms drops read bit from files with suid. Reapply it.
+		# Fix bug #592218.
+		local epam_path="$(get_ejabberd_path)/priv/bin/epam"
+		chmod g+r "${EROOT%/}${epam_path}" \
+			|| die "failed to correct ${epam_path} permissions"
 	fi
 }
