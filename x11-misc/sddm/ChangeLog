@@ -265,3 +265,10 @@
 
   Package-Manager: portage-2.3.0
 
+  29 Aug 2016; Manuel Rüger <mrueg@gentoo.org> sddm-0.14.0.ebuild:
+  Add missed dependency on extra-cmake-modules
+
+  Gentoo-Bug: 592364
+
+  Package-Manager: portage-2.3.0
+
