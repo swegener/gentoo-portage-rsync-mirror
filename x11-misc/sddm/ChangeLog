@@ -272,3 +272,12 @@
 
   Package-Manager: portage-2.3.0
 
+*sddm-0.14.0-r1 (29 Aug 2016)
+
+  29 Aug 2016; Manuel Rüger <mrueg@gentoo.org> +sddm-0.14.0-r1.ebuild:
+  Add user to video group, fix QT dependencies
+
+  Gentoo-Bug: 592116
+
+  Package-Manager: portage-2.3.0
+
