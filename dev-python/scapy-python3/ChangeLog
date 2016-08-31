@@ -8,3 +8,13 @@
   +scapy-python3-0.18.ebuild:
   Initial addition to the tree
 
+*scapy-python3-0.18-r1 (31 Aug 2016)
+
+  31 Aug 2016; Tobias Klausmann <klausman@gentoo.org>
+  -scapy-python3-0.18.ebuild, +scapy-python3-0.18-r1.ebuild:
+  block against net-analyzer/scapy
+
+  Put in a block while I figure out how to fix the file collision.
+
+  Gentoo-Bug: 592612
+
