@@ -84,3 +84,8 @@
 
   Package-Manager: portage-2.3.0
 
+  31 Aug 2016; Jeroen Roovers <jer@gentoo.org> libtrace-4.0.0_beta.ebuild:
+  Depend on net-libs/wandio (bug #592574).
+
+  Package-Manager: portage-2.3.0
+
