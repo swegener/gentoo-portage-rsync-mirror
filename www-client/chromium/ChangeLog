@@ -1444,3 +1444,21 @@
 
   Package-Manager: portage-2.2.28
 
+*chromium-54.0.2840.6 (31 Aug 2016)
+
+  31 Aug 2016; Pawel Hajdan, Jr <phajdan.jr@gentoo.org>
+  -chromium-54.0.2832.2.ebuild, +chromium-54.0.2840.6.ebuild:
+  dev channel bump (54.0.2840.6)
+
+  Allow using tcmalloc with GN for bug #591938 by Nick.
+
+  Package-Manager: portage-2.2.28
+
+*chromium-53.0.2785.89 (01 Sep 2016)
+
+  01 Sep 2016; Mike Gilbert <floppym@gentoo.org>
+  -chromium-53.0.2785.34.ebuild, +chromium-53.0.2785.89.ebuild:
+  beta channel bump
+
+  Package-Manager: portage-2.3.0_p22
+
