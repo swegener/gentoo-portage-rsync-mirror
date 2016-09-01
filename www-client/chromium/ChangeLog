@@ -1476,3 +1476,17 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  01 Sep 2016; Mike Gilbert <floppym@gentoo.org> chromium-54.0.2840.6.ebuild,
+  +files/chromium-54-ffmpeg2compat.patch:
+  build fix with ffmpeg-2.x
+
+  Thanks to aballier for the patch.
+
+  Package-Manager: portage-2.3.0_p22
+
+  01 Sep 2016; Mike Gilbert <floppym@gentoo.org>
+  -chromium-52.0.2743.116.ebuild, metadata.xml:
+  remove old
+
+  Package-Manager: portage-2.3.0_p22
+
