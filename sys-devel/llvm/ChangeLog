@@ -895,3 +895,9 @@
   included in it. The install will eventually be addressed later, most
   likely as a split package.
 
+*llvm-3.9.0 (03 Sep 2016)
+
+  03 Sep 2016; Michał Górny <mgorny@gentoo.org> -llvm-3.9.0_rc3.ebuild,
+  +llvm-3.9.0.ebuild:
+  Bump to 3.9.0 release (no changes since rc3)
+
