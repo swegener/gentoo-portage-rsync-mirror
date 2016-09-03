@@ -901,3 +901,6 @@
   +llvm-3.9.0.ebuild:
   Bump to 3.9.0 release (no changes since rc3)
 
+  03 Sep 2016; Michał Górny <mgorny@gentoo.org> llvm-3.9.0.ebuild:
+  Readd WX stack fix to 3.9.0
+
