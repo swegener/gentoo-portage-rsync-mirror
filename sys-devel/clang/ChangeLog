@@ -295,3 +295,9 @@
   checkout is available, and unittests require this checkout to be
   available when running tests.
 
+*clang-3.9.0-r100 (03 Sep 2016)
+
+  03 Sep 2016; Michał Górny <mgorny@gentoo.org> -clang-3.9.0_rc3-r100.ebuild,
+  +clang-3.9.0-r100.ebuild:
+  Bump to 3.9.0
+
