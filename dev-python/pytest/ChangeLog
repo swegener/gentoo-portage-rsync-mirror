@@ -341,3 +341,10 @@
 
   Package-Manager: portage-2.3.0_p24
 
+  05 Sep 2016; Mike Gilbert <floppym@gentoo.org> pytest-3.0.2.ebuild:
+  block dev-python/logilab-common
+
+  Bug: https://bugs.gentoo.org/592948
+
+  Package-Manager: portage-2.3.0_p24
+
