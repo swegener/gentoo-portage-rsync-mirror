@@ -96,3 +96,8 @@
 
   Package-Manager: portage-2.3.0
 
+  06 Sep 2016; David Seifert <soap@gentoo.org> pysolfc-2.0-r5.ebuild:
+  Simplify, remove python-single-r1 inherit
+
+  Package-Manager: portage-2.3.0
+
