@@ -474,3 +474,9 @@
 
   Package-Manager: portage-2.3.0
 
+  07 Sep 2016; Patrick McLean <chutzpah@gentoo.org>
+  files/openssh-7.3_p1-hpn-update.patch:
+  Final fix for deadlocks in the CTR-MT cipher
+
+  Package-Manager: portage-2.3.0
+
