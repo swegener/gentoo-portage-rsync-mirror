@@ -492,3 +492,9 @@
 
   Package-Manager: portage-2.3.0
 
+  08 Sep 2016; Patrick McLean <chutzpah@gentoo.org>
+  files/openssh-7.3_p1-hpn-update.patch:
+  Make hpn patch in 7.3_p1 reliable on all platforms
+
+  Package-Manager: portage-2.3.0
+
