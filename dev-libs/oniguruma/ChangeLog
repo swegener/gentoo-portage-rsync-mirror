@@ -86,3 +86,8 @@
 
   Package-Manager: portage-2.2.28
 
+  08 Sep 2016; David Seifert <soap@gentoo.org> oniguruma-5.9.5-r1.ebuild:
+  Bump to EAPI=6, remove autotools-multilib.eclass
+
+  Package-Manager: portage-2.3.0
+
