@@ -338,3 +338,9 @@
 
   Package-Manager: portage-2.3.0
 
+  10 Sep 2016; Gilles Dartiguelongue <eva@gentoo.org>
+  appstream-glib-0.6.3.ebuild:
+  re-add libyaml, bug #593352
+
+  Package-Manager: portage-2.3.0
+
