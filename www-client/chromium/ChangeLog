@@ -1552,3 +1552,13 @@
 
   Package-Manager: portage-2.3.0_p24
 
+  10 Sep 2016; Mike Gilbert <floppym@gentoo.org> chromium-55.0.2853.0.ebuild:
+  make gnome and gnome-keyring optional for M55
+
+  Package-Manager: portage-2.3.0_p24
+
+  10 Sep 2016; Mike Gilbert <floppym@gentoo.org> chromium-54.0.2840.16.ebuild:
+  make gnome and gnome-keyring optional for M54
+
+  Package-Manager: portage-2.3.0_p24
+
