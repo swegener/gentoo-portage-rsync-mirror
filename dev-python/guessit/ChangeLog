@@ -233,3 +233,13 @@
 
   Signed-off-by: David Seifert <soap@gentoo.org>
 
+  11 Sep 2016; David Seifert <soap@gentoo.org> guessit-9999.ebuild:
+  bump required rebulk version to 0.7.4 in 9999
+
+  Upstream-commit: eae627b1bdd8a5d1c485be73b38052ada312bf51
+
+  Closes: https://github.com/gentoo/gentoo/pull/2298
+  Package-Manager: portage-2.3.0
+
+  Signed-off-by: David Seifert <soap@gentoo.org>
+
