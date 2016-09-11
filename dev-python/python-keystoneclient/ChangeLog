@@ -225,3 +225,9 @@
   -python-keystoneclient-1.7.3.ebuild, -python-keystoneclient-1.7.4.ebuild:
   massive cleanup of old openstack stuff
 
+  11 Sep 2016; Matthew Thode <prometheanfire@gentoo.org>
+  -files/keystoneclient-1.0.0-cve-2015-1852.patch:
+  clean up more openstack related stuff
+
+  Thanks to mm1ke for the proding
+
