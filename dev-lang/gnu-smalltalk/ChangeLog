@@ -80,3 +80,11 @@
 
   Package-Manager: portage-2.3.0
 
+  12 Sep 2016; Daniel Campbell <zlg@gentoo.org> gnu-smalltalk-3.2.5.ebuild:
+  Fix src_prepare per 593580
+
+  Gentoo-Bug: #593580
+  Gentoo-Bug-URL: https://bugs.gentoo.org/593580
+
+  Package-Manager: portage-2.3.0
+
