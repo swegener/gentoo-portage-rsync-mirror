@@ -164,3 +164,9 @@
 
   Package-Manager: portage-2.3.0
 
+  12 Sep 2016; Kent Fredric <kentnl@gentoo.org>
+  Module-Signature-0.790.0.ebuild:
+  Fix dependency on dev-perl/Digest-MD2
+
+  Package-Manager: portage-2.3.0
+

@@ -65,3 +65,8 @@
 
   Package-Manager: portage-2.3.0
 
+  12 Sep 2016; Kent Fredric <kentnl@gentoo.org> Crypt-RSA-1.990.0-r1.ebuild:
+  Fix dependency on dev-perl/Digest-MD2
+
+  Package-Manager: portage-2.3.0
+
