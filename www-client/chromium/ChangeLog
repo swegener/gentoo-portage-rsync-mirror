@@ -1641,3 +1641,11 @@
 
   Package-Manager: portage-2.3.0_p31
 
+  15 Sep 2016; Mike Gilbert <floppym@gentoo.org>
+  -chromium-53.0.2785.89.ebuild, -chromium-53.0.2785.92.ebuild,
+  -chromium-53.0.2785.101.ebuild, -chromium-53.0.2785.113.ebuild,
+  -chromium-54.0.2840.14.ebuild:
+  remove old
+
+  Package-Manager: portage-2.3.0_p31
+
