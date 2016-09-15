@@ -185,3 +185,9 @@
   gvim-9999.ebuild:
   version bump to 7.4.2102
 
+*gvim-8.0.0004 (15 Sep 2016)
+
+  15 Sep 2016; Tim Harder <radhermit@gentoo.org> +gvim-8.0.0004.ebuild,
+  gvim-9999.ebuild, metadata.xml:
+  version bump to 8.0.0004
+
