@@ -420,3 +420,8 @@
   RepoMan-Options: --include-arches="amd64"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  16 Sep 2016; Tobias Klausmann <klausman@gentoo.org> curl-7.50.3.ebuild:
+  7.50.3-r0: add alpha keyword
+
+  Gentoo-Bug: 593716
+

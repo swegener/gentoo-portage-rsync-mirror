@@ -158,3 +158,9 @@
   RepoMan-Options: --include-arches="amd64"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  16 Sep 2016; Tobias Klausmann <klausman@gentoo.org>
+  cracklib-2.9.6-r1.ebuild:
+  2.9.6-r1: add alpha keyword
+
+  Gentoo-Bug: 591456
+
