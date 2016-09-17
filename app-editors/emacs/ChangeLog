@@ -354,3 +354,8 @@
 
   Gentoo-Bug: 591746
 
+  17 Sep 2016; Pacho Ramos <pacho@gentoo.org> emacs-24.5-r3.ebuild:
+  amd64/x86 stable, bug #591746
+
+  Package-Manager: portage-2.3.0
+

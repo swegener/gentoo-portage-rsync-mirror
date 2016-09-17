@@ -90,3 +90,8 @@
 
   Gentoo-Bug: 591802
 
+  17 Sep 2016; Pacho Ramos <pacho@gentoo.org> emacs-daemon-0.21.ebuild:
+  amd64/arm/hppa/ia64/ppc/ppc64/sparc/x86 stable, bug #591802
+
+  Package-Manager: portage-2.3.0
+
