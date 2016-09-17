@@ -256,3 +256,20 @@
 
   Package-Manager: portage-2.3.0
 
+  17 Sep 2016; Kent Fredric <kentnl@gentoo.org> perl-5.24.0-r1.ebuild:
+  Restore missing call to check_rebuild
+
+  In the process of flattening perl-5.24.0-r1.ebuild, the call
+  to check_rebuild was omitted unintentionally, removing the ability
+  for this message to be displayed.
+
+  This commit reinserts the displaying of said message at the pkg_preinst
+  phase the last possible moment before the system perl gets updated for real.
+
+  Package-Manager: portage-2.3.0
+
+  17 Sep 2016; Kent Fredric <kentnl@gentoo.org> perl-5.24.0-r1.ebuild:
+  use REPLACING_VERSIONS instead of has_version where possible
+
+  Package-Manager: portage-2.3.0
+
