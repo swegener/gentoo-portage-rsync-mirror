@@ -359,3 +359,16 @@
 
   Package-Manager: portage-2.3.0
 
+*emacs-25.1 (17 Sep 2016)
+
+  17 Sep 2016; Ulrich Müller <ulm@gentoo.org> +emacs-25.1.ebuild:
+  Emacs 25.1 released.
+
+  Package-Manager: portage-2.3.0
+
+  17 Sep 2016; Ulrich Müller <ulm@gentoo.org> -emacs-25.1_rc1.ebuild,
+  -emacs-25.1_rc2.ebuild:
+  Remove release candidates.
+
+  Package-Manager: portage-2.3.0
+
