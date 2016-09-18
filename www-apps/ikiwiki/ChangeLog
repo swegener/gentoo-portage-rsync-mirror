@@ -78,3 +78,8 @@
 
   Package-Manager: portage-2.2.28
 
+  18 Sep 2016; Alice Ferrazzi <alicef@gentoo.org> ikiwiki-3.20160905.ebuild:
+  updated copyright
+
+  Package-Manager: portage-2.2.28
+
