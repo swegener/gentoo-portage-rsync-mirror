@@ -431,3 +431,11 @@
 
   Package-Manager: portage-2.3.1
 
+  19 Sep 2016; Mike Gilbert <floppym@gentoo.org>
+  +files/2.3.1-doc-Revert-URI-changes-related-to-docbook-schema.patch,
+  portage-2.3.1.ebuild:
+  apply fix for doc building to 2.3.1
+
+  Bug: https://bugs.gentoo.org/589210
+  Package-Manager: portage-2.3.0_p42
+
