@@ -131,3 +131,16 @@
 
   Signed-off-by: Yixun Lan <dlan@gentoo.org>
 
+*enca-1.19-r1 (20 Sep 2016)
+
+  20 Sep 2016; Yixun Lan <dlan@gentoo.org> -enca-1.19.ebuild,
+  +enca-1.19-r1.ebuild:
+  install missing pkgconfig file in 1.19
+
+  Gentoo-Bug: https://bugs.gentoo.org/594516
+  Closes: https://github.com/gentoo/gentoo/pull/2378
+
+  Package-Manager: portage-2.3.1
+
+  Signed-off-by: Yixun Lan <dlan@gentoo.org>
+
