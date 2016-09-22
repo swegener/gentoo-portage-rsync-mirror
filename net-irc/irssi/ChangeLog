@@ -148,3 +148,8 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  22 Sep 2016; Tobias Klausmann <klausman@gentoo.org> irssi-0.8.20.ebuild:
+  0.8.20-r0: add alpha keyword
+
+  Gentoo-Bug: 594724
+
