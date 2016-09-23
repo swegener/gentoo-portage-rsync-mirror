@@ -10,3 +10,8 @@
 
   Package-Manager: portage-2.3.1
 
+  23 Sep 2016; Jason A. Donenfeld <zx2c4@gentoo.org> metadata.xml:
+  person not project
+
+  Package-Manager: portage-2.3.1
+
