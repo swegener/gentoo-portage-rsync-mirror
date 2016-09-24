@@ -256,3 +256,9 @@
 
   Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
 
+  24 Sep 2016; Anthony G. Basile <blueness@gentoo.org> musl-1.1.15-r1.ebuild,
+  musl-9999.ebuild:
+  add sanity check for ldconfig arch
+
+  Signed-off-by: Anthony G. Basile <blueness@gentoo.org>
+
