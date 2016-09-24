@@ -303,3 +303,10 @@
 
   Package-Manager: portage-2.2.28
 
+  24 Sep 2016; Anthony G. Basile <blueness@gentoo.org> files/tor.initd-r8:
+  further economize on openrc init script
+
+  Thanks floppym
+
+  Package-Manager: portage-2.2.28
+
