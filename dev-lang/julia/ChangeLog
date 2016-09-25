@@ -147,3 +147,11 @@
 
   Package-Manager: portage-2.2.28
 
+*julia-0.5.0-r2 (25 Sep 2016)
+
+  25 Sep 2016; Matthias Maier <tamiko@gentoo.org> -julia-0.5.0-r1.ebuild,
+  +julia-0.5.0-r2.ebuild, julia-9999.ebuild:
+  Respect $(get_libdir) and install libjulia.so at right place
+
+  Package-Manager: portage-2.2.28
+
