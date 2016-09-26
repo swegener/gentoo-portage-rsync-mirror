@@ -170,3 +170,12 @@
 
   Package-Manager: portage-2.2.28
 
+*irssi-0.8.20-r1 (26 Sep 2016)
+
+  26 Sep 2016; Sven Wegener <swegener@gentoo.org>
+  +files/irssi-0.8.20-buf.pl-2.20-CVE-2016-7553.patch,
+  +irssi-0.8.20-r1.ebuild:
+  Revision bump, security bug #595172
+
+  Package-Manager: portage-2.2.28
+
