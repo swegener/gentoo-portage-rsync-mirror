@@ -101,3 +101,23 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+*openjpeg-2.1.1_p20160922 (26 Sep 2016)
+
+  26 Sep 2016; Thomas Deutschmann <whissi@gentoo.org>
+  +openjpeg-2.1.1_p20160922.ebuild:
+  Bump to snapshot release based on v2.1.1 from 2016-09-22
+
+  Ebuild-releated changes:
+  ========================
+   - EAPI bumped to v6
+
+   - Test suite re-enabled and fixed (bug #409263)
+
+  Gentoo-Bug: https://bugs.gentoo.org/409263
+  Gentoo-Bug: https://bugs.gentoo.org/577608
+  Gentoo-Bug: https://bugs.gentoo.org/572430
+  Gentoo-Bug: https://bugs.gentoo.org/560632
+  Gentoo-Bug: https://bugs.gentoo.org/594740
+
+  Package-Manager: portage-2.3.1
+
