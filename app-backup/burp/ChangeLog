@@ -299,3 +299,8 @@
   RepoMan-Options: --include-arches="amd64"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  26 Sep 2016; Amadeusz Żołnowski <aidecoe@gentoo.org> -burp-1.4.40-r1.ebuild:
+  Remove oldest revision of 1.4.40
+
+  Package-Manager: portage-2.3.1
+
