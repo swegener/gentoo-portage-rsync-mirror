@@ -121,3 +121,29 @@
 
   Package-Manager: portage-2.3.1
 
+  26 Sep 2016; Thomas Deutschmann <whissi@gentoo.org>
+  openjpeg-2.1.1_p20160922.ebuild:
+  Fix static builds
+
+   - Use same DBUILD_TESTING logic
+
+   - CODEC must be enabled when tests are enabled
+
+  Package-Manager: portage-2.3.1
+
+  26 Sep 2016; Agostino Sarubbo <ago@gentoo.org>
+  openjpeg-2.1.1_p20160922.ebuild:
+  amd64 stable wrt bug #594740
+
+  Package-Manager: portage-2.2.28
+  RepoMan-Options: --include-arches="amd64"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
+  26 Sep 2016; Agostino Sarubbo <ago@gentoo.org>
+  openjpeg-2.1.1_p20160922.ebuild:
+  x86 stable wrt bug #594740
+
+  Package-Manager: portage-2.2.28
+  RepoMan-Options: --include-arches="x86"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
