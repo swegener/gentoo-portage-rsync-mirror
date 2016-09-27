@@ -435,3 +435,9 @@
 
   Gentoo-Bug: 595200
 
+  27 Sep 2016; Jeroen Roovers <jer@gentoo.org> imagemagick-6.9.5.10.ebuild:
+  Stable for HPPA PPC64 (bug #595200).
+
+  Package-Manager: portage-2.3.1
+  RepoMan-Options: --ignore-arches
+
