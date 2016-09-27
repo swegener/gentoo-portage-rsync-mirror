@@ -429,3 +429,9 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  27 Sep 2016; Tobias Klausmann <klausman@gentoo.org>
+  imagemagick-6.9.5.10.ebuild:
+  6.9.5.10-r0: stable on alpha
+
+  Gentoo-Bug: 595200
+
