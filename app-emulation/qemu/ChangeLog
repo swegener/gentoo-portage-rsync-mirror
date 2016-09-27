@@ -859,3 +859,15 @@
 
   Package-Manager: portage-2.2.28
 
+*qemu-2.7.0-r4 (27 Sep 2016)
+
+  27 Sep 2016; Matthias Maier <tamiko@gentoo.org>
+  +files/qemu-2.7.0-CVE-2016-7423.patch,
+  +files/qemu-2.7.0-CVE-2016-7466.patch, +qemu-2.7.0-r4.ebuild:
+  security fixes, bug #594520, bug #594368
+
+    CVE-2016-7466.patch # bug 594520
+    CVE-2016-7423.patch # bug 594368
+
+  Package-Manager: portage-2.3.0
+
