@@ -599,3 +599,9 @@
 
   Package-Manager: portage-2.2.28
 
+  29 Sep 2016; Jeroen Roovers <jer@gentoo.org> openssh-7.3_p1-r6.ebuild:
+  Stable for HPPA PPC64 (bug #595342).
+
+  Package-Manager: portage-2.3.1
+  RepoMan-Options: --ignore-arches
+
