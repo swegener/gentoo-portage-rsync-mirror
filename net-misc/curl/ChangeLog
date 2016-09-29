@@ -443,3 +443,10 @@
   Package-Manager: portage-2.3.0
   RepoMan-Options: --include-arches="arm"
 
+  28 Sep 2016; Anthony G. Basile <blueness@gentoo.org> curl-7.49.0.ebuild,
+  curl-7.49.1.ebuild, curl-7.50.0.ebuild, curl-7.50.1.ebuild,
+  curl-7.50.2.ebuild, curl-7.50.3.ebuild:
+  remove einfo banner header
+
+  Package-Manager: portage-2.2.28
+
