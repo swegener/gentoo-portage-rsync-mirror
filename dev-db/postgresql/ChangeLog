@@ -923,3 +923,9 @@
 
   Package-Manager: portage-2.3.0
 
+  30 Sep 2016; Patrick Lauer <patrick@gentoo.org>
+  +files/postgresql-9.6-no-server.patch:
+  Add missing patch #595632
+
+  Package-Manager: portage-2.3.0
+
