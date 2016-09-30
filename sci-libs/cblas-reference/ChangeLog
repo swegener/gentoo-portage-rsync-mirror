@@ -151,3 +151,11 @@
 
   Package-Manager: portage-2.3.0
 
+*cblas-reference-20151113-r1 (30 Sep 2016)
+
+  30 Sep 2016; Matthias Maier <tamiko@gentoo.org>
+  -cblas-reference-20151113.ebuild, +cblas-reference-20151113-r1.ebuild:
+  fix dependencies
+
+  Package-Manager: portage-2.3.0
+
