@@ -2044,3 +2044,10 @@
 
   Package-Manager: portage-2.3.0
 
+*gentoo-sources-4.4.23 (30 Sep 2016)
+
+  30 Sep 2016; Mike Pagano <mpagano@gentoo.org> +gentoo-sources-4.4.23.ebuild:
+  Linux patch 4.4.23
+
+  Package-Manager: portage-2.3.0
+
