@@ -269,3 +269,9 @@
   Package-Manager: portage-2.3.1
   Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 
+  30 Sep 2016; Matthew Thode <prometheanfire@gentoo.org>
+  +files/requests-2.11.1-system-packages.patch:
+  add missing patch
+
+  Package-Manager: portage-2.3.0
+

@@ -50,3 +50,12 @@
 
   Package-Manager: portage-2.3.0
 
+*cargo-0.13.0-r1 (30 Sep 2016)
+
+  30 Sep 2016; Dirkjan Ochtman <djc@gentoo.org> +cargo-0.13.0-r1.ebuild:
+  require rust-1.9.0 (fixes bug 591942)
+
+  Also updates the crates.io registry index to something more recent.
+
+  Package-Manager: portage-2.3.0
+
