@@ -136,3 +136,9 @@
   Package-Manager: portage-2.3.1
   RepoMan-Options: --include-arches="arm"
 
+  01 Oct 2016; Jeroen Roovers <jer@gentoo.org> re2c-0.16.ebuild:
+  Stable for HPPA (bug #593236).
+
+  Package-Manager: portage-2.3.1
+  RepoMan-Options: --ignore-arches
+

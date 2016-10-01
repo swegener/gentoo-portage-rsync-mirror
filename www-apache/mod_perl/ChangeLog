@@ -148,3 +148,14 @@
 
   Package-Manager: portage-2.3.0
 
+*mod_perl-2.0.10_rc1 (01 Oct 2016)
+
+  01 Oct 2016; Andreas K. Hüttel <dilfridge@gentoo.org>
+  +files/mod_perl-2.0.10_rc1-Gentoo-not-Unix.patch,
+  +files/mod_perl-2.0.10_rc1-bundled-Apache-Test.patch,
+  +mod_perl-2.0.10_rc1.ebuild:
+  Version bump to 2.0.10-rc1 with more or less complete rework; tests should
+  pass now
+
+  Package-Manager: portage-2.3.1
+
