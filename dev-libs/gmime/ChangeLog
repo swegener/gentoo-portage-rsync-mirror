@@ -129,3 +129,9 @@
   Package-Manager: portage-2.3.0
   RepoMan-Options: --include-arches="x86"
 
+  01 Oct 2016; Markus Meier <maekke@gentoo.org> gmime-2.6.20-r2.ebuild:
+  arm stable, bug #592246
+
+  Package-Manager: portage-2.3.1
+  RepoMan-Options: --include-arches="arm"
+
