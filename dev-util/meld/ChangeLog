@@ -178,3 +178,17 @@
   Package-Manager: portage-2.3.0
   RepoMan-Options: --include-arches="x86"
 
+*meld-3.16.3 (01 Oct 2016)
+
+  01 Oct 2016; Mart Raudsepp <leio@gentoo.org> +meld-3.16.3.ebuild:
+  bump to 3.16.3 for bug fixes, including better gtk3.20 compat
+
+  Gentoo-bug: 595810
+  Package-Manager: portage-2.3.1
+
+  01 Oct 2016; Mart Raudsepp <leio@gentoo.org> -meld-3.16.0.ebuild,
+  -meld-3.16.1.ebuild:
+  remove old
+
+  Package-Manager: portage-2.3.1
+

@@ -159,3 +159,9 @@
 
   Package-Manager: portage-2.3.1
 
+  01 Oct 2016; Andreas K. Hüttel <dilfridge@gentoo.org>
+  mod_perl-2.0.10_rc1.ebuild:
+  QA fixes suggested by soap
+
+  Package-Manager: portage-2.3.1
+
