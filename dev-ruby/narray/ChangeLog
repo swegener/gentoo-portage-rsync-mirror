@@ -127,3 +127,8 @@
   Package-Manager: portage-2.3.1
   RepoMan-Options: --ignore-arches
 
+  02 Oct 2016; Hans de Graaff <graaff@gentoo.org> -narray-0.6.0.8-r1.ebuild:
+  cleanup
+
+  Package-Manager: portage-2.3.0
+
