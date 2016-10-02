@@ -73,3 +73,8 @@
   clisp-2.48-r2.ebuild:
   sourceforge: switch to https:// URIs
 
+  02 Oct 2016; Andrey Grozin <grozin@gentoo.org> clisp-2.49-r8.ebuild:
+  in stable 2.49-r8, readline must be <7.0
+
+  Package-Manager: portage-2.3.0
+
