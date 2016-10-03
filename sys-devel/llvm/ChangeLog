@@ -1006,3 +1006,6 @@
   02 Oct 2016; Michał Górny <mgorny@gentoo.org> llvm-3.9.0.ebuild:
   Backport target syms from sys-devel/clang
 
+  02 Oct 2016; Michał Górny <mgorny@gentoo.org> llvm-3.9.0.ebuild:
+  Backport clang-cpp symlink, #478810
+
