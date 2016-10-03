@@ -1009,3 +1009,9 @@
   02 Oct 2016; Michał Górny <mgorny@gentoo.org> llvm-3.9.0.ebuild:
   Backport clang-cpp symlink, #478810
 
+  03 Oct 2016; Michał Górny <mgorny@gentoo.org> llvm-3.9.0.ebuild:
+  Add PDEP on sys-devel/clang-runtime meta
+
+  03 Oct 2016; Michał Górny <mgorny@gentoo.org> llvm-3.9.0.ebuild:
+  Remove stale libomp check, it is PDEP now
+
