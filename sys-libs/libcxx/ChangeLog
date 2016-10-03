@@ -147,3 +147,11 @@
 
   to synchronize with live ebuild.
 
+  03 Oct 2016; Michał Górny <mgorny@gentoo.org> libcxx-3.9.0.ebuild,
+  libcxx-9999.ebuild:
+  Use CMake files from native LLVM build
+
+  03 Oct 2016; Michał Górny <mgorny@gentoo.org> libcxx-3.9.0.ebuild,
+  libcxx-9999.ebuild:
+  Dep on >=clang-3.9.0 for target symlinks
+
