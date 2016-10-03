@@ -128,3 +128,22 @@
   01 Aug 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Add myself as co-maintainer
 
+  03 Oct 2016; Alexis Ballier <aballier@gentoo.org> metadata.xml:
+  update maintainers in metadata
+
+  03 Oct 2016; Alexis Ballier <aballier@gentoo.org>
+  +files/libcxx-3.9-cmake-link-flags.patch, libcxx-9999.ebuild:
+  update live ebuild to use cmake
+
+  Notable changes:
+  - gcc is now required to build libcxx against libsupc++
+  - keyword ~mips is dropped to be compatible with clang/llvm
+
+*libcxx-3.9.0 (03 Oct 2016)
+
+  03 Oct 2016; Alexis Ballier <aballier@gentoo.org>
+  +files/libcxx-3.9-cmake-static-lib.patch, +libcxx-3.9.0.ebuild:
+  version bump to 3.9.0
+
+  to synchronize with live ebuild.
+
