@@ -27,9 +27,10 @@ PLOCALES="de fr ja"
 IUSE="+daemon nls test"
 
 # IUSE and PLOCALES must be defined before l10n inherited
-inherit bash-completion-r1 golang-build l10n systemd user vcs-snapshot
+inherit bash-completion-r1 golang-build l10n linux-info systemd user vcs-snapshot
 
 DEPEND="
+	>=dev-lang/go-1.7.1
 	dev-go/go-crypto
 	dev-libs/protobuf
 	nls? ( sys-devel/gettext )
@@ -46,12 +47,47 @@ RDEPEND="
 		app-admin/cgmanager
 		app-arch/xz-utils
 		app-emulation/lxc[cgmanager,seccomp]
+		net-dns/dnsmasq[dhcp,ipv6]
 		net-misc/rsync[xattr]
-		sys-apps/iproute2
+		sys-apps/iproute2[ipv6]
 		sys-fs/squashfs-tools
 		virtual/acl
 	)
 "
+
+CONFIG_CHECK="
+	~BRIDGE
+	~DUMMY
+	~IP6_NF_NAT
+	~IP6_NF_TARGET_MASQUERADE
+	~IPV6
+	~IP_NF_NAT
+	~IP_NF_TARGET_MASQUERADE
+	~MACVLAN
+	~NETFILTER_XT_MATCH_COMMENT
+	~NET_IPGRE
+	~NET_IPGRE_DEMUX
+	~NET_IPIP
+	~NF_NAT_MASQUERADE_IPV4
+	~NF_NAT_MASQUERADE_IPV6
+	~VXLAN
+"
+
+ERROR_BRIDGE="BRIDGE: needed for network commands"
+ERROR_DUMMY="DUMMY: needed for network commands"
+ERROR_IP6_NF_NAT="IP6_NF_NAT: needed for network commands"
+ERROR_IP6_NF_TARGET_MASQUERADE="IP6_NF_TARGET_MASQUERADE: needed for network commands"
+ERROR_IPV6="IPV6: needed for network commands"
+ERROR_IP_NF_NAT="IP_NF_NAT: needed for network commands"
+ERROR_IP_NF_TARGET_MASQUERADE="IP_NF_TARGET_MASQUERADE: needed for network commands"
+ERROR_MACVLAN="MACVLAN: needed for network commands"
+ERROR_NETFILTER_XT_MATCH_COMMENT="NETFILTER_XT_MATCH_COMMENT: needed for network commands"
+ERROR_NET_IPGRE="NET_IPGRE: needed for network commands"
+ERROR_NET_IPGRE_DEMUX="NET_IPGRE_DEMUX: needed for network commands"
+ERROR_NET_IPIP="NET_IPIP: needed for network commands"
+ERROR_NF_NAT_MASQUERADE_IPV4="NF_NAT_MASQUERADE_IPV4: needed for network commands"
+ERROR_NF_NAT_MASQUERADE_IPV6="NF_NAT_MASQUERADE_IPV6: needed for network commands"
+ERROR_VXLAN="VXLAN: needed for network commands"
 
 PATCHES=("${FILESDIR}/${P}-dont-go-get.patch")
 
