@@ -830,3 +830,15 @@
 
   Package-Manager: portage-2.3.1
 
+  05 Oct 2016; Jeroen Roovers <jer@gentoo.org> wireshark-2.2.1.ebuild:
+  Stable for PPC64 (bug #596190).
+
+  Package-Manager: portage-2.3.1
+  RepoMan-Options: --ignore-arches
+
+  05 Oct 2016; Jeroen Roovers <jer@gentoo.org> wireshark-2.2.1.ebuild:
+  Stable for HPPA (bug #596190).
+
+  Package-Manager: portage-2.3.1
+  RepoMan-Options: --ignore-arches
+
