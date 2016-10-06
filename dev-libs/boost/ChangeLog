@@ -272,3 +272,10 @@
 
   Package-Manager: portage-2.3.1
 
+  05 Oct 2016; David Seifert <soap@gentoo.org> boost-1.62.0.ebuild:
+  Correct find command to delete non-empty dirs
+
+  Gentoo-bug: 596216
+
+  Package-Manager: portage-2.3.1
+
