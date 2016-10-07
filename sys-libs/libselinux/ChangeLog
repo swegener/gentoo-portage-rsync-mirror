@@ -183,3 +183,10 @@
 
   Package-Manager: portage-2.3.0
 
+  07 Oct 2016; Jason Zaman <perfinion@gentoo.org>
+  -files/libselinux-2.6-0005-use-ruby-include-with-rubylibver.patch,
+  libselinux-2.6_rc2.ebuild, libselinux-9999.ebuild:
+  Drop patch that was already included
+
+  Package-Manager: portage-2.3.0
+
