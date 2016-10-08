@@ -4,7 +4,7 @@
 
 EAPI=6
 
-inherit cmake-utils vcs-snapshot
+inherit cmake-utils gnome2-utils vcs-snapshot xdg
 
 DESCRIPTION="Qt password manager compatible with its Win32 and Pocket PC versions"
 HOMEPAGE="http://www.keepassx.org/"
@@ -12,7 +12,7 @@ SRC_URI="https://www.keepassx.org/releases/${PV}/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 GPL-3 ) BSD GPL-2 LGPL-2.1 LGPL-3+ CC0-1.0 public-domain || ( LGPL-2.1 GPL-3 )"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 DEPEND="
@@ -28,9 +28,28 @@ RDEPEND="${DEPEND}"
 
 DOCS=(CHANGELOG)
 
+src_prepare() {
+	xdg_src_prepare
+	cmake-utils_src_prepare
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_TESTS="$(usex test)"
 	)
 	cmake-utils_src_configure
+}
+
+pkg_preinst() {
+	gnome2_icon_savelist
+	xdg_pkg_preinst
+}
+pkg_postinst() {
+	gnome2_icon_cache_update
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	gnome2_icon_cache_update
+	xdg_pkg_postrm
 }
