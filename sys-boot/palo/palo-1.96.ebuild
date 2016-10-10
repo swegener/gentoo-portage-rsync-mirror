@@ -3,24 +3,19 @@
 # $Id$
 
 EAPI=6
-inherit eutils flag-o-matic git-r3 toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="PALO : PArisc Linux Loader"
 HOMEPAGE="http://parisc-linux.org/ https://parisc.wiki.kernel.org/"
-EGIT_REPO_URI="git://git.kernel.org/pub/scm/linux/kernel/git/deller/palo.git"
+SRC_URI="mirror://debian/pool/main/p/${PN}/${P/-/_}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="-* ~hppa"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-toolchain.patch
+	"${FILESDIR}"/${PN}-1.96-toolchain.patch
 )
-
-src_prepare() {
-	default
-	sed -i lib/common.h -e '/^#define PALOVERSION/{s|".*"|"'${PV}'"|g}' || die
-}
 
 src_compile() {
 	local target
