@@ -2102,3 +2102,11 @@
 
   Package-Manager: portage-2.3.0
 
+*gentoo-sources-3.18.43 (12 Oct 2016)
+
+  12 Oct 2016; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-3.18.43.ebuild:
+  Linux patch 3.18.43
+
+  Package-Manager: portage-2.3.0
+
