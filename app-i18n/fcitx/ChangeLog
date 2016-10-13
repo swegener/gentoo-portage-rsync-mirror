@@ -181,3 +181,7 @@
   RepoMan-Options: --include-arches="ppc"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  13 Oct 2016; Mike Gilbert <floppym@gentoo.org> -fcitx-4.2.8.5.ebuild,
+  -fcitx-4.2.8.6.ebuild, -fcitx-4.2.9.ebuild, metadata.xml:
+  Delete old versions.
+
