@@ -104,3 +104,12 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+*xerces-c-3.1.4-r1 (15 Oct 2016)
+
+  15 Oct 2016; David Seifert <soap@gentoo.org>
+  files/xerces-c-3.1.4-fix-build-system.patch, -xerces-c-3.1.4.ebuild,
+  +xerces-c-3.1.4-r1.ebuild:
+  Install samples programs
+
+  Package-Manager: portage-2.3.2
+
