@@ -68,3 +68,19 @@
 
   Package-Manager: portage-2.3.2
 
+  15 Oct 2016; Hanno <hanno@gentoo.org> unp-2.0_pre7_p1-r1.ebuild:
+  fix LINGUAS variable handling
+
+  The previous variant fails if there are more than two
+  entries in LINGUAS. Thanks to sping for pointing that
+  out.
+
+  Package-Manager: portage-2.3.2
+
+  15 Oct 2016; Hanno <hanno@gentoo.org> unp-2.0_pre7_p1-r1.ebuild:
+  fix compilation without LINGUAS variable
+
+  Fixes bug #597198.
+
+  Package-Manager: portage-2.3.2
+
