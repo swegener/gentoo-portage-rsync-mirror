@@ -619,3 +619,10 @@
 
   Package-Manager: portage-2.3.2
 
+*nginx-1.10.2 (19 Oct 2016)
+
+  19 Oct 2016; Thomas Deutschmann <whissi@gentoo.org> +nginx-1.10.2.ebuild:
+  Bump to v1.10.2 stable
+
+  Package-Manager: portage-2.3.2
+
