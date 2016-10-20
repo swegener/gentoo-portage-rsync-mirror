@@ -4,30 +4,31 @@
 
 EAPI=6
 
-inherit fcaps golang-base systemd user
+inherit golang-base systemd user
 
-EGO_PN="github.com/hashicorp/${PN}/..."
-DESCRIPTION="A tool for managing secrets"
-HOMEPAGE="https://vaultproject.io/"
-SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/mitchellh/gox/archive/c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz -> gox-c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz
-	https://github.com/mitchellh/iochan/archive/87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz -> iochan-87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz
-"
-SLOT="0"
-LICENSE="MPL-2.0"
 KEYWORDS="~amd64"
+DESCRIPTION="Generic template rendering and notifications with Consul"
+EGO_PN="github.com/hashicorp/${PN}/..."
+HOMEPAGE="http://${EGO_PN%/*}"
+LICENSE="MPL-2.0"
+SLOT="0"
 IUSE=""
-
 RESTRICT="test"
 
 DEPEND=">=dev-lang/go-1.6:="
 RDEPEND=""
 
+SRC_URI="https://${EGO_PN%/*}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/mitchellh/gox/archive/c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz -> gox-c9740af9c6574448fd48eb30a71f964014c7a837.tar.gz
+	https://github.com/mitchellh/iochan/archive/87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz -> iochan-87b45ffd0e9581375c491fef3d32130bb15c5bd7.tar.gz
+"
+
 STRIP_MASK="*.a"
 
-FILECAPS=(
-	-m 755 'cap_ipc_lock=+ep' usr/bin/${PN}
-)
+pkg_setup() {
+	enewgroup ${PN}
+	enewuser ${PN} -1 -1 -1 ${PN}
+}
 
 get_archive_go_package() {
 	local archive=${1} uri x
@@ -66,43 +67,40 @@ src_prepare() {
 	sed -e 's:^GIT.*::' -i src/${EGO_PN%/*}/scripts/build.sh || die
 }
 
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
-}
-
 src_compile() {
 	export GOPATH=${S}
 	go install -v -work -x ${EGO_BUILD_FLAGS} "github.com/mitchellh/gox/..." || die
-	go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}"
+	go install -v -work -x ${EGO_BUILD_FLAGS} "${EGO_PN}" || die
 	# the previous command returns 2 on success...
-	[[ -d ${S}/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*} ]] || die
+	#[[ -d ${S}/pkg/$(go env GOOS)_$(go env GOARCH)/${EGO_PN%/*} ]] || die
 	cd "${S}"/src/${EGO_PN%/*} || die
 	PATH=${PATH}:${S}/bin \
 	XC_ARCH=$(go env GOARCH) \
 	XC_OS=$(go env GOOS) \
-	XC_OSARCH=$(go env GOOS)/$(go env GOARCH) \
-	emake
+	emake bin
+}
+
+src_test() {
+	cd "${S}"/src/${EGO_PN%/*} || die
+	emake test || die
 }
 
 src_install() {
-	local x
+	dobin "${S}/bin/${PN}"
+	dodoc "${S}"/src/${EGO_PN%/*}/{CHANGELOG.md,README.md}
 
-	dodoc "${S}"/src/${EGO_PN%/*}/{CHANGELOG.md,CONTRIBUTING.md,README.md}
+	keepdir /var/log/${PN}
+	fowners ${PN}:${PN} /var/log/${PN}
+
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
-	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotated" "${PN}"
+	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 	systemd_dounit "${FILESDIR}/${PN}.service"
 
 	keepdir /etc/${PN}.d
 	insinto /etc/${PN}.d
 	doins "${FILESDIR}/"*.json.example
-
-	keepdir /var/log/${PN}
-	fowners ${PN}:${PN} /var/log/${PN}
-
-	dobin "${S}/bin/${PN}"
 
 	rm -rf "${S}"/{src,pkg/$(go env GOOS)_$(go env GOARCH)}/${EGO_PN%/*}/vendor
 	find "${S}"/src/${EGO_PN%/*} -mindepth 1 -maxdepth 1 -type f -delete || die
