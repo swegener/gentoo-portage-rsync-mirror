@@ -2168,3 +2168,34 @@
 
   Package-Manager: portage-2.3.0
 
+  21 Oct 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.8.0.ebuild,
+  -gentoo-sources-4.8.1.ebuild, -gentoo-sources-4.8.2.ebuild:
+  Remove kernels vulerable to CVE-2016-5195. See bug
+  https://bugs.gentoo.org/show_bug.cgi?id=597624
+
+  Package-Manager: portage-2.3.0
+
+  21 Oct 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.7.7.ebuild,
+  -gentoo-sources-4.7.8.ebuild:
+  Remove 4.7.X kernels vulerable to CVE-2016-5195. See bug
+  https://bugs.gentoo.org/show_bug.cgi?id=597624
+
+  Package-Manager: portage-2.3.0
+
+*gentoo-sources-3.10.104 (21 Oct 2016)
+
+  21 Oct 2016; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-3.10.104.ebuild:
+  Linux patch 3.10.104
+
+  Package-Manager: portage-2.3.0
+
+  22 Oct 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.4.19.ebuild,
+  -gentoo-sources-4.4.20.ebuild, -gentoo-sources-4.4.22.ebuild,
+  -gentoo-sources-4.4.23.ebuild, -gentoo-sources-4.4.24.ebuild,
+  -gentoo-sources-4.4.25.ebuild:
+  Remove 4.4.X kernels vulerable to CVE-2016-5195. See bug
+  https://bugs.gentoo.org/show_bug.cgi?id=597624
+
+  Package-Manager: portage-2.3.0
+
