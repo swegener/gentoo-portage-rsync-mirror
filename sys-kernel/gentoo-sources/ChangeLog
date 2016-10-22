@@ -2199,3 +2199,23 @@
 
   Package-Manager: portage-2.3.0
 
+  22 Oct 2016; Tobias Klausmann <klausman@gentoo.org>
+  gentoo-sources-4.4.26.ebuild:
+  4.4.26-r0: stable on alpha
+
+  Gentoo-Bug: 597738
+
+  22 Oct 2016; Agostino Sarubbo <ago@gentoo.org> gentoo-sources-4.4.26.ebuild:
+  amd64 stable wrt bug #597738
+
+  Package-Manager: portage-2.3.0
+  RepoMan-Options: --include-arches="amd64"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
+  22 Oct 2016; Agostino Sarubbo <ago@gentoo.org> gentoo-sources-4.4.26.ebuild:
+  x86 stable wrt bug #597738
+
+  Package-Manager: portage-2.3.0
+  RepoMan-Options: --include-arches="x86"
+  Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
+
