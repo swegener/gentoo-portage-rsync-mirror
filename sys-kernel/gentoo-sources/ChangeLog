@@ -2219,3 +2219,30 @@
   RepoMan-Options: --include-arches="x86"
   Signed-off-by: Agostino Sarubbo <ago@gentoo.org>
 
+  22 Oct 2016; Jeroen Roovers <jer@gentoo.org> gentoo-sources-4.4.26.ebuild:
+  Stable for PPC64 (bug #597738).
+
+  Package-Manager: portage-2.3.2
+  RepoMan-Options: --ignore-arches
+
+  22 Oct 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.4.6.ebuild,
+  -gentoo-sources-4.4.21.ebuild:
+  Remove kernels affected by Dirty Cow (CVE-2016-5195) privilege escalation
+  vulnerability in the Linux Kernel
+
+  Package-Manager: portage-2.3.0
+
+*gentoo-sources-4.4.27 (22 Oct 2016)
+
+  22 Oct 2016; Mike Pagano <mpagano@gentoo.org> +gentoo-sources-4.4.27.ebuild:
+  Linux patch 4.4.27
+
+  Package-Manager: portage-2.3.0
+
+*gentoo-sources-4.7.10 (22 Oct 2016)
+
+  22 Oct 2016; Mike Pagano <mpagano@gentoo.org> +gentoo-sources-4.7.10.ebuild:
+  Linux patch 4.7.10
+
+  Package-Manager: portage-2.3.0
+
