@@ -234,3 +234,13 @@
 
   Signed-off-by: David Seifert <soap@gentoo.org>
 
+*kodi-17.0_beta4 (25 Oct 2016)
+
+  25 Oct 2016; David Seifert <soap@gentoo.org> -kodi-17.0_beta3.ebuild,
+  +kodi-17.0_beta4.ebuild:
+  bump to 17.0b4
+
+  Closes: https://github.com/gentoo/gentoo/pull/2662
+
+  Signed-off-by: David Seifert <soap@gentoo.org>
+
