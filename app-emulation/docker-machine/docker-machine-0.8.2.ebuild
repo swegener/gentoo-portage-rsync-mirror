@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 EGO_PN=github.com/docker/machine/...
 
@@ -22,17 +22,18 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 RESTRICT="test"
-DEPEND=">=dev-lang/go-1.5:="
+DEPEND=">=dev-lang/go-1.7:="
 RDEPEND=""
 S=${WORKDIR}/${P}/src/${EGO_PN%/*}
 
 src_prepare() {
+	eapply_user
 	# don't pre-strip binaries
 	sed -e 's|\(GO_LDFLAGS := $(GO_LDFLAGS) -w\) -s|\1|' -i mk/main.mk ||die
 }
 
 src_compile() {
-	GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)" emake build || die
+	GOPATH="${WORKDIR}/${P}" emake build || die
 }
 
 src_install() {
