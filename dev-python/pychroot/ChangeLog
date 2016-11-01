@@ -117,3 +117,6 @@
   01 Nov 2016; Tim Harder <radhermit@gentoo.org> -pychroot-0.9.13.ebuild:
   remove old
 
+  01 Nov 2016; Michał Górny <mgorny@gentoo.org> pychroot-0.9.15.ebuild:
+  global: Drop dead implementations from PYTHON_COMPAT
+
