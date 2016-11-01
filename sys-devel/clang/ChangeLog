@@ -410,3 +410,6 @@
   in driver code) combined with necessary symlinking (for tests) and moves
   (for install) of installed headers.
 
+  01 Nov 2016; Michał Górny <mgorny@gentoo.org> clang-9999.ebuild:
+  Pass runtime headers through header check
+

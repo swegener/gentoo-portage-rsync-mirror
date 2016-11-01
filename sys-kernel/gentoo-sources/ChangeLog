@@ -2306,3 +2306,19 @@
 
   Package-Manager: portage-2.3.0
 
+*gentoo-sources-3.18.44 (01 Nov 2016)
+
+  01 Nov 2016; Alice Ferrazzi <alicef@gentoo.org>
+  +gentoo-sources-3.18.44.ebuild:
+  Linux patch 3.18.44
+
+  Package-Manager: portage-2.3.2
+
+*gentoo-sources-3.4.113 (01 Nov 2016)
+
+  01 Nov 2016; Mike Pagano <mpagano@gentoo.org>
+  +gentoo-sources-3.4.113.ebuild:
+  Linux patch 3.4.113
+
+  Package-Manager: portage-2.3.0
+
