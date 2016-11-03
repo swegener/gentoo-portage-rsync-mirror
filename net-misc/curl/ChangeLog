@@ -492,3 +492,15 @@
 
   Package-Manager: portage-2.3.0
 
+  03 Nov 2016; Jeroen Roovers <jer@gentoo.org> curl-7.51.0.ebuild:
+  Mark ~hppa ~ppc64 (bug #597760).
+
+  Package-Manager: portage-2.3.2
+  RepoMan-Options: --ignore-arches
+
+  03 Nov 2016; Jeroen Roovers <jer@gentoo.org> curl-7.51.0.ebuild:
+  Stable for HPPA PPC64 (bug #598856).
+
+  Package-Manager: portage-2.3.2
+  RepoMan-Options: --ignore-arches
+
