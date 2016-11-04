@@ -509,3 +509,8 @@
 
   Package-Manager: portage-2.3.0
 
+  04 Nov 2016; Anthony G. Basile <blueness@gentoo.org> curl-7.51.0.ebuild:
+  stable for amd64, arm, ppc, x86.  Bug #597760.
+
+  Package-Manager: portage-2.3.0
+
