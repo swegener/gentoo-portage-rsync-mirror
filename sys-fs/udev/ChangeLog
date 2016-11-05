@@ -329,3 +329,10 @@
   to the libgudev header problem from the new versions that do not ship
   libgudev anymore.
 
+*udev-232 (04 Nov 2016)
+
+  04 Nov 2016; William Hubbs <williamh@gentoo.org> +udev-232.ebuild:
+  232 version bump
+
+  Package-Manager: portage-2.3.0
+
