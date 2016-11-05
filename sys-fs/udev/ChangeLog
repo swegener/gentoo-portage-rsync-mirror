@@ -348,3 +348,13 @@
   Package-Manager: portage-2.3.2
   Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
 
+*udev-232-r2 (05 Nov 2016)
+
+  05 Nov 2016; Mike Gilbert <floppym@gentoo.org> -udev-232-r1.ebuild,
+  +udev-232-r2.ebuild:
+  fix libudev on non-native abis
+
+  Also simplify multilib_src_install; there's no need for variables here.
+
+  Package-Manager: portage-2.3.2_p4
+
