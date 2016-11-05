@@ -10,3 +10,15 @@
 
   Package-Manager: portage-2.3.0
 
+*public_suffix-2.0.3-r1 (05 Nov 2016)
+
+  05 Nov 2016; Manuel Rüger <mrueg@gentoo.org> +public_suffix-2.0.3-r1.ebuild:
+  Install data directory as well
+
+  Package-Manager: portage-2.3.2
+
+  05 Nov 2016; Manuel Rüger <mrueg@gentoo.org> -public_suffix-2.0.3.ebuild:
+  Remove old
+
+  Package-Manager: portage-2.3.2
+
