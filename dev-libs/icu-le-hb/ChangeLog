@@ -10,3 +10,24 @@
 
   Package-Manager: portage-2.3.2
 
+  06 Nov 2016; Lars Wendler <polynomial-c@gentoo.org> icu-le-hb-1.0.3.ebuild:
+  Adjusted dependency on dev-libs/icu
+
+  Package-Manager: portage-2.3.2
+
+  06 Nov 2016; Andreas K. Hüttel <dilfridge@gentoo.org> metadata.xml:
+  Add office project to maintainers
+
+  Package-Manager: portage-2.3.2
+
+  06 Nov 2016; Andreas K. Hüttel <dilfridge@gentoo.org>
+  icu-le-hb-1.0.3.ebuild:
+  Rebuild when harfbuzz changes abi
+
+  Package-Manager: portage-2.3.2
+
+  06 Nov 2016; Lars Wendler <polynomial-c@gentoo.org> icu-le-hb-1.0.3.ebuild:
+  Added virtual/pkgconfig to DEPEND.
+
+  Package-Manager: portage-2.3.2
+
