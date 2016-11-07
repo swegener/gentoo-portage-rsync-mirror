@@ -596,3 +596,10 @@
 
   Package-Manager: portage-2.3.0
 
+*nova-14.0.2 (07 Nov 2016)
+
+  07 Nov 2016; Matthew Thode <prometheanfire@gentoo.org> +nova-14.0.2.ebuild:
+  bup
+
+  Package-Manager: portage-2.3.0
+
