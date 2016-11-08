@@ -10,3 +10,11 @@
 
   Package-Manager: portage-2.3.2
 
+*editorconfig-vim-0.3.3-r1 (07 Nov 2016)
+
+  07 Nov 2016; Patrick McLean <chutzpah@gentoo.org>
+  -editorconfig-vim-0.3.3.ebuild, +editorconfig-vim-0.3.3-r1.ebuild:
+  Revision bump, use external editorconfig-core-py instead of bundled version
+
+  Package-Manager: portage-2.3.2
+
