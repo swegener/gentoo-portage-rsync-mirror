@@ -182,3 +182,11 @@
   This reverts commit b2d27dda1fe063d1b303e6a9cc0327bf0edb0e65.
   dilfridge beat me on this change and I didn't recognize it.
 
+*icu-58.1-r1 (08 Nov 2016)
+
+  08 Nov 2016; Andreas K. Hüttel <dilfridge@gentoo.org>
+  +files/icu-58.1-iterator.patch, +icu-58.1-r1.ebuild:
+  Revbump for bug 599142
+
+  Package-Manager: portage-2.3.2
+
