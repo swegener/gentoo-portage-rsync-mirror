@@ -149,3 +149,13 @@
 
   Package-Manager: portage-2.3.2
 
+  10 Nov 2016; Kacper Kowalik <xarthisius@gentoo.org> i3-4.13-r1.ebuild,
+  i3-9999.ebuild:
+  synchronize deps between live ebuild and latest release
+
+  Fixes #599360
+
+  Reported-by: Patrick Lauer <patrick@gentoo.org>
+
+  Package-Manager: portage-2.3.2
+
