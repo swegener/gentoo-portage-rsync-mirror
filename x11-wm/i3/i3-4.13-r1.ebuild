@@ -4,21 +4,18 @@
 
 EAPI=6
 
-inherit autotools git-r3
+inherit autotools
 
 DESCRIPTION="An improved dynamic tiling window manager"
 HOMEPAGE="http://i3wm.org/"
-SRC_URI=""
-EGIT_REPO_URI="git://github.com/i3/i3"
-EGIT_BRANCH="next"
+SRC_URI="http://i3wm.org/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc"
 
-CDEPEND="dev-lang/perl
-	dev-libs/libev
+CDEPEND="dev-libs/libev
 	dev-libs/libpcre
 	>=dev-libs/yajl-2.0.3
 	x11-libs/libxcb[xkb]
@@ -28,24 +25,24 @@ CDEPEND="dev-lang/perl
 	x11-libs/xcb-util-cursor
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
-	x11-libs/xcb-util-xrm
-	>=x11-libs/pango-1.30.0[X]
-	>=x11-libs/cairo-1.14.4[X,xcb]"
+	>=x11-libs/cairo-1.14.4[X,xcb]
+	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}
-	doc? ( app-text/asciidoc app-text/xmlto )
-	virtual/pkgconfig"
+	virtual/pkgconfig
+	doc? ( app-text/asciidoc app-text/xmlto dev-lang/perl )"
 RDEPEND="${CDEPEND}
+	dev-lang/perl
 	dev-perl/AnyEvent-I3
 	dev-perl/JSON-XS"
 
+DOCS=( RELEASE-NOTES-${PV} )
+
 src_prepare() {
 	default
-
 	if ! use doc ; then
 		sed -e '/AC_PATH_PROG(\[PATH_ASCIIDOC/d' -i configure.ac || die
+		eautoreconf
 	fi
-	eautoreconf
-
 	cat <<- EOF > "${T}"/i3wm
 		#!/bin/sh
 		exec /usr/bin/i3
@@ -63,6 +60,11 @@ src_compile() {
 
 src_install() {
 	emake -C "${CBUILD}" DESTDIR="${D}" install
+	if ! use doc ; then
+		# install docs shipped with source tarball
+		# local HTML_DOCS=( docs/. ) # TODO: install unconditionally?
+		doman man/*.1
+	fi
 	einstalldocs
 
 	exeinto /etc/X11/Sessions
