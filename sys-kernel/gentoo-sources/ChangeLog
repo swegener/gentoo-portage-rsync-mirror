@@ -2374,3 +2374,9 @@
 
   Package-Manager: portage-2.3.0
 
+  11 Nov 2016; Mike Pagano <mpagano@gentoo.org> -gentoo-sources-4.7.9.ebuild,
+  -gentoo-sources-4.7.10.ebuild:
+  Remove old, vulnerable kernels that are EOL'd upstream.
+
+  Package-Manager: portage-2.3.0
+
