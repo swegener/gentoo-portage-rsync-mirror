@@ -93,3 +93,21 @@
   24 Jan 2016; Michał Górny <mgorny@gentoo.org> metadata.xml:
   Set appropriate maintainer types in metadata.xml (GLEP 67)
 
+*DateTime-Locale-1.30.0 (11 Nov 2016)
+
+  11 Nov 2016; Kent Fredric <kentnl@gentoo.org>
+  +DateTime-Locale-1.30.0.ebuild, metadata.xml:
+  Bump to 1.30.0
+
+  This is the lowest version we can bump to without needing to bump
+  virtual/perl-Scalar-List-Utils to something that would need perl-5.26
+  or perl-core/
+
+  - Added USE=Examples
+
+  Upstream:
+  - Rebuilt with CLDR/2016-03-19
+  - new locales: es_BR, pt_CH, pt_GQ, pt_LU, yue, yue_HK
+
+  Package-Manager: portage-2.3.2
+
