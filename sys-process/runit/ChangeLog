@@ -96,3 +96,8 @@
 
   Package-Manager: portage-2.3.0
 
+  11 Nov 2016; William Hubbs <williamh@gentoo.org> runit-2.1.2-r1.ebuild:
+  Complete migrating 2.1.2-r1 to EAPI 6
+
+  Package-Manager: portage-2.3.0
+
