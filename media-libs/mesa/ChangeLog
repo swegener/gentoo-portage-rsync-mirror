@@ -618,3 +618,7 @@
   covers the common cases but can probably be further refined.  We'll look
   more into it via the bug.
 
+  11 Nov 2016; Mike Frysinger <vapier@gentoo.org> mesa-13.0.0.ebuild,
+  mesa-9999.ebuild, metadata.xml:
+  allow USE=libressl too for sha1 funcs #591246
+
