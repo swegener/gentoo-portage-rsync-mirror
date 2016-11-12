@@ -146,3 +146,19 @@
 
   Package-Manager: portage-2.3.2
 
+  12 Nov 2016; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-light-3.22.0.ebuild:
+  gnome-base/gnome-control-center: drop sparc keyword
+
+  Gentoo-Bug: 599572
+
+  Package-Manager: portage-2.3.2
+
+  12 Nov 2016; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-light-3.22.0.ebuild:
+  lower requirement on nautilus due to gnome-autoar
+
+  Gentoo-Bug: 599574
+
+  Package-Manager: portage-2.3.2
+
