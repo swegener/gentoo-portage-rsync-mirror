@@ -139,3 +139,14 @@
 
   Package-Manager: portage-2.3.2
 
+  12 Nov 2016; Gilles Dartiguelongue <eva@gentoo.org>
+  gnome-core-apps-3.22.0.ebuild:
+  lower requirement on nautilus due to gnome-autoar
+
+  Drop keyword for arm and ia64
+
+  Gentoo-Bug: 521972
+  Gentoo-Bug: 599574
+
+  Package-Manager: portage-2.3.2
+
