@@ -643,3 +643,23 @@
 
   Package-Manager: portage-2.3.2
 
+  14 Nov 2016; Matt Turner <mattst88@gentoo.org> mesa-13.0.1.ebuild:
+  Require libdrm-2.4.72.
+
+  15 Nov 2016; Matt Turner <mattst88@gentoo.org> mesa-9999.ebuild:
+  Require libdrm-2.4.72.
+
+  15 Nov 2016; Matt Turner <mattst88@gentoo.org> mesa-13.0.1.ebuild,
+  mesa-9999.ebuild, metadata.xml:
+  Add Vulkan support.
+
+  Bug: https://bugs.gentoo.org/580148
+
+  15 Nov 2016; Matt Turner <mattst88@gentoo.org> mesa-13.0.1.ebuild,
+  mesa-9999.ebuild, metadata.xml:
+  Default to dev-libs/nettle for SHA1.
+
+  Various games on Steam bundle libcrypto, leading to problems when your
+  GL driver from Mesa also loads a newer and incompatible version. No
+  problems have been experienced with nettle.
+
