@@ -24,7 +24,7 @@ IUSE="debug kerberos libressl mms-agent ssl test +tools"
 RDEPEND=">=app-arch/snappy-1.1.2
 	|| ( =dev-cpp/yaml-cpp-0.5.1 >dev-cpp/yaml-cpp-0.5.2 )
 	>=dev-libs/boost-1.57[threads(+)]
-	>=dev-libs/libpcre-8.37[cxx]
+	>=dev-libs/libpcre-8.39[cxx]
 	dev-libs/snowball-stemmer
 	net-libs/libpcap
 	>=sys-libs/zlib-1.2.8
@@ -103,8 +103,10 @@ pkg_setup() {
 src_prepare() {
 	epatch \
 		"${FILESDIR}/${PN}-3.2.0-fix-scons.patch" \
-		"${FILESDIR}/${PN}-3.2.4-boost-1.60.patch" \
-		"${FILESDIR}/${PN}-3.2.10-boost-1.62.patch"
+		"${FILESDIR}/${PN}-3.2.4-boost-1.60.patch"
+	if has_version ">=dev-libs/boost-1.62"; then
+		epatch "${FILESDIR}/${PN}-3.2.10-boost-1.62.patch"
+	fi
 	epatch_user
 }
 
