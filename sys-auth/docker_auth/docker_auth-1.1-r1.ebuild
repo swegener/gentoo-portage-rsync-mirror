@@ -33,6 +33,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE=""
 
+DEPEND="dev-go/go-crypto:=
+	dev-go/go-sys:="
+
 _golang-include-src() {
 	local VENDORPN=$1 TARBALL=$2
 	mkdir -p "${WORKDIR}/${P}/src/${VENDORPN}" || die
@@ -85,5 +88,10 @@ src_install() {
 	insinto /etc/docker_auth/
 	newins examples/reference.yml config.yml.example
 	dobin auth_server/bin/auth_server
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newconfd "${FILESDIR}"/${PN}.confd ${PN}
+	insinto /etc/logrotate.d
+	newins "${FILESDIR}"/${PN}.logrotated ${PN}
+	keepdir /var/log/docker_auth
 	popd || die
 }
