@@ -14,10 +14,11 @@ SLOT="0"
 IUSE="+ofx"
 KEYWORDS="~amd64 ~ppc ~x86"
 
-RDEPEND=">=dev-libs/glib-2.28
+RDEPEND=">=dev-libs/glib-2.39
+	>=net-libs/libsoup-2.26
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
-	>=x11-libs/gtk+-3.6.4:3
+	>=x11-libs/gtk+-3.12:3
 	x11-libs/pango
 	ofx? ( >=dev-libs/libofx-0.8.3 )"
 DEPEND="${RDEPEND}
