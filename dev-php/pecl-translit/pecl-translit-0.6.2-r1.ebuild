@@ -2,19 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 PHP_EXT_NAME="translit"
 PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 
-USE_PHP="php7-0 php5-6 php5-5"
+USE_PHP="php7-0 php5-6"
 PHP_EXT_NAME="translit"
 
 MY_PV="${PV//./_}"
 S="${WORKDIR}/${PN}-RELEASE_${MY_PV}"
 
-inherit php-ext-source-r2
+inherit php-ext-source-r3
 
 SRC_URI="https://github.com/derickr/${PN}/archive/RELEASE_${MY_PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
@@ -24,6 +24,7 @@ DESCRIPTION="Transliterates non-latin character sets to latin"
 LICENSE="BSD-2"
 SLOT="0"
 IUSE=""
+PHP_EXT_ECONF_ARGS=()
 
 src_test() {
 	for slot in $(php_get_slots); do
