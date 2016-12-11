@@ -6,24 +6,30 @@ EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22 ruby23"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
-RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc README.rdoc"
+RUBY_FAKEGEM_EXTRADOC="CHANGELOG.rdoc README.md"
+
+RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
+
+RUBY_FAKEGEM_BINWRAP=""
 
 inherit multilib ruby-fakegem
 
 DESCRIPTION="A libyaml wrapper for Ruby"
 HOMEPAGE="https://github.com/tenderlove/psych"
+SRC_URI="https://github.com/tenderlove/psych/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-DEPEND+=" >=dev-libs/libyaml-0.1.6"
+DEPEND+=" >=dev-libs/libyaml-0.1.7"
 
 ruby_add_bdepend "test? ( dev-ruby/minitest:5 )"
 
 all_ruby_prepare() {
 	sed -i -e '1igem "minitest", "~>5.0"' test/psych/helper.rb || die
+	sed -i -e '/s.files/ s:^:#:' ${RUBY_FAKEGEM_GEMSPEC} || die
 }
 
 each_ruby_configure() {
