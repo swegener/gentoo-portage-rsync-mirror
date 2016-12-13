@@ -19,9 +19,9 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 	UPSTREAM_VER=0
-	SECURITY_VER=18
+	SECURITY_VER=19
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=7
 	# xen-tools's gentoo patches version which apply to this specific ebuild
@@ -348,6 +348,7 @@ src_configure() {
 		--disable-xen \
 		--enable-tools \
 		--enable-docs \
+		$(use_with system-qemu) \
 		$(use_enable pam) \
 		$(use_enable api xenapi) \
 		$(use_enable ovmf) \
@@ -356,7 +357,7 @@ src_configure() {
 		"
 
 	use system-seabios && myconf+=" --with-system-seabios=/usr/share/seabios/bios.bin"
-	use system-qemu && myconf+=" --with-system-qemu=/usr/bin/qemu-system-x86_64"
+	use qemu || myconf+=" --with-system-qemu"
 	use amd64 && myconf+=" $(use_enable qemu-traditional)"
 	econf ${myconf}
 }
