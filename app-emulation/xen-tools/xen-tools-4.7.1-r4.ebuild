@@ -20,8 +20,8 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=
-	SECURITY_VER=17
+	UPSTREAM_VER=0
+	SECURITY_VER=19
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=7
 	# xen-tools's gentoo patches version which apply to this specific ebuild
@@ -63,13 +63,13 @@ SLOT="0/${MAJOR_V}"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api custom-cflags debug doc flask hvm qemu ocaml ovmf +qemu-traditional +pam python pygrub screen sdl static-libs system-qemu system-seabios"
+IUSE="api custom-cflags debug doc flask hvm +qemu ocaml ovmf +qemu-traditional +pam python pygrub screen sdl static-libs system-qemu system-seabios"
 
-REQUIRED_USE="hvm? ( || ( qemu system-qemu ) )
+REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
 	pygrub? ( python )
 	ovmf? ( hvm )
-	qemu? ( !system-qemu )"
+	^^ ( qemu system-qemu )"
 
 COMMON_DEPEND="
 	dev-libs/lzo:2

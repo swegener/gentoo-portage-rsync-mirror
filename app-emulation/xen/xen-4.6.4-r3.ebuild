@@ -17,9 +17,9 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
 	SRC_URI=""
 else
-	KEYWORDS="~amd64 ~arm -x86"
-	UPSTREAM_VER=
-	SECURITY_VER=17
+	KEYWORDS="amd64 ~arm -x86"
+	UPSTREAM_VER=0
+	SECURITY_VER=19
 	GENTOO_VER=
 
 	[[ -n ${UPSTREAM_VER} ]] && \
