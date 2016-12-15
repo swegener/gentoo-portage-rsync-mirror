@@ -10,25 +10,25 @@ inherit autotools eutils flag-o-matic multilib pam readme.gentoo-r1 systemd user
 
 DESCRIPTION="A free routing daemon replacing Zebra supporting RIP, OSPF and BGP"
 HOMEPAGE="http://quagga.net/"
-SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz
+SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz
 	bgpclassless? ( http://hasso.linux.ee/stuff/patches/quagga/${CLASSLESS_BGP_PATCH} )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~s390 ~sparc ~x86"
 
-IUSE="bgpclassless caps doc elibc_glibc ipv6 multipath ospfapi pam +readline snmp tcp-zebra"
+IUSE="bgpclassless caps doc elibc_glibc ipv6 multipath ospfapi pam protobuf +readline snmp tcp-zebra"
 
 COMMON_DEPEND="
 	caps? ( sys-libs/libcap )
-	snmp? ( net-analyzer/net-snmp )
+	protobuf? ( dev-libs/protobuf:0= )
 	readline? (
-		sys-libs/readline:0
+		sys-libs/readline:0=
 		pam? ( sys-libs/pam )
 	)
+	snmp? ( net-analyzer/net-snmp )
 	!elibc_glibc? ( dev-libs/libpcre )"
 DEPEND="${COMMON_DEPEND}
-	app-arch/xz-utils
 	sys-apps/gawk
 	sys-devel/libtool:2"
 RDEPEND="${COMMON_DEPEND}
@@ -36,9 +36,6 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.99.22.4-ipctl-forwarding.patch"
-	"${FILESDIR}/${P}-ripd-null-pointer-fix.patch"
-	"${FILESDIR}/${P}-ospfd-dangling-pointer-fix.patch"
-	"${FILESDIR}/${P}-bgpd-logging-fix.patch"
 )
 
 DISABLE_AUTOFORMATTING=1
@@ -94,6 +91,7 @@ src_configure() {
 		$(usex ospfapi '--enable-opaque-lsa --enable-ospf-te --enable-ospfclient' '' '' '') \
 		$(use_enable readline vtysh) \
 		$(use_with pam libpam) \
+		$(use_enable protobuf) \
 		$(use_enable ipv6 ripngd) \
 		$(use_enable ipv6 ospf6d) \
 		$(use_enable ipv6 rtadv)
