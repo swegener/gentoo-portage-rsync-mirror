@@ -3023,6 +3023,8 @@ games-fps/xonotic:ode - Enable support for physics engine from dev-games/ode
 games-kids/crayon-physics:bundled-libs - Use the upstream provided bundled libraries.
 games-misc/katawa-shoujo:system-renpy - Use games-engines/renpy instead of the bundled one (experimental)
 games-misc/little-inferno:bundled-libs - Use bundled libraries.
+games-misc/ponysay:fish-completion - Enable fish completion support
+games-misc/ponysay:non-free - Install non-free ponies (i.e. from the MLP franchise)
 games-misc/xcowsay:fortune - Installs the fortune-mod xcow binary
 games-mud/tf:atcp - enable ATCP support.
 games-mud/tf:gmcp - enable GMCP support.
@@ -6873,6 +6875,7 @@ sci-geosciences/merkaartor:libproxy - Use net-libs/libproxy for getting the HTTP
 sci-geosciences/merkaartor:qrcode - Enable QR code scanning with media-gfx/zbar
 sci-geosciences/osm2pgsql:pbf - Add support for importing the new "Protocolbuffer Binary Format"
 sci-geosciences/qgis:bundled-libs - Use internal copy of x11-libs/qwtpolar
+sci-geosciences/qgis:georeferencer - Determines whether georeferencer plugin should be built
 sci-geosciences/qgis:grass - Add support for sci-geosciences/grass
 sci-geosciences/qgis:mapserver - Determines whether mapserver should be built
 sci-geosciences/qgis:spatialite - Enable Spatial DBMS over sqlite dev-db/spatialite
