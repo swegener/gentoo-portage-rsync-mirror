@@ -3488,7 +3488,7 @@ mail-client/mutt:gpg - Enable support for app-crypt/gpgme
 mail-client/mutt:notmuch - Enable support for net-mail/notmuch
 mail-client/mutt:pop - Enable support for POP3
 mail-client/mutt:sidebar - Enable the sidebar feature
-mail-client/mutt:smime - Enable support for smime
+mail-client/mutt:smime - Enable support for S/MIME
 mail-client/mutt:smtp - Enable support for smtp
 mail-client/mutt:tokyocabinet - Enable tokyocabinet database backend for header caching
 mail-client/nail:kerberos - If network is enabled, this adds support for GSSAPI login on IMAP through virtual/krb5.
@@ -7800,9 +7800,9 @@ sys-kernel/gentoo-sources:experimental - Apply experimental patches; for more in
 sys-kernel/hardened-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/linux-docs:html - Install HTML documentation
 sys-kernel/linux-firmware:savedconfig - Allows individual selection of firmware files
-sys-kernel/mips-sources:cobalt - Enables support for Cobalt Microserver hardware (Qube2/RaQ2)
-sys-kernel/mips-sources:ip27 - Enables support for SGI Origin (IP27)
-sys-kernel/mips-sources:ip28 - Enables support for SGI Indigo2 Impact R10000 (IP28)
+sys-kernel/mips-sources:experimental - Apply experimental (80xx) patches.
+sys-kernel/mips-sources:ip27 - Enables additional support for SGI Origin (IP27)
+sys-kernel/mips-sources:ip28 - Enables additional support for SGI Indigo2 Impact R10000 (IP28)
 sys-kernel/mips-sources:ip30 - Enables support for SGI Octane (IP30, 'Speedracer')
 sys-kernel/rt-sources:deblob - Remove binary blobs from kernel sources to provide libre license compliance.
 sys-kernel/spl:debug-log - Enable additional diagnostics
