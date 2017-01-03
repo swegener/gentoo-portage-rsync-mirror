@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -7,7 +7,7 @@ EAPI=6
 inherit cmake-utils flag-o-matic
 
 DESCRIPTION="A tiny but valid init for containers"
-HOMEPAGE="https://github.com/krallin/${PN}"
+HOMEPAGE="https://github.com/krallin/tini"
 SRC_URI="https://github.com/krallin/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
@@ -15,12 +15,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+args static"
 
-# vim-core is needed just for the xxd program
-DEPEND="app-editors/vim-core"
+src_prepare() {
+	default
+	# Do not strip binary
+	sed -i -e 's/-Wl,-s")$/")/' CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=()
-	use args || mycmakeargs+=(-DNO_ARGS=ON)
+	use args || mycmakeargs+=(-DMINIMAL=ON)
 
 	cmake-utils_src_configure
 }
