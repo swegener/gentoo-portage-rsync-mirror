@@ -1,11 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
+
 EAPI=5
 
-# PyCObject_Check and PyCObject_AsVoidPtr vanished with python 3.3, and setup.py not python3.2 copmat
+# PyCObject_Check and PyCObject_AsVoidPtr vanished with python 3.3, and setup.py not python3.2 compat
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1 eutils
+inherit distutils-r1 eutils flag-o-matic user
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="http://xpra.org/ http://xpra.org/src/"
@@ -19,7 +20,8 @@ IUSE="+client +clipboard csc cups dec_av2 libav lz4 lzo opengl pulseaudio server
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	clipboard? ( || ( server client ) )
 	opengl? ( client )
-	|| ( client server )"
+	|| ( client server )
+	client? ( x264? ( dec_av2 ) x265? ( dec_av2 ) )"
 
 # x264/old-libav.path situation see bug 459218
 COMMON_DEPEND=""${PYTHON_DEPS}"
@@ -42,9 +44,9 @@ COMMON_DEPEND=""${PYTHON_DEPS}"
 	)
 	opengl? ( dev-python/pygtkglext )
 	pulseaudio? ( media-sound/pulseaudio )
-	sound? ( media-libs/gstreamer:0.10
-		media-libs/gst-plugins-base:0.10
-		dev-python/gst-python:0.10 )
+	sound? ( media-libs/gstreamer:1.0
+		media-libs/gst-plugins-base:1.0
+		dev-python/gst-python:1.0 )
 	vpx? ( media-libs/libvpx virtual/ffmpeg )
 	webp? ( media-libs/libwebp )
 	x264? ( media-libs/x264
@@ -63,7 +65,6 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/rencode[${PYTHON_USEDEP}]
 	virtual/ssh
-	x11-apps/setxkbmap
 	x11-apps/xmodmap
 	cups? ( dev-python/pycups[${PYTHON_USEDEP}] )
 	lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
@@ -79,12 +80,16 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=dev-python/cython-0.16[${PYTHON_USEDEP}]"
 
+pkg_postinst() {
+	enewgroup ${PN}
+}
+
 python_prepare_all() {
 	rm -rf rencode || die
 
 	epatch \
 		"${FILESDIR}"/${PN}-0.13.1-ignore-gentoo-no-compile.patch \
-		"${FILESDIR}"/${PN}-0.15.0-prefix.patch
+		"${FILESDIR}"/${PN}-0.17.4-deprecated-avcodec.patch
 
 	if use libav ; then
 		if ! has_version ">=media-video/libav-9" ; then
@@ -118,4 +123,8 @@ python_configure_all() {
 		--with-x11
 		--without-PIC
 		--without-debug )
+
+	# see https://www.xpra.org/trac/ticket/1080
+	# and http://trac.cython.org/ticket/395
+	append-cflags -fno-strict-aliasing
 }
