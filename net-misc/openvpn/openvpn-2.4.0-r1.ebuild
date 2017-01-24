@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -71,7 +71,7 @@ src_configure() {
 	use static && append-ldflags -Xcompiler -static
 	econf \
 		--with-plugindir="${ROOT}/usr/$(get_libdir)/$PN" \
-		$(usex mbedtls 'with-crypto-library' 'mbedtls' '' '') \
+		$(usex mbedtls '--with-crypto-library=mbedtls' '') \
 		$(use_enable inotify async-push) \
 		$(use_enable ssl crypto) \
 		$(use_enable lz4) \
