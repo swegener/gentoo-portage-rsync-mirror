@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/${GITHUB_USER}/${GITHUB_REPO}"
 SRC_URI="https://github.com/${GITHUB_USER}/${GITHUB_REPO}/archive/${GITHUB_TAG}.tar.gz -> ${P}.tar.gz"
 
 RESTRICT="strip"
-LICENSE="MPL-2.0"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="luks raid lvm zfs"
