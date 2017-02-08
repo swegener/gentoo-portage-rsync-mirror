@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
+EAPI=5
+
 inherit latex-package
 
 DESCRIPTION="pgf -- The TeX Portable Graphic Format"
@@ -15,12 +17,14 @@ IUSE="doc source"
 
 RDEPEND="dev-texlive/texlive-latexrecommended
 	>=dev-tex/xcolor-2.11"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+DEPEND="app-arch/unzip"
 
 S=${WORKDIR}
 
 src_install() {
+	# Bug #607642
+	cp "${FILESDIR}/pgfsys-luatex.def" "${WORKDIR}/tex/generic/pgf/systemlayer/" || die
+
 	insinto ${TEXMF}
 	doins -r tex || die
 
@@ -35,5 +39,6 @@ src_install() {
 		doins pgfmanual.pdf || die
 		doins -r images macros text-en version-* || die
 		dosym /usr/share/doc/${PF}/texdoc ${TEXMF}/doc/latex/${PN} || die
+		docompress -x /usr/share/doc/${PF}/texdoc/
 	fi
 }
