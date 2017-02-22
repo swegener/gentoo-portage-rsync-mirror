@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
-inherit eutils udev
+EAPI=6
+inherit udev
 
 DESCRIPTION="Library to handle input devices in Wayland"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/libinput/"
@@ -18,7 +18,7 @@ IUSE="input_devices_wacom test"
 RESTRICT="test"
 
 RDEPEND="
-	input_devices_wacom? ( >=dev-libs/libwacom-0.12 )
+	input_devices_wacom? ( >=dev-libs/libwacom-0.20 )
 	>=dev-libs/libevdev-0.4
 	>=sys-libs/mtdev-1.1
 	virtual/libudev
@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}
 #		sys-libs/libunwind )
 
 src_prepare() {
+	default
 	# Doc handling in kinda strange but everything
 	# is available in the tarball already.
 	sed -e 's/^\(SUBDIRS =.*\)doc\(.*\)$/\1\2/' \
@@ -51,5 +52,5 @@ src_configure() {
 src_install() {
 	emake install DESTDIR="${D}"
 	dodoc -r doc/html
-	prune_libtool_files
+	find "${ED}" \( -name "*.a" -o -name "*.la" \) -delete || die
 }
