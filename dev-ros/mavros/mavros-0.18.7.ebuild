@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 234dc9be3492c62e7f63b65e46502d3d7016d90b $
+# $Id: fd9347f9418359694a55c3994f825690dcf6e2cc $
 
 EAPI=5
 ROS_REPO_URI="https://github.com/mavlink/mavros"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
@@ -26,7 +26,7 @@ RDEPEND="
 	dev-libs/boost:=
 	dev-ros/eigen_conversions
 	dev-ros/std_srvs[${CATKIN_MESSAGES_CXX_USEDEP}]
-	>=dev-ros/mavros_msgs-0.18.1[${CATKIN_MESSAGES_CXX_USEDEP}]
+	>=dev-ros/mavros_msgs-${PV}[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/diagnostic_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/sensor_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
 	dev-ros/std_msgs[${CATKIN_MESSAGES_CXX_USEDEP}]
