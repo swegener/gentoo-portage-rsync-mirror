@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: b18dc0fc673dc1c7542ca225a695283f243da6fe $
+# $Id: 91e49e6c521e66cf87ea2b8c07ac21e85fe0da64 $
 
 EAPI=5
 USE_RUBY="ruby20 ruby21 ruby22 ruby23"
@@ -14,7 +14,7 @@ DESCRIPTION="Ruby method to unindent strings"
 HOMEPAGE="https://github.com/mynyml/unindent"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~ppc"
+KEYWORDS="~amd64 arm ppc ppc64"
 SLOT="0"
 IUSE=""
 
