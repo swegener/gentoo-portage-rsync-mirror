@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: d95c9c1fd71acbca3ca74ccc613d9c302985d92f $
+# $Id: e45229ba20a1d37a517797521e5ff1cdd4e8d314 $
 
 EAPI=6
 
@@ -53,14 +53,6 @@ RDEPEND="${COMMON_DEPEND}
 "
 
 DOCS=( ChangeLog README )
-
-PATCHES=(
-	"${FILESDIR}/${P}-ecm531-1.patch"
-	"${FILESDIR}/${P}-ecm531-2.patch"
-	"${FILESDIR}/${P}-ecm531-3.patch"
-	"${FILESDIR}/${P}-ecm531-4.patch"
-	"${FILESDIR}/${P}-ecm531-5.patch"
-)
 
 src_configure() {
 	local mycmakeargs=(
