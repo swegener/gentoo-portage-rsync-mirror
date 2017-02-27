@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 0da709acbb4e757e3d810a60134623f39ddace04 $
+# $Id: 711875a3c4b2b81d20e8129013672626738d701c $
 
 EAPI=6
 
@@ -29,6 +29,7 @@ src_prepare() {
 }
 
 src_configure() {
+	use sctp || export ac_cv_header_netinet_sctp_h=no
 	econf $(use_enable static-libs static)
 }
 
