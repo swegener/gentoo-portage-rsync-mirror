@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: ab1c0047a933bf60d6d86def3a3018adb80f781d $
+# $Id: ba0237879e6197d9caf14b48359336088ff1e74c $
 
 EAPI=5
 CATKIN_HAS_MESSAGES=yes
 ROS_REPO_URI="https://github.com/mavlink/mavros"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 ROS_SUBDIR=${PN}
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geometry_msgs"
 

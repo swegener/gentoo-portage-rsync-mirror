@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: af9e276b62c61d72cd3dc8431685eb16834c09c6 $
+# $Id: 6d019cd621dad6e279a570c901c52be321e001dd $
 
 EAPI=5
 ROS_REPO_URI="https://github.com/mavlink/mavros"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
 ROS_SUBDIR=${PN}
 
 inherit ros-catkin
