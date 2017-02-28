@@ -1,6 +1,6 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: ed1be00c80c46d6cc150ceada586f24d3cbd6a57 $
+# $Id: ecd7c6e8a9d0930832f7835b6edfbdbf4be8af33 $
 
 EAPI=6
 
@@ -18,6 +18,7 @@ IUSE="libressl"
 DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
+	net-dialup/ppp
 "
 RDEPEND="${DEPEND}"
 
