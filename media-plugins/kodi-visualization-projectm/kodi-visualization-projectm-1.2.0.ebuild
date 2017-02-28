@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 357bbd9ce168b9ab9871e8bbc9c909f83c9dfa1b $
+# $Id: 33d529c3195bf35a64cab738c18c8fb0d458af4f $
 
 EAPI=6
 
@@ -28,7 +28,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	media-tv/kodi
+	=media-tv/kodi-17*
+	=media-libs/kodi-platform-17*
 	media-libs/libprojectm
 	virtual/opengl
 	"
