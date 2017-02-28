@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: c8f2acd624498eaba742b75c1c0947c8db38f50b $
+# $Id: 568216bfa42870b4ef5e3c81593b8b4a4b2ddcf0 $
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{4,5}} )
+PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
 
 inherit check-reqs autotools eutils python-r1 udev user \
 	readme.gentoo-r1 systemd versionator flag-o-matic
@@ -140,6 +140,7 @@ emake_python_bindings() {
 	params=("${@}")
 
 	__emake_python_bindings_do_impl() {
+		ceph_run_econf "${EPYTHON}"
 		emake "${params[@]}" PYTHON="${EPYTHON}" "${binding}-pybind-${action}"
 
 		# these don't work and aren't needed on python3
@@ -182,7 +183,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myeconfargs=(
+	ECONFARGS=(
 		--without-hadoop
 		--includedir=/usr/include
 		$(use_with cephfs)
@@ -211,8 +212,25 @@ src_configure() {
 	)
 
 	# we can only use python2.7 for building at the moment
-	python_setup 'python2*'
-	econf "${myeconfargs[@]}"
+	ceph_run_econf "python2*"
+}
+
+ceph_run_econf() {
+	[[ -z ${ECONFARGS} ]] && die "called ${FUNCNAME[0]} with ECONFARGS unset"
+	[[ -z ${1} ]] && die "called ${FUNCNAME[0]} without passing python implementation"
+
+	pushd "${S}" >/dev/null || die
+	#
+	# This generates a QA warning about running econf in src_compile
+	# and src_install. Unfortunately the only other way to do this would
+	# involve building all of for each python implementation times, which
+	# wastes a _lot_ of CPU time and disk space. This hack will no longer
+	# be needed with >=ceph-11.2.
+	#
+	python_setup "${1}"
+	econf "${ECONFARGS[@]}"
+
+	popd >/dev/null || die
 }
 
 src_compile() {
@@ -243,7 +261,7 @@ src_install() {
 	fowners -R ceph:ceph /var/lib/ceph /var/log/ceph
 
 	newinitd "${FILESDIR}/rbdmap.initd" rbdmap
-	newinitd "${FILESDIR}/${PN}.initd-r2" ${PN}
+	newinitd "${FILESDIR}/${PN}.initd-r3" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r1" ${PN}
 
 	systemd_install_serviced "${FILESDIR}/ceph-mds_at.service.conf" "ceph-mds@.service"
