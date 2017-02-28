@@ -1,6 +1,5 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 3b47e340f05fc7f91405c915d58f90c2572c66f6 $
 
 EAPI=6
 
@@ -131,6 +130,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-4.10.0-udisks.patch"
 	"${FILESDIR}/${PN}-4.14.20-FindQt4.patch"
 	"${FILESDIR}/${PN}-4.14.22-webkit.patch"
+	"${FILESDIR}/${P}-sanitize-url.patch"
 )
 
 pkg_pretend() {
