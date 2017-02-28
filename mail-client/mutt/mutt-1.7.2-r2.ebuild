@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 7abf20e856ad3bff721f49dd1fd99398d860538e $
+# $Id: 8c789cc18df4cb15b0fb049ce69c5d3c3b433dbc $
 
 EAPI="6"
 
@@ -73,6 +73,8 @@ src_prepare() {
 		# apply patches
 		export EPATCH_FORCE="yes"
 		export EPATCH_SUFFIX="patch"
+		# http://hg.code.sf.net/p/gentoomutt/code/file/gentoo-1.7
+		# http://hg.code.sf.net/p/gentoomuttpatches/code/file/mutt-1.7
 		local patches=(
 			patches-mutt
 			bugs-gentoo

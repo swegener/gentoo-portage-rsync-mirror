@@ -11,4 +11,4 @@ REQUIRED_USE=hcache? ( ^^ ( berkdb gdbm lmdb qdbm tokyocabinet ) ) imap? ( ssl )
 SLOT=0
 SRC_URI=ftp://ftp.mutt.org/pub/mutt/mutt-1.7.2.tar.gz https://bitbucket.org/mutt/mutt/downloads/mutt-1.7.2.tar.gz https://dev.gentoo.org/~grobian/distfiles/mutt-gentoo-1.7.2-patches-r3.tar.xz
 _eclasses_=autotools	556cbda319248ff8ca93ad3d3748fbc8	eutils	c8729578e47597ee48d77eda210e2b56	flag-o-matic	c804324951745d4fcf741b53ba7759f8	libtool	54abc83bd0dbed5d55e6bfc116e3d7bf	multilib	177a5a7d8d9cc0ec8bffd43ee456ba7f	toolchain-funcs	3115bbace907b4a0a213e883e7da535d
-_md5_=8c9a3585c40343a1e6fba023793f1b8d
+_md5_=f5e9f3926e439c8ffd771f5bda4a0219
