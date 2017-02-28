@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 017755ad1311765473aeb297a05e4e5feb61383a $
+# $Id: fb181d5f0ec0758c6740c256346be0e323cc1564 $
 
 EAPI=6
 
@@ -18,7 +18,7 @@ SRC_URI="mirror://sourceforge/nagios/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc ~x86"
+KEYWORDS="alpha ~amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc ~x86"
 IUSE="apache2 classicui lighttpd perl +web vim-syntax"
 
 # In pkg_postinst(), we change the group of the Nagios configuration
