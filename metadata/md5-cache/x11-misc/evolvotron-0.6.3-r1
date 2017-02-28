@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-libs/boost:= dev-qt/qtcore:4 dev-qt/qtgui:4
+DESCRIPTION=Generative art image evolver
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/evolvotron/
+KEYWORDS=~amd64 ~ppc ~x86 ~x86-fbsd
+LICENSE=GPL-2
+RDEPEND=dev-libs/boost:= dev-qt/qtcore:4 dev-qt/qtgui:4
+SLOT=0
+SRC_URI=mirror://sourceforge/evolvotron/evolvotron-0.6.3.tar.gz
+_eclasses_=eutils	c8729578e47597ee48d77eda210e2b56	multilib	177a5a7d8d9cc0ec8bffd43ee456ba7f	qmake-utils	461362a9981d9f069203d2436fea87ce	toolchain-funcs	3115bbace907b4a0a213e883e7da535d
+_md5_=e2bbe8fdef037812fded84f0f1974174
