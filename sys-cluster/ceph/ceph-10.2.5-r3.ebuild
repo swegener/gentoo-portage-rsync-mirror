@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 568216bfa42870b4ef5e3c81593b8b4a4b2ddcf0 $
+# $Id: cce9b22dd9e32a3f3e7fe2a9c43f9e9596c1b62e $
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
@@ -135,7 +135,7 @@ user_setup() {
 }
 
 emake_python_bindings() {
-	local action="${1}" params binding
+	local action="${1}" params binding module
 	shift
 	params=("${@}")
 
@@ -144,8 +144,15 @@ emake_python_bindings() {
 		emake "${params[@]}" PYTHON="${EPYTHON}" "${binding}-pybind-${action}"
 
 		# these don't work and aren't needed on python3
-		if [[ ${EBUILD_PHASE} == install ]] && python_is_python3; then
-			rm -f "${ED}/$(python_get_sitedir)"/ceph_{argparse,volume_client}.py
+		if [[ ${EBUILD_PHASE} == install ]]; then
+			for module in "${S}"/src/pybind/*.py; do
+				module_basename="$(basename "${module}")"
+				if [[ ${module_basename} == ceph_volume_client.py ]] && ! use cephfs; then
+					continue
+				elif [[ ! -e "${ED}/$(python_get_sitedir)/${module_basename}" ]]; then
+					python_domodule ${module}
+				fi
+			done
 		fi
 	}
 
