@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 772fdbf851e6fe9a003a8588604d6367bab96b4d $
+# $Id: c32cb75e5324cd04b66dce59e85a82fbc3a36b23 $
 
 EAPI=6
 
@@ -22,7 +22,8 @@ RDEPEND="
 
 src_configure() {
 	default
-	sed -i  's,^#CONFIG_D=.*,CONFIG_D="/etc/dehydrated/config.d",' docs/examples/config || die "could not set config"
+	sed -i  's,^#CONFIG_D=.*,CONFIG_D="/etc/dehydrated/config.d",' docs/examples/config || die "could not set config (CONFIG_D)"
+	sed -i  's,^#DOMAINS_TXT=.*,DOMAINS_TXT="/etc/dehydrated/domains.txt",' docs/examples/config || die "could not set config (DOMAINS_TXT)"
 }
 
 src_install() {
