@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 5eb8463c609cf99595e9d17add287ace8b78fb84 $
+# $Id: aa14536766ee164de9e399dbd2bb1acbba35e47a $
 
 EAPI=6
 WANT_AUTOCONF="2.1"
@@ -72,6 +72,12 @@ src_configure() {
 		$(use_enable jit ion) \
 		$(use_enable static-libs static) \
 		$(use_enable test tests)
+
+	# An unfortunate hack to undo header install symlinking, but
+	# necessary until the function that generates this file can be
+	# determined and fixed
+	sed -i -e 's/^1/2/' \
+		"${BUILDDIR}"/_build_manifests/install/dist_include || die
 }
 
 cross_make() {

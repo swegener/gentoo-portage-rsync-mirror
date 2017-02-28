@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile configure install
+DEPEND=dev-libs/boost:= dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 virtual/glu virtual/opengl dev-libs/libxslt
+DESCRIPTION=Fractal planet and terrain generator
+EAPI=6
+HOMEPAGE=https://sourceforge.net/projects/fracplanet/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/boost:= dev-qt/qtcore:4 dev-qt/qtgui:4 dev-qt/qtopengl:4 virtual/glu virtual/opengl
+SLOT=0
+SRC_URI=mirror://sourceforge/fracplanet/fracplanet-0.4.0.tar.gz
+_eclasses_=eutils	c8729578e47597ee48d77eda210e2b56	multilib	177a5a7d8d9cc0ec8bffd43ee456ba7f	qmake-utils	461362a9981d9f069203d2436fea87ce	toolchain-funcs	3115bbace907b4a0a213e883e7da535d
+_md5_=7ae39e579aaea31cb6d7e076b129033c
