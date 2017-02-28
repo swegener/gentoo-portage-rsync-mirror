@@ -1,5 +1,5 @@
 ####################################################################
-# $Id: de5db9debb5a139b9b0175a7913773396427ce98 $
+# $Id: 7189e77509f8a44a052dd4e98a63b2dda667f639 $
 #
 # When you add an entry to the top of this file, add your name, the date, and
 # an explanation of why something is getting masked. Please be extremely
@@ -29,6 +29,11 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Ian Stakenvicius <axs@gentoo.org> (28 Feb 2017)
+# Installs symlinks to ${S} instead of copies of files,
+# will unmask once fixed
+dev-lang/spidermonkey:45
 
 # Matt Turner <mattst88@gentoo.org> (26 Feb 2017)
 # Integrated into xorg-server since 1.17. Removal in 30 days.
