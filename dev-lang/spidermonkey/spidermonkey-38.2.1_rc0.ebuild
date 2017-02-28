@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: 667393195666c2b2185864d6cb5f74da52930b43 $
+# $Id: 5da1b11af428309ff1d3c0da5f3c2ba2cf84bd10 $
 
 EAPI=6
 WANT_AUTOCONF="2.1"
@@ -42,7 +42,7 @@ pkg_setup(){
 }
 
 src_prepare() {
-	eapply "${FILESDIR}"/${PN}-38-jsapi-tests-makefile.patch \
+	eapply "${FILESDIR}"/${PN}-38-jsapi-tests.patch \
 		"${FILESDIR}"/mozjs38-1269317.patch \
 		"${FILESDIR}"/mozjs38-fix-tracelogger.patch
 
