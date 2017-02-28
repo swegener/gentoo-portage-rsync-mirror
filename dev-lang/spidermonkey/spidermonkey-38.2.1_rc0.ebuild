@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: ad154d68f81a5fbf0612e9240273d0e60806acd1 $
+# $Id: f03e6d13beedd6135ba86b70347e9ae07f03122c $
 
 EAPI=6
 WANT_AUTOCONF="2.1"
@@ -41,7 +41,8 @@ src_prepare() {
 		"${FILESDIR}"/mozjs38-1269317.patch \
 		"${FILESDIR}"/mozjs38-fix-tracelogger.patch \
 		"${FILESDIR}"/mozjs38-copy-headers.patch \
-		"${FILESDIR}"/mozjs38-pkg-config-version.patch
+		"${FILESDIR}"/mozjs38-pkg-config-version.patch \
+		"${FILESDIR}"/mozilla_configure_regexp_esr38.patch
 
 	eapply_user
 
