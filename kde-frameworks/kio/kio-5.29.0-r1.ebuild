@@ -1,10 +1,9 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id: f7175fef7e2a811b0e17e7d4f80a7c053a9b7380 $
 
 EAPI=6
 
-KDE_TEST="forceoptional-recursive"
+KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
 inherit kde5
 
@@ -66,6 +65,8 @@ RDEPEND="${COMMON_DEPEND}"
 
 # tests hang
 RESTRICT+=" test"
+
+PATCHES=( "${FILESDIR}/${P}-sanitize-url.patch" )
 
 src_configure() {
 	local mycmakeargs=(
