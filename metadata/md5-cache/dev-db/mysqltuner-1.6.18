@@ -7,4 +7,4 @@ LICENSE=GPL-3
 RDEPEND=dev-lang/perl virtual/perl-Getopt-Long virtual/mysql
 SLOT=0
 SRC_URI=https://github.com/major/MySQLTuner-perl/archive/1.6.18.tar.gz -> mysqltuner-1.6.18.tar.gz
-_md5_=85d66bef93cbb3719ccad577c0407048
+_md5_=a38d79cd3234b16693e72ecf93517dfa
