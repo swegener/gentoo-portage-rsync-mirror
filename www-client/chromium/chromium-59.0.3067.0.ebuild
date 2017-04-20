@@ -17,7 +17,7 @@ SRC_URI="https://commondatastorage.googleapis.com/chromium-browser-official/${P}
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="component-build cups gconf gnome-keyring gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-libvpx +tcmalloc widevine"
+IUSE="component-build cups gconf gnome-keyring +gtk3 +hangouts kerberos neon pic +proprietary-codecs pulseaudio selinux +suid +system-ffmpeg +system-libvpx +tcmalloc widevine"
 RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
@@ -110,8 +110,6 @@ DEPEND="${COMMON_DEPEND}
 	sys-devel/flex
 	virtual/pkgconfig
 	dev-vcs/git
-	x11-libs/gtk+:2
-	x11-libs/gtk+:3
 	$(python_gen_any_dep '
 		dev-python/beautifulsoup:python-2[${PYTHON_USEDEP}]
 		>=dev-python/beautifulsoup-4.3.2:4[${PYTHON_USEDEP}]
