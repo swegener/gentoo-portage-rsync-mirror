@@ -1,19 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=5
 
 AUTOTOOLS_AUTORECONF=1
 
 inherit autotools-utils
 
 DESCRIPTION="Library providing high performance logging, tracing, ipc, and poll"
-HOMEPAGE="https://github.com/asalkeld/libqb"
-SRC_URI="http://fedorahosted.org/releases/q/u/quarterback/${P}.tar.xz"
+HOMEPAGE="https://github.com/ClusterLabs/libqb"
+SRC_URI="https://github.com/ClusterLabs/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~x86"
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="debug doc examples static-libs test"
 
 RDEPEND="dev-libs/glib:2"
