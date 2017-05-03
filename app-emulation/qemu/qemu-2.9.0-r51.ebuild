@@ -19,7 +19,8 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+	KEYWORDS=""
+	#KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 fi
 
 DESCRIPTION="QEMU + Kernel-based Virtual Machine userland tools"
@@ -191,6 +192,10 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
+	"${FILESDIR}"/${PN}-2.9.0-bug616870.patch
+	"${FILESDIR}"/${PN}-2.9.0-bug616872.patch
+	"${FILESDIR}"/${PN}-2.9.0-bug616874.patch
+	"${FILESDIR}"/${PN}-2.9.0-CVE-2017-8112.patch
 )
 
 STRIP_MASK="/usr/share/qemu/palcode-clipper"
