@@ -29,6 +29,30 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (15 May 2017)
+# These packages lack modern digests and are fetch-restricted, so we can
+# not update them. Some of them have additional issues.
+# Removal in 30 days.
+#
+# sci-biology/mammoth - #612738, not touched since 2015, added in 2007,
+# not bumped since; homepage gone
+#
+# sci-chemistry/ambertools - #612740, not touched since 2013, added
+# in 2011, not bumped since; includes sci-chemistry/acpype as a revdep
+#
+# sci-chemistry/gamess - #612742, not touched since 2013, last bump 2011,
+# seems to be maintained in ::science; includes sci-chemistry/gtk-gamess
+# as a revdep
+#
+# sci-chemistry/mead - #612744, not touched since 2010, last bump 2009,
+# homepage gone, 32-bit x86-only
+sci-biology/mammoth
+sci-chemistry/acpype
+sci-chemistry/ambertools
+sci-chemistry/gamess
+sci-chemistry/gtk-gamess
+sci-chemistry/mead
+
 # David Seifert <soap@gentoo.org> (14 May 2017)
 # Unmaintained upstream, awful codebase. No reverse
 # dependencies. See #594134. To be removed in 30 days.
@@ -720,13 +744,6 @@ sys-block/afacli
 # to fully integrate it in our Gentoo ruby handling. Volunteers
 # welcome.
 =dev-lang/rubinius-3*
-
-# Tom Wijsman <TomWij@gentoo.org> (03 May 2014)
-# Needs to be further tested and revised by both Java and Ruby herds.
->=dev-java/jruby-1.7.12
-dev-ruby/bitescript
-dev-ruby/duby
-dev-ruby/weakling
 
 # Matti Bickel <mabi@gentoo.org> (22 Apr 2014)
 # Masked slotted lua for testing
