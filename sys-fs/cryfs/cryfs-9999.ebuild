@@ -44,6 +44,9 @@ src_prepare() {
 }
 
 src_configure() {
+	# upstream restricts installing files to Release configuration
+	# (CMAKE_BUILD_TYPE does not affect anything else)
+	local CMAKE_BUILD_TYPE=Release
 	local mycmakeargs=(
 		"-DBoost_USE_STATIC_LIBS=off"
 		"-DCRYFS_UPDATE_CHECKS=$(usex update-check)"
@@ -70,9 +73,4 @@ src_test() {
 		eerror "$tests_failed[@]"
 		die "At least one test failed"
 	fi
-}
-
-src_install() {
-	dobin "${BUILD_DIR}"/src/cryfs-cli/cryfs
-	cmake-utils_src_install
 }
