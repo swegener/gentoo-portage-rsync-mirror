@@ -7,11 +7,11 @@ inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="SKK dictionary server based on cdb"
 HOMEPAGE="https://github.com/jj1bdx/dbskkd-cdb"
-SRC_URI="https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/jj1bdx/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="BSD-2"
+LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND="|| (
@@ -24,7 +24,7 @@ RDEPEND="app-i18n/skk-jisyo[cdb]
 PATCHES=(
 	"${FILESDIR}"/${PN}-gentoo.patch
 )
-DOCS="CHANGES README* *.txt"
+DOCS="*.md"
 
 pkg_setup() {
 	enewuser dbskkd -1 -1 -1
