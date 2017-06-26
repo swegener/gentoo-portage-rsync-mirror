@@ -46,6 +46,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/icu-57.1:=
 	>=dev-python/apsw-3.13.0[${PYTHON_USEDEP}]
 	>=dev-python/beautifulsoup-3.0.5:python-2[${PYTHON_USEDEP}]
+	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
 	>=dev-python/cssutils-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/dbus-python-1.2.4[${PYTHON_USEDEP}]
@@ -53,12 +54,14 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=sys-apps/dbus-1.10.8
 	>=dev-python/lxml-3.2.1[${PYTHON_USEDEP}]
 	>=dev-python/mechanize-0.2.5[${PYTHON_USEDEP}]
+	dev-python/msgpack[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
 	>=dev-python/PyQt5-5.8[gui,svg,webkit,widgets,network,printsupport,${PYTHON_USEDEP}]
+	dev-python/regex[${PYTHON_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
