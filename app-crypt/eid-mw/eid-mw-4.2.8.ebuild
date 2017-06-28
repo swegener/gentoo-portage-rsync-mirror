@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils autotools mozextension multilib
+inherit eutils autotools mozextension
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://github.com/Fedict/${PN}.git
@@ -20,7 +20,7 @@ SLOT="0"
 LICENSE="LGPL-3"
 DESCRIPTION="Electronic Identity Card middleware supplied by the Belgian Federal Government"
 
-HOMEPAGE="http://eid.belgium.be"
+HOMEPAGE="https://eid.belgium.be"
 
 IUSE="+dialogs +gtk p11-kit +xpi"
 
@@ -56,6 +56,9 @@ src_prepare() {
 		-e "s:get_lsb_info('c'):strdup(_(\"n/a\")):" \
 		plugins_tools/aboutmw/gtk/about-main.c || die
 
+	use gtk || eapply "${FILESDIR}"/gtk_not_required_4_2_5.patch
+	eapply "${FILESDIR}"/fix_libressl_check.patch
+
 	eautoreconf
 }
 
@@ -63,7 +66,6 @@ src_configure() {
 	econf \
 		$(use_enable dialogs) \
 		$(use_enable p11-kit p11kit) \
-		$(use_with gtk gtkvers)$(use gtk && echo =detect) \
 		--with-gnu-ld \
 		--disable-static \
 		--disable-signed
