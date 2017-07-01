@@ -22,7 +22,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-cflags.patch
 	"${FILESDIR}"/${PN}-dicrc.patch
 )
-DOCS=( AUTHORS NEWS README )
 HTML_DOCS=( index.html ${PN}.css )
 
 src_prepare() {
@@ -36,5 +35,5 @@ src_install() {
 	default
 
 	insinto /etc/xinetd.d
-	doins "${FILESDIR}"/${PN}.xinetd ${PN}
+	newins "${FILESDIR}"/${PN}.xinetd ${PN}
 }
