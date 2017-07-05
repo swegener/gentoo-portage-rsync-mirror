@@ -773,8 +773,6 @@ app-i18n/ibus-libpinyin:opencc - Enable support for app-i18n/opencc
 app-i18n/ibus-m17n:gtk - Build the preference interfaces, based on x11-libs/gtk+ (GTK+ 2).
 app-i18n/ibus-pinyin:boost - Compile against dev-libs/boost libraries
 app-i18n/ibus-unikey:gtk3 - Enable support for gtk+3
-app-i18n/im-ja:anthy - Support for Anthy input method
-app-i18n/im-ja:skk - Support for SKK input method
 app-i18n/imsettings:gconf - Enable GConf support
 app-i18n/imsettings:gtk3 - Enable support for x11-libs/gtk+:3
 app-i18n/imsettings:xfconf - Enable integration in the Xfce desktop environment with xfce-base/xfconf
@@ -2098,8 +2096,6 @@ dev-libs/libisoburn:frontend-optional - Use dev-tcltk/bwidget which is not stric
 dev-libs/libisoburn:launch-frontend - Enable the tcl gui for xorriso
 dev-libs/libisoburn:launch-frontend-setuid - Enable the tcl gui for xorriso under setuid
 dev-libs/libisofs:verbose-debug - Enable verbose debug messages
-dev-libs/libjit:interpreter - Enable the libjit interpreter
-dev-libs/libjit:long-double - Enable the use of long double for jit_nfloat
 dev-libs/liblogging:rfc3195 - Enables RFC 3195 protocol (aka syslog-reliable) support. If you don't know what this is, you don't need it!
 dev-libs/liblogging:stdlog - Enables liblogging's core component (think of it as a the next version of the syslog(3) API).
 dev-libs/libmail:apop - Enables the APOP authentication method
@@ -2451,9 +2447,6 @@ dev-python/QtPy:webkit - Build bindings for the QtWebKit module
 dev-python/amqplib:extras - Install extra tools to generate initial Python mod from an AMQP XML file
 dev-python/anyvc:bazaar - Add support for Bazaar
 dev-python/anyvc:mercurial - Add support for Mercurial
-dev-python/cassandra-driver:cython - Optimize core modules and build custom extensions
-dev-python/cassandra-driver:libev - libev event loop integration
-dev-python/cassandra-driver:murmur - Faster hashing for token-aware routing
 dev-python/celery:redis - Enables redis support
 dev-python/celery:sqs - Enables Amazon SQS transport module for celery
 dev-python/celery:yaml - Enable support of yaml as a configuration file format
@@ -4605,7 +4598,6 @@ media-sound/ncmpcpp:outputs - Enable outputs screen
 media-sound/ncmpcpp:visualizer - Enable visualizer screen with sound wave/frequency spectrum modes
 media-sound/patchage:jack-dbus - Use Jack via D-Bus instead of libjack
 media-sound/patchage:session - Include experimental Jack session management (save/restore) support
-media-sound/pianobooster:fluidsynth - Enable Fluidsynth MIDI software synthesis
 media-sound/picard:acoustid - Use media-libs/chromaprint for acoustic fingerprinting
 media-sound/pithos:appindicator - Enable usage of appindicator to export menu options in to unity
 media-sound/pithos:keybinder - Use keybinder to enable global key bindings
@@ -4667,8 +4659,6 @@ media-sound/qtractor:dssi - Enable support for DSSI Soft Synth Interface
 media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-shifting through the rubberband library
 media-sound/qtscrobbler:cli - Build commandline client
 media-sound/quark:gnome - Provides tray-icon and enables gconf support
-media-sound/rezound:16bittmp - Use 16bit temporary files (default 32bit float), useful for slower computers
-media-sound/rezound:soundtouch - compile with support for soundtouch
 media-sound/rhythmbox:daap - Build the local network music sharing plugin which uses the DAAP protocol using net-libs/libdmapsharing
 media-sound/rhythmbox:visualizer - Enable support for visualizations using media-plugins/gst-plugins-libvisual
 media-sound/rhythmbox:zeitgeist - Build the plugin to inject events to gnome-extra/zeitgeist
@@ -8518,7 +8508,6 @@ x11-misc/colord:gusb - Enable dev-libs/libgusb support, needed for colorimeter d
 x11-misc/compton:drm - Enable VSync with DRM_IOCTL_WAIT_VBLANK
 x11-misc/compton:opengl - Enable VSync with SGI_swap_control OpenGL extension
 x11-misc/dunst:dunstify - Experimental replacement for notify-send.
-x11-misc/etm:ical - Enable export of ical format files by depending on dev-python/icalendar
 x11-misc/fbpager:xrender - Enable transparency support via x11-libs/libXrender
 x11-misc/gpaste:applet - Enable gpaste-applet
 x11-misc/gpaste:gnome - Enable proper gnome support and enable gnome shell extension.
