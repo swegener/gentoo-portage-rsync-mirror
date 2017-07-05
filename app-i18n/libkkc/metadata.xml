@@ -2,7 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-    <email>sci-chemistry@gentoo.org</email>
-    <name>Gentoo Chemistry Project</name>
+    <email>cjk@gentoo.org</email>
+    <name>Cjk</name>
   </maintainer>
+  <upstream>
+    <remote-id type="github">ueno/libkkc</remote-id>
+  </upstream>
 </pkgmetadata>
