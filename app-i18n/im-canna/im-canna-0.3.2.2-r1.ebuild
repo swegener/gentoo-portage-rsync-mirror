@@ -3,32 +3,27 @@
 
 EAPI="6"
 
-inherit autotools gnome2-utils ltprune prefix
+inherit autotools gnome2-utils ltprune
 
-DESCRIPTION="Japanese FreeWnn input method module for GTK+2"
+DESCRIPTION="Japanese Canna input method module for GTK+2"
 HOMEPAGE="http://bonobo.gnome.gr.jp/~nakai/immodule/"
 SRC_URI="http://bonobo.gnome.gr.jp/~nakai/immodule/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ppc64 x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-RDEPEND="app-i18n/freewnn
+RDEPEND="app-i18n/canna
 	x11-libs/gtk+:2"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-as-needed.patch
-	"${FILESDIR}"/${PN}-headers.patch
-	"${FILESDIR}"/${PN}-wnnenvrc.patch
-)
+PATCHES=( "${FILESDIR}"/${PN}-gentoo.patch )
 
 src_prepare() {
 	default
-	eprefixify ${PN}.c
 
 	mv configure.{in,ac} || die
 	eautoreconf
