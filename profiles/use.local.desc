@@ -6563,7 +6563,7 @@ net-nds/389-ds-base:bitwise - Enable bitwise plugin - supported data in raw/bitw
 net-nds/389-ds-base:dna - Enable dna (distributed numeric assignment ) plugin - to automatically assign unique uid numbers to new user entries as they are created.
 net-nds/389-ds-base:ldapi - Enable LDAP over unix domain socket (LDAPI) support
 net-nds/389-ds-base:pam-passthru - Enable pam-passthru plugin - for simple and fast system services used in ldap
-net-nds/389-ds-base:presence - Enable presence plugin - non-stabdart syntax validation
+net-nds/389-ds-base:presence - Enable presence plugin - non-standard syntax validation
 net-nds/gosa-core:mail - Manage mail accounts and servers with gosa.
 net-nds/gosa-core:samba - Manage samba accounts with gosa.
 net-nds/ldapvi:gnutls - Use net-libs/gnutls instead of dev-libs/openssl
@@ -6988,8 +6988,6 @@ sci-chemistry/gromacs:offensive - Enable gromacs partly offensive quotes
 sci-chemistry/gromacs:single-precision - Single precision version of gromacs (default)
 sci-chemistry/gromacs:tng - Enable new trajectory format - tng
 sci-chemistry/gsim:emf - Support for .emf export
-sci-chemistry/icm:32bit - Automatically generated description for 32bit
-sci-chemistry/icm:64bit - Automatically generated description for 64bit
 sci-chemistry/jmol:client-only - Install the viewer only, no applet files for httpd
 sci-chemistry/molequeue:client - Build the client application
 sci-chemistry/molequeue:server - Build the serve application
