@@ -147,11 +147,10 @@ src_unpack() {
 }
 
 src_prepare() {
-	# Bug 463376
-	sed -i -e 's/GROUP="dialout"/GROUP="uucp"/' rules/*.rules || die
-
 	local PATCHES=(
 		"${FILESDIR}"/234-0001-path-lookup-look-for-generators-in-usr-lib-systemd-s.patch
+		"${FILESDIR}"/234-0002-cryptsetup-fix-infinite-timeout-6486.patch
+		"${FILESDIR}"/234-0003-resolved-make-sure-idn2-conversions-are-roundtrippab.patch
 	)
 
 	if ! use vanilla; then
@@ -159,6 +158,7 @@ src_prepare() {
 			"${FILESDIR}/218-Dont-enable-audit-by-default.patch"
 			"${FILESDIR}/228-noclean-tmp.patch"
 			"${FILESDIR}/233-systemd-user-pam.patch"
+			"${FILESDIR}/234-uucp-group.patch"
 		)
 	fi
 
