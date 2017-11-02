@@ -1,4 +1,4 @@
-1509639001 Thu Nov  2 16:10:01 UTC 2017
+1509640800 Thu Nov  2 16:40:00 UTC 2017
 # Testcase for mirror network:
 # Watch the value over a day, if unchanging then
 # one or more mirrors is missing --checksum
