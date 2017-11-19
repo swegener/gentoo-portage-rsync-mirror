@@ -5,7 +5,7 @@ EAPI=6
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
-inherit cmake-utils eutils
+inherit cmake-utils eutils xdg-utils
 
 MY_P=${PN}-src-${PV}
 DEB_PATCH_VER=7
@@ -13,7 +13,7 @@ DEB_PATCH_VER=7
 DESCRIPTION="A turn-based strategy, artillery, action and comedy game"
 HOMEPAGE="https://www.hedgewars.org/"
 SRC_URI="https://www.hedgewars.org/download/releases/${MY_P}.tar.bz2
-	mirror://debian/pool/main/h/${PN}/${PN}_${PV}-dfsg-${DEB_PATCH_VER}.debian.tar.xz"
+	mirror://debian/pool/main/h/${PN}/${PN}_0.9.22-dfsg-${DEB_PATCH_VER}.debian.tar.xz"
 
 LICENSE="GPL-2 Apache-2.0 FDL-1.3"
 SLOT="0"
@@ -28,13 +28,12 @@ CDEPEND="
 	dev-lang/lua:0=
 	dev-qt/qtcore:4
 	dev-qt/qtgui:4
-	media-libs/freeglut
 	media-libs/libpng:0=
-	media-libs/libsdl[sound,opengl,video]
-	media-libs/sdl-image[png]
-	media-libs/sdl-mixer[vorbis]
-	media-libs/sdl-net
-	media-libs/sdl-ttf
+	media-libs/libsdl2:=
+	media-libs/sdl2-image:=
+	media-libs/sdl2-mixer:=
+	media-libs/sdl2-net:=
+	media-libs/sdl2-ttf:=
 	sys-libs/zlib:=
 	libav? ( media-video/libav:= )
 	!libav? ( media-video/ffmpeg:= )"
@@ -47,14 +46,6 @@ RDEPEND="${CDEPEND}
 
 S=${WORKDIR}/${MY_P}
 PATCHES=( "${FILESDIR}"/${PN}-0.9.22-rpath-fix.patch )
-
-src_prepare() {
-	while IFS="" read -r f ; do
-		PATCHES+=( "${WORKDIR}/debian/patches/${f}" )
-	done < <(cat "${WORKDIR}/debian/patches/series")
-
-	cmake-utils_src_prepare
-}
 
 src_configure() {
 	local mycmakeargs=(
@@ -83,4 +74,12 @@ src_install() {
 	doicon misc/hedgewars.png
 	make_desktop_entry ${PN} Hedgewars
 	doman man/${PN}.6
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
