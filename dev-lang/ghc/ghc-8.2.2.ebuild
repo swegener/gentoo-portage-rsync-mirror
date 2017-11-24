@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 # to make make a crosscompiler use crossdev and symlink ghc tree into
 # cross overlay. result would look like 'cross-sparc-unknown-linux-gnu/ghc'
@@ -26,12 +26,12 @@ arch_binaries=""
 #arch_binaries="$arch_binaries alpha? ( http://code.haskell.org/~slyfox/ghc-alpha/ghc-bin-${PV}-alpha.tbz2 )"
 #arch_binaries="$arch_binaries arm? ( http://code.haskell.org/~slyfox/ghc-arm/ghc-bin-${PV}-armv7a-hardfloat-linux-gnueabi.tbz2 )"
 #arch_binaries="$arch_binaries arm64? ( http://code.haskell.org/~slyfox/ghc-arm64/ghc-bin-${PV}-aarch64-unknown-linux-gnu.tbz2 )"
-arch_binaries="$arch_binaries amd64? ( http://code.haskell.org/~slyfox/ghc-amd64/ghc-bin-${PV}-x86_64-pc-linux-gnu.tbz2 )"
+#arch_binaries="$arch_binaries amd64? ( http://code.haskell.org/~slyfox/ghc-amd64/ghc-bin-${PV}-x86_64-pc-linux-gnu.tbz2 )"
 #arch_binaries="$arch_binaries ia64?  ( http://code.haskell.org/~slyfox/ghc-ia64/ghc-bin-${PV}-ia64-fixed-fiw.tbz2 )"
 #arch_binaries="$arch_binaries ppc? ( http://code.haskell.org/~slyfox/ghc-ppc/ghc-bin-${PV}-ppc.tbz2 )"
 #arch_binaries="$arch_binaries ppc64? ( http://code.haskell.org/~slyfox/ghc-ppc64/ghc-bin-${PV}-ppc64.tbz2 )"
 #arch_binaries="$arch_binaries sparc? ( http://code.haskell.org/~slyfox/ghc-sparc/ghc-bin-${PV}-sparc.tbz2 )"
-arch_binaries="$arch_binaries x86? ( http://code.haskell.org/~slyfox/ghc-x86/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
+#arch_binaries="$arch_binaries x86? ( http://code.haskell.org/~slyfox/ghc-x86/ghc-bin-${PV}-i686-pc-linux-gnu.tbz2 )"
 
 # various ports:
 #arch_binaries="$arch_binaries x86-fbsd? ( http://code.haskell.org/~slyfox/ghc-x86-fbsd/ghc-bin-${PV}-x86-fbsd.tbz2 )"
@@ -42,18 +42,18 @@ yet_binary() {
 		#alpha) return 0 ;;
 		#arm64) return 0 ;;
 		#arm) return 0 ;;
-		amd64) return 0 ;;
+		#amd64) return 0 ;;
 		#ia64) return 0 ;;
 		#ppc) return 0 ;;
 		#ppc64) return 0 ;;
 		#sparc) return 0 ;;
-		x86) return 0 ;;
+		#x86) return 0 ;;
 		*) return 1 ;;
 	esac
 }
 
 GHC_PV=${PV}
-#GHC_PV=8.2.0.20170704 # uncomment only for -rc ebuilds
+#GHC_PV=8.2.1.20171108 # uncomment only for -rc ebuilds
 GHC_P=${PN}-${GHC_PV} # using ${P} is almost never correct
 
 SRC_URI="!binary? ( http://downloads.haskell.org/~ghc/${PV/_rc/-rc}/${GHC_P}-src.tar.xz )"
@@ -406,6 +406,7 @@ src_prepare() {
 
 		# Move unpacked files to the expected place
 		mv "${WORKDIR}/usr" "${S}"
+		eapply_user
 	else
 		if ! use ghcbootstrap; then
 			case ${CHOST} in
@@ -467,36 +468,35 @@ src_prepare() {
 		sed -i -e "s|\"\$topdir\"|\"\$topdir\" ${GHC_PERSISTENT_FLAGS}|" \
 			"${S}/ghc/ghc.wrapper"
 
-		cd "${S}" # otherwise epatch will break
+		cd "${S}" # otherwise eapply will break
 
-		epatch "${FILESDIR}"/${PN}-7.0.4-CHOST-prefix.patch
-		epatch "${FILESDIR}"/${PN}-8.2.1-darwin.patch
+		eapply "${FILESDIR}"/${PN}-7.0.4-CHOST-prefix.patch
+		eapply "${FILESDIR}"/${PN}-8.2.1-darwin.patch
 
-		epatch "${FILESDIR}"/${PN}-8.2.1_rc1-cgen-constify.patch
-		epatch "${FILESDIR}"/${PN}-7.8.3-prim-lm.patch
+		eapply "${FILESDIR}"/${PN}-8.2.1_rc1-cgen-constify.patch
+		eapply "${FILESDIR}"/${PN}-7.8.3-prim-lm.patch
 
-		epatch "${FILESDIR}"/${PN}-8.2.1_rc2-O2-unreg.patch
+		eapply "${FILESDIR}"/${PN}-8.2.1_rc2-O2-unreg.patch
 
 		# a bunch of crosscompiler patches
-		epatch "${FILESDIR}"/${PN}-8.2.1_rc1-unphased-cross.patch
-		epatch "${FILESDIR}"/${PN}-8.2.1_rc1-staged-cross.patch
-		epatch "${FILESDIR}"/${PN}-8.2.1_rc1-ghci-cross.patch
-		epatch "${FILESDIR}"/${PN}-8.2.1_rc1-stage2-cross.patch
-		epatch "${FILESDIR}"/${PN}-8.2.1_rc1-hp2ps-cross.patch
-		epatch "${FILESDIR}"/${PN}-8.2.1_rc3-any-vendor.patch
-		epatch "${FILESDIR}"/${PN}-8.2.1_rc3-stginit-data.patch
+		eapply "${FILESDIR}"/${PN}-8.2.1_rc1-unphased-cross.patch
+		eapply "${FILESDIR}"/${PN}-8.2.1_rc1-staged-cross.patch
+		eapply "${FILESDIR}"/${PN}-8.2.1_rc1-ghci-cross.patch
+		eapply "${FILESDIR}"/${PN}-8.2.1_rc1-stage2-cross.patch
+		eapply "${FILESDIR}"/${PN}-8.2.1_rc1-hp2ps-cross.patch
 
 		# needs a new libffi release
-		epatch "${FILESDIR}"/${PN}-8.0.2-libffi-alpha.patch
+		eapply "${FILESDIR}"/${PN}-8.0.2-libffi-alpha.patch
 
 		# mingw32 target
 		pushd "${S}/libraries/Win32"
-			epatch "${FILESDIR}"/${PN}-8.2.1_rc1-win32-cross-1.patch # upstreamed, waits for merge to -HEAD
-			epatch "${FILESDIR}"/${PN}-8.2.1_rc1-win32-cross-2-hack.patch # bad workaround
+			eapply "${FILESDIR}"/${PN}-8.2.1_rc1-win32-cross-1.patch # upstreamed, waits for merge to -HEAD
+			eapply "${FILESDIR}"/${PN}-8.2.1_rc1-win32-cross-2-hack.patch # bad workaround
 		popd
 
 		bump_libs
 
+		eapply_user
 		# as we have changed the build system
 		eautoreconf
 	fi
