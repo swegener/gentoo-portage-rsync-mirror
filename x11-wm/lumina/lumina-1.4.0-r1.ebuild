@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+PLOCALES="af ar az bg bn bs ca cs cy da de el en_AU en_GB en_ZA es et eu fa fi fr fr_CA fur gl he hi hr hu id is it ja ka ko lt lv mk mn ms mt nb ne nl pa pl pt pt_BR ro ru sa sk sl sr sv sw ta tg th tr uk ur uz vi zh_CN zh_HK zh_TW zu"
 
-inherit qmake-utils
+inherit qmake-utils l10n
 DESCRIPTION="Lumina desktop environment"
 HOMEPAGE="https://lumina-desktop.org/"
 SRC_URI="https://github.com/trueos/${PN}/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
@@ -48,6 +49,8 @@ PATCHES=(
 	"${FILESDIR}/1.3.0-OS-detect.patch"
 )
 
+DOCS=( README.md )
+
 src_prepare(){
 	default
 
@@ -55,6 +58,8 @@ src_prepare(){
 		rm -rf src-qt5/desktop-utils || die
 		sed -e "/desktop-utils/d" -i src-qt5/src-qt5.pro || die
 	fi
+
+	l10n_find_plocales_changes "${S}/src-qt5/core/${PN}-desktop/i18n" "${PN}-desktop_" '.ts'
 }
 
 src_configure(){
@@ -71,4 +76,10 @@ src_install(){
 	mv "${D}/${D}/usr/share" "${D}/usr/share" || die
 	rm -rf "${D}/var" || die
 	mv "${ED%/}"/etc/luminaDesktop.conf{.dist,} || die
+	einstalldocs
+
+	remove_locale() {
+		rm -f "${D}"/usr/share/${PN}-desktop/i18n/${PN}-*_${1}.qm
+	}
+	l10n_for_each_disabled_locale_do remove_locale
 }
