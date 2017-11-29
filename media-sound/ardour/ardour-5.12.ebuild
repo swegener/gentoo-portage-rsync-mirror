@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 #EPYTHON='python2.7'
@@ -15,12 +15,13 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/Ardour/ardour/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="mirror://gentoo/Ardour-${PV}.0.tar.bz2 -> ${P}.tar.bz2"
+	S="${WORKDIR}/Ardour-${PV}.0"
 fi
 
 LICENSE="GPL-2"
-SLOT="4"
-IUSE="altivec doc jack lv2 cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
+SLOT="5"
+IUSE="altivec doc jack cpu_flags_x86_sse cpu_flags_x86_mmx cpu_flags_x86_3dnow"
 
 RDEPEND="
 	>=dev-cpp/glibmm-2.32.0
@@ -47,20 +48,19 @@ RDEPEND="
 	>=media-libs/taglib-1.7
 	media-libs/vamp-plugin-sdk
 	net-misc/curl
+	sys-libs/readline:0=
 	sci-libs/fftw:3.0[threads]
 	virtual/libusb:0
 	x11-libs/cairo
 	>=x11-libs/gtk+-2.8.1:2
 	x11-libs/pango
 	jack? ( virtual/jack )
-	lv2? (
-		>=media-libs/slv2-0.6.1
-		media-libs/lilv
-		media-libs/sratom
-		dev-libs/sord
-		>=media-libs/suil-0.6.10
-		>=media-libs/lv2-1.4.0
-	)"
+	>=media-libs/slv2-0.6.1
+	media-libs/lilv
+	media-libs/sratom
+	dev-libs/sord
+	>=media-libs/suil-0.6.10
+	>=media-libs/lv2-1.4.0"
 
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
@@ -77,12 +77,11 @@ pkg_setup() {
 }
 
 src_prepare(){
+	eapply_user
 	if ! [[ ${PV} == *9999* ]]; then
-		epatch "${FILESDIR}"/${PN}-4.x-revision-naming.patch
-		epatch "${FILESDIR}"/${PN}-4.7-gcc.patch
+		eapply "${FILESDIR}"/${PN}-4.x-revision-naming.patch
 		touch "${S}/libs/ardour/revision.cc"
 	fi
-	use lv2 || epatch "${FILESDIR}"/${PN}-4.0-lv2.patch
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
 	MARCH=$(get-flag march)
 	OPTFLAGS=""
@@ -119,8 +118,8 @@ src_configure() {
 		--configdir=/etc \
 		--nls \
 		--optimize \
+		--lv2 \
 		$(usex jack "--with-backends=alsa,jack" "--with-backends=alsa  --libjack=weak") \
-		$(usex lv2 "--lv2" "--no-lv2") \
 		$(usex doc "--docs" '') \
 		$({ use altivec || use cpu_flags_x86_sse; } && echo "--fpu-optimization" || echo "--no-fpu-optimization")
 }
@@ -129,11 +128,14 @@ src_install() {
 	waf-utils_src_install
 	mv ${PN}.1 ${PN}${SLOT}.1
 	doman ${PN}${SLOT}.1
-	newicon icons/icon/ardour_icon_tango_48px_red.png ${PN}${SLOT}.png
-	make_desktop_entry ardour4 ardour4 ardour4 AudioVideo
+	newicon "${S}/gtk2_ardour/resources/Ardour-icon_48px.png" ${PN}${SLOT}.png
+	make_desktop_entry ardour5 ardour5 ardour5 AudioVideo
 }
 
 pkg_postinst() {
 	elog "If you are using Ardour and want to keep its development alive"
-	elog "then please consider to make a donation upstream at ${HOMEPAGE}"
+	elog "then please consider to make a donation upstream at ${HOMEPAGE}."
+	elog "Please do _not_ report problems with the package to ${PN} upstream."
+	elog "If you think you've found a bug, check the upstream binary package"
+	elog "before you report anything to upstream."
 }
