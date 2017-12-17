@@ -1827,12 +1827,18 @@ dev-java/lucene:contrib - Include extra functionality from contrib/
 dev-java/miglayout:swt - Add support for the SWT toolkit.
 dev-java/oracle-jdk-bin:commercial - Install features requiring a commercial license for production use
 dev-java/oracle-jdk-bin:derby - Install bundled Derby (Java database)
+dev-java/oracle-jdk-bin:gentoo-vm - Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)
+dev-java/oracle-jdk-bin:gtk2 - Enable GTK+ 2 support in JavaFX
+dev-java/oracle-jdk-bin:gtk3 - Enable GTK+ 3 support in JavaFX
 dev-java/oracle-jdk-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
 dev-java/oracle-jdk-bin:javafx - Install JavaFX libraries
 dev-java/oracle-jdk-bin:jce - Install Java Cryptographic Extension Unlimited Strength Jurisdiction Policy Files
 dev-java/oracle-jdk-bin:source - Install JVM (and optionally JavaFX) sources
 dev-java/oracle-jdk-bin:visualvm - Install VisualVM debugging tool
 dev-java/oracle-jre-bin:commercial - Install features requiring a commercial license for production use
+dev-java/oracle-jre-bin:gentoo-vm - Allow this JRE to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)
+dev-java/oracle-jre-bin:gtk2 - Enable GTK+ 2 support in JavaFX
+dev-java/oracle-jre-bin:gtk3 - Enable GTK+ 3 support in JavaFX
 dev-java/oracle-jre-bin:headless-awt - Don't install the X backend for AWT, needed by some GUIs (used to be X flag)
 dev-java/oracle-jre-bin:javafx - Install JavaFX libraries
 dev-java/oracle-jre-bin:jce - Install Java Cryptographic Extension Unlimited Strength Jurisdiction Policy Files
