@@ -14,13 +14,13 @@ SRC_URI="mirror://sourceforge/bacula/${MY_P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86"
-IUSE="acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 logwatch mysql postgres qt4 readline +sqlite ssl static tcpd vim-syntax X"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+IUSE="acl bacula-clientonly bacula-nodir bacula-nosd examples ipv6 libressl logwatch mysql postgres qt4 readline +sqlite ssl static tcpd vim-syntax X"
 
 DEPEND="
 	dev-libs/gmp:0
 	!bacula-clientonly? (
-		postgres? ( dev-db/postgresql:*[threads] )
+		postgres? ( dev-db/postgresql:=[threads] )
 		mysql? ( virtual/mysql )
 		sqlite? ( dev-db/sqlite:3 )
 		!bacula-nodir? ( virtual/mta )
@@ -37,14 +37,20 @@ DEPEND="
 		sys-libs/zlib[static-libs]
 		dev-libs/lzo[static-libs]
 		sys-libs/ncurses:=[static-libs]
-		ssl? ( dev-libs/openssl:0[static-libs] )
+		ssl? (
+			!libressl? ( dev-libs/openssl:0=[static-libs] )
+			libressl? ( dev-libs/libressl:0=[static-libs] )
+		)
 	)
 	!static? (
 		acl? ( virtual/acl )
 		sys-libs/zlib
 		dev-libs/lzo
 		sys-libs/ncurses:=
-		ssl? ( dev-libs/openssl:0 )
+		ssl? (
+			!libressl? ( dev-libs/openssl:0= )
+			libressl? ( dev-libs/libressl:0= )
+		)
 	)"
 RDEPEND="${DEPEND}
 	!bacula-clientonly? (
@@ -112,13 +118,13 @@ src_prepare() {
 	sed -i -e 's/@CFLAGS@/@CXXFLAGS@/' autoconf/Make.common.in || die
 
 	# drop automatic install of unneeded documentation (for bug 356499)
-	epatch "${FILESDIR}"/5.2.3/${PN}-5.2.3-doc.patch
+	epatch "${FILESDIR}"/7.2.0/${PN}-7.2.0-doc.patch
 
 	# bug #310087
 	epatch "${FILESDIR}"/5.2.3/${PN}-5.2.3-as-needed.patch
 
 	# bug #311161
-	epatch "${FILESDIR}"/5.2.3/${PN}-5.2.3-lib-search-path.patch
+	epatch "${FILESDIR}"/9.0.2/${PN}-9.0.2-lib-search-path.patch
 
 	# bat needs to respect LDFLAGS
 	epatch "${FILESDIR}"/5.2.3/${PN}-5.2.3-ldflags.patch
@@ -126,7 +132,10 @@ src_prepare() {
 	# bug #328701
 	epatch "${FILESDIR}"/5.2.3/${PN}-5.2.3-openssl-1.patch
 
-	epatch "${FILESDIR}"/7.0.2/${PN}-7.0.2-fix-static.patch
+	epatch "${FILESDIR}"/9.0.2/${PN}-9.0.2-fix-static.patch
+
+	# fix soname in libbaccat.so bug #602952
+	epatch "${FILESDIR}/bacula-fix-sonames.patch"
 
 	# do not strip binaries
 	sed -i -e "s/strip /# strip /" src/filed/Makefile.in || die
@@ -141,17 +150,12 @@ src_prepare() {
 	sed -i -e '/StandardOutput/d' platforms/systemd/*.service.in || die
 	# bug 504370
 	sed -i -e '/Alias=bacula-dir/d' platforms/systemd/bacula-dir.service.in || die
-
-	# Fix tmpfiles config for client-only (no bacula user) install
-	# NOTE: Change only first occurance (user) not second (group)
-	# bug 528398
-	if use bacula-clientonly; then
-		sed -i -e 's/bacula/root/' platforms/systemd/bacula.conf.in || die
-	fi
+	# bug 584442 and 504368
+	sed -i -e 's/@dir_user@/root/g' platforms/systemd/bacula-dir.service.in || die
 
 	# fix bundled libtool (bug 466696)
 	# But first move directory with M4 macros out of the way.
-	# It is only needed by i autoconf and gives errors during elibtoolize.
+	# It is only needed by autoconf and gives errors during elibtoolize.
 	mv autoconf/libtool autoconf/libtool1 || die
 	elibtoolize
 }
@@ -172,9 +176,15 @@ src_configure() {
 		# bug #311099
 		# database support needed by dir-only *and* sd-only
 		# build as well (for building bscan, btape, etc.)
-		myconf="${myconf} \
-			--with-${mydbtype} \
+		myconf="${myconf}
+			--with-${mydbtype}"
+		if use mysql; then
+		    myconf="${myconf} \
+			--disable-batch-insert"
+		else
+		    myconf="${myconf} \
 			--enable-batch-insert"
+		fi
 	fi
 
 	# do not build bat if 'static' clientonly
@@ -268,10 +278,10 @@ src_install() {
 		# the logwatch scripts
 		if use logwatch; then
 			diropts -m0750
-			dodir /etc/log.d/scripts/services
-			dodir /etc/log.d/scripts/shared
-			dodir /etc/log.d/conf/logfiles
-			dodir /etc/log.d/conf/services
+			dodir /usr/share/logwatch/scripts/services
+			dodir /usr/share/logwatch/scripts/shared
+			dodir /etc/logwatch/conf/logfiles
+			dodir /etc/logwatch/conf/services
 			pushd "${S}"/scripts/logwatch >&/dev/null || die
 			emake DESTDIR="${D}" install
 			popd >&/dev/null || die
@@ -307,7 +317,7 @@ src_install() {
 	fi
 
 	# documentation
-	dodoc ChangeLog ReleaseNotes SUPPORT technotes
+	dodoc ChangeLog ReleaseNotes SUPPORT
 
 	# install examples (bug #457504)
 	if use examples; then
@@ -337,7 +347,7 @@ src_install() {
 		# copy over init script and config to a temporary location
 		# so we can modify them as needed
 		cp "${FILESDIR}/${script}".confd "${T}/${script}".confd || die "failed to copy ${script}.confd"
-		cp "${FILESDIR}/${script}".initd "${T}/${script}".initd || die "failed to copy ${script}.initd"
+		cp "${FILESDIR}/newscripts/${script}".initd "${T}/${script}".initd || die "failed to copy ${script}.initd"
 
 		# now set the database dependancy for the director init script
 		case "${script}" in
@@ -363,7 +373,6 @@ src_install() {
 	done
 
 	systemd_dounit "${S}"/platforms/systemd/bacula-{dir,fd,sd}.service
-	systemd_dotmpfilesd "${S}"/platforms/systemd/bacula.conf
 
 	# make sure the working directory exists
 	diropts -m0750
@@ -387,6 +396,13 @@ pkg_postinst() {
 		einfo "  /usr/libexec/bacula/make_${mydbtype}_tables"
 		einfo "  /usr/libexec/bacula/grant_${mydbtype}_privileges"
 		einfo
+
+		ewarn "ATTENTION!"
+		ewarn "The format of the database may have changed."
+		ewarn "If you just upgraded from a version below 9.0.0 you must run"
+		ewarn "'update_bacula_tables' now."
+		ewarn "Make sure to have a backup of your catalog before."
+		ewarn
 	fi
 
 	if use sqlite; then
