@@ -6180,10 +6180,8 @@ net-mail/notmuch:valgrind - Depend on dev-util/vagrind for test suite
 net-mail/offlineimap:sqlite - Enable runtime support for sqlite mail status backend.
 net-mail/qmailadmin:maildrop - Filter spam using maildrop
 net-mail/qpopper:apop - Enables the pop.auth file in /etc/pop.auth
-net-mail/qpopper:drac - Enables DRAC support
 net-mail/qpopper:mailbox - Enables mail spool file is in home directory ~/Mailbox
 net-mail/tpop3d:authexternal - Enable authentication by an external program
-net-mail/tpop3d:drac - Enable dynamic relay support in the tpop3d pop3 server
 net-mail/tpop3d:flatfile - Enable authentication against /etc/passwd-style flat files
 net-mail/tpop3d:passwd - Enable /etc/passwd authentication
 net-mail/tpop3d:sha1 - Use OpenSSL for sha1 encrypted passwords.
@@ -6754,6 +6752,11 @@ net-p2p/transmission:mbedtls - Use mbed TLS instead of OpenSSL
 net-p2p/transmission:xfs - Enable XFS filesystem capabilities by using sys-fs/xfsprogs headers (in building of fdlimit(.c))
 net-p2p/transmission-remote-gtk:libproxy - Use net-libs/libproxy for getting the HTTP/HTTPS/SOCKS proxy configuration.
 net-p2p/tribler:vlc - Enable vlc support.
+net-p2p/xmr-stak:cuda - Enable NVIDIA CUDA toolkit support
+net-p2p/xmr-stak:devfee - Enable payment of devfee to the developer
+net-p2p/xmr-stak:hwloc - Enable CPU affinity support via hwloc
+net-p2p/xmr-stak:opencl - Enable OpenCL support
+net-p2p/xmr-stak:webserver - Enable internal webserver
 net-print/cups:java - Add support for the Java interpeter in the web server CGIs.
 net-print/cups:lprng-compat - Do not install lp... binaries so cups and lprng can coexist.
 net-print/cups:python - Add support for the Python interpeter in the web server CGIs.
