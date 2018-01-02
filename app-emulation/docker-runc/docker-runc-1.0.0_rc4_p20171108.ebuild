@@ -8,10 +8,10 @@ if [[ ${PV} == *9999 ]]; then
 	inherit golang-vcs
 else
 	MY_PV="${PV/_/-}"
-	EGIT_COMMIT="3f2f8b84a77f73d38244dd690525642a72156c64"
-	RUNC_COMMIT="3f2f8b84" # Change this when you update the ebuild
+	EGIT_COMMIT="b2567b37d7b75eb4cf325b77297b140ea686ce8f"
+	RUNC_COMMIT="b2567b3" # Change this when you update the ebuild
 	SRC_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~ppc64"
+	KEYWORDS="~amd64 ~arm ~ppc64"
 	inherit golang-vcs-snapshot
 fi
 
