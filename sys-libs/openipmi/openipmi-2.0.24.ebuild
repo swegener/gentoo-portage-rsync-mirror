@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -10,13 +10,13 @@ inherit eutils autotools python-single-r1
 DESCRIPTION="Library interface to IPMI"
 HOMEPAGE="https://sourceforge.net/projects/openipmi/"
 MY_PN="OpenIPMI"
-MY_P="${MY_PN}-${PV}"
+MY_P="${MY_PN}-${PV/_/-}"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ~ia64 ppc x86"
-IUSE="crypt snmp perl tcl python"
+KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~x86"
+IUSE="crypt snmp perl python tcl"
 S="${WORKDIR}/${MY_P}"
 RESTRICT='test'
 
@@ -37,14 +37,22 @@ DEPEND="${RDEPEND}
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+PATCHES=(
+	# Bug #338499: The installed OpenIPMIpthread.pc depends on a non-existing
+	# pthread.pc. We patch it to link -lpthread directly instead.
+	"${FILESDIR}/${PN}-2.0.16-pthreads.patch"
+
+	# https://bugs.gentoo.org/501510
+	"${FILESDIR}/${PN}-2.0.21-tinfo.patch"
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
-	# Bug #338499: The installed OpenIPMIpthread.pc depends on a non-existing
-	# pthread.pc. We patch it to link -lpthread directly instead.
-	epatch "${FILESDIR}/${PN}-2.0.16-pthreads.patch"
+	default
+
 	# Bug #290763: The buildsys tries to compile+optimize the py file during
 	# install, when the .so might not be been added yet. We just skip the files
 	# and use python_optimize ourselves later instead.
@@ -61,36 +69,39 @@ src_prepare() {
 	# We touch the .in and .am above because if we use the below, the Perl stuff
 	# is very fragile, and often fails to link.
 	#cd "${S}"
-	#elibtoolize
-	#eautoreconf
+	eautoreconf
 }
 
 src_configure() {
-	local myconf=""
-	myconf="${myconf} `use_with snmp ucdsnmp yes`"
-	myconf="${myconf} `use_with crypt openssl yes`"
-	myconf="${myconf} `use_with perl perl yes`"
-	myconf="${myconf} `use_with tcl tcl yes`"
-	myconf="${myconf} `use_with python python yes`"
+	local myconf=(
+		# these binaries are for root!
+		--bindir=/usr/sbin
+		--with-glib
+		--with-glibver=2.0
+		--with-swig
+		--without-tkinter
+		$(use_with snmp ucdsnmp yes)
+		$(use_with crypt openssl yes)
+		$(use_with perl perl yes)
+		$(use_with tcl tcl yes)
+		$(use_with python python yes)
+	)
 
 	# GUI is broken
 	#use tk && use python && use !tcl && \
 	#	ewarn "Not building Tk GUI because it needs both Python AND Tcl"
 	#if use python && use tcl; then
-	#	myconf="${myconf} `use_yesno tk tkinter yes`"
+	#	myconf+=( $(use_with tk tkinter) )
 	#else
-	#	myconf="${myconf} `use_yesno tk tkinter no`"
+	#	myconf+=( --without-tkinter )
 	#fi
 
-	myconf="${myconf} --without-tkinter"
-	myconf="${myconf} --with-glib --with-swig"
-	# these binaries are for root!
-	econf ${myconf} --bindir=/usr/sbin
+	econf "${myconf[@]}"
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dodoc README* FAQ ChangeLog TODO doc/IPMI.pdf lanserv/README.emulator
+	dodoc README* FAQ ChangeLog TODO doc/IPMI.pdf lanserv/README.vm
 	newdoc cmdlang/README README.cmdlang
 
 	use python && python_optimize
