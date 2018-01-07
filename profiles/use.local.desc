@@ -3006,9 +3006,6 @@ dev-vcs/kdesvn:man - Build and install man pages
 dev-vcs/mercurial:bugzilla - Support bugzilla integration.
 dev-vcs/mercurial:gpg - Support signing with GnuPG.
 dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
-dev-vcs/qct:bazaar - Support for dev-vcs/bzr
-dev-vcs/qct:mercurial - Support for dev-vcs/mercurial
-dev-vcs/qct:monotone - Support for dev-vcs/monotone
 dev-vcs/rabbitvcs:caja - Enable extension for mate-base/caja
 dev-vcs/rabbitvcs:cli - Eanble console based frontend
 dev-vcs/rabbitvcs:diff - Use for diff command dev-util/meld
