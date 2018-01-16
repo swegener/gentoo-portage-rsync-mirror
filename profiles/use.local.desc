@@ -222,6 +222,10 @@ app-arch/pigz:symlink - Install symlinks which override app-arch/gzip implementa
 app-arch/rar:all_sfx - Install all SFX (Self-Extracting) files rather than just the native format (allows creation of Windows EXEs on Linux ELF systems)
 app-arch/tar:minimal - just install `tar`
 app-arch/unzip:natspec - Use dev-libs/libnatspec to correctly decode non-ascii file names archived in Windows.
+app-arch/wimlib:fuse - Use fuse libraries
+app-arch/wimlib:ntfs - Use libntfs-3g library from sys-fs/ntfs3g
+app-arch/wimlib:openssl - Use the SHA-1 message digest from libcrypto instead of compilling another implementation
+app-arch/wimlib:yasm - Use yasm assembler instead of nasm
 app-arch/xz-utils:extra-filters - Build additional filters that are not used in any of the default xz presets. This includes delta and BCJ coders, additional match finders and SHA256 checks.
 app-arch/zip:natspec - Use dev-libs/libnatspec to correctly decode non-ascii file names archived in Windows.
 app-backup/amanda:ndmp - Support for the NDMP protocol
