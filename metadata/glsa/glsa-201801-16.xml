@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">rsync</product>
   <announced>2018-01-17</announced>
-  <revised count="1">2018-01-17</revised>
+  <revised count="3">2018-01-17</revised>
   <bug>636714</bug>
   <bug>640570</bug>
   <access>remote</access>
@@ -48,5 +48,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17434">CVE-2017-17434</uri>
   </references>
   <metadata tag="requester" timestamp="2018-01-16T12:20:06Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2018-01-17T02:19:09Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2018-01-17T03:06:21Z">whissi</metadata>
 </glsa>
