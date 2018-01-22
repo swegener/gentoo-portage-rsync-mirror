@@ -4282,7 +4282,6 @@ media-libs/openimageio:cpu_flags_x86_f16c - SIMD Optimization
 media-libs/openimageio:field3d - Use media-libs/Field3D
 media-libs/openimageio:opencv - Use media-libs/opencv
 media-libs/openimageio:ptex - Use media-libs/ptex
-media-libs/openimageio:tbb - Use dev-cpp/tbb
 media-libs/opensubdiv:cuda - Enable NVIDIA CUDA Toolkit support through dev-util/nvidia-cuda-toolkit.
 media-libs/opensubdiv:opencl - Enable OpenCL support through virtual/opencl.
 media-libs/opensubdiv:ptex - Adds support for faster per-face texture mapping through media-libs/ptex.
