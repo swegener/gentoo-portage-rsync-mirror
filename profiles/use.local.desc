@@ -100,6 +100,7 @@ app-admin/pass:fish-completion - Enable fish completion support.
 app-admin/pass:git - Use dev-vcs/git for password revisions.
 app-admin/pass:importers - Allow importing passwords from other password managers using various contributed scripts.
 app-admin/passwordsafe:minimal - Avoid collision with app-misc/pwsafe
+app-admin/passwordsafe:qr - Enable QR code password display
 app-admin/passwordsafe:xml - Enable XML import support
 app-admin/passwordsafe:yubikey - Enable support for Yubikey
 app-admin/prelude-manager:dbx - Enables Prelude Manager storing Prelude alerts into database through dev-libs/libpreludedb .
@@ -6911,6 +6912,7 @@ net-p2p/primecoin-qt:qrcode - Enable generation of QR Codes for receiving paymen
 net-p2p/primecoind:logrotate - Use app-admin/logrotate for rotating logs
 net-p2p/pybitmessage:opencl - Uses dev-python/pyopencl for GPU acceleration.
 net-p2p/qbittorrent:webui - Enable the Web UI
+net-p2p/resilio-sync:pax_kernel - Use paxctl to mark binaries
 net-p2p/retroshare:cli - Enables the CLI version of RetroShare
 net-p2p/retroshare:feedreader - Enables the Feedreader plugin
 net-p2p/retroshare:gnome-keyring - Enables potentially insecure autologin capability via Gnome Keyring
