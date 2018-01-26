@@ -8898,8 +8898,6 @@ x11-misc/xscreensaver:new-login - Enable user switching support using gdmflexise
 x11-misc/xsr:cursor - Capture mouse cursor using x11-misc/xdotool, and place them on the screenshots using media-gfx/imagemagick
 x11-misc/xss-lock:man - Build and install man pages
 x11-plugins/bfm:gkrellm - Enable building of app-admin/gkrellm module
-x11-plugins/compiz-plugins-extra:gconf - Install GConf schemas for the plugins, needed when using the GConf-based configuration backend in x11-wm/compiz.
-x11-plugins/compiz-plugins-main:gconf - Install GConf schemas for the plugins, needed when using the GConf-based configuration backend in x11-wm/compiz.
 x11-plugins/pidgin-mbpurple:twitgin - Enable graphical plugin for Gtk+ interface of Pidgin.
 x11-plugins/pidgin-sipe:ocs2005-message-hack - Disable message timeout for OCS2005 clients which causes "false" not delivered error messages
 x11-plugins/pidgin-sipe:openssl - Enable crypto support via dev-libs/openssl
@@ -8980,8 +8978,6 @@ x11-themes/zukitwo:gnome-shell - Install theme for gnome-base/gnome-shell
 x11-wm/awesome:luajit - Use dev-lang/luajit instead of dev-lang/lua
 x11-wm/compiz:fuse - Enables support for the filesystem in userspace plugin through sys-fs/fuse.
 x11-wm/compiz:gconf - Enable the GConf-based configuration backend; it is not required to work with GNOME, and might actually be faster if it's not used.
-x11-wm/compiz-fusion:emerald - Install the x11-wm/emerald package.
-x11-wm/compiz-fusion:unsupported - Install the x11-plugins/compiz-plugins-unsupported package.
 x11-wm/echinus:xrandr - Enable support for multihead configuration
 x11-wm/enlightenment:enlightenment_modules_appmenu - Gadget that hold the toolbar of the foreground application
 x11-wm/enlightenment:enlightenment_modules_backlight - Backlight control slider gadget
