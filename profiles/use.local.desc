@@ -386,7 +386,6 @@ app-editors/emacs:pax_kernel - Enable building under a PaX enabled kernel
 app-editors/emacs:source - Install C source files and make them available for find-function
 app-editors/emacs:toolkit-scroll-bars - Use the selected toolkit's scrollbars in preference to Emacs' own scrollbars
 app-editors/emacs:wide-int - Prefer wide Emacs integers (typically 62-bit). This option has an effect only on architectures where "long" and "long long" types have different size.
-app-editors/emacs:xwidgets - Enable use of GTK widgets in Emacs buffers (requires GTK3)
 app-editors/emacs-vcs:athena - Enable the MIT Athena widget set (x11-libs/libXaw)
 app-editors/emacs-vcs:dynamic-loading - Enable loading of dynamic libraries at runtime
 app-editors/emacs-vcs:games - Support shared score files for games
@@ -1298,8 +1297,6 @@ dev-cpp/libjson-rpc-cpp:http-server - Build support for HTTP server using net-li
 dev-cpp/libjson-rpc-cpp:redis-client - Build support for Redis client using dev-libs/hiredis
 dev-cpp/libjson-rpc-cpp:redis-server - Build support for Redis server using dev-libs/hiredis
 dev-cpp/libjson-rpc-cpp:stubgen - Build header stub code generator (needed for development and when pregenerated headers are not bundled)
-dev-cpp/pficommon:fcgi - Build FCGI feature
-dev-cpp/pficommon:mprpc - Build MessagePack RPC feature
 dev-cpp/websocketpp:boost - Use dev-libs/boost instead of C++11
 dev-cpp/xsd:ace - Enable support for serializing to/from an ACE CDR stream
 dev-db/aerospike-server-community:tools - Install extra tools
@@ -7630,15 +7627,6 @@ sci-visualization/paraview:coprocessing - Enable the coprocessing infrastructure
 sci-visualization/paraview:development - Install development files including headers
 sci-visualization/paraview:nvcontrol - Add NVCONTROL support for OpenGL options
 sci-visualization/paraview:plugins - Build and install additional plugins
-sci-visualization/qtiplot:linguas_cs - Czech locale
-sci-visualization/qtiplot:linguas_de - German locale
-sci-visualization/qtiplot:linguas_es - Spanish locale
-sci-visualization/qtiplot:linguas_fr - French locale
-sci-visualization/qtiplot:linguas_ja - Japanese locale
-sci-visualization/qtiplot:linguas_ro - Romanian locale
-sci-visualization/qtiplot:linguas_ru - Russian locale
-sci-visualization/qtiplot:linguas_sv - Swedish locale
-sci-visualization/qtiplot:linguas_zh_CN - Chinese locale for China
 sci-visualization/veusz:emf - Add FITS format via dev-python/pyemf
 sci-visualization/veusz:fits - Add FITS format via dev-python/astropy
 sci-visualization/veusz:minuit - Use Minuit during fitting viadev-python/pyminuit
