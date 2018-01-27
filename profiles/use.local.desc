@@ -2961,8 +2961,6 @@ dev-util/sysprof:systemd - Build the sysprofd daemon service, required to run th
 dev-util/systemtap:libvirt - Support probing of libvirt domains.
 dev-util/trace-cmd:udis86 - Enable support for dev-libs/udis86 disassembler library
 dev-vcs/bzr:sftp - Enable sftp support
-dev-vcs/bzr-gtk:gpg - Support signing with GnuPG.
-dev-vcs/bzr-gtk:nautilus - Integrate with Nautilus file manager
 dev-vcs/cssc:valgrind - Enable usage of dev-util/valgrind in tests
 dev-vcs/cvs:server - Enable server support
 dev-vcs/cvs2svn:bazaar - Support for dev-vcs/bzr
