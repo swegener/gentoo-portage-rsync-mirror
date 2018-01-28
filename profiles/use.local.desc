@@ -1828,7 +1828,6 @@ dev-java/proguard:j2me - Adds support for J2ME Wireless Toolkit
 dev-java/protobuf-java:nano - Enable code generator and runtime library designed specifically for resource-constrained systems, like Android
 dev-java/rxtx:lfd - Installs and uses LockFileServer daemon (lfd)
 dev-java/sbt:binary - Install from (Gentoo-compiled) binary instead of building from sources. Set this when you run out of memory during build.
-dev-java/swt:webkit - Embedded browser support via net-libs/webkit-gtk:2, replacing former xulrunner-based browser.
 dev-lang/bas:lr0 - Use the LR0 parser instead of the recursive descending parser
 dev-lang/crystal:blocking-stdio-hack - Keep STDIO file descriptors in blocking mode.
 dev-lang/crystal:debug - Build each module as a separate object file. Speeds build up.
