@@ -4280,6 +4280,8 @@ media-libs/opus:custom-modes - Build with custom-modes.
 media-libs/opusfile:fixed-point - Enable fixed-point arithmetic operations
 media-libs/opusfile:float - Enable floating point arithmetic operations
 media-libs/opusfile:http - Enable http connections
+media-libs/osl:cpu_flags_x86_avx512f - SIMD Optimization
+media-libs/osl:cpu_flags_x86_f16c - SIMD Optimization
 media-libs/osl:partio - Use media-libs/partio
 media-libs/phonon:designer - Install plugin for dev-qt/designer
 media-libs/phonon:vlc - Install VLC Phonon backend
