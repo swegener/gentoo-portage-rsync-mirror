@@ -4,10 +4,11 @@
 EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-if [ ${PV} == "9999" ] ; then
-	inherit git-r3 linux-mod
+if [[ ${PV} == *"9999" ]] ; then
 	AUTOTOOLS_AUTORECONF="1"
 	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
+	EGIT_BRANCH="zfs-0.7-release"
+	inherit git-r3 linux-mod
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
@@ -130,7 +131,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! use kernel-builtin && [ ${PV} = "9999" ]
+	if ! use kernel-builtin && [[ ${PV} = *"9999" ]]
 	then
 		einfo "Adding ${P} to the module database to ensure that the"
 		einfo "kernel modules and userland utilities stay in sync."
@@ -190,7 +191,7 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	if ! use kernel-builtin && [ ${PV} = "9999" ]
+	if ! use kernel-builtin && [[ ${PV} = *"9999" ]]
 	then
 		remove_moduledb
 	fi
