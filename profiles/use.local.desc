@@ -4347,6 +4347,9 @@ media-libs/xine-lib:vis - Adds support for SIMD optimizations for UltraSPARC pro
 media-libs/xine-lib:vpx - Enable VP8 codec support via media-libs/libvpx.
 media-libs/xine-lib:xvmc - Enable support for XVideo Motion Compensation (accelerated mpeg playback).
 media-libs/xvid:pic - disable optimized assembly code that is not PIC friendly
+media-plugins/alsa-plugins:arcam_av - Enables Arcam AV control plugin
+media-plugins/alsa-plugins:mix - Enables upmix and vdownmix plugin
+media-plugins/alsa-plugins:usb_stream - Enables usb_stream plugin
 media-plugins/audacious-plugins:adplug - Build with AdPlug (Adlib sound card emulation) support
 media-plugins/audacious-plugins:ampache - Support controlling audacious via www-apps/ampache
 media-plugins/audacious-plugins:aosd - Enable support for Audacious OSD
