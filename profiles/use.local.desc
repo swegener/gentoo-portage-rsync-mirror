@@ -8481,6 +8481,7 @@ www-client/uget:hide-temp-files - Make temporary files that are used while downl
 www-client/uget:openssl - Use dev-libs/openssl instead of net-libs/gnutls
 www-client/uget:rss - Enable uGet feed messages
 www-client/w3m:lynxkeymap - If you prefer Lynx-like key binding
+www-client/weboob:deprecated - Enable dev-python/mechanize support (deprecated in favor of dev-python/requests
 www-client/weboob:fast-libs - Enable fast libs
 www-client/weboob:secure-updates - Enable secure updates
 www-misc/gurlchecker:json - Enable support for parsing Google Chrome and derivatives bookmarks.
