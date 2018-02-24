@@ -6441,6 +6441,7 @@ net-misc/ntp:parse-clocks - Add support for PARSE clocks
 net-misc/ntp:samba - Provide support for Samba's signing daemon (needed for Active Directory domain controllers)
 net-misc/ntpsec:early - Drop root privileges early
 net-misc/ntpsec:gdb - Enable debugging with gdb
+net-misc/ntpsec:heat - Install contrib heat generating scripts
 net-misc/ntpsec:nist - Enable lockclock
 net-misc/ntpsec:ntpviz - Make visualizations of offsets, jiffies, etc.
 net-misc/ntpsec:rclock_arbiter - Arbiter 1088A/B GPS driver
