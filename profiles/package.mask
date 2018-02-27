@@ -30,6 +30,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2018)
+# Depends on deprecated Qt4, no Qt5 work found. No maintainer.
+# Masked for removal in 30 days. Bug #644534
+app-text/searchmonkey
+
+# Andreas Sturmlechner <asturm@gentoo.org> (27 Feb 2018)
 # Depends on deprecated Qt4. No maintainer, needs someone to bump to Qt5.
 # Masked for removal in 30 days. Bug #602042
 media-gfx/pencil
@@ -393,11 +398,6 @@ app-admin/procinfo
 # Upstream dead, fails to build, nothing requires it (#641750). Removal in a
 # month.
 net-misc/bti
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# Forces old versions of some dependencies, no reverse deps (#643152).
-# Removal in a month.
-dev-util/conan
 
 # Alice Ferrazzi <alicef@gentoo.org> (30 Dec 2017)
 # Masked for removal in 30 days.
