@@ -8831,6 +8831,7 @@ x11-terms/rxvt-unicode:secondary-wheel - Support for wheel scrolling on secondar
 x11-terms/rxvt-unicode:unicode3 - Use 21 instead of 16 bits to represent unicode characters
 x11-terms/rxvt-unicode:wcwidth - Enable wide char width support
 x11-terms/terminator:libnotify - Enables desktop notifications viadev-python/notify-python
+x11-terms/xfce4-terminal:utempter - Include utmp management support via sys-libs/libutempter
 x11-terms/xterm:openpty - Use openpty() in preference to posix_openpt()
 x11-terms/xterm:toolbar - Enable the xterm toolbar to be built
 x11-themes/arc-theme:cinnamon - Install theme for gnome-extra/cinnamon
