@@ -4544,6 +4544,8 @@ media-sound/csound:websocket - Build the websocket opcode
 media-sound/darkice:aacplus - AAC+ encoding via media-libs/libaacplus
 media-sound/darkice:opus - Enable Opus audio codec support
 media-sound/darkice:twolame - Build with twolame support
+media-sound/deinvert:liquid - improve sound quality using net-libs/liquid-dsp
+media-sound/deinvert:wav - wav file support using media-libs/libsndfile
 media-sound/denemo:fluidsynth - Enable Fluidsynth MIDI software synthesis
 media-sound/denemo:portmidi - Enable support for the portmidi backend
 media-sound/dir2ogg:mac - Add support for decoding Monkey's Audio files
@@ -8960,12 +8962,9 @@ x11-wm/pekwm:themes - Install additional themes
 x11-wm/ratpoison:history - Use sys-libs/readline for history handling
 x11-wm/ratpoison:sloppy - Install sloppy, a focus-follows-mouse implementation for ratpoison
 x11-wm/ratpoison:xrandr - Enable support for XRandR
-x11-wm/stumpwm:clisp - Use CLISP for the runtime
 x11-wm/stumpwm:contrib - Install contrib modules
 x11-wm/stumpwm:doc - Include documentation
-x11-wm/stumpwm:ecl - Use SCL for the runtime
 x11-wm/stumpwm:emacs - Add support for GNU Emacs
-x11-wm/stumpwm:sbcl - Use SBCL for the runtime
 x11-wm/subtle:xrandr - Enable support for the X RandR extension
 x11-wm/subtle:xtest - Enable support for the XTest extension
 x11-wm/vtwm:rplay - Enable rplay support, needed for sound.
