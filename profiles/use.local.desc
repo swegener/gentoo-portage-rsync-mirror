@@ -2805,10 +2805,8 @@ dev-scheme/kawa:sax - Assume SAX2 is available with dev-java/sax
 dev-scheme/kawa:servlets - Build support for generating servlets with dev-java/servletapi
 dev-scheme/kawa:swing - Assume Swing is available
 dev-scheme/kawa:xqtests - Support XQuery Test Suite
-dev-scheme/racket:backtrace - Support GC backtrace dumps
 dev-scheme/racket:futures - Enable racket/future library for fine-grained hardware parallelism
 dev-scheme/racket:places - Enable racket/place library for share-nothing parallelism and message-passing communication. Compared to futures, places are heavyweight, but they have a simpler performance model.
-dev-scheme/racket:plot - Enable plot libraries
 dev-scheme/racket:threads - Enable support for green threads
 dev-scheme/scm:arrays - Support for arrays, uniform-arrays and uniform-vectors.
 dev-scheme/scm:bignums - Support for large precision integers.
@@ -3585,6 +3583,7 @@ kde-plasma/plasma-meta:crypt - Pull in kde-plasma/plasma-vault for encrypted vau
 kde-plasma/plasma-meta:display-manager - Pull in a graphical display manager
 kde-plasma/plasma-meta:grub - Pull in Breeze theme for sys-boot/grub
 kde-plasma/plasma-meta:gtk - Enable Breeze widget style and KCM for GTK2 and GTK3
+kde-plasma/plasma-meta:legacy-systray - Add support for applications using legacy xembed systray icons, depending on USE qt4 or gtk.
 kde-plasma/plasma-meta:pam - Enable support for kwallet auto-unlocking
 kde-plasma/plasma-meta:plymouth - Pull in Breeze theme for sys-boot/plymouth
 kde-plasma/plasma-meta:pulseaudio - Install Plasma applet for PulseAudio volume management
