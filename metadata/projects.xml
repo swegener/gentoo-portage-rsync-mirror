@@ -103,11 +103,6 @@
       <name>Steve Arnold</name>
       <role>Member (Gentoo/ARM Kernel)</role>
     </member>
-    <member is-lead="1">
-      <email>steev@gentoo.org</email>
-      <name>Steev Klimaszewski</name>
-      <role>Lead (Gentoo/ARM)</role>
-    </member>
     <member>
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
@@ -2497,11 +2492,6 @@ developers and volunteer mentors.</description>
       <name>Matthew Thode</name>
       <role>Lead</role>
     </member>
-    <member>
-      <email>steev@gentoo.org</email>
-      <name>Steev Klimaszewski</name>
-      <role>Member</role>
-    </member>
   </project>
   <project>
     <email>ops@gentoo.org</email>
@@ -3403,11 +3393,6 @@ developers and volunteer mentors.</description>
       <role>Infrastructure Liaison</role>
     </member>
     <member>
-      <email>steev@gentoo.org</email>
-      <name>Steev Klimaszewski</name>
-      <role>ARM stage building</role>
-    </member>
-    <member>
       <email>swift@gentoo.org</email>
       <name>Sven Vermeulen</name>
       <role>Documentation Liaison</role>
@@ -4001,10 +3986,6 @@ developers and volunteer mentors.</description>
       <name>Steve Arnold</name>
     </member>
     <member>
-      <email>rhill@gentoo.org</email>
-      <name>Ryan Hill</name>
-    </member>
-    <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
     </member>
@@ -4328,10 +4309,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>leio@gentoo.org</email>
       <name>Mart Raudsepp</name>
-    </member>
-    <member>
-      <email>rhill@gentoo.org</email>
-      <name>Ryan Hill</name>
     </member>
   </project>
   <project>
