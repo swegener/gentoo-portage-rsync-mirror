@@ -615,11 +615,6 @@
       <role>developer</role>
     </member>
     <member>
-      <email>pchrist@gentoo.org</email>
-      <name>Panagiotis Christopoulos</name>
-      <role>developer</role>
-    </member>
-    <member>
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
       <role>developer</role>
@@ -2123,11 +2118,6 @@
     <subproject ref="common-lisp@gentoo.org" inherit-members="1"/>
     <subproject ref="emacs@gentoo.org" inherit-members="1"/>
     <subproject ref="scheme@gentoo.org" inherit-members="1"/>
-    <member>
-      <email>pchrist@gentoo.org</email>
-      <name>Panagiotis Christopoulos</name>
-      <role>Developer (General maintainer)</role>
-    </member>
   </project>
   <project>
     <email>livecd@gentoo.org</email>
@@ -2193,11 +2183,6 @@
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
       <role>Lead</role>
-    </member>
-    <member>
-      <email>pchrist@gentoo.org</email>
-      <name>Panagiotis Christopoulos</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>vincent@gentoo.org</email>
@@ -3742,11 +3727,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>creffett@gentoo.org</email>
       <name>Chris Reffett</name>
-      <role>GLSA Coordinator</role>
-    </member>
-    <member>
-      <email>keytoaster@gentoo.org</email>
-      <name>Tobias Heinlein</name>
       <role>GLSA Coordinator</role>
     </member>
     <member>
