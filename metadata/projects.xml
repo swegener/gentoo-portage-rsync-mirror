@@ -2114,6 +2114,11 @@
     <subproject ref="common-lisp@gentoo.org" inherit-members="1"/>
     <subproject ref="emacs@gentoo.org" inherit-members="1"/>
     <subproject ref="scheme@gentoo.org" inherit-members="1"/>
+    <member>
+      <email>nimiux@gentoo.org</email>
+      <name>Chema Alonso Josa</name>
+      <role>Developer</role>
+    </member>
   </project>
   <project>
     <email>livecd@gentoo.org</email>
