@@ -1636,10 +1636,6 @@
       <email>mjo@gentoo.org</email>
       <name>Michael Orlitzky</name>
     </member>
-    <member>
-      <email>qnikst@gentoo.org</email>
-      <name>Alexander Vershilov</name>
-    </member>
     <member is-lead="1">
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
@@ -2185,11 +2181,6 @@
       <role>Lead</role>
     </member>
     <member>
-      <email>vincent@gentoo.org</email>
-      <name>Vicente Olivert Riera</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>zlogene@gentoo.org</email>
       <name>Mikle Kolyada</name>
       <role>Developer</role>
@@ -2439,11 +2430,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>patrick@gentoo.org</email>
       <name>Patrick Lauer</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>qnikst@gentoo.org</email>
-      <name>Alexander Vershilov</name>
       <role>Member</role>
     </member>
     <member>
@@ -3080,11 +3066,6 @@ developers and volunteer mentors.</description>
     <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>Member</role>
-    </member>
-    <member>
-      <email>alunduil@gentoo.org</email>
-      <name>Alex Brandt</name>
       <role>Member</role>
     </member>
     <member>
