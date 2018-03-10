@@ -2587,11 +2587,6 @@ developers and volunteer mentors.</description>
       <role>Developer</role>
     </member>
     <member>
-      <email>civil@gentoo.org</email>
-      <name>Vladimir Smirnov</name>
-      <role>Developer</role>
-    </member>
-    <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
       <role>Developer</role>
@@ -3575,11 +3570,6 @@ developers and volunteer mentors.</description>
     <name>SUSE</name>
     <url>https://wiki.gentoo.org/wiki/Project:SUSE</url>
     <description>This project manages all various rpm based tools for working with OBS and rpmbuild</description>
-    <member>
-      <email>miska@gentoo.org</email>
-      <name>Michal Hrušecký</name>
-      <role>Updates, Documentation</role>
-    </member>
   </project>
   <project>
     <email>samba@gentoo.org</email>
