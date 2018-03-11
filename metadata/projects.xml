@@ -2458,11 +2458,6 @@ developers and volunteer mentors.</description>
     <name>Openstack</name>
     <url>https://wiki.gentoo.org/wiki/Project:Openstack</url>
     <description>Openstack is a virtualization orchestration suite that allows the creation and management of cloud infrastructures.</description>
-    <member>
-      <email>cardoe@gentoo.org</email>
-      <name>Doug Goldstein</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
