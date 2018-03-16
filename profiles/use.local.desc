@@ -3076,7 +3076,6 @@ games-action/minetest:redis - Enable redis backend via dev-libs/hiredis
 games-action/minetest:server - Build minetest server
 games-action/minetest:spatial - Enable SpatialIndex AreaStore backend
 games-action/solar2:bundled-libs - Use the upstream provided bundled libraries.
-games-action/super-hexagon:bundled-libs - Use the upstream provided bundled libraries.
 games-action/supermariowar:server - Compile and install Super Mario War server files
 games-action/supertuxkart:fribidi - Support for right-to-left languages
 games-action/supertuxkart:recorder - Enable recording with media-libs/libopenglrecorder
