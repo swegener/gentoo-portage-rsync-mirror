@@ -10,13 +10,13 @@ SRC_URI="${HOMEPAGE}download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ~arm ~arm64 hppa ~ia64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE="
-	adns androiddump +capinfos +caps +captype ciscodump cpu_flags_x86_sse4_2
-	+dftest doc doc-pdf +dumpcap +editcap geoip gtk kerberos libssh libxml2 lua
-	lz4 +mergecap +netlink nghttp2 +pcap portaudio +qt5 +randpkt +randpktdump
-	+reordercap sbc selinux +sharkd smi snappy spandsp sshdump ssl +text2pcap
-	tfshark +tshark +udpdump zlib
+	adns androiddump bcg729 +capinfos +caps +captype ciscodump
+	cpu_flags_x86_sse4_2 +dftest doc +dumpcap +editcap gtk kerberos libssh
+	libxml2 lua lz4 maxminddb +mergecap +netlink nghttp2 +pcap portaudio +qt5
+	+randpkt +randpktdump +reordercap sbc selinux +sharkd smi snappy spandsp
+	sshdump ssl +text2pcap tfshark +tshark +udpdump zlib
 "
 REQUIRED_USE="
 	ciscodump? ( libssh )
@@ -30,8 +30,8 @@ CDEPEND="
 	dev-libs/libgcrypt:0
 	netlink? ( dev-libs/libnl:3 )
 	adns? ( >=net-dns/c-ares-1.5 )
+	bcg729? ( media-libs/bcg729 )
 	caps? ( sys-libs/libcap )
-	geoip? ( dev-libs/geoip )
 	gtk? (
 		x11-libs/gdk-pixbuf
 		x11-libs/gtk+:3
@@ -43,6 +43,7 @@ CDEPEND="
 	libxml2? ( dev-libs/libxml2 )
 	lua? ( >=dev-lang/lua-5.1:* )
 	lz4? ( app-arch/lz4 )
+	maxminddb? ( dev-libs/libmaxminddb )
 	nghttp2? ( net-libs/nghttp2 )
 	pcap? ( net-libs/libpcap )
 	portaudio? ( media-libs/portaudio )
@@ -74,11 +75,7 @@ DEPEND="
 	!<perl-core/Pod-Simple-3.170
 	doc? (
 		app-doc/doxygen
-		app-text/asciidoc
-		dev-libs/libxml2
-		dev-libs/libxslt
-		doc-pdf? ( dev-java/fop )
-		www-client/lynx
+		dev-ruby/asciidoctor
 	)
 	qt5? (
 		dev-qt/linguist-tools:5
@@ -98,7 +95,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-sse4_2-r1.patch
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
 	"${FILESDIR}"/${PN}-99999999-androiddump.patch
-	"${FILESDIR}"/${PN}-2.4.3-libsmi.patch
 )
 
 pkg_setup() {
@@ -143,10 +139,6 @@ src_configure() {
 		append-cxxflags -fPIC -DPIC
 	fi
 
-	# Hack around inability to disable doxygen/fop doc generation
-	use doc || export ac_cv_prog_HAVE_DOXYGEN=false
-	use doc-pdf || export ac_cv_prog_HAVE_FOP=false
-
 	econf \
 		$(use androiddump && use pcap && echo --enable-androiddump-use-libpcap=yes) \
 		$(use dumpcap && use_with pcap dumpcap-group wireshark) \
@@ -155,6 +147,7 @@ src_configure() {
 		$(use_enable captype) \
 		$(use_enable ciscodump) \
 		$(use_enable dftest) \
+		$(use_enable doc guides) \
 		$(use_enable dumpcap) \
 		$(use_enable editcap) \
 		$(use_enable mergecap) \
@@ -168,14 +161,15 @@ src_configure() {
 		$(use_enable tshark) \
 		$(use_enable udpdump) \
 		$(use_with adns c-ares) \
+		$(use_with bcg729) \
 		$(use_with caps libcap) \
-		$(use_with geoip) \
 		$(use_with gtk gtk 3) \
 		$(use_with kerberos krb5) \
 		$(use_with libssh) \
 		$(use_with libxml2) \
 		$(use_with lua) \
 		$(use_with lz4) \
+		$(use_with maxminddb) \
 		$(use_with nghttp2) \
 		$(use_with pcap) \
 		$(use_with portaudio) \
@@ -192,39 +186,16 @@ src_configure() {
 		$(usex qt5 MOC=$(qt5_get_bindir)/moc '') \
 		$(usex qt5 RCC=$(qt5_get_bindir)/rcc '') \
 		$(usex qt5 UIC=$(qt5_get_bindir)/uic '') \
-		--disable-profile-build \
 		--disable-warnings-as-errors \
 		--sysconfdir="${EPREFIX}"/etc/wireshark \
 		${myconf[@]}
-}
-
-src_compile() {
-	default
-
-	if use doc; then
-		emake -j1 -C docbook
-		if use doc-pdf; then
-			addpredict "/root/.java"
-			emake -C docbook all-pdf
-		fi
-	fi
 }
 
 src_install() {
 	default
 
 	# FAQ is not required as is installed from help/faq.txt
-	dodoc AUTHORS ChangeLog NEWS README{,.bsd,.linux,.macos,.vmware} \
-		doc/{randpkt.txt,README*}
-
-	if use doc; then
-		docinto /usr/share/doc/${PF}/html
-		dodoc -r docbook/{release-notes.html,ws{d,u}g_html{,_chunked}}
-		if use doc-pdf; then
-			docinto /usr/share/doc/${PF}/pdf/
-			dodoc docbook/{developer,user}-guide-{a4,us}.pdf docbook/release-notes.pdf
-		fi
-	fi
+	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
 
 	# install headers
 	local wsheader
@@ -236,7 +207,6 @@ src_install() {
 		epan/dissectors/*.h \
 		epan/ftypes/*.h \
 		epan/wmem/*.h \
-		register.h \
 		wiretap/*.h \
 		ws_diag_control.h \
 		ws_symbol_export.h \
@@ -251,16 +221,14 @@ src_install() {
 	doins wiretap/wtap.h
 
 	if use gtk || use qt5; then
-		local c d
-		for c in hi lo; do
-			for d in 16 32 48; do
-				insinto /usr/share/icons/${c}color/${d}x${d}/apps
-				newins image/${c}${d}-app-wireshark.png wireshark.png
-			done
+		local s
+		for s in 16 32 48 64 128 256 512 1024; do
+			insinto /usr/share/icons/hicolor/${s}x${s}/apps
+			newins image/wsicon${s}.png wireshark.png
 		done
-		for d in 16 24 32 48 64 128 256 ; do
-			insinto /usr/share/icons/hicolor/${d}x${d}/mimetypes
-			newins image/WiresharkDoc-${d}.png application-vnd.tcpdump.pcap.png
+		for s in 16 24 32 48 64 128 256 ; do
+			insinto /usr/share/icons/hicolor/${s}x${s}/mimetypes
+			newins image/WiresharkDoc-${s}.png application-vnd.tcpdump.pcap.png
 		done
 	fi
 
