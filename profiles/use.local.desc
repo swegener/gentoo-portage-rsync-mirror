@@ -2361,7 +2361,6 @@ dev-perl/App-Nopaste:clipboard - copying of URLs with -x/--copy
 dev-perl/App-Nopaste:github - Github authentication
 dev-perl/App-Nopaste:pastebin - pastebin.com support
 dev-perl/Business-ISBN:barcode - Install dev-perl/GD-Barcode for rendering ISBN numbers as barcodes
-dev-perl/Business-ISBN:xisbn - Install dev-perl/Mojolicious for querying xisbn.worldcat.org
 dev-perl/Config-Any:conf - Install dev-perl/Config-General to support decoding .conf/.cnf files
 dev-perl/Config-Any:ini - Install dev-perl/Config-Tiny to support decoding INI config files
 dev-perl/Config-Any:json - Install support libraries to support decoding JSON config files
