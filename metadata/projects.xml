@@ -1536,6 +1536,11 @@
       <role>Hardened sources</role>
     </member>
     <member>
+      <email>chutzpah@gentoo.org</email>
+      <name>Patrick McLean</name>
+      <role>PaX markings</role>
+    </member>
+    <member>
       <email>klondike@gentoo.org</email>
       <name>Francisco Blas Izquierdo Riera</name>
       <role>Documentation, PR</role>
@@ -1559,6 +1564,16 @@
       <email>swift@gentoo.org</email>
       <name>Sven Vermeulen</name>
       <role>Integrity, SELinux</role>
+    </member>
+    <member>
+      <email>williamh@gentoo.org</email>
+      <name>William Hubbs</name>
+      <role>PaX markings</role>
+    </member>
+    <member>
+      <email>wizardedit@gentoo.org</email>
+      <name>Austin English</name>
+      <role>PaX markings</role>
     </member>
     <member is-lead="1">
       <email>zorry@gentoo.org</email>
