@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit unpacker eutils flag-o-matic games
+EAPI=6
+inherit eutils flag-o-matic unpacker
 
 # Latest versions are in http://icculus.org/twilight/darkplaces/files/
-MY_PV=${PV/_beta/beta}
+MY_PV="${PV/_beta/beta}"
 MY_ENGINE="${PN}engine${MY_PV}.zip"
 
 # Different Quake 1 engines expect the lights in different directories
@@ -24,7 +24,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa cdinstall cdsound debug dedicated demo lights opengl oss sdl textures"
 
-UIRDEPEND="virtual/jpeg:0
+UIRDEPEND="
+	virtual/jpeg:0
 	media-libs/libogg
 	media-libs/libvorbis
 	virtual/opengl
@@ -33,18 +34,23 @@ UIRDEPEND="virtual/jpeg:0
 	x11-libs/libX11
 	x11-libs/libXpm
 	x11-libs/libXxf86dga
-	x11-libs/libXxf86vm"
-UIDEPEND="x11-proto/xextproto
+	x11-libs/libXxf86vm
+"
+UIDEPEND="
+	x11-proto/xextproto
 	x11-proto/xf86dgaproto
 	x11-proto/xf86vidmodeproto
-	x11-proto/xproto"
-RDEPEND="net-misc/curl
+	x11-proto/xproto
+"
+RDEPEND="
+	net-misc/curl
 	cdinstall? ( games-fps/quake1-data )
 	demo? ( games-fps/quake1-demodata )
 	textures? ( >=games-fps/quake1-textures-20050820 )
 	opengl? ( ${UIRDEPEND} )
 	!opengl? ( sdl? ( ${UIRDEPEND} ) )
-	!opengl? ( !sdl? ( !dedicated? ( ${UIRDEPEND} ) ) )"
+	!opengl? ( !sdl? ( !dedicated? ( ${UIRDEPEND} ) ) )
+"
 DEPEND="lights? ( || (
 			app-arch/unrar
 			app-arch/rar ) )
@@ -58,10 +64,11 @@ DEPEND="lights? ( || (
 		${UIRDEPEND}
 		${UIDEPEND} ) ) )
 	virtual/pkgconfig
-	app-arch/unzip"
+	app-arch/unzip
+"
 
-S=${WORKDIR}/${PN}
-dir=${GAMES_DATADIR}/quake1
+S="${WORKDIR}/${PN}"
+dir="/usr/share/quake1"
 
 opengl_client() { use opengl || ( ! use dedicated && ! use sdl ) }
 
@@ -77,6 +84,8 @@ src_unpack() {
 }
 
 src_prepare() {
+	default
+
 	rm "${WORKDIR}"/README-SDL.txt
 	cd "${S}"
 	rm mingw_note.txt
@@ -137,12 +146,12 @@ src_install() {
 		use sdl && type=sdl
 
 		# darkplaces executable is needed, even just for demo
-		newgamesbin "${PN}-${type}" ${PN}
+		newbin "${PN}-${type}" ${PN}
 		newicon darkplaces72x72.png ${PN}.png
 
 		if use demo ; then
 			# Install command-line for demo, even if not desktop entry
-			games_make_wrapper ${PN}-demo "${PN} -game demo"
+			make_wrapper ${PN}-demo "${PN} -game demo"
 		fi
 
 		if use demo && ! use cdinstall ; then
@@ -154,7 +163,7 @@ src_install() {
 	fi
 
 	if use dedicated ; then
-		newgamesbin ${PN}-dedicated ${PN}-ded
+		newbin ${PN}-dedicated ${PN}-ded
 	fi
 
 	dodoc *.txt ChangeLog todo "${WORKDIR}"/*.txt
@@ -170,17 +179,14 @@ src_install() {
 			done
 		fi
 	fi
-	prepgamesdirs
 }
 
 pkg_postinst() {
-	games_pkg_postinst
-
 	if ! use cdinstall && ! use demo ; then
 		elog "Place pak0.pak and pak1.pak in ${dir}/id1"
 	fi
 
-	if use sdl ; then
+	if use sdl $$ ! use alsa ; then
 		ewarn "Select opengl with alsa, instead of sdl USE flag, for better audio latency."
 	fi
 }
