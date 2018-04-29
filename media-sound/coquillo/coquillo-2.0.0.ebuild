@@ -3,12 +3,11 @@
 
 EAPI=6
 
-COMMIT=05e97cb24d0d296d3becea9854fcb0562302ab4a
 inherit desktop qmake-utils
 
 DESCRIPTION="GUI audio tagger based on Qt and taglib"
 HOMEPAGE="https://www.linux-apps.com/content/show.php/Coquillo?content=141896"
-SRC_URI="https://github.com/sjuvonen/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/sjuvonen/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3"
 SLOT="0"
@@ -26,8 +25,6 @@ DEPEND="
 	media-libs/taglib
 "
 RDEPEND="${DEPEND}"
-
-S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_configure() {
 	eqmake5
