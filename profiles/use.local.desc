@@ -4416,9 +4416,9 @@ media-plugins/mythplugins:mythzoneminder - Adds support for zoneminder (requires
 media-plugins/mythplugins:raw - Allows MythGallery to view photos saved in RAW format
 media-plugins/vdr-burn:dvdarchive - DMH DVD - Archive
 media-plugins/vdr-dvbapi:dvbcsa - use media-libs/libdvbcsa free implementation of the DVB Common Scrambling Algorithm
-media-plugins/vdr-epgsearch:conflictcheckonly - ToDo
-media-plugins/vdr-epgsearch:epgsearchonly - ToDo
-media-plugins/vdr-epgsearch:quicksearch - ToDo
+media-plugins/vdr-epgsearch:conflictcheckonly - install the "conflictcheckonly" vdr-plugin
+media-plugins/vdr-epgsearch:epgsearchonly - install the "epgsearchonly" vdr-plugin
+media-plugins/vdr-epgsearch:quicksearch - install the "quicksearch" vdr-plugin
 media-plugins/vdr-epgsearch:tre - Add support for unlimited fuzzy searching with help of dev-libs/tre library
 media-plugins/vdr-music:graphtft - Enable support for vdr-graphtft plugin
 media-plugins/vdr-pvr350:yaepg - Enables full support for the output format of vdr-yaepg
