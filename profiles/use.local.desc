@@ -2853,6 +2853,7 @@ dev-util/cmake:server - Enable cmake-server support.
 dev-util/cmake:system-jsoncpp - Use system copy of dev-libs/jsoncpp instead of bundled one.
 dev-util/coccigrep:vim - Install the coccigrep vim plugin
 dev-util/codeblocks:contrib - Build additional contrib components
+dev-util/codeblocks:fortran - Build FortranProject plugin which enables to use Code::Blocks IDE for Fortran language
 dev-util/cppcheck:htmlreport - install cppcheck-htmlreport
 dev-util/ctags:json - Enable JSON output support
 dev-util/ctags:xml - Enable XML parsing support
