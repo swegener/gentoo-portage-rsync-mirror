@@ -2468,8 +2468,6 @@ dev-python/PyQt5:xmlpatterns - Build bindings for the QtXmlPatterns module
 dev-python/PythonQt:extensions - Install extensions
 dev-python/QtPy:designer - Build bindings for the QtDesigner module and enable the designer plugin
 dev-python/QtPy:gui - Build bindings for the QtGui module
-dev-python/QtPy:pyqt5 - Enable the dev-python/PyQt5 backend
-dev-python/QtPy:pyside - Enable the dev-python/pyside backend
 dev-python/QtPy:svg - Build bindings for the QtSvg module
 dev-python/QtPy:testlib - Build bindings for the QtTest module
 dev-python/QtPy:webengine - Build bindings for the QtWebEngine module
@@ -2542,10 +2540,7 @@ dev-python/netaddr:cli - Enable netaddr shell with dev-python/ipython
 dev-python/networkx:scipy - Enables scipy backend
 dev-python/nltk:numpy - Use numpy for the saved word tokenizer
 dev-python/numexpr:mkl - Enable support for Intel Vector Math Library, part of sci-libs/mkl.
-dev-python/pandas:R - Enable support for R via dev-python/rpy
-dev-python/pandas:excel - Pull a few Python packages for Microsoft Excel i/o
 dev-python/pandas:full-support - Pull all packages to give pandas full support
-dev-python/pandas:html - Enable HTML i/o via dev-python/beautifulsoup
 dev-python/passlib:bcrypt - bcrpyt hash algoryptm support
 dev-python/passlib:scrypt - accelerated scrypt algoythm support
 dev-python/passlib:totp - time based one time password support
@@ -2750,7 +2745,6 @@ dev-qt/qtwebengine:widgets - Enable QtWidgets support
 dev-qt/qtwebkit:geolocation - Enable physical position determination via dev-qt/qtpositioning
 dev-qt/qtwebkit:gles2 - Use GLES 2.0 or later instead of full OpenGL
 dev-qt/qtwebkit:gstreamer - Enable HTML5 audio/video support via media-libs/gstreamer using SLOT 1.0
-dev-qt/qtwebkit:gstreamer010 - Enable HTML5 audio/video support via media-libs/gstreamer using SLOT 0.10
 dev-qt/qtwebkit:multimedia - Enable HTML5 audio/video support via dev-qt/qtmultimedia
 dev-qt/qtwebkit:orientation - Enable device orientation detection via dev-qt/qtsensors
 dev-qt/qtwebkit:printsupport - Enable printing via dev-qt/qtprintsupport
