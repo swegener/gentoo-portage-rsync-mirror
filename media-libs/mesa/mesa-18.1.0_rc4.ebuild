@@ -25,7 +25,7 @@ if [[ $PV == 9999 ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://mesa.freedesktop.org/archive/${MY_P}.tar.xz"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~arm-linux ~x86-linux ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="MIT"
@@ -75,11 +75,8 @@ REQUIRED_USE="
 	video_cards_vmware? ( gallium )
 "
 
-LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.89"
-# keep blocks in rdepend for binpkg
+LIBDRM_DEPSTRING=">=x11-libs/libdrm-2.4.91"
 RDEPEND="
-	!<x11-base/xorg-server-1.7
-	!<=x11-proto/xf86driproto-2.0.3
 	classic? ( app-eselect/eselect-mesa )
 	gallium? ( app-eselect/eselect-mesa )
 	>=app-eselect/eselect-opengl-1.3.0
@@ -90,7 +87,7 @@ RDEPEND="
 	>=x11-libs/libXdamage-1.1.4-r1:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libXext-1.3.2:=[${MULTILIB_USEDEP}]
 	>=x11-libs/libXxf86vm-1.1.3:=[${MULTILIB_USEDEP}]
-	>=x11-libs/libxcb-1.9.3:=[${MULTILIB_USEDEP}]
+	>=x11-libs/libxcb-1.13:=[${MULTILIB_USEDEP}]
 	x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
 	unwind? ( sys-libs/libunwind[${MULTILIB_USEDEP}] )
 	llvm? (
@@ -147,14 +144,15 @@ RDEPEND="${RDEPEND}
 # 1. List all the working slots (with min versions) in ||, newest first.
 # 2. Update the := to specify *max* version, e.g. < 7.
 # 3. Specify LLVM_MAX_SLOT, e.g. 6.
-LLVM_MAX_SLOT="5"
 LLVM_DEPSTR="
 	|| (
+		sys-devel/llvm:7[${MULTILIB_USEDEP}]
+		sys-devel/llvm:6[${MULTILIB_USEDEP}]
 		sys-devel/llvm:5[${MULTILIB_USEDEP}]
 		sys-devel/llvm:4[${MULTILIB_USEDEP}]
 		>=sys-devel/llvm-3.9.0:0[${MULTILIB_USEDEP}]
 	)
-	<sys-devel/llvm-6:=[${MULTILIB_USEDEP}]
+	sys-devel/llvm:=[${MULTILIB_USEDEP}]
 "
 LLVM_DEPSTR_AMDGPU=${LLVM_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
 CLANG_DEPSTR=${LLVM_DEPSTR//llvm/clang}
@@ -273,8 +271,8 @@ pkg_setup() {
 }
 
 src_prepare() {
-	[[ ${PV} == 9999 ]] && eautoreconf
 	eapply_user
+	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 multilib_src_configure() {
@@ -393,6 +391,7 @@ multilib_src_configure() {
 		$(use_enable unwind libunwind) \
 		--enable-valgrind=$(usex valgrind auto no) \
 		--enable-llvm-shared-libs \
+		--disable-opencl-icd \
 		--with-dri-drivers=${DRI_DRIVERS} \
 		--with-gallium-drivers=${GALLIUM_DRIVERS} \
 		--with-vulkan-drivers=${VULKAN_DRIVERS} \
