@@ -2067,7 +2067,6 @@ dev-libs/fcgi:html - Install HTML documentation
 dev-libs/folks:telepathy - Load contacts from the Telepathy framework
 dev-libs/folks:tracker - Load contacts from app-misc/tracker index
 dev-libs/folks:utils - Build the folks-inspect utility
-dev-libs/folks:zeitgeist - Add support for Zeitgeist event tracking system
 dev-libs/fstrm:utils - Build fstrm utility programs
 dev-libs/gecode:gist - Enable Gist, the Gecode Interactive Search Tool
 dev-libs/gecode:gmp - Enable trigonometric and transcendental float constraints
