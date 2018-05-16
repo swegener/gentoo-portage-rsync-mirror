@@ -2514,6 +2514,8 @@ dev-python/ipython:nbconvert - Enable support for converting notebooks to variou
 dev-python/ipython:notebook - Install requirements for the web notebook based on www-servers/tornado
 dev-python/jira:filemagic - Include filemagic support (for identifying uploaded filetypes)
 dev-python/jira:ipython - Include Interactive Python (IPython)
+dev-python/jira:jirashell - Include dependencies for jirashell (ipython, oauthlib)
+dev-python/jira:kerberos - Support Kerberos authentication
 dev-python/jira:oauth - Support OAuth authentication
 dev-python/kaa-base:tls - SSL/TLS support via dev-python/tlslite
 dev-python/kafka-python:snappy - Install snappy compression/decompression support
