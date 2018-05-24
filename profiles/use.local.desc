@@ -3414,7 +3414,7 @@ kde-apps/cantor:R - Enable dev-lang/R backend support
 kde-apps/cantor:analitza - Enable kde-apps/analitza backend support
 kde-apps/cantor:julia - Enable dev-lang/julia backend support
 kde-apps/cantor:qalculate - Enable sci-libs/libqalculate backend support
-kde-apps/dolphin:thumbnail - Enables video thumbnail generation
+kde-apps/dolphin:thumbnail - Enables thumbnail generation
 kde-apps/dolphin-plugins:bazaar - Enable support for the bazaar VCS
 kde-apps/dolphin-plugins:dropbox - Enable support for the dropbox fileviewer plugin
 kde-apps/dolphin-plugins:git - Enable support for the git VCS
@@ -3450,6 +3450,7 @@ kde-apps/kio-extras:htmlthumbs - Enable HTML thumbnail previews via dev-qt/qtweb
 kde-apps/kio-extras:man - Enable manpages kioslave
 kde-apps/kio-extras:phonon - Enable file audio preview plugin using media-libs/phonon
 kde-apps/kio-extras:sftp - Enable SFTP protocol support using net-libs/libssh
+kde-apps/kio-extras:taglib - Enable audio thumbnails via media-libs/taglib
 kde-apps/kmag:keyboardfocus - Enable keyboard focus tracking
 kde-apps/konqueror:activities - Enable kactivities support
 kde-apps/konqueror:speech - Build text-to-speech plugin
@@ -3562,7 +3563,7 @@ kde-plasma/plasma-meta:crypt - Pull in kde-plasma/plasma-vault for encrypted vau
 kde-plasma/plasma-meta:display-manager - Pull in a graphical display manager
 kde-plasma/plasma-meta:grub - Pull in Breeze theme for sys-boot/grub
 kde-plasma/plasma-meta:gtk - Enable Breeze widget style and KCM for GTK2 and GTK3
-kde-plasma/plasma-meta:legacy-systray - Add support for applications using legacy xembed systray icons, depending on USE qt4 or gtk.
+kde-plasma/plasma-meta:legacy-systray - Add support for GTK+ applications using legacy xembed systray icons
 kde-plasma/plasma-meta:pam - Enable support for kwallet auto-unlocking
 kde-plasma/plasma-meta:plymouth - Pull in Breeze theme for sys-boot/plymouth
 kde-plasma/plasma-meta:pulseaudio - Install Plasma applet for PulseAudio volume management
