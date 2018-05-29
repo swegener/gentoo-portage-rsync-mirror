@@ -4060,6 +4060,10 @@ media-gfx/ufraw:fits - Enable support for the FITS image format through sci-libs
 media-gfx/ufraw:timezone - enable DST correction for file timestamps
 media-gfx/xpaint:pgf - Support for loading PGF images
 media-gfx/xsane:ocr - Enable support for Optical Character Recognition reader
+media-gfx/yafaray:blender - Install addon for media-gfx/blender
+media-gfx/yafaray:fastmath - Enable mathematic approximations to make code faster
+media-gfx/yafaray:fasttrig - Enable trigonometric approximations to make code faster
+media-gfx/yafaray:opencv - Use media-libs/opencv
 media-libs/a52dec:djbfft - Prefer D.J. Bernstein's library for fourier transforms
 media-libs/allegro:dumb - Enable media-libs/dumb module library support
 media-libs/allegro:physfs - Enable physfs support
