@@ -1,0 +1,11 @@
+DEFINED_PHASES=install postinst
+DEPEND=media-tv/v4l-utils || ( media-video/mplayer[v4l] media-video/mplayer[dvb] ) media-sound/alsa-utils dev-perl/XML-Simple dev-perl/Gtk2 dev-perl/X-Osd >=dev-perl/Lirc-Client-1.50
+DESCRIPTION=Simple IVTV command line TV and radio player with support of LIRC
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/ivtvplayer/
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-tv/v4l-utils || ( media-video/mplayer[v4l] media-video/mplayer[dvb] ) media-sound/alsa-utils dev-perl/XML-Simple dev-perl/Gtk2 dev-perl/X-Osd >=dev-perl/Lirc-Client-1.50
+SLOT=0
+SRC_URI=mirror://sourceforge/ivtvplayer/ivtvplayer-0.1.3.tar.gz
+_md5_=78151fe94e68c36990f977e1cf140cad
