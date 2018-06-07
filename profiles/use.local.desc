@@ -8500,6 +8500,12 @@ www-plugins/gnash:ssl - Enable directly using OpenSSL in libnet (not needed for 
 www-plugins/lightspark:gles - Replace default OpenGL renderer with GLESv2
 www-plugins/lightspark:ppapi - Install the PPAPI plugin (for Chromium)
 www-plugins/lightspark:rtmp - Enable Real Time Messaging Protocol using librtmp
+www-plugins/passff:firefox - Install plugin for www-client/firefox
+www-plugins/passff:firefox-bin - Install plugin for www-client/firefox-bin
+www-plugins/passff-host:chrome - Install plugin for chrome (which also includes opera)
+www-plugins/passff-host:chromium - Install plugin for chromium
+www-plugins/passff-host:firefox - Install plugin for firefox
+www-plugins/passff-host:vivaldi - Install plugin for vivaldi
 www-servers/apache:apache2_modules_access_compat - Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions.
 www-servers/apache:apache2_modules_authn_core - Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions).
 www-servers/apache:apache2_modules_authz_core - Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user.
