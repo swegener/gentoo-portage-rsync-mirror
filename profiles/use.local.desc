@@ -5583,6 +5583,7 @@ net-firewall/iptables:conntrack - Build against net-libs/libnetfilter_conntrack 
 net-firewall/iptables:netlink - Build against libnfnetlink which enables the nfnl_osf util
 net-firewall/iptables:nftables - Support nftables kernel interface
 net-firewall/iptables:pcap - Build against net-libs/libpcap which enables the nfbpf_compile util
+net-firewall/nftables:json - Enable JSON support via dev-libs/jansson
 net-firewall/nufw:nfconntrack - Use netfilter_conntrack
 net-firewall/nufw:nfqueue - Use NFQUEUE instead of QUEUE
 net-firewall/nufw:pam_nuauth - Add support for pam nufw from PAM
