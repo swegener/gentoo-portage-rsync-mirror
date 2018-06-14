@@ -288,6 +288,7 @@ app-crypt/aespipe:cpu_flags_x86_padlock - Use VIA padlock instructions, detected
 app-crypt/ccid:kobil-midentity - Build and install Kobil_mIDentity_switch tool
 app-crypt/ccid:twinserial - Enable twinserial reader
 app-crypt/codecrypt:cryptopp - Build algorithms that need Crypto++ support dev-libs/crypto++
+app-crypt/dehydrated:cron - Install cron job to sign/renew non-existent/changed/expiring certificates
 app-crypt/eid-mw:dialogs - Enable "askaccess" dialog box, by using x11-libs/gtk+
 app-crypt/eid-mw:gtk - All dialogs are available, by using x11-libs/gtk+
 app-crypt/eid-mw:p11-kit - Support for app-crypt/p11-kit.
