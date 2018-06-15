@@ -6,7 +6,7 @@ inherit golang-build golang-vcs-snapshot
 
 EGO_PN="github.com/genuinetools/reg"
 EGIT_COMMIT="v${PV}"
-GIT_COMMIT="fc4797acd474fe66e617f491ced48c83f7aa355e"
+GIT_COMMIT="8dba69bce413988846a6defa063f35ab38a31991"
 ARCHIVE_URI="https://${EGO_PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64"
 
