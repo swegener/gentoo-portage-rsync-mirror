@@ -191,25 +191,6 @@ x11-plugins/epplets
 ~dev-qt/qtxmlpatterns-5.11.0_rc2
 ~dev-qt/qtxml-5.11.0_rc2
 
-# Amy Liffey <amynka@gentoo.org> (16 May 2018)
-# Obsolete and not used anymore replaced by app-crypt/eid-mw.
-# Requested by maintainer Vincent Hardy <vincent.hardy.be@gmail.com>
-# Removal in 30 days.
-app-misc/eid-viewer-bin
-
-# Michał Górny <mgorny@gentoo.org> (16 May 2018)
-# Ancient, unmaintained and seriously broken.  Applying patches
-# in the ebuild was broken in 2014 and nobody even reported that.
-# Building tests is broken.  No reverse dependencies.  Back in the day,
-# the package was so bad and incomplete that I've decided it's easier to
-# write my own implementation.  sci-libs/libh2o is a good replacement.
-# Bug #655852.  Removal in 30 days.
-sci-libs/freesteam
-
-# Michał Górny <mgorny@gentoo.org> (16 May 2018)
-# Broken *FLAGS handling.  Use -r3 instead.
-=dev-util/scons-3.0.1-r2
-
 # Maciej Mrozowski <reavertm@gentoo.org> (6 May 2018)
 # SoQt does not build yet
 >=media-libs/coin-4.0.0
