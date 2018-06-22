@@ -10,7 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
-		The SPS decoder library will load IPF and CT Raw files in the emulator of your choice.
-		Kryofluxes <pkg>app-misc/kryoflux-dtc</pkg> also will need this.
+		The Steam Console Client or SteamCMD is a command-line version of the Steam client.
+		Its primary use is to install and update various dedicated servers available on Steam
+		using a command-line interface. It works with games that use the SteamPipe content system.
+		All games have been migrated from the deprecated HLDSUpdateTool to SteamCMD.
 	</longdescription>
 </pkgmetadata>

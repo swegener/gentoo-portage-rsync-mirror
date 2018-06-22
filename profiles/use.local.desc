@@ -924,6 +924,9 @@ app-misc/gramps:reports - All external software that is needed for graphical rep
 app-misc/graphlcd-base:g15 - Add support for app-misc/g15daemon driver (e.g. Logitech G15 Keybord)
 app-misc/irtrans-irserver:mono - Enable mono support
 app-misc/jq:oniguruma - Use dev-libs/oniguruma for regular expression support
+app-misc/kryoflux-dtc:demos - Install example floppy game files.
+app-misc/kryoflux-dtc:fast-firmware - Install fast firmware instead of slow firmware.
+app-misc/kryoflux-dtc:gui - Install the Kryoflux GUI
 app-misc/lcd4linux:apm - Enable the APM plugin.
 app-misc/lcd4linux:asterisk - Enable the Asterisk plugin.
 app-misc/lcd4linux:button_exec - Enable the Button plugin, to execute something on keypress.
@@ -8959,9 +8962,7 @@ x11-wm/enlightenment:enlightenment_modules_wl-wl - Wayland-in-Wayland module
 x11-wm/enlightenment:enlightenment_modules_wl-x11 - Wayland-in-X11 module
 x11-wm/enlightenment:enlightenment_modules_xkbswitch - Keyboard layout configuration and switcher
 x11-wm/enlightenment:enlightenment_modules_xwayland - X/Wayland integration
-x11-wm/enlightenment:pango - Enable pango font rendering
 x11-wm/enlightenment:ukit - Use upower/udisks to automount devices
-x11-wm/enlightenment:xrandr - Enable support for the X xrandr extension
 x11-wm/fluxbox:bidi - Enable bidirectional language support with dev-libs/fribidi
 x11-wm/fluxbox:slit - Enables the Fluxbox slit (or dock)
 x11-wm/fluxbox:systray - Enables the system tray in the Fluxbox toolbar
