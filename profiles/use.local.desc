@@ -7039,6 +7039,8 @@ net-wireless/hostapd:logwatch - Install support files for sys-apps/logwatch
 net-wireless/hostapd:netlink - Adding support for using netlink to create VLANs
 net-wireless/hostapd:sqlite - Adding sqlite support
 net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
+net-wireless/iwd:client - Enable iwctl client tool
+net-wireless/iwd:monitor - Enable iwmon monitor tool
 net-wireless/kismet:client - Build the ncurses-based user interface
 net-wireless/kismet:pcre - Build with pcre support
 net-wireless/kismet:plugin-autowep - Build the autowep plugin
