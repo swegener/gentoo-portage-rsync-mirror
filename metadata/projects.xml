@@ -485,6 +485,11 @@
     <url>https://wiki.gentoo.org/wiki/Project:Catalyst</url>
     <description>The Gentoo Catalyst Project develops and supports the Catalyst release building tool. Catalyst has been designed to be easy to use, customize, and maintain. It is also used in other Gentoo projects, such as GNAP.</description>
     <member>
+      <email>bkohler@gentoo.org</email>
+      <name>Ben Kohler</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
       <role>Member</role>
