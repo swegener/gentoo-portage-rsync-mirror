@@ -39,7 +39,7 @@ src_install() {
 	doins "src/${EGO_PN}"/example-{blacklist.txt,whitelist.txt}
 	doins "src/${EGO_PN}"/example-{cloaking-rules.txt,forwarding-rules.txt}
 
-	insinto "/usr/share/dnscrypt-proxy"
+	insinto /usr/share/dnscrypt-proxy
 	doins -r "utils/generate-domains-blacklists/."
 
 	newinitd "${FILESDIR}"/dnscrypt-proxy.initd dnscrypt-proxy
