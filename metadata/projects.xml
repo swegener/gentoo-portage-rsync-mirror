@@ -3447,12 +3447,12 @@ developers and volunteer mentors.</description>
     <name>SELinux</name>
     <url>https://wiki.gentoo.org/wiki/Project:SELinux</url>
     <description>This project manages SELinux support in Gentoo. This includes providing kernels with SELinux support, providing patches to userland utilities, writing strong Gentoo-specific default profiles, and maintaining a good default set of policies.</description>
-    <member>
+    <member is-lead="1">
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
       <role>Documentation, Policy, Userland</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>swift@gentoo.org</email>
       <name>Sven Vermeulen</name>
       <role>Documentation, Policy, Userland</role>
