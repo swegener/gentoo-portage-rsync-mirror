@@ -8036,6 +8036,7 @@ sys-cluster/legion:gasnet - Enable GASNet lib support
 sys-cluster/legion:hwloc - Enable HWLoc lib support
 sys-cluster/maui:pbs - Enable pbs integration
 sys-cluster/maui:slurm - Enable slurm integration
+sys-cluster/minikube:libvirt - Build plugin for kvm
 sys-cluster/moosefs:cgi - Install CGI server and scripts.
 sys-cluster/moosefs:fuse - Install the mfsmount utility.
 sys-cluster/mpich:mpi-threads - Enable MPI_THREAD_MULTIPLE
