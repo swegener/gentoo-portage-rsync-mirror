@@ -2610,11 +2610,6 @@ developers and volunteer mentors.</description>
     <subproject ref="tools-portage@gentoo.org"/>
     <subproject ref="sandbox@gentoo.org"/>
     <member>
-      <email>blueboar2@gmail.com</email>
-      <name>Vladimir Romanov</name>
-      <role>Translator (Russian)</role>
-    </member>
-    <member>
       <email>dolsen@gentoo.org</email>
       <name>Brian Dolbec</name>
       <role>Tools developer, Release coordinator</role>
