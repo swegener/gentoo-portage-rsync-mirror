@@ -1980,15 +1980,15 @@
     <name>LXQt</name>
     <url>https://wiki.gentoo.org/wiki/Project:LXQt</url>
     <description>Maintains LXQt DE related packages.</description>
-    <member>
+    <member is-lead="1">
       <email>chiitoo@gentoo.org</email>
       <name>Jimi Huotari</name>
-      <role>Developer</role>
+      <role>Non-Technical Lead</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>dracwyrm@gentoo.org</email>
       <name>Jonathan Scruggs</name>
-      <role>Developer</role>
+      <role>Technical Lead</role>
     </member>
   </project>
   <project>
