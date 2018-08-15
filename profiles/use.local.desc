@@ -4385,6 +4385,7 @@ media-libs/speex:vbr - Enable VBR support.
 media-libs/svgalib:kernel-helper - Build the helper kernel module
 media-libs/taglib:boost - Use dev-libs/boost instead of GCC built-ins
 media-libs/tremor:low-accuracy - enable 32bit only multiply operations
+media-libs/urt:tools - Install tools
 media-libs/vigra:valgrind - Enable valgrind in make check
 media-libs/vulkan-loader:demos - Build vulkan demos and vulkaninfo
 media-libs/vulkan-loader:layers - Build the vulkan layers
