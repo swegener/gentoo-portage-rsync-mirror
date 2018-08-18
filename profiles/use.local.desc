@@ -1935,7 +1935,6 @@ dev-java/logback:tomcat - Builds Apache Tomcat support
 dev-java/lucene:contrib - Include extra functionality from contrib/
 dev-java/miglayout:swt - Add support for the SWT toolkit.
 dev-java/oracle-jdk-bin:commercial - Install features requiring a commercial license for production use
-dev-java/oracle-jdk-bin:derby - Install bundled Derby (Java database)
 dev-java/oracle-jdk-bin:gentoo-vm - Allow this JDK to be recognised by Gentoo (package manager, eselect, java-config, EXPERIMENTAL!)
 dev-java/oracle-jdk-bin:gtk2 - Enable GTK+ 2 support in JavaFX
 dev-java/oracle-jdk-bin:gtk3 - Enable GTK+ 3 support in JavaFX
