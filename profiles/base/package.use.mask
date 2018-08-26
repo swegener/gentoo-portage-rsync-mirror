@@ -70,7 +70,6 @@ net-analyzer/scapy visual
 
 # Pacho Ramos <pacho@gentoo.org> (18 Mar 2018)
 # net-dns/hesiod will be removed (#606652)
-net-mail/fetchmail hesiod
 sys-freebsd/freebsd-lib hesiod
 
 # Pacho Ramos <pacho@gentoo.org> (17 Mar 2018)
@@ -122,10 +121,6 @@ sci-chemistry/xds-bin X
 # Mart Raudsepp <leio@gentoo.org> (10 Jan 2018)
 # Failing tests, with extra deps that aren't keyworded due to that
 >=gnome-base/gnome-settings-daemon-3.24 test
-
-# Pacho Ramos <pacho@gentoo.org> (04 Jan 2018)
-# sys-apps/raidutils is going to be removed (#638634)
-net-analyzer/nagios-plugin-check_raid i2o
 
 # Andrey Utkin <andrey_utkin@gentoo.org> (29 Dec 2017)
 # This flag can be sensibly enabled only on macos.
@@ -365,10 +360,6 @@ mail-client/thunderbird system-cairo
 # any non-HotSpot platforms. Don't unmask these unless you know what
 # you're doing. This has upstream's approval.
 dev-java/icedtea cacao jamvm
-
-# Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2016)
-# Need vulnerable libotr version (see bug #576914).
-=net-im/climm-0.7.1 otr
 
 # Patrice Clement <monsieurp@gentoo.org> (27 Nov 2015)
 # Unsastified dependencies are upsetting repoman. Needs investigation.
