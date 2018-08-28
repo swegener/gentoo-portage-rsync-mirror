@@ -1150,7 +1150,7 @@
     <member>
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>Board Member, Officer:Vice Secretary</role>
+      <role>Officer:Vice Secretary, Board Member</role>
     </member>
     <member is-lead="1">
       <email>antarus@gentoo.org</email>
@@ -1175,12 +1175,12 @@
     <member>
       <email>prometheanfire@gentoo.org</email>
       <name>Matthew Thode</name>
-      <role>Board Members</role>
+      <role>Board Member</role>
     </member>
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-      <role>Treasurer, Officer: Assistant Infra Liaison,</role>
+      <role>Treasurer, Officer: Assistant Infra Liaison, Board Member</role>
     </member>
   </project>
   <project>
