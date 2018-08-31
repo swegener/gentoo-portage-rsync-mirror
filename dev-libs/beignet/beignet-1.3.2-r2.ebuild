@@ -41,6 +41,7 @@ LLVM_MAX_SLOT=6
 
 PATCHES=(
 	"${FILESDIR}"/no-debian-multiarch.patch
+	"${FILESDIR}"/${PN}-1.3.2_disable-doNegAddOptimization.patch
 	"${FILESDIR}"/${PN}-1.3.2_cmake-llvm-config-multilib.patch
 	"${FILESDIR}"/${PN}-1.3.2_llvm6.patch
 	"${FILESDIR}"/${PN}-1.3.1-oclicd_no_upstream_icdfile.patch
