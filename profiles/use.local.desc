@@ -7840,11 +7840,11 @@ sys-apps/fwupd:colorhug - Enable ColorHug support through x11-misc/colord packag
 sys-apps/fwupd:dell - Enable Dell-specific support.
 sys-apps/fwupd:gpg - Enable GPG support.
 sys-apps/fwupd:man - Build and install man pages
+sys-apps/fwupd:nvme - Build and install nvme plugin
 sys-apps/fwupd:pkcs7 - Enable PKCS7 verification support via net-libs/gnutls.
 sys-apps/fwupd:redfish - Install redfish plugin
 sys-apps/fwupd:thunderbolt - Install thunderbolt plugin
 sys-apps/fwupd:uefi - Enable UEFI support
-sys-apps/fwupd:uefi_labels - Enable UEFI labels support
 sys-apps/gawk:forced-sandbox - Always enable --sandbox mode for simpler/secure runtime (disables e/r/w commands)
 sys-apps/gawk:mpfr - use mpfr for high precision arithmetic (-M / --bignum)
 sys-apps/gnome-disk-utility:fat - Include FAT16/FAT32 support (sys-fs/dosfstools)
