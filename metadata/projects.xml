@@ -198,12 +198,6 @@
     </member>
   </project>
   <project>
-    <email>alt@gentoo.org</email>
-    <name>Alt</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Alt</url>
-    <description>Provide Gentoo solutions for non-GNU/Linux platforms.</description>
-  </project>
-  <project>
     <email>antivirus@gentoo.org</email>
     <name>Gentoo Antivirus Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Antivirus</url>
