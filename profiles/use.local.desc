@@ -7180,6 +7180,8 @@ net-wireless/hostapd:sqlite - Adding sqlite support
 net-wireless/hostapd:wps - Add support for Wi-Fi Protected Setup
 net-wireless/iwd:client - Enable iwctl client tool
 net-wireless/iwd:monitor - Enable iwmon monitor tool
+net-wireless/iwd:ofono - Enable support for oFono SIM authentication
+net-wireless/iwd:wired - Enable ethernet authentication daemon
 net-wireless/kismet:client - Build the ncurses-based user interface
 net-wireless/kismet:pcre - Build with pcre support
 net-wireless/kismet:plugin-autowep - Build the autowep plugin
