@@ -17,7 +17,7 @@ HOMEPAGE="https://git.kernel.org/pub/scm/network/wireless/iwd.git/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+client +monitor cpu_flags_x86_aes cpu_flags_x86_ssse3"
+IUSE="+client +monitor ofono wired cpu_flags_x86_aes cpu_flags_x86_ssse3"
 
 RDEPEND="sys-apps/dbus
 	client? ( sys-libs/readline:0= )"
@@ -87,6 +87,8 @@ src_configure() {
 	econf --sysconfdir=/etc/iwd --localstatedir=/var \
 		$(use_enable client) \
 		$(use_enable monitor) \
+		$(use_enable ofono) \
+		$(use_enable wired) \
 		--enable-systemd-service \
 		--with-systemd-unitdir="$(systemd_get_systemunitdir)"
 }
