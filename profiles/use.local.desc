@@ -6686,6 +6686,10 @@ net-misc/nextcloud-client:shibboleth - Build support for Shibboleth single sign-
 net-misc/ntp:openntpd - Allow ntp to be installed alongside openntpd
 net-misc/ntp:parse-clocks - Add support for PARSE clocks
 net-misc/ntp:samba - Provide support for Samba's signing daemon (needed for Active Directory domain controllers)
+net-misc/ntpclient:debug - Enable analysis code path and debugging of NTP protocol.
+net-misc/ntpclient:embedded - Build a very small ntpclient, from OpenWRT project.
+net-misc/ntpclient:obsolete - Enable obsolete features, to use with kernel versions older than 3.0
+net-misc/ntpclient:syslog - Enable logging to syslog instead of logging to stderr.
 net-misc/ntpsec:early - Drop root privileges early
 net-misc/ntpsec:gdb - Enable debugging with gdb
 net-misc/ntpsec:heat - Install contrib heat generating scripts
