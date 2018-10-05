@@ -2063,7 +2063,6 @@ dev-lang/ruby:readline - Use the sys-libs/readline library to provide the readli
 dev-lang/ruby:rubytests - Install ruby tests that can only be run after ruby is installed
 dev-lang/rust:cargo - Install cargo component
 dev-lang/rust:clippy - Install clippy component
-dev-lang/rust:extended - Build and install rls, rustfmt and cargo alongside the compiler and stdlib
 dev-lang/rust:jemalloc - Use dev-libs/jemalloc as the standard memory allocator
 dev-lang/rust:rls - Install rls component
 dev-lang/rust:rustfmt - Install rustfmt component
