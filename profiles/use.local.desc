@@ -8784,6 +8784,7 @@ www-servers/apache:suexec-caps - Install suexec with capabilities instead of SUI
 www-servers/apache:suexec-syslog - Log suexec to syslog instead of to a separate file
 www-servers/cherokee:admin - Install web based cherokee conf tool
 www-servers/cherokee:rrdtool - Enable rrdtool support
+www-servers/civetweb:server - Build standalone server
 www-servers/fnord:auth - Enable HTTP authentication support
 www-servers/gatling:diet - Compile against dev-libs/dietlibc
 www-servers/h2o:mruby - Enable support for mruby
