@@ -2500,14 +2500,18 @@ dev-libs/starpu:gcc-plugin - Enable GCC extension plugin (experimental)
 dev-libs/starpu:opencl - Enable OpenCL support
 dev-libs/starpu:spinlock-check - Enable spinlock check
 dev-libs/starpu:valgrind - Enable dev-util/valgrind support
-dev-libs/sway:gdk-pixbuf - Enable additional image format support via the x11-libs/gdk-pixbuf library.
-dev-libs/sway:swaybar - Build 'swaybar': sway's status bar component.
-dev-libs/sway:swaybg - Build 'swaybg': allows to set a desktop background image.
-dev-libs/sway:swaygrab - Build 'swaygrab': allows taking screenshots or screencasts.
-dev-libs/sway:swaylock - Build 'swaylock': sway's screen locker.
-dev-libs/sway:swaymsg - Build 'swaymsg': tool for communicating with a running sway instance.
-dev-libs/sway:tray - Enable support for StatusNotifierItem tray specification.
-dev-libs/sway:wallpapers - Install sway's default wallpaper image.
+dev-libs/sway:X - Enable support for X11 applications (XWayland)
+dev-libs/sway:elogind - Enable support for rootless session via elogind
+dev-libs/sway:filecaps - Use Linux capability SYS_CAP_ADMIN rather than set*id for sway binary
+dev-libs/sway:fish-completion - Enable fish completion support
+dev-libs/sway:gdk-pixbuf - Enable additional image format support via the x11-libs/gdk-pixbuf library
+dev-libs/sway:swaybar - Install 'swaybar': sway's status bar component
+dev-libs/sway:swaybg - Install 'swaybg': allows to set a desktop background image
+dev-libs/sway:swaygrab - Install 'swaygrab': allows taking screenshots or screencasts
+dev-libs/sway:swaylock - Install 'swaylock': sway's screen locker
+dev-libs/sway:swaymsg - Install 'swaymsg': tool for communicating with a running sway instance
+dev-libs/sway:tray - Enable support for StatusNotifierItem tray specification
+dev-libs/sway:wallpapers - Install sway's default wallpaper image
 dev-libs/tinyxml:stl - Compile with TIXML_USE_STL support
 dev-libs/tntnet:server - Enable tntnet server daemon
 dev-libs/totem-pl-parser:archive - Enables support for accessing media files in archives transparently via app-arch/libarchive
