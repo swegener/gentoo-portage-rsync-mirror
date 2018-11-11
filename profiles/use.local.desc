@@ -5246,7 +5246,6 @@ media-video/ogmrip:srt - Support for SRT subtitle format
 media-video/orion:mpv - Use the media-video/mpv player (upstream default)
 media-video/orion:qtav - Use the media-libs/qtav player
 media-video/orion:qtmedia - Use the dev-qt/qtmultimedia
-media-video/parole:clutter - Compile in Clutter GTK+ support
 media-video/peek:keybinder - Enable support for global hotkeys using dev-libs/keybinder
 media-video/simplescreenrecorder:asm - Enable x86 assembly optimisation.
 media-video/simplescreenrecorder:vpx - Enable VP8 codec support via media-libs/libvpx.
