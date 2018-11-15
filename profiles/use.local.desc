@@ -4391,9 +4391,6 @@ media-libs/libgroove:sound - Enable audio playing.
 media-libs/liblastfm:fingerprint - Build the lastfm-fingerprint library
 media-libs/libmp4v2:utils - Install command-line utilities
 media-libs/libmypaint:gegl - Add support for media-libs/gegl
-media-libs/libomxil-bellagio:audioeffects - enable audio volume/mixer effects components
-media-libs/libomxil-bellagio:clocksrc - enable clock component
-media-libs/libomxil-bellagio:videoscheduler - enable xvideosink video scheduler
 media-libs/libopenglrecorder:openh264 - Enable H.264 support using media-libs/openh264
 media-libs/libopenglrecorder:vpx - Enable VP8/VP9 codec support via media-libs/libvpx
 media-libs/libpagemaker:tools - Build command line file format conversion tools
