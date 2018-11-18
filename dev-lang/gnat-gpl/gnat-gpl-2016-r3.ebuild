@@ -144,6 +144,8 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-bootstrap.patch"
 	# add Finalization_Size Attribute
 	epatch "${FILESDIR}/${P}-finalization.patch"
+	# add profile for gnat_util compatibility
+	epatch "${FILESDIR}/${P}-profile.patch"
 
 	toolchain_src_prepare
 
