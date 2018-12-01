@@ -2534,8 +2534,10 @@ dev-libs/sway:gdk-pixbuf - Enable additional image format support via the x11-li
 dev-libs/sway:swaybar - Install 'swaybar': sway's status bar component
 dev-libs/sway:swaybg - Install 'swaybg': allows to set a desktop background image
 dev-libs/sway:swaygrab - Install 'swaygrab': allows taking screenshots or screencasts
+dev-libs/sway:swayidle - Install 'swayidle': idle manager to run commands when user is inactive
 dev-libs/sway:swaylock - Install 'swaylock': sway's screen locker
 dev-libs/sway:swaymsg - Install 'swaymsg': tool for communicating with a running sway instance
+dev-libs/sway:swaynag - Install 'swaynag': shows a message with buttons
 dev-libs/sway:tray - Enable support for StatusNotifierItem tray specification
 dev-libs/sway:wallpapers - Install sway's default wallpaper image
 dev-libs/tinyxml:stl - Compile with TIXML_USE_STL support
