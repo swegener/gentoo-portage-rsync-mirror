@@ -3631,6 +3631,7 @@ gnome-extra/gnome-commander:taglib - Add metadata support for ID3, Vorbis, FLAC 
 gnome-extra/gnome-commander:unique - Enable single instance support using dev-libs/libunique
 gnome-extra/gnome-contacts:telepathy - Start chat from contact details
 gnome-extra/gnome-dvb-daemon:totem - Build a plugin for media-video/totem
+gnome-extra/gnome-software:firmware - Enable firmware update support through sys-apps/fwupd
 gnome-extra/gnome-system-monitor:systemd - Display sys-apps/systemd metadata, e.g. unit names, for running processes
 gnome-extra/libgda:canvas - Enable support for x11-libs/goocanvas
 gnome-extra/libgda:http - Enable embedded net-libs/libsoup based server
@@ -4628,20 +4629,6 @@ media-plugins/kipi-plugins:mediawiki - Build the mediawiki export plugin
 media-plugins/kipi-plugins:remotestorage - Build plugin for remote storage using network protocols such as FTP, SSH, SAMBA via kde-frameworks/kio
 media-plugins/kipi-plugins:vkontakte - Build plugin for vkontakte.ru
 media-plugins/mediastreamer-ilbc:20ms-frames - enable 20ms frame size (default is 30ms). Some VOIP providers such as Gizmo5 (aka Sipphone) require the codec to be compiled with the 30ms setting.
-media-plugins/mythplugins:cdr - Allows MythMusic to burn CD-Rs
-media-plugins/mythplugins:exif - Allows MythGallery to read EXIF data from photos
-media-plugins/mythplugins:fftw - Adds visual effects to MythMusic when playing back music
-media-plugins/mythplugins:hls - HTTP Live Streaming support
-media-plugins/mythplugins:mytharchive - Allows you to archive recorded content to CD or DVD
-media-plugins/mythplugins:mythbrowser - Adds a web browser within MythTV
-media-plugins/mythplugins:mythgallery - Adds a picture viewing gallery within MythTV
-media-plugins/mythplugins:mythgame - Adds a frontend to various ROM emulators within MythTV
-media-plugins/mythplugins:mythmusic - Adds the ability for MythTV to act as a music player
-media-plugins/mythplugins:mythnetvision - Adds the ability to view netvision devices within MythTV
-media-plugins/mythplugins:mythnews - Adds a news viewer within MythTV
-media-plugins/mythplugins:mythweather - Adds weather information within MythTV
-media-plugins/mythplugins:mythzoneminder - Adds support for zoneminder (requires a server with the appropriate mythtv daemon somewhere on the network).
-media-plugins/mythplugins:raw - Allows MythGallery to view photos saved in RAW format
 media-plugins/vdr-burn:dvdarchive - DMH DVD - Archive
 media-plugins/vdr-dvbapi:dvbcsa - use media-libs/libdvbcsa free implementation of the DVB Common Scrambling Algorithm
 media-plugins/vdr-epgsearch:conflictcheckonly - install the "conflictcheckonly" vdr-plugin
