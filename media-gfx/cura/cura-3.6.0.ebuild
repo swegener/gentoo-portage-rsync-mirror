@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,6 +33,11 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_PN}-${PV}"
 PATCHES=( "${FILESDIR}/${PN}-3.3.0-fix-install-paths.patch" )
 DOCS=( README.md )
+
+src_prepare() {
+	default
+	sed -i "s/set(CURA_VERSION \"master\"/set(CURA_VERSION \"${PV}\"/" CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=(
