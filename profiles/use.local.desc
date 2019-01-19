@@ -848,6 +848,8 @@ app-laptop/ibam:gkrellm - Enable building of app-admin/gkrellm module
 app-laptop/pbbuttonsd:ibam - Enable support for Intelligent Battery Monitoring
 app-laptop/pbbuttonsd:macbook - Enable support for the Macbook and Macbook Pro
 app-laptop/thinkfan:atasmart - include libatasmart support to get disc temperature
+app-laptop/thinkfan:nvidia - allow thinkfan to read GPU temperature from the proprietary nVidia driver
+app-laptop/thinkfan:yaml - use YAML format for config file
 app-laptop/tp_smapi:hdaps - Install a compatible HDAPS module
 app-leechcraft/lc-azoth:acetamide - Build Acetamide, the IRC protocol support
 app-leechcraft/lc-azoth:adiumstyles - Build support for Adium styles
