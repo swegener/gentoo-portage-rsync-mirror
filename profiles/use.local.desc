@@ -1178,7 +1178,6 @@ app-office/skrooge:designer - Build plugins for dev-qt/designer
 app-office/skrooge:webkit - Build with dev-qt/qtwebkit instead of dev-qt/qtwebengine
 app-office/texmacs:netpbm - Add support for media-libs/netpbm
 app-office/texstudio:video - Use phonon for video embedding
-app-office/wps-office:sharedfonts - Install WPS fonts available system wide
 app-pda/barry:boost - Enable boost support
 app-pda/barry:gui - Install the GUI backup tool
 app-pda/gtkpod:clutter - Enable clutter support for displaying coverart
