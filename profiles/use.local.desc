@@ -5014,6 +5014,7 @@ media-sound/xwax:mp3 - Sets runtime dependencies to support decoding MP3 audio.
 media-sound/xwax:oss - Adds support for OSS (open sound system) audio input/output.
 media-sound/yarock:phonon - Use media-libs/phonon backend instead of media-video/vlc
 media-sound/yoshimi:lv2 - Add support for Ladspa V2
+media-sound/zynaddsubfx:dssi - Enable support for DSSI Soft Synth Interface
 media-tv/gentoo-vdr-scripts:nvram - Add support for using nvram-wakeup to set wakeup time in bios
 media-tv/kodi:airplay - enable AirPlay support
 media-tv/kodi:bluray - Enable playback of Blu-ray filesystems
