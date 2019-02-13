@@ -2543,14 +2543,11 @@ dev-libs/starpu:opencl - Enable OpenCL support
 dev-libs/starpu:spinlock-check - Enable spinlock check
 dev-libs/starpu:valgrind - Enable dev-util/valgrind support
 dev-libs/sway:X - Enable support for X11 applications (XWayland)
-dev-libs/sway:clipboard - Install 'wl-clipboard': clipboard management
 dev-libs/sway:elogind - Enable support for rootless session via elogind
-dev-libs/sway:filecaps - Use Linux capability SYS_CAP_ADMIN rather than set*id for sway binary
 dev-libs/sway:fish-completion - Enable fish completion support
-dev-libs/sway:gdk-pixbuf - Enable additional image format support via the x11-libs/gdk-pixbuf library
+dev-libs/sway:man - Build and install man pages
 dev-libs/sway:swaybar - Install 'swaybar': sway's status bar component
 dev-libs/sway:swaybg - Install 'swaybg': allows to set a desktop background image
-dev-libs/sway:swaygrab - Install 'swaygrab': allows taking screenshots or screencasts
 dev-libs/sway:swayidle - Install 'swayidle': idle manager to run commands when user is inactive
 dev-libs/sway:swaylock - Install 'swaylock': sway's screen locker
 dev-libs/sway:swaymsg - Install 'swaymsg': tool for communicating with a running sway instance
@@ -2559,8 +2556,10 @@ dev-libs/sway:tray - Enable support for StatusNotifierItem tray specification
 dev-libs/sway:wallpapers - Install sway's default wallpaper image
 dev-libs/swayidle:elogind - Enable support for rootless session via elogind
 dev-libs/swayidle:fish-completion - Enable fish completion support
+dev-libs/swayidle:man - Build and install man pages
 dev-libs/swaylock:fish-completion - Enable fish completion support
 dev-libs/swaylock:gdk-pixbuf - Enable additional image format support via the x11-libs/gdk-pixbuf library
+dev-libs/swaylock:man - Build and install man pages
 dev-libs/tinyxml:stl - Compile with TIXML_USE_STL support
 dev-libs/tntnet:server - Enable tntnet server daemon
 dev-libs/totem-pl-parser:archive - Enables ISO detection with app-arch/libarchive
@@ -2625,6 +2624,7 @@ dev-lisp/ecls:precisegc - Use type information during garbage collection (experi
 dev-lisp/gcl:ansi - Build a GCL with ANSI support (else build a traditional CLtL1 image)
 dev-lisp/gcl:athena - Build xgcl - an interface to x11-libs/libXaw
 dev-lisp/sbcl:pax_kernel - Enable if the user plans to run the package under a pax enabled hardened kernel
+dev-lua/lua-cjson:internal-fpconv - Enable internal number conversion routines, can increase overall performance by up to 50%
 dev-lua/luarocks:curl - Uses net-misc/curl for fetching lua packages instead of net-misc/wget.
 dev-lua/luarocks:openssl - Uses dev-libs/openssl for verifying lua packages instead of md5sum.
 dev-lua/luvit:bundled-libs - Use bundled versions of some libraries.
