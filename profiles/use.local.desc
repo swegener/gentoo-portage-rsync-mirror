@@ -6827,8 +6827,6 @@ net-misc/spice-gtk:usbredir - Use sys-apps/usbredir to redirect USB devices to a
 net-misc/spice-gtk:webdav - Support for folder-sharing between guest and client using net-libs/phodav
 net-misc/sshrc:mosh - Install Support for mosh
 net-misc/stargazer:debug - Enable extra debug codepaths, like asserts and extra output.
-net-misc/stargazer:doc - Adds extra documentation (API, doc, etc).
-net-misc/stargazer:examples - Install examples, usually source code.
 net-misc/stargazer:module_auth_always_online - Enable build of "Always Online" authentication module for Stargazer.
 net-misc/stargazer:module_auth_freeradius - Enable build of "Radius" authentication module for Stargazer. This module capable of using RADIUS procotol for user authentication.
 net-misc/stargazer:module_auth_internet_access - Enable build of "InetAccess" authentication module for Stargazer. InetAccess is a Stargazer specific authentication protocol.
