@@ -4322,7 +4322,6 @@ media-gfx/mandelbulber:opencl - Enable GPU rendering support using OpenCL
 media-gfx/nomacs:heif - Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using media-libs/libheif
 media-gfx/nomacs:opencv - Build support for media-libs/opencv
 media-gfx/nvidia-texture-tools:cg - Enable NVIDIA C graphics compiler toolkit plug-in
-media-gfx/nvidia-texture-tools:cuda - Enable NVIDIA CUDA toolkit support
 media-gfx/nvidia-texture-tools:glew - Enable support for The OpenGL Extension Wrangler Library (media-libs/glew)
 media-gfx/openclipart:gzip - Compresses clip art using gzip
 media-gfx/openexr_viewers:cg - Add support for nvidia's cg shaders
