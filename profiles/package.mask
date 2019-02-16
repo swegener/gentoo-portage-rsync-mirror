@@ -29,6 +29,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Lars Wendler <polynomial-c@gentoo.org> (16 Feb 2019)
+# Masked because of broken mouse behavior (bug #678102)
+=sys-apps/less-549
+
 # Michał Górny <mgorny@gentoo.org> (14 Feb 2019)
 # Upstream switched install paths, and we no longer use Gentoo patches
 # for that.  Masked for testing, and for binary package builds.
@@ -138,10 +142,6 @@ app-crypt/etcd-ca
 # Deprecated upstream. Use app-emulation/ganeti[htools] instead.
 # Removal in 30 days, bug #675220.
 app-emulation/ganeti-htools
-
-# Mikle Kolyada <zlogene@gentoo.org> (10 Jan 2019)
-# Masked due to QA violation (bug #672054)
-sci-electronics/librepcb
 
 # Craig Andrews <candrews@gentoo.org> (1 Jan 2019)
 # Requires dev-libs/openssl-1.1.1, Bug 674148
