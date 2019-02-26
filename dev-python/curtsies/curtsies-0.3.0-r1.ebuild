@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,8 +18,9 @@ IUSE="test"
 
 RDEPEND="
 	>=dev-python/blessings-1.5[${PYTHON_USEDEP}]
-	dev-python/pyte[${PYTHON_USEDEP}]
 	>=dev-python/wcwidth-0.1.4[${PYTHON_USEDEP}]
+	python_targets_python2_7? ( dev-python/typing[python_targets_python2_7] )
+	python_targets_python3_4? ( dev-python/typing[python_targets_python3_4] )
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -29,6 +30,8 @@ DEPEND="${RDEPEND}
 		dev-python/pyte[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=( "${FILESDIR}"/${PN}-typing.patch )
 
 python_test() {
 	nosetests --verbose tests || die
