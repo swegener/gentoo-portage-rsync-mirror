@@ -10,8 +10,8 @@ SRC_URI="http://linuxtv.org/downloads/v4l-utils/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
-IUSE="opengl qt5"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc64 ~sparc ~x86"
+IUSE="+bpf opengl qt5"
 
 RDEPEND=">=media-libs/libv4l-${PV}[jpeg]
 	qt5? (
@@ -22,7 +22,7 @@ RDEPEND=">=media-libs/libv4l-${PV}[jpeg]
 	)
 	virtual/libudev
 	>=virtual/jpeg-0-r2:0=
-	virtual/libelf:=
+	bpf? ( virtual/libelf:= sys-devel/clang:*[llvm_targets_BPF] )
 	!media-tv/v4l2-ctl
 	!<media-tv/ivtv-utils-1.4.0-r2"
 DEPEND="${RDEPEND}"
@@ -47,6 +47,7 @@ src_configure() {
 		--disable-static \
 		$(use_enable qt5 qv4l2) \
 		$(use_enable qt5 qvidcap) \
+		$(use_enable bpf) \
 		--with-udevdir="$(get_udevdir)" \
 		--with-jpeg \
 		"${qt5_paths[@]}"
