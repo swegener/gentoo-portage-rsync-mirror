@@ -1509,6 +1509,7 @@ dev-db/mariadb-galera:systemtap - Build support for profiling and tracing using 
 dev-db/mariadb-galera:test - Install upstream testsuites for end use.
 dev-db/mariadb-galera:tokudb - Add support for TokuDB storage engine
 dev-db/mariadb-galera:yassl - Enable SSL connections and crypto functions using the bundled yaSSL
+dev-db/mongodb:lto - Adds support for link time optimization
 dev-db/mongodb:mms-agent - Install the MongoDB Monitoring Service agent
 dev-db/mongodb:tools - Install the MongoDB tools (mongoimport, mongodump...) from app-admin/mongo-tools
 dev-db/mycli:ssh - Add support for connection over SSH tunnel
