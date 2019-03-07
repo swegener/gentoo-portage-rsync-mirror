@@ -17,7 +17,7 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=
+	UPSTREAM_VER=0
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=14
@@ -139,7 +139,9 @@ QA_PREBUILT="
 	usr/libexec/xen/bin/ivshmem-server
 	usr/libexec/xen/bin/qemu-img
 	usr/libexec/xen/bin/qemu-io
+	usr/libexec/xen/bin/qemu-keymap
 	usr/libexec/xen/bin/qemu-nbd
+	usr/libexec/xen/bin/qemu-pr-helper
 	usr/libexec/xen/bin/qemu-system-i386
 	usr/libexec/xen/bin/virtfs-proxy-helper
 	usr/libexec/xen/libexec/xen-bridge-helper
@@ -331,6 +333,10 @@ src_prepare() {
 		-e 's:^#lockfile=:lockfile=:' \
 		-e 's:^#vif.default.script=:vif.default.script=:' \
 		-i tools/examples/xl.conf  || die
+
+	# disable capstone (Bug #673474)
+	sed -e "s:\$\$source/configure:\0 --disable-capstone:" \
+		-i tools/Makefile || die
 
 	default
 }
