@@ -957,7 +957,11 @@ app-misc/gourmet:web - Enable support for the web import plugin
 app-misc/gramps:geo - Enable rendering of geographical data using sci-geosciences/osm-gps-map
 app-misc/gramps:rcs - Adds support for family tree archives via dev-vcs/rcs
 app-misc/gramps:reports - All external software that is needed for graphical reports will be installed
-app-misc/graphlcd-base:g15 - Add support for app-misc/g15daemon driver (e.g. Logitech G15 Keybord)
+app-misc/graphlcd-base:fontconfig - Add support for media-libs/fontconfig font names.
+app-misc/graphlcd-base:freetype - Add support for media-libs/freetype.
+app-misc/graphlcd-base:g15 - Add support for app-misc/g15daemon, used by the Logitech G15 keyboard.
+app-misc/graphlcd-base:graphicsmagick - Add support for media-gfx/graphicsmagick.
+app-misc/graphlcd-base:imagemagick - Add support for media-gfx/imagemagick.
 app-misc/irtrans-irserver:mono - Enable mono support
 app-misc/jq:oniguruma - Use dev-libs/oniguruma for regular expression support
 app-misc/kryoflux-dtc:demos - Install example floppy game files.
@@ -3897,12 +3901,14 @@ lxde-base/lxdm:consolekit - Enables support for authorization using consolekit
 lxde-base/lxdm:gtk3 - Use GTK+3 instead of 2
 lxde-base/lxterminal:gtk3 - Use GTK+3 instead of GTK+2
 lxqt-base/lxqt-config:monitor - Build monitor settings tool
+lxqt-base/lxqt-config:touchpad - Build touchpad settings tool
 lxqt-base/lxqt-meta:about - Install lxqt-base/lxqt-about
 lxqt-base/lxqt-meta:admin - Install lxqt-base/lxqt-admin
 lxqt-base/lxqt-meta:filemanager - Install x11-misc/pcmanfm-qtfile manager
 lxqt-base/lxqt-meta:lightdm - Install x11-misc/lightdmdisplay manager
 lxqt-base/lxqt-meta:lximage - Install media-gfx/lximage-qtimage viewer
 lxqt-base/lxqt-meta:minimal - Do not install x11-wm/openboxwindow manager
+lxqt-base/lxqt-meta:nls - Install dev-qt/qttranslations to better support different locales
 lxqt-base/lxqt-meta:powermanagement - Install lxqt-base/lxqt-powermanagement package
 lxqt-base/lxqt-meta:processviewer - Install x11-misc/qps package
 lxqt-base/lxqt-meta:screenshot - Install x11-misc/screengrab package
@@ -4723,6 +4729,7 @@ media-sound/alsa-utils:libsamplerate - install utils that use libsamplerate (e.g
 media-sound/alsa-utils:ncurses - install utils that use ncurses (e.g. alsamixer)
 media-sound/alsaplayer:id3tag - Enables ID3 tagging with id3tag library
 media-sound/amsynth:dssi - Enable support for DSSI Soft Synth Interface
+media-sound/amsynth:lv2 - Add support for Ladspa V2
 media-sound/apulse:sdk - Install PulseAudio headers and pkg-config files. Be aware apulse is not a full PulseAudio replacement by design and some functionality may be missing.
 media-sound/aqualung:ifp - Enable support for iRiver iFP portable audio players
 media-sound/aqualung:lua - Enable support for programmable title formatting with dev-lang/lua
