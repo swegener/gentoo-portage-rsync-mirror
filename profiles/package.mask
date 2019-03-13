@@ -29,6 +29,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (13 Mar 2019)
+# Both packages duplicate each other (#511032) and share the same bugs.
+# They are both unmaintained, apparently fail to build (#541894)
+# and have a bump pending for over 3 years (#557284).
+# Removal in 30 days.  Bug #680208.
+net-misc/rancid
+net-misc/rancid-git
+
 # Hans de Graaff <graaff@gentoo.org> (12 Mar 2019)
 # Mask unused obsolete slot for removal in 30 days.
 dev-ruby/trollop:0
@@ -180,13 +188,6 @@ dev-libs/gost-engine
 # Brian Evans <grknight@gentoo.org> (05 Nov 2018)
 # Causes a dependency loop in the OpenRC script. Bug #651998
 =sys-fs/cryptsetup-2.0.5-r1
-
-# Pacho Ramos <pacho@gentoo.org> (01 Nov 2018)
-# All this packages are broken and need major version bumps to fix them. See
-# bug #504114, #486510, #510550, #511096, #517260, #551784, #616490, #
-net-voip/linphone
-net-libs/libeXosip
-net-libs/libosip
 
 # Aaron W. Swenson <titanofold@gentoo.org> (25 Oct 2018)
 # Fails to build against up to date OpenSSL library (Bug 663966). No longer
