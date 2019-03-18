@@ -3031,7 +3031,6 @@ dev-scheme/guile:discouraged - (implied by deprecated) enable merely discouraged
 dev-scheme/guile:networking - Include networking interfaces
 dev-scheme/guile:regex - Include regular expression interfaces
 dev-scheme/kawa:awt - Assume AWT is available
-dev-scheme/kawa:echo2 - Enable support for the Echo2 web toolkit with dev-java/echo2
 dev-scheme/kawa:frontend - Build "kawa" front-end program using sys-libs/readline
 dev-scheme/kawa:jemacs - Build JEmacs
 dev-scheme/kawa:krl - Build BRL emulation and KRL
