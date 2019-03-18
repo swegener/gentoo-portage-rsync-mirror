@@ -8458,6 +8458,14 @@ sys-fs/btrfs-progs:zstd - Enable zstd compression support.
 sys-fs/btrfsmaintenance:systemd - Enable systemd services and timers instead of cron timers
 sys-fs/cryfs:custom-optimization - Use user-defined compiler optimization level
 sys-fs/cryfs:update-check - Enable automatic checking for updates and security vulnerabilities
+sys-fs/cryptmount:argv0switch - Default action given by progname.
+sys-fs/cryptmount:cswap - Enable support for encrypted swap.
+sys-fs/cryptmount:fsck - Check filesystems before mounting.
+sys-fs/cryptmount:gcrypt - Support libgcrypt-encryption of keys.
+sys-fs/cryptmount:largefile - Enable support for large files.
+sys-fs/cryptmount:luks - Enable key management via LUKS
+sys-fs/cryptmount:mount - Use systemd mount/umount for operations.
+sys-fs/cryptmount:openssl - Support openssl-encryption of keys.
 sys-fs/cryptsetup:argon2 - Enable password hashing algorithm from app-crypt/argon2
 sys-fs/cryptsetup:gcrypt - Use dev-libs/libgcrypt crypto backend
 sys-fs/cryptsetup:kernel - Use kernel crypto backend (mainly for embedded systems)
