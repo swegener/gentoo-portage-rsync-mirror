@@ -6670,6 +6670,7 @@ net-misc/electrum-ltc:email - Enable plugin to support emailing invoices
 net-misc/electrum-ltc:qrcode - Enable QR code scanning with media-gfx/zbar
 net-misc/electrum-ltc:sync - Enable plugin to sync wallet metadata across multiple Electrum clients
 net-misc/electrum-ltc:vkb - Enable plugin for virtual keyboard
+net-misc/endlessh:tools - Install additional python script which can be used to parse logs and save summary to sqlite database
 net-misc/eventd:libcanberra - Enable plugin for sounds via media-libs/libcanberra
 net-misc/eventd:libnotify - Enable plugin to relay events to notification daemon (Note: not required for local notifications via net-misc/eventd)
 net-misc/eventd:notification - Enable plugin to display on-screen notifications
