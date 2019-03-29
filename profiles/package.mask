@@ -29,6 +29,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (29 Mar 2019)
+# Unmaintained.  The current version was added in 2008, and a bump
+# was requested in 2010.  Since then, upstream has disappeared,
+# and the tool requires fetching extra files from the upstream website.
+# Removal in 30 days.  Bug #305121.
+media-video/episoder
+
 # Robin H. Johnson <robbat2@gentoo.org> (25 Mar 2019)
 # Requires >=dev-lang/lua-5.3 which is masked
 sys-apps/likwid
@@ -594,11 +601,6 @@ media-libs/libsub
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
 =mail-mta/postfix-3.5*
-
-# Andreas K. Huettel <dilfridge@gentoo.org> (23 Feb 2019)
-# Fails to build with glibc-2.28, bug 669206.
-# Removal in 30 days.
-app-arch/freeze
 
 # Miroslav Šulc <fordfrog@gentoo.org> (10 Feb 2019)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
