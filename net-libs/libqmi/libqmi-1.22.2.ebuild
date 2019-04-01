@@ -1,42 +1,43 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
 inherit multilib
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3 autotools
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libmbim/libmbim.git"
+	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libqmi.git"
 else
-	KEYWORDS="~alpha amd64 arm ~mips x86"
-	SRC_URI="https://www.freedesktop.org/software/libmbim/${P}.tar.xz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
+	SRC_URI="https://www.freedesktop.org/software/libqmi/${P}.tar.xz"
 fi
 
-DESCRIPTION="MBIM modem protocol helper library"
-HOMEPAGE="https://cgit.freedesktop.org/libmbim/"
+DESCRIPTION="Qualcomm MSM (Mobile Station Modem) Interface (QMI) modem protocol library"
+HOMEPAGE="https://cgit.freedesktop.org/libqmi/"
 
 LICENSE="LGPL-2"
-SLOT="0"
-IUSE="doc static-libs test"
+SLOT="0/5.4"	# soname of libqmi-glib.so
+IUSE="doc +mbim static-libs"
 
-RDEPEND=">=dev-libs/glib-2.32
-	virtual/libgudev:="
+RDEPEND=">=dev-libs/glib-2.36
+	virtual/libgudev
+	mbim? ( >=net-libs/libmbim-1.18.0 )"
 DEPEND="${RDEPEND}
-	dev-util/glib-utils
 	doc? ( dev-util/gtk-doc )
 	virtual/pkgconfig"
 [[ ${PV} == "9999" ]] && DEPEND+=" dev-util/gtk-doc" #469214
 
 src_prepare() {
+	default
 	[[ -e configure ]] || eautoreconf
 }
 
 src_configure() {
 	econf \
 		--disable-more-warnings \
+		$(use_enable mbim mbim-qmux) \
 		$(use_enable static{-libs,}) \
-		$(use_enable {,gtk-}doc) \
-		$(use_with test{,s})
+		$(use_enable {,gtk-}doc)
 }
 
 src_install() {
