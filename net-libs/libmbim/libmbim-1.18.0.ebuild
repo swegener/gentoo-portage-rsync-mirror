@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit multilib
 
@@ -14,12 +14,12 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="static-libs udev"
 
-RDEPEND=">=dev-libs/glib-2.32:2
+RDEPEND=">=dev-libs/glib-2.36:2
 	udev? ( virtual/libgudev:= )"
 DEPEND="${RDEPEND}
-	dev-util/glib-utils
 	dev-util/gtk-doc-am
 	virtual/pkgconfig"
+BDEPEND="dev-util/glib-utils"
 
 src_configure() {
 	econf \
