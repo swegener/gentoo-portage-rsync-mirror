@@ -29,6 +29,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (14 Apr 2019)
+# Integrated into dev-python/python-ldap-3.0+, and declared a deprecated
+# fork by upstream.  No reverse dependencies left.
+# Removal in 30 days.  Bug #668066.
+dev-python/pyldap
+
 # Aaron Bauman <bman@gentoo.org> (13 Apr 2019)
 # Unmaintained in Gentoo and outstanding vulnerability
 # Masked for removal in 30 days. Bug #522578
@@ -45,8 +51,7 @@ app-emacs/prom-wl
 
 # Michał Górny <mgorny@gentoo.org> (13 Apr 2019)
 # Unmaintained.  Contains vulnerable code and a large number of unsolved
-# (upstream) issues, including licensing issues that prevented Debian
-# from including it.  The current version is from 2004, and carries
+# (upstream) issues.  The current version is from 2004, and carries
 # some local patches.  Last upstream commits are from 2013, and involve
 # three successive branches, the 0.7.x not having a release since 2004,
 # and the two remaining branches never seeing a single release.
@@ -337,11 +342,6 @@ sys-apps/prefix-chain-utils
 # Obsoleted upstream, in favor of libfprint[examples].
 # Removal in 30 days.  Bug #665174.
 sys-auth/fprint_demo
-
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
-# Unmaintained.  Fails to build.  Probably needs a fresh snapshot.
-# Removal in 30 days.  Bug #669592.
-net-misc/casync
 
 # Michał Górny <mgorny@gentoo.org> (23 Mar 2019)
 # Unmaintained.  Fails to build due to patch that does not apply.
@@ -712,67 +712,6 @@ sci-chemistry/pymol-plugins-dynamics
 # rendering media plugins redundant.  Last release in 2014.
 # Removal in 30 days.  Bug #671854.
 www-plugins/mozplugger
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# Package added in 2014 and not updated since.  The current Gentoo
-# version used to violate multilib-strict (#627944), now it does not
-# build at all.
-# Removal in 30 days.  Bug #638500.
-dev-util/igprof
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# The current release is from 2005, upstream is gone.  Last patch
-# added in 2010, since then the package is completely unmaintained.
-# Very bad ebuild quality, blocking strictening of Portage behavior.
-# Removal in 30 days.  Bug #587306.
-sys-boot/quik
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# Upstream website disappeared, and along with it remote index needed
-# for the program to work.  No maintainer; package last touched in 2012.
-# Removal in 30 days.  Bug #673600.
-app-text/rfcutil
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# Unmaintained in Gentoo, obsoleted upstream.  Tests fail (#632706).
-# Upstream suggests switching to Kubernetes.
-# Removal in 30 days.  Bug #676728.
-app-admin/fleet
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# Unmaintained in Gentoo, abandoned upstream.  Last commit in 2012.
-# Fails to build, in multiple ways (#638842, #672190, #672196).
-# One of the two remaining unconditional revdeps of dev-libs/dietlibc.
-# Many alternatives exist, starting with net-analyzer/dsniff.
-# Removal in 30 days.  Bug #678520.
-net-analyzer/dietsniff
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# Last reverse dependency of dev-libs/libgcrypt-1.5* (#656378).  Current
-# version is outdated, maintainer is MIA and the new versions are
-# in distro-unfriendly AppImage format (#661740).
-# Removal in 30 days.  Bug #677486.
-dev-util/staruml-bin
-=dev-libs/libgcrypt-1.5*
-
-# Michał Górny <mgorny@gentoo.org> (15 Mar 2019)
-# pyliblzma installs an old 'lzma' module that is incompatible with
-# the 'lzma' built-in in Python 3.  As a result, programs written
-# to conditionally import the latter when available (assuming it will
-# have Python 3 API) are broken by its presence.  The suggested
-# replacement is dev-python/backports-lzma that is backported
-# from Python 3.
-#
-# Yum is the only reverse dependency of pyliblzma left (#643312).  Its
-# last release is from 2011, and the current Gentoo snapshot is
-# from 2017.  Upstream git hosting / gitweb is broken and makes it
-# impossible to fetch current sources.  Fedora is apparently replacing
-# it with DNF.
-#
-# Removal in 30 days.  Bug #643308.
-app-arch/createrepo
-dev-python/pyliblzma
-sys-apps/yum
 
 # Eray Aslan <eras@gentoo.org> (01 Mar 2019)
 # Mask experimental software
