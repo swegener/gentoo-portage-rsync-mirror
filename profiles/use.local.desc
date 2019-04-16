@@ -4860,9 +4860,6 @@ media-sound/ecasound:oil - Use dev-libs/liboil for inner loop optimizations
 media-sound/elisa:mpris - Enable MPRIS support
 media-sound/exaile:scrobbler - Enable audioscrobbler/last.fm support
 media-sound/fapg:xspf - Enable support for saving XSPF playlists.
-media-sound/forked-daapd:itunes - Enable support for iTunes library XML
-media-sound/forked-daapd:lastfm - Enable LastFM scrobbling support
-media-sound/forked-daapd:mpd - Enable streaming to mpd
 media-sound/gimmix:cover - Enable cover art fetching
 media-sound/gimmix:lyrics - Enable lyric fetching
 media-sound/gmpc:unique - Enable single instance support using dev-libs/libunique
