@@ -5754,6 +5754,7 @@ net-dialup/ppp:ipv6 - Enables support for IP version 6
 net-dialup/ppp:pam - Enables PAM (Pluggable Authentication Modules) support
 net-dialup/ppp:radius - Enables RADIUS support
 net-dialup/xl2tpd:dnsretry - Patch for host lookup retries, activated by redial feature
+net-dialup/xl2tpd:kernel - Enable kernel interface for PPPoL2TP
 net-dns/avahi:autoipd - Build and install the IPv4LL (RFC3927) network address configuration daemon
 net-dns/avahi:bookmarks - Install the avahi-bookmarks application (requires dev-python/twisted-core and dev-python/twisted-web)
 net-dns/avahi:gtk3 - Build the avahi-ui-gtk3 library, and use gtk3 for the avahi utilities under USE=utils
@@ -5812,7 +5813,6 @@ net-dns/knot:libidn2 - If IDN support is enabled, use net-dns/libidn2 instead of
 net-dns/knot:noudp - Enable the module which can send empty truncated responses to UDP queries
 net-dns/knot:onlinesign - Enable the module that sign zones on the fly instead of pre-signing zone
 net-dns/knot:queryacl - Enable the module for query access control
-net-dns/knot:rosedb - Enable the module that staticaly override certain responses
 net-dns/knot:rrl - Enable the response rate limiting module
 net-dns/knot:stats - Enable the server statistics module
 net-dns/knot:synthrecord - Enable the automatic forward/reverse records module
