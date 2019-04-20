@@ -3748,10 +3748,6 @@ kde-apps/cantor:julia - Enable dev-lang/julia backend support
 kde-apps/cantor:markdown - Enable Markdown support via app-text/discount
 kde-apps/cantor:qalculate - Enable sci-libs/libqalculate backend support
 kde-apps/dolphin:thumbnail - Enables thumbnail generation
-kde-apps/dolphin-plugins:bazaar - Enable support for the bazaar VCS
-kde-apps/dolphin-plugins:dropbox - Enable support for the dropbox fileviewer plugin
-kde-apps/dolphin-plugins:git - Enable support for the git VCS
-kde-apps/dolphin-plugins:mercurial - Enable support for the mercurial VCS
 kde-apps/gwenview:activities - Enable kactivities support
 kde-apps/gwenview:fits - Enable support for NASA's sci-libs/cfitsio library
 kde-apps/gwenview:kipi - Enable support for the KDE Image Plugin Interface
@@ -4021,9 +4017,6 @@ mail-client/mutt:smime - Enable support for smime
 mail-client/mutt:smime_classic - Build classic_smime backend to support S/MIME
 mail-client/mutt:smtp - Enable support for direct SMTP delivery
 mail-client/mutt:tokyocabinet - Enable dev-db/tokyocabinet database backend for header caching
-mail-client/nail:kerberos - If network is enabled, this adds support for GSSAPI login on IMAP through virtual/krb5.
-mail-client/nail:net - Enable support for network protocols (POP, IMAP and SMTP). If you only need to send mail with the local Transport Agent, disabling this will get you support for only /usr/sbin/sendmail call.
-mail-client/nail:ssl - If network is enabled, this adds support for S/MIME and SSL/TLS-powered protocols through dev-libs/openssl.
 mail-client/neomutt:berkdb - Enable BDB (Berkley DB) backend for header caching
 mail-client/neomutt:crypt - Add support for encryption -- using mcrypt or gpg where applicable
 mail-client/neomutt:gdbm - Enable GDBM (GNU dbm) backend for header caching
@@ -5457,15 +5450,6 @@ net-analyzer/argus-clients:ft - Enable support for flow packets through net-anal
 net-analyzer/barnyard:sguil - Enable sguil (The Analyst Console for Network Security Monitoring) support
 net-analyzer/barnyard2:gre - Enable GRE support
 net-analyzer/barnyard2:mpls - Enable support for mpls networks
-net-analyzer/bro:broccoli - Enable the Bro Client Communication Library
-net-analyzer/bro:broctl - An interactive shell for managing Bro installations
-net-analyzer/bro:broker - Bro's new Messaging Library (experimental)
-net-analyzer/bro:geoip - Enable support for Maxmind's GeoIP library
-net-analyzer/bro:ipv6 - Support for mobile IPv6
-net-analyzer/bro:python - Enable Python bindings
-net-analyzer/bro:ruby - Enable Ruby bindings (deprecated)
-net-analyzer/bro:tcmalloc - Enable Google's Performance Analysis Tools
-net-analyzer/bro:tools - Auxiliary tools for Bro: adtrace, bro-cut, devel-tools, rst
 net-analyzer/bwm-ng:csv - Enable csv output
 net-analyzer/bwm-ng:html - Enable html output
 net-analyzer/cacti:doc - install html documentation
@@ -7081,8 +7065,6 @@ net-print/hplip:scanner - Enable scanner on multifunction devices which support 
 net-print/hplip:snmp - Add support for net-analyzer/net-snmp which enables this driver to work over networks (both for server and client)
 net-print/hplip:static-ppds - Use statically-generated PPDs instead of Dynamic PPDs. Although this is deprecated some printers may still need it to work properly. Use this flag if hp-setup fails to find/create a valid PPD file
 net-print/kyocera-1x2x-mfp-driver:rastertokpsl-fix - Use custom wrapper script to sanitize arguments before passing to 'rastertokpsl' filter program
-net-print/lprng:foomaticdb - Add support for the foomatic printing driver database
-net-print/magicfilter:lprng-failsafe - Refuse options for compability with certain LPRng versions.
 net-proxy/haproxy:51degrees - Device Detection using 51 Degrees
 net-proxy/haproxy:device-atlas - Use dev-libs/device-atlas-api-c library
 net-proxy/haproxy:net_ns - Enable network namespace support (CONFIG_NET_NS)
