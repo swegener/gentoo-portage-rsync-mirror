@@ -6512,10 +6512,6 @@ net-misc/asterisk-moh-opsound:siren7 - Install the sounds files for the siren7 c
 net-misc/asterisk-moh-opsound:sln16 - Install the sounds files for the sln16 codec.
 net-misc/asterisk-moh-opsound:ulaw - Install the sounds files for the ulaw codec.
 net-misc/asterisk-moh-opsound:wav - Install the sounds files for the wav codec.
-net-misc/batman-adv:bla - B.A.T.M.A.N. bridge loop avoidance
-net-misc/batman-adv:dat - B.A.T.M.A.N. distributed arp table
-net-misc/batman-adv:mcast - B.A.T.M.A.N. multicast optimizations
-net-misc/batman-adv:nc - B.A.T.M.A.N. network coding
 net-misc/bfgminer:adl - Enable support for controlling fans and overclocking on AMD cards with AMD Display Library
 net-misc/bfgminer:alchemist - Enable support for mining with AlcheMist
 net-misc/bfgminer:antminer - Enable support for mining with AntMiner U1 sticks
