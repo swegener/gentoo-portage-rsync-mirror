@@ -1,13 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-MY_P="${PN/-}-${PV}"
-
 DESCRIPTION="daemon to proxy GSSAPI context establishment and channel handling"
 HOMEPAGE="https://pagure.io/gssproxy"
-SRC_URI="http://releases.pagure.org/gssproxy/${MY_P}.tar.gz"
+SRC_URI="http://releases.pagure.org/gssproxy/${P}.tar.gz"
 
 LICENSE="BSD-1"
 SLOT="0"
@@ -26,8 +24,6 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.4
 	dev-libs/libxslt
 	virtual/pkgconfig"
-
-S="${WORKDIR}/${MY_P}"
 
 # Many requirements to run tests, including running slapd as root, hence
 # unfeasible.
@@ -85,5 +81,5 @@ src_install() {
 	newins examples/mech gssproxy.conf
 
 	# The build installs a bunch of empty dirs, so prune them.
-	find "${ED}" -depth -type d -empty -delete || die
+	find "${ED}" -depth -type d -exec rmdir {} + 2>/dev/null
 }
