@@ -6,12 +6,11 @@ inherit savedconfig
 
 if [[ ${PV} == 99999999* ]]; then
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
 else
 	GIT_COMMIT="711d3297bac870af42088a467459a0634c1970ca"
 	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 mips ppc ppc64 s390 sh sparc x86"
 fi
 
 DESCRIPTION="Linux firmware files"
@@ -234,8 +233,9 @@ src_prepare() {
 	fi
 
 	if use !redistributable; then
-		# remove files _not_ in the free_software whitelist or unknown_license
-		# everything else is confirmed (or assumed) to be redistributable based on upstream acceptance policy
+		# remove files _not_ in the free_software or unknown_license lists
+		# everything else is confirmed (or assumed) to be redistributable
+		# based on upstream acceptance policy
 		local file remove=()
 		while IFS= read -d "" -r file; do
 			has "${file#./}" "${free_software[@]}" "${unknown_license[@]}" \
