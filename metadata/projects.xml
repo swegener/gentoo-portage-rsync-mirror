@@ -680,11 +680,6 @@
     <name>Gentoo Common Lisp Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Common_Lisp</url>
     <description>The Gentoo Common Lisp Project handles Common Lisp related packages in the Gentoo package tree.</description>
-    <member>
-      <email>nimiux@gentoo.org</email>
-      <name>Chema Alonso Josa</name>
-      <role>Developer</role>
-    </member>
   </project>
   <project>
     <email>containers@gentoo.org</email>
@@ -1997,11 +1992,6 @@
     <subproject ref="common-lisp@gentoo.org" inherit-members="1"/>
     <subproject ref="emacs@gentoo.org" inherit-members="1"/>
     <subproject ref="scheme@gentoo.org" inherit-members="1"/>
-    <member>
-      <email>nimiux@gentoo.org</email>
-      <name>Chema Alonso Josa</name>
-      <role>Developer</role>
-    </member>
     <member>
       <email>ulm@gentoo.org</email>
       <name>Ulrich Müller</name>
