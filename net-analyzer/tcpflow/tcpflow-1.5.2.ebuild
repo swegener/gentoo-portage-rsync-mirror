@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit autotools flag-o-matic
 
 DESCRIPTION="A tool for monitoring, capturing and storing TCP connections flows"
-HOMEPAGE="https://github.com/simsong/tcpflow https://packages.qa.debian.org/t/tcpflow.html"
+HOMEPAGE="https://github.com/simsong/tcpflow"
 SRC_URI="
 	https://api.github.com/repos/simsong/be13_api/tarball/c81521d768bb78499c069fcd7c47adc8eee0350c -> be13_api-20170924.tar.gz
 	https://api.github.com/repos/simsong/dfxml/tarball/7d11eaa7da8d31f588ce8aecb4b4f5e7e8169ba6 -> dfxml-20170921.tar.gz
@@ -38,8 +38,8 @@ DEPEND="
 "
 S=${WORKDIR}/${PN}-${P/_/}
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5.0_alpha-gentoo.patch
 	"${FILESDIR}"/${PN}-1.5.0_alpha-libcapng.patch
+	"${FILESDIR}"/${PN}-1.5.2-gentoo.patch
 )
 
 src_prepare() {
