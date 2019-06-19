@@ -2977,30 +2977,25 @@
     <subproject ref="devmanual@gentoo.org"/>
     <subproject ref="pms@gentoo.org"/>
     <subproject ref="treecleaner@gentoo.org"/>
-    <member is-lead="1">
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-      <role>Lead</role>
+    <member>
+      <email>amynka@gentoo.org</email>
+      <name>Amy Liffey</name>
+      <role>Developer</role>
     </member>
     <member>
-      <email>patrick@gentoo.org</email>
-      <name>Patrick Lauer</name>
-      <role>Developer</role>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Deputy Lead</role>
     </member>
     <member>
       <email>pinkbyte@gentoo.org</email>
       <name>Sergey Popov</name>
       <role>Developer</role>
     </member>
-    <member>
-      <email>tommy@gentoo.org</email>
-      <name>Thomas Sachau</name>
-      <role>Developer</role>
-    </member>
-    <member>
-      <email>TomWij@gentoo.org</email>
-      <name>Tom Wijsman</name>
-      <role>Developer</role>
+    <member is-lead="1">
+      <email>soap@gentoo.org</email>
+      <name>David Seifert</name>
+      <role>Our Glorious Lead</role>
     </member>
     <member>
       <email>ulm@gentoo.org</email>
@@ -3008,8 +3003,13 @@
       <role>Developer</role>
     </member>
     <member>
-      <email>wired@gentoo.org</email>
-      <name>Alex Alexander</name>
+      <email>williamh@gentoo.org</email>
+      <name>William Hubbs</name>
+      <role>Developer</role>
+    </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
       <role>Developer</role>
     </member>
   </project>
