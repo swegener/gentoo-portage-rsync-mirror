@@ -1266,7 +1266,6 @@ app-text/groonga:uyield - Build for detecting race conditions
 app-text/groonga:zeromq - Enable net-libs/zeromq used for suggestion
 app-text/hyperestraier:mecab - Enable app-text/mecab support for Estraier
 app-text/kbibtex:webengine - Use dev-qt/qtwebengine for HTML previews
-app-text/kbibtex:webkit - Use dev-qt/qtwebkit for HTML previews
 app-text/kbibtex:zotero - Enable support for synchronisation with zotero.org web service
 app-text/lcdf-typetools:kpathsea - Enable integration with kpathsea search library (TeX related)
 app-text/libebook:tools - Build file conversion tools
