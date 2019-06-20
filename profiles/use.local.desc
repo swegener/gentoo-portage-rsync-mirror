@@ -329,10 +329,11 @@ app-crypt/kbfs:git - Build the Git remote helper for storing repositories in Key
 app-crypt/kstart:afs - Enables afs support which means you can acquire an afs token and set PAGs. It's recommended to set this USE if you need authenticated access to an AFS cell for your daemon/app.
 app-crypt/libb2:native-cflags - Use CFLAGS as determined by configure script. These flags will enable all CPU specific features it find available, to further optimise the implementation. This discards any existing CFLAGS set in make.conf or similar.
 app-crypt/libu2f-host:systemd - Use user ACLs rather than plugdev group to give user access to the HIDRAW device.
-app-crypt/mit-krb5:doc - Creates and installs the API and implementation documentation. This is only useful if you want to develop software which depends on kerberos.
-app-crypt/mit-krb5:keyutils - Enable for the keyring ccache using keyutils.
-app-crypt/mit-krb5:openldap - Enable support for ldap as a database backend.
-app-crypt/mit-krb5:pkinit - Enable pkinit support for the initial ticket.
+app-crypt/mit-krb5:doc - Creates and installs the API and implementation documentation. This is only useful if you want to develop software which depends on kerberos
+app-crypt/mit-krb5:keyutils - Enable for the keyring ccache using keyutils
+app-crypt/mit-krb5:lmdb - Add support for using dev-db/lmdb for lookup tables
+app-crypt/mit-krb5:openldap - Enable support for ldap as a database backend
+app-crypt/mit-krb5:pkinit - Enable pkinit support for the initial ticket
 app-crypt/ophcrack:tables - Require the additional tables used to carry out cracking (app-crypt/ophcrack-tables)
 app-crypt/ophcrack-tables:vistafree - Installs the free Vista ophcrack tables
 app-crypt/ophcrack-tables:xpfast - Installs the fast XP ophcrack tables
