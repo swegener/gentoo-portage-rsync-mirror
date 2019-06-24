@@ -5487,7 +5487,6 @@ net-analyzer/icinga2:mail - Allows for mailing of alerts
 net-analyzer/icinga2:mariadb - Enable support for the mariadb database backend
 net-analyzer/icinga2:nano-syntax - Adds support for syntax used in the nano editor
 net-analyzer/icinga2:plugins - Adds support for nagios plugins
-net-analyzer/icinga2:studio - Adds support for Icinga-studio
 net-analyzer/ipsumdump:nanotimestamp - Enable timestamps with nano-second resolution
 net-analyzer/linkchecker:sqlite - Mozilla Bookmark parsing
 net-analyzer/metasploit:development - Install dependencies needed for metasploit and exploit development
