@@ -3326,7 +3326,6 @@ games-action/hotline-miami:launcher - Install qt launcher
 games-action/minetest:client - Build Minetest client
 games-action/minetest:jsoncpp - Enable using a system-wide JSONCPP
 games-action/minetest:leveldb - Enable LevelDB backend
-games-action/minetest:postgres - Optionally use PostgreSQL as map backend
 games-action/minetest:redis - Enable redis backend via dev-libs/hiredis
 games-action/minetest:server - Build Minetest server
 games-action/minetest:spatial - Enable SpatialIndex AreaStore backend
