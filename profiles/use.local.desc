@@ -7834,6 +7834,7 @@ sci-physics/root:tbb - Enable implicit multi-threading (IMT) with dev-cpp/tbb
 sci-physics/root:tmva - Built TMVA (ROOT's multi-variate analysis toolkit for machine learning)
 sci-physics/root:unuran - Enable support for sci-mathematics/unuran
 sci-physics/root:vc - Enable support for dev-libs/vc with VecCore
+sci-physics/root:vmc - Built the Virtual Monte Carlo library
 sci-physics/root:xrootd - Build the interface for net-libs/xrootd
 sci-physics/thepeg:c++11 - Build ThePEG using the C++11 standard. Experimental feature, not for production use.
 sci-physics/thepeg:fastjet - Adds support for sci-physics/fastjet
