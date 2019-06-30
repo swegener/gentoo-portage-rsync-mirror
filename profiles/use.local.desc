@@ -6738,6 +6738,7 @@ net-misc/minidlna:netgear - Enable netgear branding
 net-misc/minidlna:readynas - Enable readynas branding
 net-misc/miniupnpd:igd2 - Build for IGDv2 instead of an IGDv1
 net-misc/miniupnpd:leasefile - Enable lease file.
+net-misc/miniupnpd:nftables - Use net-firewall/nftables rather than net-firewall/iptables.
 net-misc/miniupnpd:pcp-peer - Enable support for PCP-PEER to allow NAT-PMP clients to mangle their packets.
 net-misc/miniupnpd:portinuse - Check if a port is in use before allowing a NAT-PMP client to map it.
 net-misc/miniupnpd:strict - Be more strict regarding compliance with UPnP specifications.
