@@ -7240,6 +7240,8 @@ net-wireless/bluez:test-programs - Install tools for testing of various Bluetoot
 net-wireless/bluez:user-session - Allow compatibility with user-session semantics for session bus under systemd
 net-wireless/chirp:radioreference - support downloading data from radioreference.com (premium users only)
 net-wireless/crda:gcrypt - Use libgcrypt instead of openssl for key checking
+net-wireless/dump1090:bladerf - Build with Nuand BladeRF support
+net-wireless/dump1090:rtlsdr - Build with Realtek RTL2832U (rtlsdr) support
 net-wireless/gnuradio:analog - enable analog signal processing blocks
 net-wireless/gnuradio:atsc - enable ATSC (HDTV) transmitter and receiver blocks
 net-wireless/gnuradio:audio - enable blocks to connect to audio sources (mic-in) and sinks (speaker-out) ports on a computer
