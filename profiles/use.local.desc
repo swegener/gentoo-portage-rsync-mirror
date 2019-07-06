@@ -7634,6 +7634,10 @@ sci-libs/oce:gl2ps - Use gl2ps PostScript printing library
 sci-libs/oce:tbb - Enable parallel meshing
 sci-libs/oce:vtk - Enable Virtualisation Toolkit
 sci-libs/octomap:dynamicEDT3D - Build and install dynamicEDT3D library: A library for incrementally updatable Euclidean distance transforms in 3D.
+sci-libs/openblas:dynamic - Build dynamic architecture detection at run time (for multi targets)
+sci-libs/openblas:eselect-ldso - Enable BLAS/LAPACK runtime switching
+sci-libs/openblas:pthread - Build with pthread threadding model
+sci-libs/openblas:serial - Build without multi-thraedding
 sci-libs/opencascade:freeimage - Enable support for image i/o via media-libs/freeimage
 sci-libs/opencascade:gl2ps - Use gl2ps PostScript printing library
 sci-libs/opencascade:gles2 - Use OpenGL ES 2.0
