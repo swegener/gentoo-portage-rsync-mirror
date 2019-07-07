@@ -3549,6 +3549,7 @@ games-rpg/eternal-lands-data:bloodsuckermaps - Will install Bloodsucker's Maps i
 games-rpg/eternal-lands-data:music - Enables in-game music
 games-rpg/eternal-lands-data:sound - Enables in-game sound effects
 games-rpg/hatoful-boyfriend:gui - Install the GUI for configuring screen resolution and input
+games-rpg/hatoful-boyfriend-holiday-star:gui - Install the GUI for configuring screen resolution and input
 games-rpg/kqlives:cheats - Enable cheating mode
 games-rpg/manaplus:mumble - Enable support for voice chat
 games-rpg/manaplus:pugixml - Use dev-libs/pugixml for XML parsing isntead of dev-libs/libxml2
