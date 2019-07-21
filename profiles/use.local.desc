@@ -1304,6 +1304,8 @@ app-text/qpdfview:synctex - Add support for searching TeX sources
 app-text/robodoc:examples - Installs usage examples in /usr/share for Perl
 app-text/sdcv:darkterm - Improve readability of color output on terminals with dark background.
 app-text/sgmltools-lite:jadetex - Add support for app-text/jadetex (for processing tex files produced by the TeX backend of Jade)
+app-text/sigil:plugins - Installed needed Python packages for using Sigil plugins
+app-text/sigil:system-mathjax - Use the system-wide dev-libs/mathjax instead of bundled
 app-text/stardict:advertisement - Enable stardict advertisements plugin
 app-text/stardict:cal - Enable calendar support using cal program
 app-text/stardict:dictdotcn - Enable dict.cn network plugin (for Chinese language)
