@@ -1,17 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit cmake-utils eutils flag-o-matic toolchain-funcs
+EAPI=7
+inherit cmake-utils
 
 DESCRIPTION="A clean, light window manager"
-HOMEPAGE="http://ctwm.org/"
+HOMEPAGE="https://ctwm.org/"
 SRC_URI="${HOMEPAGE}dist/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
 
 RDEPEND="
 	x11-libs/libICE
@@ -30,11 +29,6 @@ DEPEND="
 	x11-base/xorg-proto
 "
 
-PATCHES=(
-	# http://bazaar.launchpad.net/~ctwm/ctwm/trunk/revision/597
-	"${FILESDIR}"/${P}-m4.patch
-)
-
 src_prepare() {
 	cmake-utils_src_prepare
 
@@ -42,9 +36,11 @@ src_prepare() {
 	sed -i parse.c -e "/<stdio.h>/ a#include <ctype.h>" || die
 }
 
-src_install() {
-	cmake-utils_src_install
+src_configure() {
+	mycmakeargs=(
+		-DNOMANCOMPRESS=yes
+		-DDOCDIR=/usr/share/doc/${PF}
+	)
 
-	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
-	mv "${D}"/usr/share/examples/${PN} "${D}"/usr/share/doc/${PF}/examples || die
+	cmake-utils_src_configure
 }
