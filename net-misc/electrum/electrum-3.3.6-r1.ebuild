@@ -1,23 +1,37 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ncurses?"
 
-inherit distutils-r1 gnome2-utils xdg-utils
+inherit desktop distutils-r1 gnome2-utils xdg-utils
 
-MY_P="Electron-Cash-${PV}"
-DESCRIPTION="Lightweight Bitcoin Cash client (BCH fork of Electrum)"
-HOMEPAGE="https://github.com/fyookball/electrum/"
-SRC_URI="https://github.com/fyookball/electrum/archive/${PV}.tar.gz -> ${P}.tar.gz"
+MY_P="Electrum-${PV}"
+DESCRIPTION="User friendly Bitcoin client"
+HOMEPAGE="https://electrum.org/"
+SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="audio_modem cli cosign digitalbitbox email ncurses qrcode +qt5 sync vkb
-	l10n_es l10n_ja l10n_pt l10n_zh-CN"
+MY_LANGS="ar_SA be_BY bg_BG cs_CZ da_DK de_DE el_GR eo_UY es_ES fa_IR fr_FR hu_HU hy_AM id_ID it_IT ja_JP ko_KR ky_KG lv_LV nb_NO nl_NL pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI sv_SE ta_IN th_TH tr_TR uk_UA vi_VN zh_CN zh_TW"
+
+my_langs_to_l10n() {
+	# Map all except pt_* and zh_* to their generic codes
+	case $1 in
+		pt_*|zh_*) echo ${1/_/-} ;;
+		*) echo ${1%%_*} ;;
+	esac
+}
+
+IUSE="audio_modem cli coldcard cosign digitalbitbox email greenaddress_it ncurses qrcode +qt5 safe_t sync revealer trustedcoin_com vkb"
+
+for lang in ${MY_LANGS}; do
+	IUSE+=" l10n_$(my_langs_to_l10n ${lang})"
+done
+unset lang
 
 REQUIRED_USE="
 	|| ( cli ncurses qt5 )
@@ -25,12 +39,17 @@ REQUIRED_USE="
 	cosign? ( qt5 )
 	digitalbitbox? ( qt5 )
 	email? ( qt5 )
+	greenaddress_it? ( qt5 )
 	qrcode? ( qt5 )
 	sync? ( qt5 )
+	trustedcoin_com? ( qt5 )
 	vkb? ( qt5 )
 "
 
-RDEPEND="
+RDEPEND="${PYTHON_DEPS}
+	dev-python/aiohttp-socks[${PYTHON_USEDEP}]
+	=dev-python/aiorpcX-0.17.0[${PYTHON_USEDEP}]
+	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/ecdsa[${PYTHON_USEDEP}]
 	dev-python/jsonrpclib[${PYTHON_USEDEP}]
 	dev-python/pbkdf2[${PYTHON_USEDEP}]
@@ -42,13 +61,11 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/tlslite[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
-	virtual/python-dnspython[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	)
 	ncurses? ( dev-lang/python )
-	dev-libs/libsecp256k1
 "
 
 S="${WORKDIR}/${MY_P}"
@@ -56,26 +73,29 @@ S="${WORKDIR}/${MY_P}"
 DOCS="RELEASE-NOTES"
 
 src_prepare() {
-	eapply "${FILESDIR}/3.3.6-no-user-root.patch"
+	eapply "${FILESDIR}/3.1.2-no-user-root.patch"
+	eapply "${FILESDIR}/3.2.3-pip-optional-pkgs.patch"
+	eapply "${FILESDIR}/3.3.2-desktop.patch"
 
 	# Prevent icon from being installed in the wrong location
-	sed -i '/icons/d' setup.py || die
+	sed -i '/icons_dirname/d' setup.py || die
 
-	if use qt5; then
-		pyrcc5 icons.qrc -o gui/qt/icons_rc.py || die
-	else
-		sed "s|'electroncash_gui.qt',||" -i setup.py || die
-	fi
+	# Remove unrequested localization files:
+	local lang
+	for lang in ${MY_LANGS}; do
+		use l10n_$(my_langs_to_l10n ${lang}) && continue
+		rm -r "${PN}/locale/${lang}" || die
+	done
 
 	local wordlist=
 	for wordlist in  \
-		$(usex l10n_ja '' japanese) \
-		$(usex l10n_pt '' portuguese) \
-		$(usex l10n_es '' spanish) \
+		$(usex l10n_ja    '' japanese) \
+		$(usex l10n_pt-BR '' $(usex l10n_pt-PT '' portuguese)) \
+		$(usex l10n_es    '' spanish) \
 		$(usex l10n_zh-CN '' chinese_simplified) \
 	; do
-		rm -f "lib/wordlist/${wordlist}.txt" || die
-		sed -i "/${wordlist}\\.txt/d" lib/mnemonic.py || die
+		rm -f "${PN}/wordlist/${wordlist}.txt" || die
+		sed -i "/${wordlist}\\.txt/d" ${PN}/mnemonic.py || die
 	done
 
 	# Remove unrequested GUI implementations:
@@ -86,7 +106,7 @@ src_prepare() {
 		$(usex qt5      '' qt   )  \
 		$(usex ncurses  '' text )  \
 	; do
-		rm gui/"${gui}"* -r || die
+		rm ${PN}/gui/"${gui}"* -r || die
 	done
 
 	# And install requested ones...
@@ -106,34 +126,40 @@ src_prepare() {
 	else
 		bestgui=stdio
 	fi
-	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' "${PN}" || die
+	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' ${PN}/${PN} || die
 
 	local plugin
 	# trezor requires python trezorlib module
 	# keepkey requires trezor
 	for plugin in  \
 		$(usex audio_modem     '' audio_modem          ) \
+		$(usex coldcard        '' coldcard             ) \
 		$(usex cosign          '' cosigner_pool        ) \
 		$(usex digitalbitbox   '' digitalbitbox        ) \
 		$(usex email           '' email_requests       ) \
+		$(usex greenaddress_it '' greenaddress_instant ) \
 		hw_wallet \
 		ledger \
 		keepkey \
+		$(usex safe_t          '' safe_t               ) \
 		$(usex sync            '' labels               ) \
+		$(usex revealer        '' revealer             ) \
 		trezor  \
+		$(usex trustedcoin_com '' trustedcoin          ) \
 		$(usex vkb             '' virtualkeyboard      ) \
 	; do
-		rm -r plugins/"${plugin}"* || die
+		rm -r ${PN}/plugins/"${plugin}"* || die
 		sed -i "/${plugin}/d" setup.py || die
 	done
 
 	eapply_user
 
+	xdg_environment_reset
 	distutils-r1_src_prepare
 }
 
 src_install() {
-	doicon -s 128 icons/${PN}.png
+	doicon -s 128 electrum/gui/icons/${PN}.png
 	distutils-r1_src_install
 }
 
