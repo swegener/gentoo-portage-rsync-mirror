@@ -1,12 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,ssl"
 
-inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 xdg-utils
+inherit eutils bash-completion-r1 gnome2-utils multilib toolchain-funcs python-single-r1 xdg-utils
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
@@ -31,37 +31,36 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 SLOT="0"
 IUSE="ios +udisks"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
-	>=app-text/podofo-0.9.6_pre20171027:=
+	>=app-text/podofo-0.8.2:=
 	>=app-text/poppler-0.26.5[qt5]
 	>=dev-libs/chmlib-0.40:=
 	dev-libs/glib:2=
 	>=dev-libs/icu-57.1:=
 	dev-libs/libinput:=
-	>=dev-python/apsw-3.25.2_p1[${PYTHON_USEDEP}]
+	>=dev-python/apsw-3.13.0[${PYTHON_USEDEP}]
 	>=dev-python/beautifulsoup-3.0.5:python-2[${PYTHON_USEDEP}]
-	>=dev-python/chardet-3.0.3[${PYTHON_USEDEP}]
+	dev-python/chardet[${PYTHON_USEDEP}]
 	>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
-	>=dev-python/css-parser-1.0.4[${PYTHON_USEDEP}]
+	>=dev-python/cssutils-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/dbus-python-1.2.4[${PYTHON_USEDEP}]
 	>=dev-libs/dbus-glib-0.106
 	>=sys-apps/dbus-1.10.8
-	>=dev-python/feedparser-5.2.1[${PYTHON_USEDEP}]
-	>=dev-python/html5-parser-0.4.3[${PYTHON_USEDEP}]
-	>=dev-python/lxml-3.8.0[${PYTHON_USEDEP}]
-	>=dev-python/markdown-3.0.1[${PYTHON_USEDEP}]
-	>=dev-python/mechanize-0.3.5[${PYTHON_USEDEP}]
-	>=dev-python/msgpack-0.5.6[${PYTHON_USEDEP}]
-	>=dev-python/netifaces-0.10.5[${PYTHON_USEDEP}]
-	>=dev-python/pillow-3.2.0[${PYTHON_USEDEP}]
-	>=dev-python/psutil-4.3.0[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
+	dev-python/dnspython[${PYTHON_USEDEP}]
+	dev-python/html5-parser[${PYTHON_USEDEP}]
+	>=dev-python/lxml-3.2.1[${PYTHON_USEDEP}]
+	>=dev-python/mechanize-0.2.5[${PYTHON_USEDEP}]
+	dev-python/msgpack[${PYTHON_USEDEP}]
+	dev-python/netifaces[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
 	>=dev-python/PyQt5-5.8[gui,svg,webkit,widgets,network,printsupport,${PYTHON_USEDEP}]
 	dev-python/regex[${PYTHON_USEDEP}]
@@ -77,9 +76,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=media-libs/libmtp-1.1.11:=
 	>=media-libs/libwmf-0.2.8
 	>=media-gfx/optipng-0.7.6
-	>=sys-libs/zlib-1.2.11:=
+	sys-libs/zlib:=
 	virtual/libusb:1=
-	virtual/python-dnspython[${PYTHON_USEDEP}]
 	x11-libs/libxkbcommon:=
 	x11-libs/libX11:=
 	x11-libs/libXext:=
@@ -96,7 +94,7 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	>=dev-python/setuptools-23.1.0[${PYTHON_USEDEP}]
 	dev-python/sip[${PYTHON_USEDEP}]
-	>=virtual/podofo-build-0.9.6_pre20171027
+	>=virtual/podofo-build-0.9.4
 	virtual/pkgconfig"
 
 pkg_pretend() {
@@ -151,6 +149,15 @@ src_prepare() {
 	find "${S}" -type f -name \*.py -exec \
 		sed -e 's/calibre.ebooks.BeautifulSoup/BeautifulSoup/' -i {} + \
 		|| die "could not sed bundled beautifulsoup out of the source tree"
+
+	# avoid failure of xdg tools to recognize vendor prefix
+	sed -e "s|xdg-icon-resource install|xdg-icon-resource install --novendor|" \
+		-e "s|'xdg-mime', 'install'|'xdg-mime', 'install', '--novendor'|" \
+		-e "s|'xdg-desktop-menu', 'install'|'xdg-desktop-menu', 'install', '--novendor'|" \
+		-i "${S}"/src/calibre/linux.py || die 'sed failed'
+
+	# don't create/install uninstaller
+	sed '/self\.create_uninstaller()/d' -i src/calibre/linux.py || die
 }
 
 src_install() {
@@ -177,8 +184,7 @@ src_install() {
 	#  File "/usr/lib/python2.6/locale.py", line 418, in _parse_localename
 	#    raise ValueError, 'unknown locale: %s' % localename
 	#ValueError: unknown locale: 46
-	export -n LANG LANGUAGE ${!LC_*}
-	export LC_ALL=C #684484
+	export -n LANGUAGE
 
 	# Bug #295672 - Avoid sandbox violation in ~/.config by forcing
 	# variables to point to our fake temporary $HOME.
@@ -194,7 +200,11 @@ src_install() {
 	local libdir=$(get_libdir)
 	[[ -n $libdir ]] || die "get_libdir returned an empty string"
 
-	addpredict /dev/dri #665310
+	# Bug #472690 - Avoid sandbox violation for /dev/dri/card0.
+	local x
+	for x in /dev/dri/card[0-9] ; do
+		[[ -e ${x} ]] && addpredict ${x}
+	done
 
 	#dodir "/usr/$(get_libdir)/python2.7/site-packages" # for init_calibre.py
 	#dodir $(python_get_sitedir)
@@ -203,11 +213,23 @@ src_install() {
 		--root="${D}" \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/${libdir}" \
-		--staging-root="${ED}/usr" \
-		--staging-libdir="${ED}/usr/${libdir}" || die
+		--staging-root="${ED}usr" \
+		--staging-libdir="${ED}usr/${libdir}" || die
 
-	rm "${ED}/usr/share/applications/defaults.list" || die
-	find "${ED}"/usr/share -type d -empty -delete
+	# The menu entries end up here due to '--mode user' being added to
+	# xdg-* options in src_prepare.
+	dodir /usr/share/mime/packages
+	chmod -fR a+rX,u+w,g-w,o-w "${HOME}"/.local
+	mv "${HOME}"/.local/share/mime/packages/* "${ED}"usr/share/mime/packages/ ||
+		die "failed to register mime types"
+	dodir /usr/share/icons
+	mv "${HOME}"/.local/share/icons/* "${ED}"usr/share/icons/ ||
+		die "failed to install icon files"
+
+	domenu "${HOME}"/.local/share/applications/*.desktop ||
+		die "failed to install .desktop menu files"
+
+	find "${ED}"usr/share -type d -empty -delete
 
 	cd "${ED}"/usr/share/calibre/fonts/liberation || die
 	local x
@@ -217,10 +239,10 @@ src_install() {
 	done
 
 	einfo "Converting python shebangs"
-	python_fix_shebang --force "${ED}"
+	python_fix_shebang "${ED}"
 
 	einfo "Compiling python modules"
-	python_optimize "${ED}"/usr/lib/calibre
+	python_optimize "${ED}"usr/lib/calibre
 
 	newinitd "${FILESDIR}"/calibre-server-3.init calibre-server
 	newconfd "${FILESDIR}"/calibre-server-3.conf calibre-server
@@ -242,11 +264,12 @@ src_install() {
 }
 
 pkg_preinst() {
+	gnome2_icon_savelist
 	# Indentify stray directories from upstream's "Binary install"
 	# method (see bug 622728).
 	CALIBRE_LIB_DIR=/usr/$(get_libdir)/calibre
-	CALIBRE_LIB_CONTENT=$(for x in "${ED}${CALIBRE_LIB_DIR}"/*; do
-		printf -- "${x##*/} "; done) || die "Failed to list ${ED}${CALIBRE_LIB_DIR}"
+	CALIBRE_LIB_CONTENT=$(for x in "${ED%/}${CALIBRE_LIB_DIR}"/*; do
+		printf -- "${x##*/} "; done) || die "Failed to list ${ED%/}${CALIBRE_LIB_DIR}"
 }
 
 pkg_postinst() {
@@ -260,11 +283,11 @@ pkg_postinst() {
 	done
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
+	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
+	gnome2_icon_cache_update
 }

@@ -3,22 +3,35 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{5,6} )
 PYTHON_REQ_USE="ncurses?"
 
 inherit desktop distutils-r1 gnome2-utils xdg-utils
 
-EGIT_COMMIT="${PV}"
-DESCRIPTION="Litecoin thin client"
-HOMEPAGE="https://electrum-ltc.org/"
-SRC_URI="https://github.com/pooler/electrum-ltc/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+MY_P="Electrum-${PV}"
+DESCRIPTION="User friendly Bitcoin client"
+HOMEPAGE="https://electrum.org/"
+SRC_URI="https://download.electrum.org/${PV}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
+MY_LANGS="ar_SA bg_BG cs_CZ da_DK de_DE el_GR eo_UY es_ES fa_IR fr_FR hu_HU hy_AM id_ID it_IT ja_JP ko_KR ky_KG lv_LV nb_NO nl_NL pl_PL pt_BR pt_PT ro_RO ru_RU sk_SK sl_SI ta_IN th_TH tr_TR uk_UA vi_VN zh_CN zh_TW"
 
-IUSE="audio_modem cli cosign digitalbitbox email ncurses qrcode +qt5 sync vkb
-	l10n_es l10n_ja l10n_pt-BR l10n_pt-PT l10n_zh-CN"
+my_langs_to_l10n() {
+	# Map all except pt_* and zh_* to their generic codes
+	case $1 in
+		pt_*|zh_*) echo ${1/_/-} ;;
+		*) echo ${1%%_*} ;;
+	esac
+}
+
+IUSE="audio_modem cli cosign digitalbitbox email greenaddress_it ncurses qrcode +qt5 sync trustedcoin_com vkb"
+
+for lang in ${MY_LANGS}; do
+	IUSE+=" l10n_$(my_langs_to_l10n ${lang})"
+done
+unset lang
 
 REQUIRED_USE="
 	|| ( cli ncurses qt5 )
@@ -26,14 +39,15 @@ REQUIRED_USE="
 	cosign? ( qt5 )
 	digitalbitbox? ( qt5 )
 	email? ( qt5 )
+	greenaddress_it? ( qt5 )
 	qrcode? ( qt5 )
 	sync? ( qt5 )
+	trustedcoin_com? ( qt5 )
 	vkb? ( qt5 )
 "
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/aiohttp-socks[${PYTHON_USEDEP}]
-	dev-python/aiorpcX[${PYTHON_USEDEP}]
+	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/ecdsa[${PYTHON_USEDEP}]
 	dev-python/jsonrpclib[${PYTHON_USEDEP}]
 	dev-python/pbkdf2[${PYTHON_USEDEP}]
@@ -45,7 +59,6 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/tlslite[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
-	virtual/python-dnspython[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (
 		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
@@ -53,21 +66,24 @@ RDEPEND="${PYTHON_DEPS}
 	ncurses? ( dev-lang/python )
 "
 
-S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
+S="${WORKDIR}/${MY_P}"
 
 DOCS="RELEASE-NOTES"
 
 src_prepare() {
 	eapply "${FILESDIR}/3.1.2-no-user-root.patch"
-	eapply "${FILESDIR}/3.2.3-pip-optional-pkgs.patch"
-	eapply "${FILESDIR}/3.3.2-desktop.patch"
+	eapply "${FILESDIR}/3.1.2-pip-optional-pkgs.patch"
+	eapply "${FILESDIR}/3.1.3-desktop.patch"
 
 	# Prevent icon from being installed in the wrong location
-	sed -i '/icons_dirname/d' setup.py || die
+	sed -i '/icons/d' setup.py || die
 
-	if ! use qt5; then
-		sed "/'electrum_ltc.gui.qt',/d" -i setup.py || die
-	fi
+	# Remove unrequested localization files:
+	local lang
+	for lang in ${MY_LANGS}; do
+		use l10n_$(my_langs_to_l10n ${lang}) && continue
+		rm -r "lib/locale/${lang}" || die
+	done
 
 	local wordlist=
 	for wordlist in  \
@@ -76,8 +92,8 @@ src_prepare() {
 		$(usex l10n_es    '' spanish) \
 		$(usex l10n_zh-CN '' chinese_simplified) \
 	; do
-		rm -f "${PN}/wordlist/${wordlist}.txt" || die
-		sed -i "/${wordlist}\\.txt/d" ${PN/-/_}/mnemonic.py || die
+		rm -f "lib/wordlist/${wordlist}.txt" || die
+		sed -i "/${wordlist}\\.txt/d" lib/mnemonic.py || die
 	done
 
 	# Remove unrequested GUI implementations:
@@ -88,7 +104,7 @@ src_prepare() {
 		$(usex qt5      '' qt   )  \
 		$(usex ncurses  '' text )  \
 	; do
-		rm ${PN/-/_}/gui/"${gui}"* -r || die
+		rm gui/"${gui}"* -r || die
 	done
 
 	# And install requested ones...
@@ -108,7 +124,7 @@ src_prepare() {
 	else
 		bestgui=stdio
 	fi
-	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' ${PN/-/_}/${PN} || die
+	sed -i 's/^\([[:space:]]*\)\(config_options\['\''cwd'\''\] = .*\)$/\1\2\n\1config_options.setdefault("gui", "'"${bestgui}"'")\n/' electrum || die
 
 	local plugin
 	# trezor requires python trezorlib module
@@ -118,14 +134,16 @@ src_prepare() {
 		$(usex cosign          '' cosigner_pool        ) \
 		$(usex digitalbitbox   '' digitalbitbox        ) \
 		$(usex email           '' email_requests       ) \
+		$(usex greenaddress_it '' greenaddress_instant ) \
 		hw_wallet \
 		ledger \
 		keepkey \
 		$(usex sync            '' labels               ) \
 		trezor  \
+		$(usex trustedcoin_com '' trustedcoin          ) \
 		$(usex vkb             '' virtualkeyboard      ) \
 	; do
-		rm -r ${PN/-/_}/plugins/"${plugin}"* || die
+		rm -r plugins/"${plugin}"* || die
 		sed -i "/${plugin}/d" setup.py || die
 	done
 
@@ -136,7 +154,7 @@ src_prepare() {
 }
 
 src_install() {
-	doicon -s 128 ${PN/-/_}/gui/icons/${PN}.png
+	doicon -s 128 icons/${PN}.png
 	distutils-r1_src_install
 }
 
