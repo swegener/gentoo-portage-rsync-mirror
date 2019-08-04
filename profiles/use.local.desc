@@ -7655,8 +7655,7 @@ sci-libs/octomap:dynamicEDT3D - Build and install dynamicEDT3D library: A librar
 sci-libs/openblas:dynamic - Build dynamic architecture detection at run time (for multi targets)
 sci-libs/openblas:eselect-ldso - Enable BLAS/LAPACK runtime switching
 sci-libs/openblas:index-64bit - Compile a separate INTERFACE64 OpenBLAS
-sci-libs/openblas:pthread - Build with pthread threadding model
-sci-libs/openblas:serial - Build without multi-thraedding
+sci-libs/openblas:pthread - Build with pthread threading model
 sci-libs/opencascade:freeimage - Enable support for image i/o via media-libs/freeimage
 sci-libs/opencascade:gl2ps - Use gl2ps PostScript printing library
 sci-libs/opencascade:gles2 - Use OpenGL ES 2.0
