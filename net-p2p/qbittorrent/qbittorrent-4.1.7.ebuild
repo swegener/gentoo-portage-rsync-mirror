@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils xdg-utils
+inherit xdg-utils
 
 DESCRIPTION="BitTorrent client in C++ and Qt"
 HOMEPAGE="https://www.qbittorrent.org
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/qBittorrent.git"
 else
 	SRC_URI="https://github.com/qbittorrent/qBittorrent/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 	S="${WORKDIR}/qBittorrent-release-${PV}"
 fi
 
@@ -23,6 +23,10 @@ SLOT="0"
 IUSE="+dbus debug webui +X"
 REQUIRED_USE="dbus? ( X )"
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
 RDEPEND="
 	>=dev-libs/boost-1.62.0-r1:=
 	dev-qt/qtcore:5
@@ -38,32 +42,29 @@ RDEPEND="
 		dev-qt/qtsvg:5
 		dev-qt/qtwidgets:5
 	)"
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
 src_configure() {
 	econf --with-qtsingleapplication=system \
-	$(use_enable dbus qt-dbus) \
-	$(use_enable debug) \
-	$(use_enable webui) \
-	$(use_enable X gui)
+		$(use_enable dbus qt-dbus) \
+		$(use_enable debug) \
+		$(use_enable webui) \
+		$(use_enable X gui)
 }
 
 src_install() {
 	emake STRIP="/bin/false" INSTALL_ROOT="${D}" install
-	domenu dist/unix/qbittorrent.desktop
 	einstalldocs
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
