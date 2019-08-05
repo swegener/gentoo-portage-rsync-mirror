@@ -6802,7 +6802,8 @@ net-misc/ntpclient:syslog - Enable logging to syslog instead of logging to stder
 net-misc/ntpsec:early - Drop root privileges early
 net-misc/ntpsec:gdb - Enable debugging with gdb
 net-misc/ntpsec:heat - Install contrib heat generating scripts
-net-misc/ntpsec:nist - Enable lockclock
+net-misc/ntpsec:libbsd - Use libbsd instead of internal funcs
+net-misc/ntpsec:nist - Set local clock deps
 net-misc/ntpsec:ntpviz - Make visualizations of offsets, jiffies, etc.
 net-misc/ntpsec:rclock_arbiter - Arbiter 1088A/B GPS driver
 net-misc/ntpsec:rclock_generic - Enable support for generic time radios and GPSDOs
