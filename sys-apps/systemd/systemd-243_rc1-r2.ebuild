@@ -186,6 +186,9 @@ src_prepare() {
 	# Add local patches here
 	PATCHES+=(
 		"${FILESDIR}"/243-rc1-analyze.patch
+		"${FILESDIR}"/243-rc1-cryptsetup.patch
+		"${FILESDIR}"/243-rc1-revert-logind-remove-unused-check.patch
+		"${FILESDIR}"/243-rc1-udev-properties.patch
 	)
 
 	if ! use vanilla; then
@@ -461,6 +464,11 @@ pkg_postinst() {
 		eerror "for errors. You may need to clean up your system and/or try installing"
 		eerror "systemd again."
 		eerror
+	fi
+
+	if [[ -z ${REPLACING_VERSIONS} ]]; then
+		elog "To enable a useful set of services, run the following:"
+		elog "  systemctl preset-all"
 	fi
 }
 
