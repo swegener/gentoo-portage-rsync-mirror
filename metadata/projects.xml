@@ -2143,11 +2143,6 @@
       <name>Ian Stakenvicius</name>
       <role>Member</role>
     </member>
-    <member>
-      <email>jcallen@gentoo.org</email>
-      <name>Jonathan Callen</name>
-      <role>Member</role>
-    </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
@@ -3817,11 +3812,6 @@
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
       <role>Member ( FFmpeg, x265, etc. )</role>
-    </member>
-    <member>
-      <email>beandog@gentoo.org</email>
-      <name>Steve Dibb</name>
-      <role>Member ( DVD, Blu-ray, Optical, Video )</role>
     </member>
     <member>
       <email>lordvan@gentoo.org</email>
