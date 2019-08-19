@@ -1961,7 +1961,6 @@ dev-java/icedtea:pch - Build using pre-compiled headers.
 dev-java/icedtea:sctp - Build the SCTP NIO channel implementation against lksctp
 dev-java/icedtea:shenandoah - Include the Shenandoah ultra-low pause time garbage collector (-XX:+UseShenandoahGC) (arm64 and x86_64 only)
 dev-java/icedtea:smartcard - Build the PCSC driver against pcsc-lite
-dev-java/icedtea:sunec - Build the SunEC provider against system NSS
 dev-java/icedtea:system-lcms - Build against the system LCMS installation rather than the in-tree copy.
 dev-java/icedtea:webstart - Enable Web Start support (via NetX).
 dev-java/icedtea:zero - Enable Zero assembler port (usually for non-HotSpot architectures)
