@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit cmake-utils desktop wxwidgets xdg
+inherit cmake-utils desktop prefix wxwidgets xdg
 
 DESCRIPTION="Online multiplayer free software engine for DOOM"
 HOMEPAGE="https://odamex.net/"
@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/${PN}/Odamex/${PV}/${PN}-src-${PV}.tar.bz2"
 
 LICENSE="GPL-2+ MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+client master +odalaunch portmidi server upnp X"
 REQUIRED_USE="|| ( client master server )"
 
@@ -35,12 +35,14 @@ S="${WORKDIR}/${PN}-src-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-miniupnpc.patch
+	"${FILESDIR}"/${P}-SearchDir.patch
 )
 
 src_prepare() {
 	rm -r libraries/libminiupnpc odamex.wad || die
+	hprefixify common/d_main.cpp
 
-	setup-wxwidgets
+	use odalaunch && setup-wxwidgets
 
 	cmake-utils_src_prepare
 }
@@ -69,7 +71,7 @@ src_compile() {
 src_install() {
 	if use client ; then
 		newicon -s 128 "${S}/media/icon_${PN}_128.png" "${PN}.png"
-		make_desktop_entry "${PN} -waddir /usr/share/doom" "Odamex"
+		make_desktop_entry "${PN}" "Odamex"
 
 		if use odalaunch ; then
 			newicon -s 128 "${S}/media/icon_odalaunch_128.png" "odalaunch.png"
