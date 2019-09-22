@@ -34,7 +34,7 @@ LICENSE="GPL-2 LGPL-2 BSD-2"
 SLOT="0"
 
 IUSE="accessibility +aio alsa bzip2 capstone +caps +curl debug doc
-	+fdt glusterfs gnutls gtk infiniband iscsi +jpeg jemalloc kernel_linux
+	+fdt glusterfs gnutls gtk infiniband iscsi jemalloc +jpeg kernel_linux
 	kernel_FreeBSD lzo ncurses nfs nls numa opengl +oss +pin-upstream-blobs
 	+png pulseaudio python rbd sasl +seccomp sdl selinux smartcard snappy
 	spice ssh static static-user systemtap tci test usb usbredir vde
@@ -211,7 +211,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
 	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
+	"${FILESDIR}"/${PN}-4.0.0-sanitize-interp_info.patch
 	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
+	"${FILESDIR}"/${PN}-4.0.0-xkbcommon.patch
 )
 
 QA_PREBUILT="
