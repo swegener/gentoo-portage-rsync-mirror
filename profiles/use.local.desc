@@ -172,7 +172,6 @@ app-admin/salt:zeromq - Add support for the zeromq transport.
 app-admin/sudo:gcrypt - Use message digest functions from dev-libs/libgcrypt instead of sudo's
 app-admin/sudo:libressl - Use message digest functions from dev-libs/libressl instead of sudo's
 app-admin/sudo:offensive - Let sudo print insults when the user types the wrong password
-app-admin/sudo:openssl - Use message digest functions from dev-libs/openssl instead of sudo's
 app-admin/sudo:secure-path - Replace PATH variable with compile time secure paths
 app-admin/sudo:sendmail - Allow sudo to send emails with sendmail
 app-admin/sudo:sssd - Add System Security Services Daemon support
@@ -1262,7 +1261,7 @@ app-text/mathtex:png - Generate png images by default instead of gif
 app-text/msort:heap - Use heap instead of alloca()
 app-text/msort:icu - Use dev-libs/icu instead of dev-libs/libutf8proc.
 app-text/msort:libuninum - Use dev-libs/libuninum for conversion.
-app-text/pandoc:embed_data_files - Embed data files in binary for relocatable executable.
+app-text/pandoc:embed-data-files - Embed data files in binary for relocatable executable.
 app-text/pandoc:http-conduit - Enable downloading of resources over https.
 app-text/pandoc:https - Enable support for downloading of resources over https.
 app-text/pandoc:make-pandoc-man-pages - Build program to regenerate pandoc man pages from README.
@@ -3094,6 +3093,7 @@ dev-util/perf:numa - Enable NUMA support
 dev-util/perf:perl - Add support for Perl as a scripting language for perf tools.
 dev-util/perf:systemtap - Add support to define SDT event in perf tools.
 dev-util/perf:unwind - Use sys-libs/libunwind for frame unwinding support.
+dev-util/pkgcheck:network - Enable support for network checks using dev-python/requests
 dev-util/pkgconf:pkg-config - Install as a replacement for dev-util/pkgconfig
 dev-util/pkgconfig:internal-glib - Use internal copy of dev-libs/glib
 dev-util/pkgconfig-openbsd:pkg-config - Install as a replacement for dev-util/pkgconfig
@@ -5716,6 +5716,8 @@ net-dns/knot:utils - Install Knot utilities, such as kdig, kzonecheck, ...
 net-dns/knot:whoami - Enable the whoami response module
 net-dns/ldns-utils:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-dns/ldns-utils:ecdsa - Enable ECDSA support
+net-dns/ldns-utils:ed25519 - Enable ED25519 support
+net-dns/ldns-utils:ed448 - Enable ED448 support
 net-dns/ldns-utils:gost - Enable GOST support
 net-dns/maradns:authonly - Allows one to build only authoritative DNS server
 net-dns/mydns:alias - Enable David Phillips aliasing
@@ -6187,6 +6189,8 @@ net-libs/grpc:systemtap - Enable SystemTAP/DTrace tracing
 net-libs/iax:snomhack - Use slower memset for SNOM phoneem
 net-libs/ldns:dane - Enable DNS-based Authentication of Named Entities (DANE) support
 net-libs/ldns:ecdsa - Enable ECDSA support
+net-libs/ldns:ed25519 - Enable ED25519 support
+net-libs/ldns:ed448 - Enable ED448 support
 net-libs/ldns:gost - Enable GOST support
 net-libs/libbitcoinconsensus:asm - Enable assembly for optimization
 net-libs/libbitcoinconsensus:knots - Build enhanced Bitcoin Knots version, rather than Bitcoin Core
@@ -6719,6 +6723,7 @@ net-misc/openssh:ldns - Use LDNS for DNSSEC/SSHFP validation.
 net-misc/openssh:livecd - Enable root password logins for live-cd environment.
 net-misc/openssh:ssh1 - Support the legacy/weak SSH1 protocol
 net-misc/openssh:ssl - Enable additional crypto algorithms via OpenSSL
+net-misc/openssh:xmss - Enable XMSS post-quantum authentication algorithm
 net-misc/openvswitch:monitor - Build the Python and GUI dependent monitor applications
 net-misc/owncloud-client:dolphin - Install the kde-apps/dolphin extension
 net-misc/owncloud-client:nautilus - Install the gnome-base/nautilus extension
@@ -8848,7 +8853,6 @@ www-client/otter:webengine - Use dev-qt/qtwebengine as backend instead of dev-qt
 www-client/qutebrowser:scripts - Installs userscripts from the misc/userscripts directory to /usr/share/qutebrowser/userscripts.
 www-client/seamonkey:calendar - Build Mozilla's calendar
 www-client/seamonkey:chatzilla - Build Mozilla's IRC client (default on)
-www-client/seamonkey:clang - Use Clang compiler instead of GCC
 www-client/seamonkey:custom-optimization - Build with user-specified compiler optimizations (-Os, -O0, -O1, -O2, -O3) from CFLAGS (unsupported)
 www-client/seamonkey:force-gtk3 - Use the cairo-gtk3 rendering engine
 www-client/seamonkey:gmp-autoupdate - Allow Gecko Media Plugins (binary blobs) to be automatically downloaded and kept up-to-date in user profiles
