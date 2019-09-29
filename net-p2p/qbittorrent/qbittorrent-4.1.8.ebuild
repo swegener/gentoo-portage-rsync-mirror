@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/qBittorrent.git"
 else
 	SRC_URI="https://github.com/qbittorrent/qBittorrent/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 	S="${WORKDIR}/qBittorrent-release-${PV}"
 fi
 
@@ -43,8 +43,6 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)"
 DEPEND="${RDEPEND}"
-
-PATCHES=( "${FILESDIR}/${P}-no-screenblank-on-close-to-systray.patch" )
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
