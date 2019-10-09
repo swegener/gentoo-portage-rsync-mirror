@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit perl-functions
 
@@ -9,9 +9,9 @@ DESCRIPTION="GNU Stow is a symlink farm manager"
 HOMEPAGE="https://www.gnu.org/software/stow/"
 SRC_URI="mirror://gnu/stow/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="test"
 
 DEPEND="dev-lang/perl
