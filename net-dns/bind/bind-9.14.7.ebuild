@@ -36,15 +36,16 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
-IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gssapi
+IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip geoip2 gssapi
 json ldap libressl lmdb mysql odbc postgres python selinux static-libs
 urandom xml +zlib"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
 REQUIRED_USE="
+	?? ( geoip geoip2 )
 	postgres? ( dlz )
 	berkdb? ( dlz )
 	mysql? ( dlz )
@@ -62,6 +63,7 @@ DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
 	geoip? ( >=dev-libs/geoip-1.4.6 )
+	geoip2? ( dev-libs/libmaxminddb )
 	gssapi? ( virtual/krb5 )
 	json? ( dev-libs/json-c:= )
 	lmdb? ( dev-db/lmdb )
@@ -75,7 +77,7 @@ DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
 
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-bind )
-	|| ( sys-process/psmisc >=sys-freebsd/freebsd-ubin-9.0_rc )"
+	sys-process/psmisc"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -92,7 +94,7 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	export LDFLAGS="${LDFLAGS} -L${EPREFIX}/usr/$(get_libdir)"
+	export LDFLAGS="${LDFLAGS} -L${EPREFIX}/usr/$(get_libdir) -ldl"
 
 	# Adjusting PATHs in manpages
 	for i in bin/{named/named.8,check/named-checkconf.8,rndc/rndc.8} ; do
@@ -156,7 +158,8 @@ src_configure() {
 		$(use_with zlib)
 	)
 
-	use geoip && myeconfargs+=( --enable-geoip )
+	use geoip && myeconfargs+=( --with-geoip )
+	use geoip2 && myeconfargs+=( --with-geoip2 )
 
 	# bug #158664
 #	gcc-specs-ssp && replace-flags -O[23s] -O
@@ -190,7 +193,7 @@ src_install() {
 		dodoc contrib/scripts/{nanny.pl,named-bootconf.sh}
 
 		# some handy-dandy dynamic dns examples
-		pushd "${ED}"/usr/share/doc/${PF} 1>/dev/null || die
+		pushd "${ED%/}"/usr/share/doc/${PF} 1>/dev/null || die
 		tar xf "${DISTDIR}"/dyndns-samples.tbz2 || die
 		popd 1>/dev/null || die
 	fi
@@ -235,8 +238,8 @@ src_install() {
 		}
 		python_foreach_impl install_python_tools
 
-		python_replicate_script "${ED%/}/usr/sbin/dnssec-checkds"
-		python_replicate_script "${ED%/}/usr/sbin/dnssec-coverage"
+		python_replicate_script "${ED}/usr/sbin/dnssec-checkds"
+		python_replicate_script "${ED}/usr/sbin/dnssec-coverage"
 	fi
 
 	# bug 450406
@@ -358,7 +361,11 @@ pkg_config() {
 	fi
 
 	if [ "${CHROOT_GEOIP:-0}" -eq 1 ]; then
-		mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP || die
+		if use geoip; then
+			mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP || die
+		elif use geoip2; then
+			mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP2 || die
+		fi
 	fi
 
 	elog "You may need to add the following line to your syslog-ng.conf:"
