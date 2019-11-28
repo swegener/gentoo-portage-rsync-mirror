@@ -11,7 +11,7 @@ DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
 # MuseScore_General-0.1.3.tar.bz2 packaged from https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/
 # It has to be repackaged because the files are not versioned, current version can be found in VERSION file there.
-SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.1.6.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.1.8.tar.bz2"
 EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
 
 LICENSE="GPL-2"
