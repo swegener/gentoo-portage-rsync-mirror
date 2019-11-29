@@ -1122,11 +1122,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:GLEP</url>
     <description>The GLEP project manages Gentoo Linux Enhancement Proposals.</description>
     <member>
-      <email>creffett@gentoo.org</email>
-      <name>Chris Reffett</name>
-      <role>GLEP Editor</role>
-    </member>
-    <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Member</role>
