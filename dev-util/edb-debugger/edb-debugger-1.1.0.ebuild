@@ -33,10 +33,7 @@ DEPEND="
 	${RDEPEND}
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-man1.patch
-	"${FILESDIR}"/${P}-climits.patch
-)
+S=${WORKDIR}/${PN}
 
 src_prepare() {
 	#Make the desktop's entries somewhat better
