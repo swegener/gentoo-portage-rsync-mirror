@@ -3274,8 +3274,6 @@ games-fps/darkplaces:cdsound - Enables using CD audio in the engine
 games-fps/darkplaces:demo - Uses the demo data from quake1 (quake1-demodata)
 games-fps/darkplaces:lights - Install and setup the updated light maps
 games-fps/darkplaces:textures - Install and setup the updated textures
-games-fps/doom3:dedicated - install only as a dedicated game server
-games-fps/doom3:roe - Adds support for the Resurrection of Evil expansion
 games-fps/doomsday:demo - Install launcher dor doom1.wad from games-fps/doom-data
 games-fps/doomsday:fluidsynth - Build the FluidSynth sound driver
 games-fps/doomsday:fmod - Enable support for fmod music and sound effects lib
@@ -3298,7 +3296,6 @@ games-fps/eduke32:xmp - Enable support for media-libs/exempi.
 games-fps/gzdoom:gtk2 - Enable support for GTK+2 instead of GTK+3
 games-fps/gzdoom:nonfree - Enable non-free components
 games-fps/nexuiz:maps - Install the community map pack
-games-fps/openarena:client - Build OpenArena client
 games-fps/prboom-plus:dumb - Enable support for various tracker-style music formats via media-libs/dumb
 games-fps/prboom-plus:fluidsynth - Enable support for MIDI via media-sound/fluidsynth
 games-fps/prboom-plus:net - Enable support for network play
@@ -3310,11 +3307,6 @@ games-fps/quake2-icculus:demo - Install the demo files (quake2-demodata) and con
 games-fps/quake2-icculus:qmax - Build the pretty version (quake max)
 games-fps/quake2-icculus:rogue - Build support for the 'Ground Zero' Mission Pack (rogue)
 games-fps/quake2-icculus:xatrix - Build support for the 'The Reckoning' Mission Pack (xatrix)
-games-fps/quake3:mumble - Adds player-location (positional audio) support to VoIP
-games-fps/quake3:teamarena - Adds support for Team Arena expansion pack
-games-fps/quake3:voice - Adds VoIP support
-games-fps/quake3-bin:teamarena - Adds support for Team Arena expansion pack
-games-fps/quake3-demo:dedicated - install only as a dedicated game serer
 games-fps/quakeforge:wildmidi - enable libWildMidi support
 games-fps/quakeforge:xdg - enable XDG support
 games-fps/qudos:demo - Install the demo files (quake2-demodata) and configure for use
@@ -3327,7 +3319,6 @@ games-fps/sauerbraten:server - Compile server support
 games-fps/turtlearena:mumble - Adds player-location (positional audio) support to VoIP
 games-fps/turtlearena:server - Build server target
 games-fps/turtlearena:voice - Adds VoIP support
-games-fps/unreal-tournament-goty:S3TC - Add the extra fancy textures to UT ... only works on certain cards (nvidia/ati/s3)
 games-fps/urbanterror:altgamma - Alternative way for gamma setting with modesetting driver
 games-fps/urbanterror:client - Build binary for client (includes code for non-dedicated server)
 games-fps/urbanterror:mumble - Use Mumble for ingame VoIP (experimental)
@@ -3421,9 +3412,6 @@ games-strategy/freeciv:sound - Add support for sound provided by media-libs/sdl-
 games-strategy/freeciv:system-lua - Use dev-lang/lua instead of the bundled liblua
 games-strategy/freesynd:devtools - Build development tools
 games-strategy/hedgewars:server - Enable local server
-games-strategy/heroes3:maps - Installs optional map data
-games-strategy/heroes3:music - Installs optional music data
-games-strategy/heroes3:sounds - Installs optional sound data
 games-strategy/ja2-stracciatella:editor - Adds necessary file to run the editor
 games-strategy/ja2-stracciatella:ru-gold - Support for russian gold ja2 version
 games-strategy/megaglest:editor - Build map editor
