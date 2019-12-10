@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-10)
+# EAPI=4, dead upstream, can't locate new home
+# Removal in 30 days
+dev-util/kelbt
+
+# Aaron Bauman <bman@gentoo.org> (2019-12-10)
 # EAPI=4, fails to build
 # Removal in 30 days
 dev-util/idutils
@@ -57,6 +62,7 @@ media-sound/vitunes
 # EAPI=4, unmaintained upstream and Gentoo is versions behind
 # Removal in 30 days
 dev-tex/dvi2tty
+app-office/auto-multiple-choice
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-09)
 # EAPI=4, unmaintained upstream, rdep as well
