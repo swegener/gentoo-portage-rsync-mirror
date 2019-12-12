@@ -7,21 +7,18 @@ PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit cmake-utils python-r1
 
-ROS_PN="ament_cmake"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/ament/ament_cmake"
+	EGIT_REPO_URI="https://github.com/ros2/console_bridge_vendor"
 	SRC_URI=""
-	S=${WORKDIR}/${P}/${PN}
 else
-	SRC_URI="https://github.com/ament/ament_cmake/archive/${PV}.tar.gz -> ${ROS_PN}-${PV}.tar.gz"
-	S="${WORKDIR}/${ROS_PN}-${PV}/${PN}"
+	SRC_URI="https://github.com/ros2/console_bridge_vendor/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-DESCRIPTION="Export include directories to downstream packages in the ament buildsystem"
-HOMEPAGE="https://github.com/ament/ament_cmake"
+DESCRIPTION="Wrapper around console_bridge"
+HOMEPAGE="https://github.com/ros2/console_bridge_vendor"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD"
 SLOT="0"
 if [ "${PV#9999}" != "${PV}" ] ; then
 	KEYWORDS=""
@@ -31,11 +28,12 @@ fi
 IUSE=""
 
 DEPEND="
-	dev-ros/ament_cmake_core[${PYTHON_USEDEP}]
-	${PYTHON_DEPS}
+	>=dev-libs/console_bridge-0.4.1
 "
 RDEPEND="${DEPEND}"
-BDEPEND="${DEPEND}"
+BDEPEND="ros-meta/ament_cmake[${PYTHON_USEDEP}]
+	${PYTHON_DEPS}
+"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_configure() {
