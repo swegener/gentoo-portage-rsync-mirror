@@ -38,10 +38,7 @@ S="${WORKDIR}/${PN}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-cmake-automagic-deps.patch"
-	# examples need to link against libsndfile unconditionally so either we could
-	# make the dep unconditional or not build the examples. i chose the latter way.
-	# btw, examples are not installed anyway, they are just compiled.
-	"${FILESDIR}/${P}-disable-examples.patch"
+	"${FILESDIR}/${P}-fix-examples-linking.patch"
 	"${FILESDIR}/${P}-disable-gif-quantize-buffer.patch"
 )
 
