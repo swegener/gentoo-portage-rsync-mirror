@@ -4,7 +4,7 @@
 EAPI=5
 
 FOX_COMPONENT="utils"
-FOX_PV="1.6.57"
+FOX_PV="1.6.40"
 
 inherit fox
 
