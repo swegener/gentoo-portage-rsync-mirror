@@ -1,9 +1,6 @@
 # Copyright 1999-2012 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# @DEAD
-# All consumers were last rited.  Removal in 30 days.
-
 # @ECLASS: fox.eclass
 # @MAINTAINER:
 # maintainer-needed@gentoo.org
@@ -30,7 +27,7 @@
 #
 # EAPI phase trickery borrowed from enlightenment.eclass
 
-inherit autotools versionator desktop
+inherit autotools versionator
 
 
 FOX_EXPF="src_unpack src_compile src_install pkg_postinst"
