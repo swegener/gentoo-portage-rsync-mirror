@@ -3,7 +3,6 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
@@ -28,6 +27,7 @@ REQUIRED_USE="
 	doc? ( || ( $(python_gen_useflags 'python2*') ) )"
 
 RDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	coverage? (
 		$(python_gen_cond_dep 'dev-python/coverage[${PYTHON_USEDEP}]' \
 			"${COVERAGE_IMPLS[@]}")
