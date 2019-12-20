@@ -3,22 +3,22 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
-PYTHON_REQ_USE="threads"
+PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_REQ_USE="threads(+)"
 DISTUTILS_OPTIONAL=true
 DISTUTILS_IN_SOURCE_BUILD=true
 
 inherit autotools distutils-r1
 
 MY_PV=$(ver_rs 1-2 '_')
-MY_P=${PN/-rasterbar}_${MY_PV}
+MY_P=${PN/-rasterbar}-${MY_PV}
 
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
-HOMEPAGE="https://libtorrent.org"
+HOMEPAGE="https://libtorrent.org https://github.com/arvidn/libtorrent"
 SRC_URI="https://github.com/arvidn/libtorrent/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="0/9"
+SLOT="0/10"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug +dht doc examples libressl python +ssl static-libs test"
 
@@ -45,8 +45,6 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN/-rasterbar}-${MY_P}"
 
-PATCHES=( "${FILESDIR}"/fix-boost-1.70.patch )
-
 src_prepare() {
 	mkdir "${S}"/build-aux/ || die
 	touch "${S}"/build-aux/config.rpath || die
@@ -69,7 +67,8 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
 		$(use_enable debug export-all)
-		$(use_enable dht dht $(usex debug logging $(usex ('yes' 'no'))))
+		$(use_enable debug logging)
+		$(use_enable dht)
 		$(use_enable examples)
 		$(use_enable ssl encryption)
 		$(use_enable static-libs static)
