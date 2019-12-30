@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P="${PN}-v${PV}"
 
@@ -30,10 +30,11 @@ src_install() {
 	insinto "${install_dir}"
 	doins -r .
 	dosym "../$(get_libdir)/node_modules/yarn/bin/yarn.js" "/usr/bin/yarn"
+	dosym "../$(get_libdir)/node_modules/yarn/bin/yarnpkg" "/usr/bin/yarnpkg"
 
 	while read -r -d '' path; do
-		read -r shebang < ${path} || die
+		read -r shebang < "${ED}${path}" || die
 		[[ "${shebang}" == \#\!* ]] || continue
-		chmod +x "${path}" || die #614094
-	done < <(find "${ED}" -type f -print0 || die)
+		fperms +x "${path}"
+	done < <(find "${ED}" -type f -printf '/%P\0' || die)
 }
