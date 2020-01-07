@@ -1539,7 +1539,6 @@ dev-games/ogre:mobile - Build for OpenGL ES 2.0 only and use the mobile variants
 dev-games/ogre:ois - Pull in Object-oriented Input System library dev-games/ois for samples
 dev-games/ogre:poco - When USE=threads, use poco for threading
 dev-games/ogre:resman-pedantic - Resource Manager PEDANTIC : require an explicit resource group. Case sensitive lookup. Some demos might not work with this setting. (default: case-insensitive + sensitive lookup in all groups)
-dev-games/ogre:resman-strict - Resource Manager STRICT : search in default group if not specified otherwise. Case sensitive lookup. Some demos might not work with this setting. (default: case-insensitive + sensitive lookup in all groups)
 dev-games/ogre:tbb - When USE=threads, use tbb for threading
 dev-games/ogre:tools - Build and install helper tools
 dev-games/openscenegraph:asio - Enable support for dev-cpp/asio library
