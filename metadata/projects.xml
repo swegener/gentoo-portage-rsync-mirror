@@ -3718,6 +3718,11 @@
     <url>https://wiki.gentoo.org/wiki/Project:VDR</url>
     <description>The VDR Project maintains and updates the VDR packages in the portage tree. It integrates them with Gentoo as tight as possible. VDR is the abbreviation for Video Disk Recorder.</description>
     <member>
+      <email>hd_brummy@gentoo.org</email>
+      <name>Joerg Bornkessel</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>idl0r@gentoo.org</email>
       <name>Christian Ruppert</name>
       <role>Member</role>
