@@ -1220,6 +1220,11 @@
       <name>Stefan Strogin</name>
       <role>Member ( general )</role>
     </member>
+    <member>
+      <email>vapier@gentoo.org</email>
+      <name>Mike Frysinger</name>
+      <role>Member ( general )</role>
+    </member>
   </project>
   <project>
     <email>genkernel@gentoo.org</email>
