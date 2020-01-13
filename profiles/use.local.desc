@@ -5329,7 +5329,9 @@ net-analyzer/metasploit:development - Install dependencies needed for metasploit
 net-analyzer/metasploit:nexpose - Enable the plugin to integrate with nexpose
 net-analyzer/metasploit:oracle - Enable restricted oracle modules which have additional deps
 net-analyzer/metasploit:pcap - Enable libpcap for packet sniffing
+net-analyzer/mk-livestatus:boost - Use dev-libs/boost for ASIO support
 net-analyzer/mk-livestatus:nagios4 - Generate a net-analyzer/nagios-4 compatible plugin
+net-analyzer/mk-livestatus:re2 - Use dev-libs/re2 for regex support
 net-analyzer/monitoring-plugins:dns - Install net-dns/bind-tools required for monitoring DNS servers. Disabling the flag does not remove any plugins.
 net-analyzer/monitoring-plugins:fping - Install net-analyzer/fping required for fancy ping monitoring. Disabling the flag does not remove any plugins.
 net-analyzer/monitoring-plugins:game - Install games-util/qstat required for monitoring FPS servers. Disabling the flag does not remove any plugins.
@@ -6221,7 +6223,6 @@ net-libs/tox:log-error - Log level: 1
 net-libs/tox:log-info - Log level: 3
 net-libs/tox:log-trace - Log level: 5
 net-libs/tox:log-warn - Log level: 2
-net-libs/tox:no-log - Log level: 0 (no debug info logged)
 net-libs/udns:tools - Build and install dnsget, ex-rdns and rblcheck tools
 net-libs/wandio:http - Build support for reading files over HTTP using net-misc/curl
 net-libs/webkit-gtk:coverage - Enable code coverage support
