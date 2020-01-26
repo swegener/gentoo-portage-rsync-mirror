@@ -76,7 +76,9 @@ GCCMICRO=$(ver_cut 3 ${GCC_PV})
 # gcc hardcodes it's internal version into gcc/BASE-VER
 # and assumes various directories and tools to have the
 # same name.
-GCC_CONFIG_VER=${GCC_RELEASE_VER}
+# TODO: once ada ebuilds are fixed turn it to
+#     GCC_CONFIG_VER=${GCC_RELEASE_VER}
+GCC_CONFIG_VER=${GCC_CONFIG_VER:-${GCC_RELEASE_VER}}
 
 # Pre-release support. Versioning schema:
 # 1.0.0_pre9999: live ebuild
@@ -572,7 +574,9 @@ toolchain_src_prepare() {
 		local actual_version=$(< "${S}"/gcc/BASE-VER)
 		if [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
 			eerror "'${S}/gcc/BASE-VER' contains '${actual_version}', expected '${GCC_RELEASE_VER}'"
-			die "Please rename ebuild to '${PN}-${actual_version}...'"
+			# TODO: once ada ebuilds are fixed turn it to 'die'
+			eerror "Please set GCC_RELEASE_VER to '${actual_version}'"
+			echo "${GCC_CONFIG_VER}" > "${S}"/gcc/BASE-VER
 		fi
 	fi
 
