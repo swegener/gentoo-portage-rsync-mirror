@@ -4547,7 +4547,6 @@ media-sound/aqualung:mac - Enable support for decoding Monkey's Audio files
 media-sound/aqualung:podcast - Enable podcast support
 media-sound/aqualung:systray - Enable system tray support
 media-sound/ario:idle - Enable experimental support for MPD's idle command to reduce bandwidth and cpu usage, requires MPD 0.14
-media-sound/ario:scrobbler - Enable audioscrobbler/last.fm support net-libs/libsoup
 media-sound/asunder:mac - Support for creation of Monkey's Audio files (APE)
 media-sound/audacious:gtk - Build with GTK interface instead of Qt5
 media-sound/audacious:qt5 - Build with Qt5 interface instead of GTK
