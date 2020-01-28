@@ -1,8 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils
+EAPI=7
 
 DESCRIPTION="A number of classes and functions for programming GTK+ programs using C++"
 HOMEPAGE="http://cxx-gtk-utils.sourceforge.net/"
@@ -19,8 +18,8 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	nls? ( sys-devel/gettext )
 	virtual/pkgconfig
+	nls? ( sys-devel/gettext )
 "
 
 DOCS=( ChangeLog )
@@ -37,5 +36,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }
