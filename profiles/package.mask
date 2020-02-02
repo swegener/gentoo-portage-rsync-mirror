@@ -1051,10 +1051,6 @@ x11-drivers/xf86-video-voodoo
 # Mask experimental software
 =mail-mta/postfix-3.5*
 
-# Dennis Lamm <expeditioneer@gentoo.org> (2019-01-29)
-# Depends on >=app-text/enchant-2.0.0 which is masked
-=gnome-extra/gtkhtml-4.10.0-r1
-
 # Dennis Lamm <expeditioneer@gentoo.org> (2019-01-28)
 # Depends on >=app-text/enchant-2.0.0 which is masked
 >=app-text/gtkspell-3.0.10
@@ -1125,10 +1121,6 @@ sys-devel/automake:1.7
 sys-devel/automake:1.8
 sys-devel/automake:1.9
 sys-devel/automake:1.10
-
-# Gilles Dartiguelongue <eva@gentoo.org> (2017-09-04)
-# Incompatible changes in API in Enchant 2. Bug #629838.
->=app-text/enchant-2
 
 # Nicolas Bock <nicolasbock@gentoo.org> (2017-10-31)
 # There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).
