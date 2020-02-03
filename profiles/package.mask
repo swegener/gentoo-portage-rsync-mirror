@@ -814,30 +814,6 @@ sci-libs/vecmath-objectclub
 # Removal in 30 days.
 app-benchmarks/spew
 
-# Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-16)
-# Simplify FOX packages. Adie, calculator, pathfinder, and shutterbug
-# can now be found behind x11-libs/fox[tools], and reswrap is always
-# installed by it.
-# Removal in 30 days.  Bug #703088. Bug #703084.
-app-editors/adie
-dev-util/reswrap
-sci-calculators/calculator
-x11-misc/pathfinder
-x11-misc/shutterbug
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-15)
-# Live ebuild only.  Not touched since 2012.  Unsurprisingly,
-# the included patch no longer applies.  Actually, there's
-# sys-fs/yaffs2utils duplicate which is a release.
-# Removal in 14 days.  Bug #703040.
-sys-fs/yaffs2-utils
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-15)
-# Repo gone in 2014.  Never had a release ebuild.  Apparently was broken
-# before anyway (bug #508924).
-# Removal in 14 days.  Bug #533052.
-net-analyzer/gsm-receiver
-
 # David Seifert <soap@gentoo.org> (2019-12-08)
 # Unmaintained, build hangs, tons of other build failures, missing
 # dependencies.  Bug #663794, #666916, #666922, #667062, #678068,
