@@ -11,7 +11,7 @@ DESCRIPTION="VDR Plugin: Web Access To Settings"
 HOMEPAGE="http://live.vdr-developer.org"
 SRC_URI="https://projects.vdr-developer.org/git/vdr-plugin-live.git/snapshot/${MY_P}.tar.bz2 -> ${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 RSA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="pcre ssl"
@@ -53,8 +53,6 @@ make_live_cert() {
 }
 
 src_prepare() {
-	default
-
 	# remove untranslated language files
 	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nl_NL,nn_NO,pt_PT,ro_RO,sl_SI,tr_TR}.po
 
