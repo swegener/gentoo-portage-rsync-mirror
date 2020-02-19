@@ -678,11 +678,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Containers</url>
     <description>The Contains Project provides minimal container images for a variety of container formats so that users can have a consistent experience when building application specific containers.</description>
     <member>
-      <email>arzano@gentoo.org</email>
-      <name>Max Magorsch</name>
-      <role>Member</role>
-    </member>
-    <member>
       <email>ultrabug@gentoo.org</email>
       <name>Ultrabug</name>
       <role>Member</role>
