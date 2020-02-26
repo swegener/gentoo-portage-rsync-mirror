@@ -5,7 +5,7 @@ EAPI=7
 GCONF_DEBUG="yes"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit gnome.org gnome2-utils meson python-r1
+inherit gnome.org meson python-r1
 
 DESCRIPTION="GObject to SQLite object mapper library"
 HOMEPAGE="https://wiki.gnome.org/Projects/Gom"
@@ -25,7 +25,8 @@ RDEPEND="
 		>=dev-python/pygobject-3.16:3[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}
-	gtk-doc? ( dev-util/gtk-doc )
+	gtk-doc? ( dev-util/gtk-doc
+		app-text/docbook-xml-dtd:4.3 )
 	virtual/pkgconfig
 	test? ( x11-libs/gdk-pixbuf:2 )
 "
