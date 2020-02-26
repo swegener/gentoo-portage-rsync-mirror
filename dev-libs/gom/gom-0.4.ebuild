@@ -3,7 +3,7 @@
 
 EAPI=7
 GCONF_DEBUG="yes"
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit gnome.org gnome2-utils meson python-r1
 
@@ -13,27 +13,31 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Gom"
 LICENSE="LGPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="gtk-doc +introspection test"
+IUSE="gtk-doc +introspection python test"
 RESTRICT="!test? ( test )"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} )"
 
-# <glib-2.63.3 to avoid getting hit worse by https://gitlab.gnome.org/GNOME/gom/issues/24 - fixed in gom-0.4
 RDEPEND="
 	>=dev-db/sqlite-3.7:3
 	>=dev-libs/glib-2.36:2
-	<dev-libs/glib-2.63.3:2
 	introspection? ( >=dev-libs/gobject-introspection-1.30.0:= )
-	${PYTHON_DEPS}
-	>=dev-python/pygobject-3.16:3[${PYTHON_USEDEP}]
+	python? ( ${PYTHON_DEPS}
+		>=dev-python/pygobject-3.16:3[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	gtk-doc? ( dev-util/gtk-doc )
 	virtual/pkgconfig
-	x11-libs/gdk-pixbuf:2
-" # only tests need gdk-pixbuf, but they are unconditionally built
+	test? ( x11-libs/gdk-pixbuf:2 )
+"
 
-pkg_setup() {
-	python_setup
+src_prepare() {
+	default
+	sed -i -e '/subdir.*python/d' bindings/meson.build || die
+	# drop test building and deps if not enabled
+	if ! use test; then
+		sed -i -e '/gdkpixbuf_dep/d' meson.build || die
+		sed -i -e '/subdir(.*tests.*)/d' meson.build || die
+	fi
 }
 
 src_configure() {
@@ -42,25 +46,16 @@ src_configure() {
 		$(meson_use gtk-doc enable-gtk-doc)
 	)
 
-	python_foreach_impl meson_src_configure
-}
-
-src_compile() {
-	python_foreach_impl meson_src_compile
+	meson_src_configure
 }
 
 src_install() {
 	docinto examples
 	dodoc examples/*.py
 
-	installing() {
-		meson_src_install
-		python_optimize
-	}
-	python_foreach_impl installing
-}
+	meson_src_install
 
-src_test() {
-	# tests may take a long time
-	python_foreach_impl meson_src_test
+	if use python; then
+		python_foreach_impl python_domodule bindings/python/gi
+	fi
 }
