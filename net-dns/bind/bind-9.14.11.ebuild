@@ -28,7 +28,7 @@ RRL_PV="${MY_PV}"
 
 DESCRIPTION="Berkeley Internet Name Domain - Name Server"
 HOMEPAGE="https://www.isc.org/software/bind"
-SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz
+SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.gz
 	doc? ( mirror://gentoo/dyndns-samples.tbz2 )"
 #	sdb-ldap? (
 #		http://ftp.disconnected-by-peer.at/pub/bind-sdb-ldap-${SDB_LDAP_VER}.patch.bz2
@@ -85,6 +85,10 @@ S="${WORKDIR}/${MY_P}"
 # bug 479092, requires networking
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/bind-9.14.8-mysql8-bool.patch
+)
+
 pkg_setup() {
 	ebegin "Creating named group and user"
 	enewgroup named 40
@@ -132,7 +136,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--prefix="${EPREFIX}"/usr
 		--sysconfdir=/etc/bind
 		--localstatedir=/var
 		--with-libtool
@@ -149,7 +152,7 @@ src_configure() {
 		$(use_with dlz dlz-filesystem)
 		$(use_with dlz dlz-stub)
 		$(use_with gssapi)
-		$(use_with json json-c)
+		$(use_with json libjson)
 		$(use_with ldap dlz-ldap)
 		$(use_with mysql dlz-mysql)
 		$(use_with odbc dlz-odbc)
