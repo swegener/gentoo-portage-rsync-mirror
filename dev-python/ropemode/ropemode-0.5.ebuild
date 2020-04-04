@@ -1,9 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+# Currently (2020-03-23) rope is blocking
+# support for python 3.8.
+# For details see
+# https://github.com/python-rope/rope/pull/285
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -18,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND=">=dev-python/rope-0.9.4[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/rope[${PYTHON_USEDEP}]"
 DEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
