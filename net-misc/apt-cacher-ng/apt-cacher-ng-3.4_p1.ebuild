@@ -41,7 +41,7 @@ RDEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.3-flags.patch
+	"${FILESDIR}"/${PN}-3.3.1-flags.patch
 	"${WORKDIR}"/debian/patches/debian-changes
 )
 S=${WORKDIR}/${P/_*}
@@ -71,6 +71,11 @@ src_configure() {
 		mycmakeargs+=( "-DHAVE_LIBWRAP=yes" )
 	else
 		mycmakeargs+=( "-DHAVE_LIBWRAP=no" )
+	fi
+	if tc-ld-is-gold; then
+		mycmakeargs+=( "-DUSE_GOLD=yes" )
+	else
+		mycmakeargs+=( "-DUSE_GOLD=no" )
 	fi
 
 	cmake-utils_src_configure
