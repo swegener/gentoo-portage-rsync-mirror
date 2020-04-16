@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools bash-completion-r1 git-r3
+inherit autotools bash-completion-r1
 
 DESCRIPTION="Screen capture utility using imlib2 library"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/scrot"
-EGIT_REPO_URI="https://github.com/resurrecting-open-source-projects/${PN}"
+SRC_URI="https://github.com/resurrecting-open-source-projects/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="feh LGPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="
 	>=media-libs/giblib-1.2.3
