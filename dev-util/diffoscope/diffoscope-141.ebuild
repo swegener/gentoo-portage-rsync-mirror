@@ -15,7 +15,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="acl binutils bzip2 libcaca colord cpio +diff docx dtc e2fsprogs file
-find gettext gif gpg gzip haskell hex imagemagick iso java llvm
+find gettext gif gpg gzip haskell hdf5 hex imagemagick iso java llvm
 mono opendocument pascal pdf postscript R rpm sqlite squashfs
 ssh tar tcpdump xz zip zstd"
 
@@ -40,6 +40,7 @@ RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 	gpg? ( app-crypt/gnupg )
 	gzip? ( app-arch/gzip )
 	haskell? ( dev-lang/ghc )
+	hdf5? ( sci-libs/hdf5 )
 	hex? ( app-editors/vim-core )
 	imagemagick? ( media-gfx/imagemagick )
 	iso? ( virtual/cdrtools )
@@ -65,3 +66,6 @@ RDEPEND="dev-python/python-magic[${PYTHON_USEDEP}]
 	zip? ( app-arch/unzip )
 	zstd? ( app-arch/zstd )
 "
+# Presence if filemagic's magic.py breaks imports
+# of dev-python/python-magic: https://bugs.gentoo.org/716482
+RDEPEND+=" !dev-python/filemagic"
