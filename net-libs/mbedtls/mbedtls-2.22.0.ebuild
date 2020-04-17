@@ -39,7 +39,6 @@ enable_mbedtls_option() {
 PATCHES=(
 	"${FILESDIR}"/${PN}-dont-overwrite-headers.patch
 	"${FILESDIR}"/${PN}-un-pebcak-705038-wrong-file.patch
-	"${FILESDIR}"/${PN}-2.19.1-zlib.patch #706112 #717540
 )
 
 src_prepare() {
