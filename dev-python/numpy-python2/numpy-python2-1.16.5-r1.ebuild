@@ -3,18 +3,20 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
 
 FORTRAN_NEEDED=lapack
 
 inherit distutils-r1 flag-o-matic fortran-2 multiprocessing toolchain-funcs
 
+MY_PN="numpy"
 DOC_PV="1.16.4"
+
 DESCRIPTION="Fast array and numerical python library"
 HOMEPAGE="https://www.numpy.org"
 SRC_URI="
-	mirror://pypi/${PN:0:1}/${PN}/${P}.zip
+	mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.zip
 	doc? (
 		https://numpy.org/doc/$(ver_cut 1-2 ${DOC_PV})/numpy-html.zip -> numpy-html-${DOC_PV}.zip
 		https://numpy.org/doc/$(ver_cut 1-2 ${DOC_PV})/numpy-ref.pdf -> numpy-ref-${DOC_PV}.pdf
@@ -22,25 +24,32 @@ SRC_URI="
 	)"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc lapack test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
+	!<dev-python/numpy-1.17
 	lapack? (
 		virtual/cblas
 		virtual/lapack
-	)"
+	)
+"
 DEPEND="${RDEPEND}"
-BDEPEND="app-arch/unzip
+
+BDEPEND="
+	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	lapack? ( virtual/pkgconfig )
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-	)"
+	)
+"
+
+S="${WORKDIR}/${MY_PN}-${PV}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.15.4-no-hardcode-blas.patch
+	"${FILESDIR}"/${MY_PN}-1.15.4-no-hardcode-blas.patch
 	"${FILESDIR}"/numpy-1.16.5-setup.py-install-skip-build-fails.patch
 )
 
@@ -142,7 +151,10 @@ sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
+	# https://github.com/numpy/numpy/issues/16005
+	local mydistutilsargs=( build_src )
 	distutils-r1_python_install ${NUMPY_FCONFIG}
+	python_optimize
 }
 
 python_install_all() {
@@ -150,8 +162,11 @@ python_install_all() {
 
 	if use doc; then
 		local HTML_DOCS=( "${WORKDIR}"/html/. )
-		DOCS+=( "${DISTDIR}"/${PN}-{user,ref}-${DOC_PV}.pdf )
+		DOCS+=( "${DISTDIR}"/${MY_PN}-{user,ref}-${DOC_PV}.pdf )
 	fi
 
 	distutils-r1_python_install_all
+
+	# Let latest version to provide f2py link
+	rm "${ED}"/usr/bin/f2py || die
 }
