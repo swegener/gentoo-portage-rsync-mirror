@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
-
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="Toolkit to convert between many translation formats"
@@ -14,24 +14,23 @@ SRC_URI="https://github.com/translate/translate/releases/download/${PV}/${P}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc +html +ical +ini +subtitles +yaml"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx )
+	doc? ( >=dev-python/sphinx-3.0.1 )
 "
 DEPEND="
-	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.11.0[${PYTHON_USEDEP}]
 "
 RDEPEND="${DEPEND}
 	!dev-python/pydiff
 	app-text/iso-codes
 	>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
-	>=dev-python/lxml-3.5[${PYTHON_USEDEP}]
-	>=dev-python/pycountry-18.5.26[${PYTHON_USEDEP}]
+	>=dev-python/lxml-4.3.1[${PYTHON_USEDEP}]
+	>=dev-python/pycountry-19.8.18[${PYTHON_USEDEP}]
 	>=dev-python/python-levenshtein-0.12.0[${PYTHON_USEDEP}]
 	sys-devel/gettext
 	html? ( dev-python/utidylib[${PYTHON_USEDEP}] )
@@ -73,4 +72,6 @@ python_install_all() {
 	if ! use subtitles; then
 		rm "${ED}"/usr/bin/{sub2po,po2sub} || die
 	fi
+
+	python_optimize
 }
