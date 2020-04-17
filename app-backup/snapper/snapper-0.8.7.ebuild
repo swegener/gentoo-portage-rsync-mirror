@@ -63,6 +63,7 @@ src_configure() {
 src_install() {
 	default
 	# Existing configuration file required to function
+	keepdir /etc/snapper/configs
 	newconfd data/sysconfig.snapper snapper
 	find "${D}" -name '*.la' -delete || die
 	newbashcomp "${FILESDIR}"/${PN}.bash ${PN}
