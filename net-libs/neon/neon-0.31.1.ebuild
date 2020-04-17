@@ -1,17 +1,17 @@
 # Copyright 2001-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 inherit autotools libtool multilib-minimal
 
 DESCRIPTION="HTTP and WebDAV client library"
 HOMEPAGE="https://notroj.github.io/neon/"
-SRC_URI="http://webdav.org/neon/${P}.tar.gz"
+SRC_URI="https://notroj.github.io/neon/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/27"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 ~s390 sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc expat gnutls kerberos libproxy libressl nls pkcs11 ssl static-libs zlib"
 RESTRICT="test"
 
@@ -109,5 +109,5 @@ multilib_src_install() {
 multilib_src_install_all() {
 	find "${D}" -name "*.la" -type f -delete || die
 
-	dodoc AUTHORS BUGS NEWS README THANKS TODO
+	dodoc AUTHORS BUGS NEWS README.md THANKS TODO
 }

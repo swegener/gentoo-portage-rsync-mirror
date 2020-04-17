@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-inherit bash-completion-r1 estack eutils toolchain-funcs python-single-r1 linux-info
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
+inherit bash-completion-r1 estack eutils toolchain-funcs python-r1 linux-info
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-pre/-git}"
@@ -75,15 +75,10 @@ S="${S_K}/tools/perf"
 
 CONFIG_CHECK="~PERF_EVENTS ~KALLSYMS"
 
-pkg_setup() {
-	linux-info_pkg_setup
-	use python && python-single-r1_pkg_setup
-}
-
 src_unpack() {
 	local paths=(
 		tools/arch tools/build tools/include tools/lib tools/perf tools/scripts
-		include lib "arch/*/lib"
+		scripts include lib "arch/*/lib"
 	)
 
 	# We expect the tar implementation to support the -j option (both
@@ -107,19 +102,6 @@ src_unpack() {
 		[[ ${a} == ${LINUX_PATCH} ]] && continue
 		unpack ${a}
 	done
-
-	# support clang8
-	echo $(clang-major-version)
-	if use clang; then
-		local old_CC=${CC}
-		CC=${CHOST}-clang
-		if [[ $(clang-major-version) -ge 8 ]]; then
-			pushd "${S_K}" >/dev/null || die
-			eapply "${FILESDIR}/perf-5.1.15-fix-clang8.patch"
-			popd || die
-		fi
-		CC=${old_CC}
-	fi
 }
 
 src_prepare() {
@@ -210,7 +192,14 @@ src_test() {
 }
 
 src_install() {
+	_install_python_ext() {
+		perf_make -f Makefile.perf install-python_ext DESTDIR="${D}"
+	}
+
 	perf_make -f Makefile.perf install DESTDIR="${D}"
+	if use python; then
+		python_foreach_impl _install_python_ext
+	fi
 
 	rm -rv "${ED}"/usr/share/doc/perf-tip || die
 
