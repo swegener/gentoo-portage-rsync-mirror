@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit java-pkg-2
 
@@ -36,7 +36,7 @@ src_install() {
 
 	rm -v bin/sbt.bat || die
 	sed -i -e 's#bin/sbt-launch.jar#lib/sbt-launch.jar#g;' \
-		bin/sbt-launch-lib.bash || die
+		bin/sbt || die
 
 	insinto "${dest}/lib"
 	doins bin/*
