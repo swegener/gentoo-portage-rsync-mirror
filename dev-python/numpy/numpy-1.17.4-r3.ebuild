@@ -1,22 +1,21 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 FORTRAN_NEEDED=lapack
 
 inherit distutils-r1 flag-o-matic fortran-2 multiprocessing toolchain-funcs
 
-MY_PN="numpy"
 DOC_PV="1.16.4"
-
 DESCRIPTION="Fast array and numerical python library"
 HOMEPAGE="https://www.numpy.org"
 SRC_URI="
-	mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.zip
+	mirror://pypi/${PN:0:1}/${PN}/${P}.zip
 	doc? (
 		https://numpy.org/doc/$(ver_cut 1-2 ${DOC_PV})/numpy-html.zip -> numpy-html-${DOC_PV}.zip
 		https://numpy.org/doc/$(ver_cut 1-2 ${DOC_PV})/numpy-ref.pdf -> numpy-ref-${DOC_PV}.pdf
@@ -29,28 +28,19 @@ IUSE="doc lapack test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	!<dev-python/numpy-1.17
 	lapack? (
-		virtual/cblas
-		virtual/lapack
-	)
-"
+		>=virtual/cblas-3.8
+		>=virtual/lapack-3.8
+	)"
 DEPEND="${RDEPEND}"
-
-BDEPEND="
-	app-arch/unzip
-	dev-python/setuptools[${PYTHON_USEDEP}]
+BDEPEND="app-arch/unzip
 	lapack? ( virtual/pkgconfig )
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-	)
-"
-
-S="${WORKDIR}/${MY_PN}-${PV}"
+	)"
 
 PATCHES=(
-	"${FILESDIR}"/${MY_PN}-1.15.4-no-hardcode-blas.patch
-	"${FILESDIR}"/numpy-1.16.5-setup.py-install-skip-build-fails.patch
+	"${FILESDIR}"/${PN}-1.17.4-no-hardcode-blasv2.patch
 )
 
 src_unpack() {
@@ -60,36 +50,18 @@ src_unpack() {
 	fi
 }
 
-pc_incdir() {
-	$(tc-getPKG_CONFIG) --cflags-only-I $@ | \
-		sed -e 's/^-I//' -e 's/[ ]*-I/:/g' -e 's/[ ]*$//' -e 's|^:||'
-}
-
-pc_libdir() {
-	$(tc-getPKG_CONFIG) --libs-only-L $@ | \
-		sed -e 's/^-L//' -e 's/[ ]*-L/:/g' -e 's/[ ]*$//' -e 's|^:||'
-}
-
-pc_libs() {
-	$(tc-getPKG_CONFIG) --libs-only-l $@ | \
-		sed -e 's/[ ]-l*\(pthread\|m\)\([ ]\|$\)//g' \
-		-e 's/^-l//' -e 's/[ ]*-l/,/g' -e 's/[ ]*$//' \
-		| tr ',' '\n' | sort -u | tr '\n' ',' | sed -e 's|,$||'
-}
-
 python_prepare_all() {
 	if use lapack; then
-		append-ldflags "$($(tc-getPKG_CONFIG) --libs-only-other cblas lapack)"
 		local incdir="${EPREFIX}"/usr/include
 		local libdir="${EPREFIX}"/usr/$(get_libdir)
 		cat >> site.cfg <<-EOF || die
 			[blas]
-			include_dirs = $(pc_incdir cblas):${incdir}
-			library_dirs = $(pc_libdir cblas blas):${libdir}
-			blas_libs = $(pc_libs cblas blas)
+			include_dirs = ${incdir}
+			library_dirs = ${libdir}
+			blas_libs = cblas,blas
 			[lapack]
-			library_dirs = $(pc_libdir lapack):${libdir}
-			lapack_libs = $(pc_libs lapack)
+			library_dirs = ${libdir}
+			lapack_libs = lapack
 		EOF
 	else
 		export {ATLAS,PTATLAS,BLAS,LAPACK,MKL}=None
@@ -151,6 +123,8 @@ sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
+	# https://github.com/numpy/numpy/issues/16005
+	local mydistutilsargs=( build_src )
 	distutils-r1_python_install ${NUMPY_FCONFIG}
 	python_optimize
 }
@@ -160,11 +134,8 @@ python_install_all() {
 
 	if use doc; then
 		local HTML_DOCS=( "${WORKDIR}"/html/. )
-		DOCS+=( "${DISTDIR}"/${MY_PN}-{user,ref}-${DOC_PV}.pdf )
+		DOCS+=( "${DISTDIR}"/${PN}-{user,ref}-${DOC_PV}.pdf )
 	fi
 
 	distutils-r1_python_install_all
-
-	# Let latest version to provide f2py link
-	rm "${ED}"/usr/bin/f2py || die
 }
