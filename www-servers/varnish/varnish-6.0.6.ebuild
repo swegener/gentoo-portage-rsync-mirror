@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit user autotools systemd python-r1
 
@@ -12,8 +12,8 @@ HOMEPAGE="https://varnish-cache.org/"
 SRC_URI="http://varnish-cache.org/_downloads/${P}.tgz"
 
 LICENSE="BSD-2 GPL-2"
-SLOT="0"
-KEYWORDS="amd64 ~mips ~ppc ~ppc64 x86"
+SLOT="0/1"
+KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
 IUSE="jemalloc jit static-libs"
 
 CDEPEND="
@@ -84,7 +84,8 @@ src_install() {
 
 	diropts -m750
 
-	dodir /var/log/varnish/
+	keepdir /var/lib/varnish
+	keepdir /var/log/varnish
 
 	systemd_dounit "${FILESDIR}/${PN}d.service"
 
