@@ -14,8 +14,7 @@ HOMEPAGE="https://virtualsquare.org"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
-IUSE="pcap python selinux ssl libressl static-libs"
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+IUSE="pcap selinux ssl libressl static-libs"
 
 COMMON_DEPS="pcap? ( net-libs/libpcap )
 	ssl? (
@@ -31,7 +30,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-format-security.patch"
-	"${FILESDIR}/${P}-fix-inline-funcs.patch"
+	"${FILESDIR}/${P}-fix-inline-funcs-r1.patch"
 )
 
 src_prepare() {
