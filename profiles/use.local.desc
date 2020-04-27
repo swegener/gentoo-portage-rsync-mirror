@@ -2889,7 +2889,6 @@ dev-util/electron:system-libvpx - Use system libvpx instead of the bundled one
 dev-util/electron:system-ssl - Use system OpenSSL instead of the bundled one
 dev-util/electron:tcmalloc - Use bundled tcmalloc instead of system malloc
 dev-util/emilpro:system-binutils - Use the gentoo binutils instead of building against an unpatched vanilla version
-dev-util/fatrace:powertop - Add powetop integration
 dev-util/geany:gtk3 - Use GTK+3 instead of GTK+2
 dev-util/geany:vte - Enable Terminal support (x11-libs/vte)
 dev-util/geany-plugins:ctags - Enable ctags plugin
@@ -2984,7 +2983,6 @@ dev-util/trace-cmd:udis86 - Enable support for dev-libs/udis86 disassembler libr
 dev-util/uftrace:capstone - Use capstone to provide dynamic tracing without recompilation
 dev-util/vulkan-tools:cube - Build the cube/cubepp demos
 dev-util/vulkan-tools:vulkaninfo - Build the vulkaninfo utility
-dev-vcs/bzr:sftp - Enable sftp support
 dev-vcs/cssc:valgrind - Enable usage of dev-util/valgrind in tests
 dev-vcs/cvs:server - Enable server support
 dev-vcs/cvs2svn:bazaar - Support for dev-vcs/bzr
@@ -8713,9 +8711,6 @@ www-client/uget:openssl - Use dev-libs/openssl instead of net-libs/gnutls
 www-client/uget:rss - Enable uGet feed messages
 www-client/w3m:gdk-pixbuf - Enable support for x11-libs/gdk-pixbuf
 www-client/w3m:lynxkeymap - If you prefer Lynx-like key binding
-www-client/weboob:deprecated - Enable dev-python/mechanize support (deprecated in favor of dev-python/requests
-www-client/weboob:fast-libs - Enable fast libs
-www-client/weboob:secure-updates - Enable secure updates
 www-misc/litmus:libproxy - Support for automatic proxy configuratino management through net-libs/libproxy.
 www-misc/litmus:libxml2 - Use dev-libs/libxml2 to parse XML
 www-misc/litmus:pkcs11 - Support for PKCS #11 through PaKChoiS (dev-libs/pakchois).
