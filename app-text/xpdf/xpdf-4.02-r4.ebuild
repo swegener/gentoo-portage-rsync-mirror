@@ -32,7 +32,7 @@ BDEPEND="
 "
 DEPEND="
 	cups? (
-		dev-qt/qtprintsupport:5
+		dev-qt/qtprintsupport:5[cups]
 		net-print/cups
 	)
 	fontconfig? ( media-libs/fontconfig )
