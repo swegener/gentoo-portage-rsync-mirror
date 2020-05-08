@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-05-08)
+# Client-side library for an X extension that has not been supported by Xorg
+# for about a decade. Masked for removal in 30 days. Bug #720150
+x11-libs/libXxf86misc
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-03)
 # Last release in 2015, not compatible with >=media-gfx/gimp-2.10.0
 # Masked for removal in 30 days.
@@ -48,11 +53,6 @@ x11-drivers/xf86-input-mouse
 # Included in recent texlive versions. Please uninstall.
 # Removal in 30 days.
 dev-tex/revtex
-
-# David Seifert <soap@gentoo.org> (2020-05-02)
-# New boost, mask for potential breakage.
->=dev-util/boost-build-1.73
->=dev-libs/boost-1.73
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-05-01)
 # Currently packaged release from 2015, needs maintainer + bump. Bug #720346
@@ -694,13 +694,6 @@ app-vim/vimpress
 # Lars Wendler <polynomial-c@gentoo.org> (2020-04-02)
 # Introduced new privsep (chroot) feature. Masked for testing.
 >=net-misc/dhcpcd-9.0.0
-
-# Michael Orlitzky <mjo@gentoo.org> (2020-04-01)
-# Upstream has no idea what they're doing, and every new version
-# introduces more security issues. Freshclam itself can now fetch
-# most third-party signatures, or app-antivirus/fangfrisch serves
-# as a replacement with a sane upstream.
-app-antivirus/clamav-unofficial-sigs
 
 # Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2020-03-29)
 # Old releases gone from upstream, new releases use overly restrictive
