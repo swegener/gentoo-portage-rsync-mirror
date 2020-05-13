@@ -7,34 +7,24 @@ JAVA_PKG_IUSE="doc source test"
 
 inherit eutils java-pkg-2 java-ant-2 prefix user
 
-MY_P="apache-${PN}-${PV}-src"
+MY_P="apache-${P}-src"
 
-# Currently we bundle binary versions of bnd.jar and bndlib.jar
-# See bugs #203080 and #676116
-BND_VERSION="4.1.0"
-BND="biz.aQute.bnd-${BND_VERSION}.jar"
-BNDLIB="biz.aQute.bndlib-${BND_VERSION}.jar"
-
-DESCRIPTION="Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container"
+DESCRIPTION="Tomcat Servlet-3.1/JSP-2.3/EL-3.0/WebSocket-1.1/JASPIC-1.1 Container"
 HOMEPAGE="https://tomcat.apache.org/"
-SRC_URI="mirror://apache/${PN}/tomcat-9/v${PV}/src/${MY_P}.tar.gz
-	https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bnd/${BND_VERSION}/${BND}
-	https://repo.maven.apache.org/maven2/biz/aQute/bnd/biz.aQute.bndlib/${BND_VERSION}/${BNDLIB}"
+SRC_URI="mirror://apache/${PN}/tomcat-8/v${PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="9"
+SLOT="8.5"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
 
-ECJ_SLOT="4.13"
-SAPI_SLOT="4.0"
+ECJ_SLOT="4.5"
+SAPI_SLOT="3.1"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
-	dev-java/glassfish-xmlrpc-api:0
-	~dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}
-	dev-java/wsdl4j:0"
+	~dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}"
 RDEPEND="${COMMON_DEP}
 	virtual/jre"
 DEPEND="${COMMON_DEP}
@@ -47,19 +37,6 @@ DEPEND="${COMMON_DEP}
 	)"
 
 S=${WORKDIR}/${MY_P}
-
-BND_HOME="${S}/tomcat-build-libs/bnd"
-BNDLIB_HOME="${S}/tomcat-build-libs/bndlib"
-BND_JAR="${BND_HOME}/${BND}"
-BNDLIB_JAR="${BNDLIB_HOME}/${BND_LIB}"
-
-src_unpack() {
-	unpack ${MY_P}.tar.gz
-
-	mkdir -p "${BND_HOME}" "${BNDLIB_HOME}" || die "Failed to create dir"
-	ln -s "${DISTDIR}/${BND}" "${BND_HOME}/" || die "Failed to symlink bnd-*.jar"
-	ln -s "${DISTDIR}/${BND}" "${BNDLIB_HOME}/" || die "Failed to symlink bndlib-*.jar"
-}
 
 pkg_setup() {
 	java-pkg-2_pkg_setup
@@ -75,7 +52,7 @@ src_prepare() {
 	# Remove bundled servlet-api
 	rm -rv java/javax/{el,servlet} || die
 
-	eapply "${FILESDIR}/${PN}-9.0.27-build.xml.patch"
+	eapply "${FILESDIR}/${PN}-8.5.47-build.xml.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
@@ -88,11 +65,11 @@ src_prepare() {
 JAVA_ANT_REWRITE_CLASSPATH="true"
 
 EANT_BUILD_TARGET="deploy"
-EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},tomcat-servlet-api-${SAPI_SLOT},glassfish-xmlrpc-api,wsdl4j"
+EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},tomcat-servlet-api-${SAPI_SLOT}"
 EANT_TEST_GENTOO_CLASSPATH="easymock-3.2"
 EANT_GENTOO_CLASSPATH_EXTRA="${S}/output/classes"
 EANT_NEEDS_TOOLS="true"
-EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false -Dbnd.jar=${BND_JAR} -Dbndlib.jar=${BNDLIB_JAR}"
+EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false -Dexecute.validate=false"
 
 # revisions of the scripts
 IM_REV="-r2"
