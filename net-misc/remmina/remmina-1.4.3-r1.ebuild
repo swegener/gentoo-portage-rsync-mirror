@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,8 +13,8 @@ SRC_URI="https://gitlab.com/Remmina/Remmina/-/archive/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+-with-openssl-exception"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="ayatana crypt examples gnome-keyring kwallet libressl nls spice ssh rdp telepathy vnc webkit zeroconf"
+KEYWORDS="~amd64 ~x86"
+IUSE="appindicator crypt cups examples gnome-keyring kwallet libressl nls spice ssh rdp telepathy vnc webkit zeroconf"
 
 CDEPEND="
 	dev-libs/glib:2
@@ -25,9 +25,11 @@ CDEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	x11-libs/libxkbfile
-	ayatana? ( dev-libs/libappindicator:3 )
+	appindicator? ( dev-libs/libappindicator:3 )
 	crypt? ( dev-libs/libgcrypt:0= )
-	rdp? ( >=net-misc/freerdp-2.0.0_rc4 )
+	rdp? ( >=net-misc/freerdp-2.0.0_rc4_p1129
+		<net-misc/freerdp-3
+		cups? ( net-print/cups:= ) )
 	gnome-keyring? ( app-crypt/libsecret )
 	kwallet? ( kde-frameworks/kwallet )
 	!libressl? ( dev-libs/openssl:0= )
@@ -53,9 +55,14 @@ DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
 
 S="${WORKDIR}/${MY_P}"
 
+src_prepare() {
+	sed -i -e '/^OnlyShowIn=Unity;$/d' data/desktop/org.remmina.Remmina.desktop.in || die
+	default
+}
+
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_APPINDICATOR=$(usex ayatana)
+		-DWITH_APPINDICATOR=$(usex appindicator)
 		-DWITH_GCRYPT=$(usex crypt)
 		-DWITH_EXAMPLES=$(usex examples)
 		-DWITH_LIBSECRET=$(usex gnome-keyring)
@@ -63,6 +70,7 @@ src_configure() {
 		-DWITH_GETTEXT=$(usex nls)
 		-DWITH_TRANSLATIONS=$(usex nls)
 		-DWITH_FREERDP=$(usex rdp)
+		-DWITH_CUPS=$(usex cups)
 		-DWITH_SPICE=$(usex spice)
 		-DWITH_LIBSSH=$(usex ssh)
 		-DWITH_VTE=$(usex ssh)
