@@ -13,10 +13,9 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
-# Test deps need keywords. See #723554 and #723912.
-RESTRICT="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/namespace-google[${PYTHON_USEDEP}]
@@ -28,10 +27,16 @@ RDEPEND="
 	"
 DEPEND="${RDEPEND}
 	test? (
+		dev-python/cryptography[${PYTHON_USEDEP}]
 		dev-python/flask[${PYTHON_USEDEP}]
+		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/moto[${PYTHON_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-localserver[${PYTHON_USEDEP}]
+		dev-python/oauth2client[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest
