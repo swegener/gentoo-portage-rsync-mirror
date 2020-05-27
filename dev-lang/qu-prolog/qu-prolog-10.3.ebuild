@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit eutils multilib qmake-utils
 
@@ -13,7 +13,7 @@ SRC_URI="http://www.itee.uq.edu.au/~pjr/HomePages/QPFiles/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="debug doc examples pedro qt5 readline threads"
 
 RDEPEND="
@@ -92,9 +92,8 @@ src_install() {
 	fi
 
 	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/*.ql
 		docinto examples
 		newdoc examples/README README.examples
+		dodoc examples/*.ql
 	fi
 }
