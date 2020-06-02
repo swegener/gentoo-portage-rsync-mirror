@@ -3397,15 +3397,15 @@
       <name>Chris Reffett</name>
       <role>GLSA Coordinator</role>
     </member>
-    <member is-lead="1">
+    <member>
       <email>k_f@gentoo.org</email>
       <name>Kristian Fiskerstrand</name>
-      <role>Co-Lead</role>
+      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>whissi@gentoo.org</email>
       <name>Thomas Deutschmann</name>
-      <role>Co-Lead</role>
+      <role>Lead</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
