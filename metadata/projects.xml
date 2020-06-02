@@ -1415,6 +1415,11 @@
       <name>Matt Turner</name>
     </member>
     <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Python keywordreqs (on hake)</role>
+    </member>
+    <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
       <role>Member</role>
@@ -1549,6 +1554,11 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Python keywordreqs (on guppy)</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -2576,6 +2586,11 @@
       <name>Matt Turner</name>
     </member>
     <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Python keywordreqs (on bogsucker/timberdoodle)</role>
+    </member>
+    <member>
       <email>slyfox@gentoo.org</email>
       <name>Sergei Trofimovich</name>
       <role>ppc/ppc64 keywording/stabilization</role>
@@ -3232,6 +3247,11 @@
     <member>
       <email>mattst88@gentoo.org</email>
       <name>Matt Turner</name>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Python keywordreqs (on catbus)</role>
     </member>
     <member>
       <email>slyfox@gentoo.org</email>
@@ -3951,6 +3971,11 @@
       <email>ago@gentoo.org</email>
       <name>Agostino Sarubbo</name>
       <role>Developer (Security bugs primarily)</role>
+    </member>
+    <member>
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Python keywordreqs</role>
     </member>
     <member>
       <email>nativemad@gentoo.org</email>
