@@ -34,13 +34,19 @@ BDEPEND="
 	test? (
 		dev-python/pebble[${PYTHON_USEDEP}]
 		dev-python/ipykernel[${PYTHON_USEDEP}]
+		dev-python/ipywidgets[${PYTHON_USEDEP}]
 		>=dev-python/jupyter_client-4.2[${PYTHON_USEDEP}]
+		media-gfx/inkscape
 	)
 "
 
 distutils_enable_sphinx docs \
 	dev-python/{ipython,jupyter_client,nbsphinx,sphinx_rtd_theme}
 distutils_enable_tests pytest
+
+PATCHES=(
+	"${FILESDIR}"/${P}-inkscape-1.patch
+)
 
 python_test() {
 	distutils_install_for_testing bdist_egg
