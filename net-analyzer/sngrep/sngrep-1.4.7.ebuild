@@ -11,7 +11,7 @@ SRC_URI="https://github.com/irontec/sngrep/releases/download/v${PV}/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="eep gnutls ipv6 logo openssl pcre unicode"
+IUSE="eep gnutls ipv6 openssl pcre unicode"
 REQUIRED_USE="
 	gnutls? ( !openssl )
 "
@@ -23,7 +23,6 @@ DEPEND="
 	gnutls? ( net-libs/gnutls )
 "
 RDEPEND="${DEPEND}"
-RESTRICT="test"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.7-tinfo.patch
 	"${FILESDIR}"/${PN}-1.4.7-LDFLAGS.patch
@@ -38,7 +37,6 @@ src_configure() {
 	econf \
 		$(use_enable eep) \
 		$(use_enable ipv6) \
-		$(use_enable logo) \
 		$(use_enable unicode) \
 		$(use_with gnutls) \
 		$(use_with openssl) \
