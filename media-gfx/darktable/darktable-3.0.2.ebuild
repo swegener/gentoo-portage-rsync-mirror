@@ -20,8 +20,8 @@ KEYWORDS="~amd64 ~x86"
 LANGS=" ca cs da de es fr he hu it ja nb nl pl ru sl"
 # TODO add lua once dev-lang/lua-5.2 is unmasked
 IUSE="colord cups cpu_flags_x86_sse3 doc flickr geolocation gnome-keyring gphoto2 graphicsmagick jpeg2k kwallet
-nls opencl openmp openexr pax_kernel webp
-${LANGS// / l10n_}"
+	nls opencl openmp openexr pax_kernel tools webp
+	${LANGS// / l10n_}"
 
 BDEPEND="
 	dev-util/intltool
@@ -63,7 +63,6 @@ DEPEND="${COMMON_DEPEND}
 		>=sys-devel/clang-4
 		>=sys-devel/llvm-4
 	)
-	openmp? ( >=sys-devel/gcc-6[openmp,graphite] )
 "
 RDEPEND="${COMMON_DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )
@@ -72,11 +71,18 @@ RDEPEND="${COMMON_DEPEND}
 PATCHES=(
 	"${FILESDIR}"/"${PN}"-find-opencl-header.patch
 	"${FILESDIR}"/${PN}-3.0.2_cmake-opencl-kernel-loop.patch
+	"${FILESDIR}"/${PN}-3.0.2_jsonschema-automagic.patch
 )
 
 S="${WORKDIR}/${P/_/~}"
 
 pkg_pretend() {
+	# Bug #695658
+	if tc-is-gcc; then
+		test-flags-CC -floop-block &> /dev/null || \
+			die "Please switch to a gcc version built with USE=graphite"
+	fi
+
 	if use openmp ; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
 	fi
@@ -92,6 +98,8 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_CURVE_TOOLS=$(usex tools)
+		-DBUILD_NOISE_TOOLS=$(usex tools)
 		-DBUILD_PRINT=$(usex cups)
 		-DCUSTOM_CFLAGS=ON
 		-DUSE_CAMERA_SUPPORT=$(usex gphoto2)
@@ -138,9 +146,11 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 
-	elog "when updating a major version,"
+	elog
+	elog "When updating a major version,"
 	elog "please bear in mind that your edits will be preserved during this process,"
 	elog "but it will not be possible to downgrade any more."
-	echo
+	elog
 	ewarn "It will not be possible to downgrade!"
+	ewarn
 }
