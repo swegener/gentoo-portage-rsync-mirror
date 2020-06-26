@@ -8,7 +8,7 @@ if [[ ${PV} == 99999999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/${PN}.git"
 else
-	GIT_COMMIT="1eb2408c6feacccd10b02a49214745f15d1c6fb7"
+	GIT_COMMIT="20200619"
 	SRC_URI="https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ppc ppc64 s390 sparc x86"
 fi
@@ -84,7 +84,9 @@ src_unpack() {
 	else
 		default
 		# rename directory from git snapshot tarball
-		mv ${PN}-*/ ${P} || die
+		if [[ ${#GIT_COMMIT} -gt 8 ]]; then
+			mv ${PN}-*/ ${P} || die
+		fi
 	fi
 }
 
