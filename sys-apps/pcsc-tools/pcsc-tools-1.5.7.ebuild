@@ -6,12 +6,12 @@ EAPI=7
 inherit desktop toolchain-funcs xdg-utils
 
 DESCRIPTION="PC/SC Architecture smartcard tools"
-HOMEPAGE="http://ludovic.rousseau.free.fr/softwares/pcsc-tools/"
+HOMEPAGE="http://ludovic.rousseau.free.fr/softwares/pcsc-tools/ https://github.com/LudovicRousseau/pcsc-tools"
 SRC_URI="http://ludovic.rousseau.free.fr/softwares/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~hppa ppc ppc64 x86"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
 IUSE="gtk network-cron"
 
 DEPEND=">=sys-apps/pcsc-lite-1.4.14"
