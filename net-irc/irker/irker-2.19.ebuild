@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="ssl"
 
 inherit eutils python-single-r1 systemd
@@ -46,7 +46,7 @@ src_prepare() {
 src_install() {
 	default
 
-	python_doscript "${ED%/}/usr/bin/irkerd"
+	python_doscript "${ED}/usr/bin/irkerd"
 	# Not installed with the default Makefile
 	python_doscript irk irkerhook.py
 
