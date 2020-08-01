@@ -32,10 +32,31 @@
 
 #--- END OF EXAMPLES ---
 
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Dead upstream
+# Removal in 30 days
+dev-python/pyid3lib
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Dead upstream
+# Removal in 30 days
+dev-python/pupynere
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Dead upstream
+# Removal in 30 days
+dev-python/id3-py
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-01)
+# Py2 only. Dead upstream.
+# Removal in 30 days. Bug #706238
+dev-python/flup
+
 # Michał Górny <mgorny@gentoo.org> (2020-08-01)
 # Python 2 backport, not used by anything anymore.
 # Removal in 30 days.
 dev-python/backports-abc
+dev-python/backports-lzma
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-01)
 # Py2 only. Use dev-python/lxml instead.
