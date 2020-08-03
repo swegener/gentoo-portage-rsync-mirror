@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
+# Py2 only. m-n. Bug #735340
+# Removal in 30 days
+dev-vcs/rapidsvn
+
+# Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Py2 only. m-n. Bug #735364
 # Removal in 30 days
 media-gfx/cptutils
@@ -62,7 +67,7 @@ sys-fs/owfs
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
 # Py2 only. m-n. Bug #735524
-5# Removal in 30 days
+# Removal in 30 days
 www-misc/nx_util
 
 # Aaron Bauman <bman@gentoo.org> (2020-08-02)
