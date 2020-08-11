@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_7 )
 
 MY_PN="errbot"
 MY_P="${MY_PN}-${PV}"
@@ -11,10 +11,10 @@ MY_P="${MY_PN}-${PV}"
 inherit distutils-r1 user
 
 DESCRIPTION="Multiprotocol chatbot designed to be easily deployable and maintainable"
-HOMEPAGE="http://errbot.io/"
+HOMEPAGE="https://errbot.readthedocs.io/en/latest/"
 SRC_URI="mirror://pypi/${PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="irc +xmpp"
@@ -27,8 +27,10 @@ RDEPEND="
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/daemonize[${PYTHON_USEDEP}]
 	dev-python/dnspython[${PYTHON_USEDEP}]
+	>=dev-python/dulwich-0.19.16[${PYTHON_USEDEP}]
+	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/jinja[${PYTHON_USEDEP}]
-	dev-python/markdown[${PYTHON_USEDEP}]
+	<dev-python/markdown-3.0[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
@@ -40,9 +42,11 @@ RDEPEND="
 	xmpp? (
 		dev-python/pyasn1[${PYTHON_USEDEP}]
 		dev-python/pyasn1-modules[${PYTHON_USEDEP}]
-		dev-python/sleekxmpp[${PYTHON_USEDEP}]
+		dev-python/slixmpp[${PYTHON_USEDEP}]
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}-slixmpp.patch" )
 
 S="${WORKDIR}/${MY_P}"
 
