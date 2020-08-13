@@ -5,24 +5,17 @@ EAPI=7
 
 inherit kernel-build
 
-MY_P=linux-${PV%.*}
-GENPATCHES_P=genpatches-${PV%.*}-${PV##*.}
+MY_P=linux-${PV}
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.4.21
 CONFIG_HASH=2809b7faa6a8cb232cd825096c146b7bdc1e08ea
 
-DESCRIPTION="Linux kernel built with Gentoo patches"
+DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
-	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
-	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	amd64? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-x86_64.config
 			-> kernel-x86_64.config.${CONFIG_VER}
-	)
-	arm64? (
-		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-aarch64.config
-			-> kernel-aarch64.config.${CONFIG_VER}
 	)
 	x86? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-i686.config
@@ -31,11 +24,10 @@ SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.x
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="
-	!sys-kernel/vanilla-kernel:${SLOT}
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 BDEPEND="
 	debug? ( dev-util/dwarves )"
@@ -48,19 +40,12 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	local PATCHES=(
-		# meh, genpatches have no directory
-		"${WORKDIR}"/*.patch
-	)
 	default
 
 	# prepare the default config
 	case ${ARCH} in
 		amd64)
 			cp "${DISTDIR}/kernel-x86_64.config.${CONFIG_VER}" .config || die
-			;;
-		arm64)
-			cp "${DISTDIR}/kernel-aarch64.config.${CONFIG_VER}" .config || die
 			;;
 		x86)
 			cp "${DISTDIR}/kernel-i686.config.${CONFIG_VER}" .config || die

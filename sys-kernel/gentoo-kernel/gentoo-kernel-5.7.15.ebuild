@@ -14,8 +14,8 @@ CONFIG_HASH=14d239184a721485a823f30f5aede1c6190558ad
 DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
-	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
-	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
+	https://dev.gentoo.org/~alicef/dist/genpatches/${GENPATCHES_P}.base.tar.xz
+	https://dev.gentoo.org/~alicef/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	amd64? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-x86_64-fedora.config
 			-> kernel-x86_64-fedora.config.${CONFIG_VER}
@@ -34,7 +34,8 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="debug"
 REQUIRED_USE="
-	arm? ( savedconfig )"
+	arm? ( savedconfig )
+	arm64? ( savedconfig )"
 
 RDEPEND="
 	!sys-kernel/vanilla-kernel:${SLOT}
