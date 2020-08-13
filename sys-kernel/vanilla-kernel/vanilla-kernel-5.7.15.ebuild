@@ -5,24 +5,17 @@ EAPI=7
 
 inherit kernel-build
 
-MY_P=linux-${PV%.*}
-GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} + 1 ))
+MY_P=linux-${PV}
 # https://koji.fedoraproject.org/koji/packageinfo?packageID=8
 CONFIG_VER=5.7.8
 CONFIG_HASH=14d239184a721485a823f30f5aede1c6190558ad
 
-DESCRIPTION="Linux kernel built with Gentoo patches"
+DESCRIPTION="Linux kernel built from vanilla upstream sources"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
-	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
-	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	amd64? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-x86_64-fedora.config
 			-> kernel-x86_64-fedora.config.${CONFIG_VER}
-	)
-	arm64? (
-		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-aarch64-fedora.config
-			-> kernel-aarch64.config.${CONFIG_VER}
 	)
 	x86? (
 		https://src.fedoraproject.org/rpms/kernel/raw/${CONFIG_HASH}/f/kernel-i686-fedora.config
@@ -34,10 +27,10 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="debug"
 REQUIRED_USE="
-	arm? ( savedconfig )"
+	arm? ( savedconfig )
+	arm64? ( savedconfig )"
 
 RDEPEND="
-	!sys-kernel/vanilla-kernel:${SLOT}
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 BDEPEND="
 	debug? ( dev-util/dwarves )"
@@ -50,10 +43,6 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	local PATCHES=(
-		# meh, genpatches have no directory
-		"${WORKDIR}"/*.patch
-	)
 	default
 
 	# prepare the default config
@@ -61,14 +50,11 @@ src_prepare() {
 		amd64)
 			cp "${DISTDIR}/kernel-x86_64-fedora.config.${CONFIG_VER}" .config || die
 			;;
-		arm)
-			return
-			;;
-		arm64)
-			cp "${DISTDIR}/kernel-aarch64.config.${CONFIG_VER}" .config || die
-			;;
 		x86)
 			cp "${DISTDIR}/kernel-i686-fedora.config.${CONFIG_VER}" .config || die
+			;;
+		arm|arm64)
+			return
 			;;
 		*)
 			die "Unsupported arch ${ARCH}"
