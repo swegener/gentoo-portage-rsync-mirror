@@ -31,7 +31,7 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
 IUSE="ios +udisks"
 
@@ -163,14 +163,15 @@ src_install() {
 
 	# Bypass kbuildsycoca and update-mime-database in order to
 	# avoid sandbox violations if xdg-mime tries to call them.
-	cat - > "${T}/kbuildsycoca" <<-EOF
+	mkdir "${T}/bin" || die
+	cat - > "${T}/bin/kbuildsycoca" <<-EOF
 	#!${BASH}
 	echo $0 : $@
 	exit 0
 	EOF
 
-	cp "${T}"/{kbuildsycoca,update-mime-database} || die
-	chmod +x "${T}"/{kbuildsycoca,update-mime-database} || die
+	cp "${T}"/bin/{kbuildsycoca,update-mime-database} || die
+	chmod +x "${T}"/bin/{kbuildsycoca,update-mime-database} || die
 
 	export QMAKE="${EPREFIX}/usr/$(get_libdir)/qt5/bin/qmake"
 
@@ -203,7 +204,7 @@ src_install() {
 
 	addpredict /dev/dri #665310
 
-	PATH=${T}:${PATH} PYTHONPATH=${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
+	PATH=${T}/bin:${PATH} PYTHONPATH=${S}/src${PYTHONPATH:+:}${PYTHONPATH} \
 	"${PYTHON}" setup.py install \
 		--root="${D}" \
 		--prefix="${EPREFIX}/usr" \
