@@ -3,24 +3,26 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 DISTUTILS_SINGLE_IMPL=1
 DISABLE_AUTOFORMATTING=true
+inherit distutils-r1 readme.gentoo-r1 xdg
+
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/metabrainz/picard"
 	inherit git-r3
 else
 	SRC_URI="https://musicbrainz.osuosl.org/pub/musicbrainz/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
+	S="${WORKDIR}/${PN}-release-${PV}"
 fi
-inherit distutils-r1 readme.gentoo-r1 xdg
 
-DESCRIPTION="A cross-platform music tagger"
+DESCRIPTION="Cross-platform music tagger"
 HOMEPAGE="https://picard.musicbrainz.org"
 
 LICENSE="GPL-2+"
 SLOT="0"
-IUSE="nls"
+IUSE="discid nls"
 
 BDEPEND="
 	nls? ( dev-qt/linguist-tools:5 )
@@ -29,8 +31,10 @@ RDEPEND="
 	$(python_gen_cond_dep '
 		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_MULTI_USEDEP}]
 	')
-	dev-qt/qtgui:5[accessibility]
-	>=media-libs/mutagen-1.38"
+	dev-qt/qtgui:5
+	media-libs/mutagen
+	discid? ( dev-python/python-discid )
+"
 
 RESTRICT="test" # doesn't work with ebuilds
 
