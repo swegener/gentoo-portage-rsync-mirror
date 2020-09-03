@@ -78,10 +78,12 @@ dev-libs/libnl python
 dev-libs/libusb doc
 dev-libs/libxslt python
 dev-libs/libyaml doc
+dev-python/argcomplete test
 dev-python/cython doc test
 dev-python/jinja doc test
 dev-python/lxml test
 dev-python/markupsafe test
+dev-python/numpy lapack
 dev-python/pygments doc test
 dev-python/setuptools test
 dev-python/snakeoil test
