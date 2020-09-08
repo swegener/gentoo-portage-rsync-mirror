@@ -16,7 +16,9 @@ inherit eutils linux-info toolchain-funcs multilib python-r1 \
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
 	EGIT_SUBMODULES=(
-		tests/fp/berkeley-{test,soft}float-3
+		meson
+		tests/fp/berkeley-softfloat-3
+		tests/fp/berkeley-testfloat-3
 		ui/keycodemapdb
 	)
 	inherit git-r3
@@ -224,6 +226,7 @@ RDEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
 	"${FILESDIR}"/${PN}-9999-cflags.patch
+	"${FILESDIR}"/${PN}-9999-format-error.patch
 )
 
 QA_PREBUILT="
