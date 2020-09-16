@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sam James <sam@gentoo.org> (2020-09-16)
+# Stuck on EAPI 4, only source is mirror://gentoo,
+# unmaintained, HOMEPAGE gone.
+app-admin/recursos
+
 # David Seifert <soap@gentoo.org> (2020-09-16)
 # EAPI 4, last release in 2001, the Fortran source code
 # is terrible and has buffer overflows.
@@ -89,12 +94,6 @@ dev-python/args
 # Dead upstream, EAPI 4, no maintainer
 # Removal in 30 days
 net-dialup/tkvoice
-
-# Sam James <sam@gentoo.org> (2020-09-13)
-# Dead upstream, EAPI 4, no maintainer
-# Removal in 30 days
-# bug #740954
-dev-lang/cll1h
 
 # Sam James <sam@gentoo.org> (2020-09-12)
 # Merged into app-text/texlive-core
