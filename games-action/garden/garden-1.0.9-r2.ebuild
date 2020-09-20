@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils autotools flag-o-matic
+inherit autotools desktop flag-o-matic xdg-utils
 
 DESCRIPTION="Multiplatform vertical shoot-em-up with non-traditional elements"
 HOMEPAGE="http://garden.sourceforge.net/"
@@ -12,7 +12,6 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 DEPEND="<media-libs/allegro-5"
 RDEPEND="${DEPEND}"
@@ -20,6 +19,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}/${P}-dash.patch"
 	"${FILESDIR}/${P}-resources.patch"
+	"${FILESDIR}/${P}-fnocommon.patch"
 )
 
 src_prepare() {
@@ -40,9 +40,9 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
