@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{6,7,8,9} )
 PYTHON_REQ_USE='threads(+)'
 inherit python-any-r1 waf-utils multilib-build multilib-minimal
 
-DESCRIPTION="Library for RDF syntax which supports reading and writing Turtle and NTriples"
-HOMEPAGE="http://drobilla.net/software/serd/"
+DESCRIPTION="Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax"
+HOMEPAGE="http://drobilla.net/software/sratom/"
 SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"
@@ -17,12 +17,17 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc static-libs test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=""
+RDEPEND="
+	dev-libs/serd
+	dev-libs/sord
+	media-libs/lv2
+"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	doc? ( app-doc/doxygen )"
+	doc? ( app-doc/doxygen )
+	virtual/pkgconfig"
 
-DOCS=( "AUTHORS" "NEWS" "README.md" )
+DOCS=( "NEWS" "README.md" )
 
 src_prepare() {
 	sed -i -e 's/^.*run_ldconfig/#\0/' wscript || die
