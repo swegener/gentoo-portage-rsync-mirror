@@ -3586,6 +3586,7 @@ kde-apps/okular:markdown - Enable Markdown support via app-text/discount
 kde-apps/okular:mobi - Enable mobipocket support
 kde-apps/okular:mobile - Enable Plasma mobile support
 kde-apps/okular:plucker - Enable Plucker E-Book for Palm OS devices support
+kde-apps/okular:qml - Install Okular Qml components
 kde-apps/okular:share - Enable support for a share menu using kde-frameworks/purpose
 kde-apps/okular:speech - Enable text-to-speech support
 kde-apps/pimcommon:designer - Build plugins for dev-qt/designer
@@ -5831,6 +5832,8 @@ net-im/spectrum2:twitter - Enables the Twitter backend.
 net-im/spectrum2:whatsapp - Enables the WhatsApp backend, based on net-im/transwhat.
 net-im/swift:client - Build the full graphical XMPP client.
 net-im/swift:gconf - Enable configuration through gnome-base/gconf.
+net-im/teams:system-ffmpeg - Use the system-wide media-video/ffmpeg instead of bundled.
+net-im/teams:system-mesa - Use the system-wide media-libs/mesa instead of bundled.
 net-im/telegram-desktop:enchant - Enable the app-text/aspell spell-checking backend
 net-im/telegram-desktop:hunspell - Enable the app-text/hunspell spell-checking backend
 net-im/telepathy-connection-managers:gadu - Enable Gadu Gadu protocol support.
