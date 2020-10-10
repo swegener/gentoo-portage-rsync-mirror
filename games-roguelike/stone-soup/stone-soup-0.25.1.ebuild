@@ -12,7 +12,7 @@ MY_P="stone_soup-${PV}"
 DESCRIPTION="Role-playing roguelike game of exploration and treasure-hunting in dungeons"
 HOMEPAGE="http://crawl.develz.org/wordpress/"
 SRC_URI="
-	https://crawl.develz.org/release/$(ver_cut 1-2)/${PN/-/_}-${PV}.tar.xz
+	https://github.com/crawl/crawl/releases/download/${PV}/${PN/-/_}-${PV}.zip
 	https://dev.gentoo.org/~hasufell/distfiles/${PN}.png
 	https://dev.gentoo.org/~hasufell/distfiles/${PN}.svg
 "
@@ -23,7 +23,7 @@ SRC_URI="
 # MIT: json.cc/json.h, some .js files in webserver/static/scripts/contrib/
 LICENSE="GPL-2 BSD BSD-2 public-domain CC0-1.0 MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug ncurses sound test +tiles"
 # test is broken
 # see https://crawl.develz.org/mantis/view.php?id=6121
@@ -62,12 +62,12 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}/source
 S_TEST=${WORKDIR}/${MY_P}_test/source
 PATCHES=(
-	"${FILESDIR}"/gitless.patch
-	"${FILESDIR}"/pyyaml-safe-load.patch
+	"${FILESDIR}"/gitless-1.patch
 	"${FILESDIR}"/rltiles-ldflags-libs.patch
 )
 
 pkg_setup() {
+
 	if use !ncurses && use !tiles ; then
 		ewarn "Neither ncurses nor tiles frontend"
 		ewarn "selected, choosing ncurses only."
@@ -80,6 +80,10 @@ pkg_setup() {
 }
 
 src_compile() {
+
+	# Insurance that we're not using bundled lib sources
+	rm -rf contrib || die "Couldn't delete contrib directory"
+
 	export HOSTCXX=$(tc-getBUILD_CXX)
 
 	# leave DATADIR at the top
