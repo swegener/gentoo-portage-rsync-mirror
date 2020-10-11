@@ -43,8 +43,9 @@ net-fs/openafs-kernel
 
 # Sam James <sam@gentoo.org> (2020-10-11)
 # Current Wireshark in ~arch is vulnerable.
-# This forces a downgrade to the stable, fixed
-# Wireshark.
+# Not updated yet due to maintainer inactivity.
+# This forces a downgrade to the fixed, stable
+# version of Wireshark.
 # bug #744592
 =net-analyzer/wireshark-3.3.0
 
