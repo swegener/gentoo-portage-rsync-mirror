@@ -1,0 +1,15 @@
+BDEPEND=dev-ml/dune dev-lang/ocaml
+DEFINED_PHASES=compile install postinst test
+DEPEND=gtk? ( dev-ml/lablgtk:2= ) >=dev-lang/ocaml-4:=[ocamlopt?]
+DESCRIPTION=Two-way cross-platform file synchronizer
+EAPI=7
+HOMEPAGE=https://www.seas.upenn.edu/~bcpierce/unison/
+IUSE=gtk doc static debug threads +ocamlopt test
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+LICENSE=GPL-2
+RDEPEND=gtk? ( dev-ml/lablgtk:2= ) || ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) >=app-eselect/eselect-unison-0.4 >=dev-lang/ocaml-4:=[ocamlopt?]
+RESTRICT=!ocamlopt? ( strip ) !test? ( test )
+SLOT=2.51
+SRC_URI=https://github.com/bcpierce00/unison/archive/v2.51.3_rc2.tar.gz -> unison-2.51.3_rc2.tar.gz
+_eclasses_=dune	73a210262d124c8004f67ba1dd9ed873
+_md5_=34cb7c791417ae983f477adacac06e62
