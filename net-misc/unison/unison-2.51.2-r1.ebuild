@@ -1,40 +1,37 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-
-inherit eutils versionator
-
-IUSE="gtk doc static debug threads +ocamlopt test"
+EAPI=7
 
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
+SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
+	doc? (
+		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
+		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html
+	)"
+
 LICENSE="GPL-2"
-SLOT="$(get_version_component_range 1-2 ${PV})"
-KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+SLOT="$(ver_cut 1-2)"
+KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+IUSE="gtk doc static debug threads +ocamlopt test"
 
 # ocaml version so we are sure it has ocamlopt use flag
-DEPEND="dev-lang/ocaml[ocamlopt?]
-	gtk? ( dev-ml/lablgtk )
-	test? ( || ( dev-util/ctags >=app-editors/emacs-23.1:* ) )"
+DEPEND="<dev-lang/ocaml-4.10.0:=[ocamlopt?]
+	gtk? ( dev-ml/lablgtk:2= )"
 
-RDEPEND="gtk? ( dev-ml/lablgtk
+RDEPEND="gtk? ( dev-ml/lablgtk:2=
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
-	!net-misc/unison:0
-	app-eselect/eselect-unison"
-
-#PDEPEND="gtk? ( media-fonts/font-schumacher-misc )"
+	>=app-eselect/eselect-unison-0.4"
 
 RESTRICT="!ocamlopt? ( strip ) !test? ( test )"
-SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
-	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
-		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
 S="${WORKDIR}"/src
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-2.48.4-Makefile-dep.patch
-	default
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.51.2-ocaml-4.08.patch # https://bugs.gentoo.org/709646
+)
+
+DOCS=( BUGS.txt CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )
 
 src_compile() {
 	local myconf
@@ -70,15 +67,15 @@ src_test() {
 src_install() {
 	# install manually, since it's just too much
 	# work to force the Makefile to do the right thing.
-	newbin unison unison-${SLOT}
-	dobin unison-fsmonitor
-	dodoc BUGS.txt CONTRIB INSTALL NEWS \
-		  README ROADMAP.txt TODO.txt
-
+	local binname
+	for binname in unison unison-fsmonitor; do
+		newbin ${binname} ${binname}-${SLOT}
+	done
 	if use doc; then
-		dohtml "${DISTDIR}/${P}-manual.html"
-		dodoc "${DISTDIR}/${P}-manual.pdf"
+		DOCS+=( "${DISTDIR}/${P}-manual.pdf" )
+		HTML_DOCS=( "${DISTDIR}/${P}-manual.html" )
 	fi
+	einstalldocs
 }
 
 pkg_postinst() {

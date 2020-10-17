@@ -3,34 +3,30 @@
 
 EAPI=7
 
-IUSE="gtk doc static debug threads +ocamlopt test"
+inherit dune
 
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
-SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
-	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
-		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
+SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+# Not available for the rcs
+#SRC_URI+=" doc? (
+#		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
+#		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html
+#	)"
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
-KEYWORDS="amd64 ~arm ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
-
-# Upstream, for this version, has explicitly disabled test with marker
-# "Skipping some tests -- remove me!". Given the potentially destructive nature
-# of those tests, let's not try to run them (they're re-enabled in subsequent
-# releases).
-RESTRICT="test !ocamlopt? ( strip )"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+IUSE="gtk doc static debug threads +ocamlopt test"
+RESTRICT="!ocamlopt? ( strip ) !test? ( test )"
 
 # ocaml version so we are sure it has ocamlopt use flag
-DEPEND="dev-lang/ocaml[ocamlopt?]
-	gtk? ( dev-ml/lablgtk:2= )"
-
-RDEPEND="gtk? ( dev-ml/lablgtk:2=
-	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
-	>=app-eselect/eselect-unison-0.4"
-
-S="${WORKDIR}"/src
-PATCHES=( "${FILESDIR}"/${PN}-2.48.4-Makefile-dep.patch )
+DEPEND="gtk? ( dev-ml/lablgtk:2= )"
+RDEPEND="
+	${DEPEND}
+	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen )
+	>=app-eselect/eselect-unison-0.4
+"
 
 DOCS=( BUGS.txt CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )
 
@@ -58,17 +54,18 @@ src_compile() {
 	use ocamlopt || myconf="$myconf NATIVE=false"
 
 	# Discard cflags as it will try to pass them to ocamlc...
-	emake $myconf CFLAGS="" buildexecutable
+	emake $myconf CFLAGS=""
 }
 
 src_test() {
-	emake selftest CFLAGS=""
+	emake test CFLAGS=""
 }
 
 src_install() {
 	# install manually, since it's just too much
 	# work to force the Makefile to do the right thing.
 	local binname
+	cd src || die
 	for binname in unison unison-fsmonitor; do
 		newbin ${binname} ${binname}-${SLOT}
 	done
