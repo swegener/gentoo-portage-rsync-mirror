@@ -5,27 +5,36 @@ EAPI=7
 
 DESCRIPTION="Two-way cross-platform file synchronizer"
 HOMEPAGE="https://www.seas.upenn.edu/~bcpierce/unison/"
-SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
-	doc? (
-		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
-		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html
-	)"
+SRC_URI="https://github.com/bcpierce00/unison/archive/v${PV/_p/v}.tar.gz -> ${P/_p/v}.tar.gz"
+# No manual.pdf or manual.html available for this version
+#	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
+#		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"
 
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1-2)"
 KEYWORDS="~amd64 ~arm ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
-IUSE="gtk doc static debug threads +ocamlopt test"
+IUSE="gtk static debug threads +ocamlopt test"
+
+# Upstream, for this version, has explicitly disabled test with marker
+# "Skipping some tests -- remove me!". Given the potentially destructive nature
+# of those tests, let's not try to run them (they're re-enabled in subsequent
+# releases).
+RESTRICT="test !ocamlopt? ( strip )"
 
 # ocaml version so we are sure it has ocamlopt use flag
-DEPEND="dev-lang/ocaml[ocamlopt?]
-	gtk? ( dev-ml/lablgtk )"
+DEPEND="<dev-lang/ocaml-4.10.0:=[ocamlopt?]
+	gtk? ( dev-ml/lablgtk:2= )"
 
-RDEPEND="gtk? ( dev-ml/lablgtk
+RDEPEND="gtk? ( dev-ml/lablgtk:2=
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	>=app-eselect/eselect-unison-0.4"
 
-RESTRICT="!ocamlopt? ( strip ) !test? ( test )"
-S="${WORKDIR}"/src
+S="${WORKDIR}"/${P/_p/v}/src
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.48.4-Makefile-dep.patch
+	"${FILESDIR}"/${PN}-2.48.15_p4-ocaml-4.08.patch # https://bugs.gentoo.org/709646
+)
 
 DOCS=( BUGS.txt CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )
 
@@ -67,10 +76,11 @@ src_install() {
 	for binname in unison unison-fsmonitor; do
 		newbin ${binname} ${binname}-${SLOT}
 	done
-	if use doc; then
-		DOCS+=( "${DISTDIR}/${P}-manual.pdf" )
-		HTML_DOCS=( "${DISTDIR}/${P}-manual.html" )
-	fi
+# No manual.pdf or manual.html available for this version
+#	if use doc; then
+#		DOCS+=( "${DISTDIR}/${P}-manual.pdf" )
+#		HTML_DOCS=( "${DISTDIR}/${P}-manual.html" )
+#	fi
 	einstalldocs
 }
 
