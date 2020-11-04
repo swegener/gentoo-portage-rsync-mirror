@@ -773,6 +773,11 @@
       <name>Johannes Huber</name>
       <role>Developer</role>
     </member>
+    <member>
+      <email>jstein@gentoo.org</email>
+      <name>Jonas Stein</name>
+      <role>helping to dissolve desktop-misc properly</role>
+    </member>
   </project>
   <project>
     <email>devmanual@gentoo.org</email>
