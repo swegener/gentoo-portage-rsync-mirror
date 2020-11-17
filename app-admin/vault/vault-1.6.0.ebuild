@@ -19,7 +19,7 @@ KEYWORDS="~amd64"
 IUSE="+webui"
 
 BDEPEND="dev-go/gox
-	>=dev-lang/go-1.14.7"
+	>=dev-lang/go-1.15.3"
 COMMON_DEPEND="acct-group/vault
 	acct-user/vault"
 	DEPEND="${COMMON_DEPEND}"
