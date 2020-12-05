@@ -96,7 +96,7 @@ multilib_src_compile() {
 	cd src
 
 	local myCFLAGS=""
-	use deprecated && myCFLAGS="-DLUA_COMPAT_ALL"
+	use deprecated && myCFLAGS="-DLUA_COMPAT_5_1 -DLUA_COMPAT_5_2"
 
 	case "${CHOST}" in
 		*-mingw*) : ;;
