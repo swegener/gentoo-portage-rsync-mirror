@@ -59,6 +59,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-cmake-cxx11.patch"
 	"${FILESDIR}/${P}-desktop-spec-namespace.patch"
 	"${FILESDIR}/${P}-metainfo.patch" # bug 730140
+	"${FILESDIR}/${P}-crash-w-attachments.patch" # KDE-Bug 417697
 )
 
 src_prepare() {
