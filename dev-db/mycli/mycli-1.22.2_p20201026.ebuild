@@ -6,16 +6,18 @@ EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 DISTUTILS_SINGLE_IMPL=yes
 DISTUTILS_USE_SETUPTOOLS=rdepend
-EGIT_REPO_URI="https://github.com/dbcli/mycli.git"
-inherit distutils-r1 git-r3
+inherit distutils-r1
+
+MY_PV=$(ver_cut 1-3)
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 DESCRIPTION="CLI for MySQL Database with auto-completion and syntax highlighting"
 
 HOMEPAGE="https://www.mycli.net"
-SRC_URI=""
+SRC_URI="https://github.com/dbcli/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="ssh test"
 RESTRICT="!test? ( test )"
 RDEPEND="$(python_gen_cond_dep '
@@ -36,7 +38,7 @@ BDEPEND="test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]') )"
 
 distutils_enable_tests pytest
 
-PATCHES=( "${FILESDIR}/mycli-1.21.1-fix-test-install.patch" )
+PATCHES=( "${FILESDIR}/mycli-1.21.1-fix-test-install.patch" "${FILESDIR}/mycli-1.22.2_p20201026.patch" )
 
 python_test() {
 	pytest --capture=sys \
