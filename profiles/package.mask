@@ -313,23 +313,11 @@ net-news/quiterss
 # (current RC2 is from 2016). Bugs #653100 and #734880. Removal in 30 days.
 app-text/goldendict
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-05)
-# Does not compile against ghc-8.8: #754675, #611988
-# Masked for removal
-dev-haskell/shuffle
-dev-haskell/uhc-light
-dev-haskell/uhc-util
-
 # Michał Górny <mgorny@gentoo.org> (2020-11-15)
 # Fails to build.  Lots of bugs filed.  Not touched by maintainer
 # since 2018.
 # Removal in 30 days.  Bug #721990.
 media-video/cinelerra
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-03)
-# Not compatible with ghc-8.8 or above: #754285
-# No revdeps. Masked for removal.
-dev-haskell/ghc-syb-utils
 
 # Aisha Tammy <gentoo@aisha.cc> (2020-11-13)
 # dead packages with latest releases before 2013
@@ -448,13 +436,6 @@ dev-python/couchdb-python
 # will be upgraded after new lua release
 www-apps/liquid_feedback_frontend
 www-apps/webmcp
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2020-11-03)
-# Hackage release does not build against gcc-8:
-# https://github.com/Helium4Haskell/helium/issues/4
-# Masked for removal. Bugs: #751757, #736054
-dev-lang/helium
-dev-haskell/lvmlib
 
 # Lars Wendler <polynomial-c@gentoo.org> (2020-10-30)
 # Removed public macro definitions for TRUE and FALSE which breaks lots of
