@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
-inherit linux-info autotools python-single-r1 user
+inherit linux-info autotools python-single-r1
 
 DESCRIPTION="A linux trace/probe tool"
 HOMEPAGE="https://www.sourceware.org/systemtap/"
@@ -13,7 +13,7 @@ SRC_URI="https://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 IUSE="libvirt selinux sqlite +ssl zeroconf"
 
 RDEPEND=">=dev-libs/elfutils-0.142
@@ -39,6 +39,11 @@ DEPEND="${RDEPEND}
 	>=sys-devel/gettext-0.18.2
 	libvirt? ( dev-libs/libxml2 )
 "
+RDEPEND="${RDEPEND}
+	acct-group/stapdev
+	acct-group/stapsys
+	acct-group/stapusr
+"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -51,14 +56,10 @@ DOCS="AUTHORS HACKING NEWS README"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.1-ia64.patch
-	"${FILESDIR}"/${PN}-4.0-AR.patch
+	"${FILESDIR}"/${P}-configure.ac-non-posix-test.patch
 )
 
 pkg_setup() {
-	enewgroup stapusr 156
-	enewgroup stapsys 157
-	enewgroup stapdev 158
-
 	linux-info_pkg_setup
 	python-single-r1_pkg_setup
 }
