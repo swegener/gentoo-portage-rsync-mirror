@@ -27,7 +27,7 @@
   </project>
   <project>
     <email>amd64@gentoo.org</email>
-    <name>AMD64 Project</name>
+    <name>AMD64 Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:AMD64</url>
     <description>The AMD64 Project is devoted to providing stable, secure and up-to-date releases of Gentoo for the AMD64 and EM64T processor families.</description>
     <member is-lead="1">
@@ -3161,37 +3161,31 @@
     <member>
       <email>aballier@gentoo.org</email>
       <name>Alexis Ballier</name>
-      <role>Member ( misc )</role>
     </member>
     <member is-lead="1">
       <email>chainsaw@gentoo.org</email>
       <name>Tony Vroon</name>
-      <role>Lead ( Herd Lead, Audacious and plugins, libnjb )</role>
+      <role>Lead (Project lead, Audacious and plugins, libnjb)</role>
     </member>
     <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>
-      <role>Member ( misc )</role>
     </member>
     <member>
       <email>fordfrog@gentoo.org</email>
       <name>Miroslav Šulc</name>
-      <role>Member ( misc )</role>
     </member>
     <member>
       <email>jstein@gentoo.org</email>
       <name>Jonas Stein</name>
-      <role>Developer</role>
     </member>
     <member>
       <email>radhermit@gentoo.org</email>
       <name>Tim Harder</name>
-      <role>Member ( misc )</role>
     </member>
     <member>
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
-      <role>Member ( misc )</role>
     </member>
   </project>
   <project>
@@ -3707,17 +3701,14 @@
     <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>
-      <role>Member</role>
     </member>
     <member is-lead="1">
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
-      <role>Member</role>
     </member>
     <member>
       <email>perfinion@gentoo.org</email>
       <name>Jason Zaman</name>
-      <role>Member</role>
     </member>
   </project>
   <project>
@@ -3780,17 +3771,14 @@
     <member>
       <email>blueness@gentoo.org</email>
       <name>Anthony G. Basile</name>
-      <role>Member</role>
     </member>
     <member>
       <email>jmbsvicetto@gentoo.org</email>
       <name>Jorge Manuel B. S. Vicetto</name>
-      <role>Member</role>
     </member>
     <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>Member</role>
     </member>
   </project>
 </projects>
