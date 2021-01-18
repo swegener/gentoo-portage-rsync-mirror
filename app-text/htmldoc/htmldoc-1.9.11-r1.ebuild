@@ -6,17 +6,20 @@ EAPI=7
 inherit autotools toolchain-funcs xdg
 
 DESCRIPTION="Convert HTML pages into a PDF document"
-HOMEPAGE="http://www.msweet.org/projects.php?Z1"
+HOMEPAGE="https://www.msweet.org/htmldoc/"
 SRC_URI="https://github.com/michaelrsweet/${PN}/releases/download/v${PV}/${P}-source.tar.gz"
 
-IUSE="fltk"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+IUSE="fltk ssl"
 
+BDEPEND="virtual/pkgconfig"
 DEPEND="
 	>=media-libs/libpng-1.4:0=
+	sys-libs/zlib
 	virtual/jpeg:0
+	ssl? ( net-libs/gnutls )
 	fltk? ( x11-libs/fltk:1 )
 "
 RDEPEND="${DEPEND}"
@@ -38,8 +41,16 @@ src_prepare() {
 }
 
 src_configure() {
-	CC="$(tc-getCC)" CXX="$(tc-getCXX)" DSTROOT="${ED}" econf \
+	local myeconfargs=(
 		$(use_with fltk gui)
+		$(use_enable ssl)
+		$(use_enable ssl gnutls)
+		--disable-localjpeg
+		--disable-localpng
+		--disable-localzlib
+	)
+
+	CC="$(tc-getCC)" CXX="$(tc-getCXX)" DSTROOT="${ED}" econf "${myeconfargs[@]}"
 }
 
 src_install() {
