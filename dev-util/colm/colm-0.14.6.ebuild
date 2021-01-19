@@ -20,6 +20,8 @@ BDEPEND="
 		dev-python/pygments
 	)
 "
+# libfsm moved from ragel -> colm
+RDEPEND="!<dev-util/ragel-7.0.3"
 
 src_prepare() {
 	default
