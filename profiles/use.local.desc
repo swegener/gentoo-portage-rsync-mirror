@@ -2309,6 +2309,9 @@ dev-ml/ocaml-cstruct:async - Support for asynchronous execution
 dev-ml/ocaml-cstruct:lwt - Enable threads via lwt
 dev-ml/ocaml-cstruct:ppx - Enable the ppx syntax extension
 dev-ml/ocaml-fileutils:ocamlopt - Whether the OCaml native code compiler is used. Must be set globally and match dev-lang/ocaml.
+dev-ml/ocaml-gettext:ocamlopt - Whether the OCaml native code compiler is used. Must be set globally and match dev-lang/ocaml.
+dev-ml/ocaml-gettext-camomile:ocamlopt - Whether the OCaml native code compiler is used. Must be set globally and match dev-lang/ocaml.
+dev-ml/ocaml-gettext-stub:ocamlopt - Whether the OCaml native code compiler is used. Must be set globally and match dev-lang/ocaml.
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
 dev-ml/ocamlnet:zip - Enables netzip support to read/write gzip data using object channels
 dev-ml/pgocaml:camlp4 - Enable PG'Ocaml syntax extension.
