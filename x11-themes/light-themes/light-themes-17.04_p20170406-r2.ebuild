@@ -4,11 +4,12 @@
 EAPI=7
 
 MY_PN=ubuntu-themes
+MY_PV=16.10+${PV/_p/.}
 
 DESCRIPTION="GTK2/GTK3 Ambiance and Radiance themes from Ubuntu"
 HOMEPAGE="https://packages.ubuntu.com/zesty/light-themes"
 SRC_URI="
-	mirror://ubuntu/pool/main/${MY_PN:0:1}/${MY_PN}/${MY_PN}_${PV}.orig.tar.gz
+	mirror://ubuntu/pool/main/${MY_PN:0:1}/${MY_PN}/${MY_PN}_${MY_PV}.orig.tar.gz
 	https://dev.gentoo.org/~pacho/${PN}/Gentoo-Buttons-r1.tar.xz
 "
 
@@ -20,9 +21,10 @@ IUSE="gtk3"
 DEPEND="app-arch/xz-utils"
 RDEPEND="
 	x11-themes/gtk-engines-murrine
+	gtk3? ( x11-themes/gtk-engines-unico )
 "
 
-S="${WORKDIR}"/${MY_PN}-${PV}
+S="${WORKDIR}"
 
 src_prepare() {
 	cp -RL Ambiance/ Ambiance-Gentoo || die
