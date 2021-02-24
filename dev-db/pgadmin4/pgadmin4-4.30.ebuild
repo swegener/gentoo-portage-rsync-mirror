@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 PYTHON_REQ_USE="sqlite"
 inherit desktop python-single-r1 qmake-utils xdg
 
@@ -13,7 +13,7 @@ SRC_URI="https://ftp.postgresql.org/pub/pgadmin/${PN}/v${PV}/source/${P}.tar.gz"
 
 LICENSE="POSTGRESQL"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -41,10 +41,13 @@ DEPEND="${COMMON_DEPEND}
 # git history shows this is just for compatibility with <python-3.6.
 # In 4.26's requirement.txt, cryptography is listed as <=3.0, but upstream's
 # git history shows this is just for compatibility with Windows.
+# 4.28; requirement.txt: Flask-Security was renamed to
+# Flask-Security-Too. This is still the same dev-python/flask-security.
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
 		>=dev-python/blinker-1.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-1.0.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-babelex-0.9.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-compress-1.4.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-gravatar-0.5.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-login-0.4.1[${PYTHON_MULTI_USEDEP}]
@@ -53,24 +56,25 @@ RDEPEND="${COMMON_DEPEND}
 		>=dev-python/flask-paranoid-0.2.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-principal-0.4.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/flask-security-3.0.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/flask-sqlalchemy-2.3.2[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/flask-wtf-0.14.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-sqlalchemy-2.4.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-wtf-0.14.3[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/ldap3-2.5.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/passlib-1.7.2[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/psutil-5.7.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/psycopg-2.8[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/python-dateutil-2.8.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pytz-2018.9[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pytz-2020.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/simplejson-3.16.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/six-1.12.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/speaklater-1.3[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/sqlalchemy-1.3.13[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/sqlparse-0.2.4[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/sqlparse-0.3.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/sshtunnel-0.1.5[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/werkzeug-0.15.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/wtforms-2.2.1[${PYTHON_MULTI_USEDEP}]
 		dev-python/bcrypt[${PYTHON_MULTI_USEDEP}]
 		dev-python/cryptography[${PYTHON_MULTI_USEDEP}]
+		dev-python/gssapi[${PYTHON_MULTI_USEDEP}]
 		dev-python/python-email-validator[${PYTHON_MULTI_USEDEP}]
 	')
 "
