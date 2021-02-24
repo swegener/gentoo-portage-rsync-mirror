@@ -108,7 +108,7 @@
       <name>Steve Arnold</name>
       <role>Kernel</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
     </member>
@@ -116,7 +116,7 @@
       <email>vapier@gentoo.org</email>
       <name>Mike Frysinger</name>
     </member>
-    <member is-lead="1">
+    <member>
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
     </member>
