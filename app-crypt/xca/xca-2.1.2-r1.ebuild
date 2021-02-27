@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.0.0-desktop.patch"
+	"${FILESDIR}/${P}-bug-733000.patch"
 )
 
 src_configure() {
@@ -50,7 +51,7 @@ src_install() {
 	doins misc/*.txt
 
 	ewarn "Make a backup copy of your database!"
-	ewarn "Version 2 completely changes the database format to SQL(ite)"
+	ewarn "This version completely changes the database format to SQL(ite)"
 	ewarn "Don't try to open it with older versions of XCA (< 1.4.0). They will corrupt the database."
 }
 
