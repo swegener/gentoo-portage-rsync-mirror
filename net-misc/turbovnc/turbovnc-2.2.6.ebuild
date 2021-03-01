@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="
-	>=media-libs/libjpeg-turbo-2.0.0[java]
+	>=media-libs/libjpeg-turbo-2.0.0[java?]
 	virtual/jdk:1.8
 	!net-misc/tigervnc
 "
@@ -33,6 +33,7 @@ src_configure() {
 		-DTVNC_SYSTEMX11=ON
 		-DTVNC_SYSTEMLIBS=ON
 		-DTVNC_BUILDJAVA=$(usex java)
+		-DTVNC_BUILDNATIVE=ON
 		-DXKB_BIN_DIRECTORY=/usr/bin
 		-DXKB_DFLT_RULES=base
 	)
@@ -55,8 +56,12 @@ src_install() {
 
 	if use java ; then
 		java-pkg_dojar "${BUILD_DIR}"/java/VncViewer.jar
-		make_desktop_entry vncviewer "TurboVNC Viewer" /usr/share/icons/hicolor/48x48/apps/turbovnc.png
+		make_desktop_entry vncviewer "TurboVNC Viewer" /usr/share/icons/hicolor/48x48/apps/${PN}.png
 	fi
+
+	# Don't install incompatible init script
+	rm -rf "${ED}"/etc/init.d/ || die
+	rm -rf "${ED}"/etc/sysconfig/ || die
 
 	find "${ED}/usr/share/man/man1/" -name Xserver.1\* -print0 | xargs -0 rm || die
 	einstalldocs
