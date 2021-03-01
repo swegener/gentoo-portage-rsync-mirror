@@ -37,10 +37,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="editor +lobby nvtt pch test"
 RESTRICT="test"
 
+# virtual/rust is for bundled SpiderMonkey
 # TODO: Unbundle premake5
 # See bug #773472 which may help (bump for it)
 BDEPEND="
 	virtual/pkgconfig
+	virtual/rust
 	test? ( dev-lang/perl )
 "
 # Removed dependency on nvtt as we use the bundled one
@@ -209,7 +211,9 @@ src_install() {
 	# Install bundled SpiderMonkey and nvtt
 	# bug #771147 (comment 1)
 	exeinto /usr/$(get_libdir)/${PN}
-	doexe binaries/system/{libCollada,libmozjs78-ps-release,libnvtt,libnvcore,libnvimage,libnvmath}.so
+	doexe binaries/system/{libCollada,libmozjs78-ps-release}
+
+	use nvtt && doexe /binaries/system/{libnvtt,libnvcore,libnvimage,libnvmath}.so
 	use editor && doexe binaries/system/libAtlasUI.so
 
 	dodoc binaries/system/readme.txt
