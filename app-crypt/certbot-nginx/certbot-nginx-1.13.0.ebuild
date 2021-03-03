@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 	S=${WORKDIR}/${P}/${PN}
 else
 	SRC_URI="https://github.com/${PN%-nginx}/${PN%-nginx}/archive/v${PV}.tar.gz -> ${PN%-nginx}-${PV}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 	S=${WORKDIR}/${PN%-nginx}-${PV}/${PN}
 fi
 
@@ -27,6 +27,6 @@ IUSE=""
 RDEPEND="
 	>=app-crypt/acme-1.4.0[${PYTHON_USEDEP}]
 	>=app-crypt/certbot-1.6.0[${PYTHON_USEDEP}]
-	dev-python/pyopenssl[${PYTHON_USEDEP}]
-	>=dev-python/pyparsing-1.5.5[${PYTHON_USEDEP}]
+	>=dev-python/pyopenssl-17.3.0[${PYTHON_USEDEP}]
+	>=dev-python/pyparsing-2.2.0[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]"
