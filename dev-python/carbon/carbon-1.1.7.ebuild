@@ -3,7 +3,8 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{7,8,9} )
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit distutils-r1
 
@@ -19,7 +20,6 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-python/twisted[${PYTHON_USEDEP}]
 	dev-python/cachetools[${PYTHON_USEDEP}]
-	dev-python/txAMQP[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
 	=dev-python/whisper-${PV}*[${PYTHON_USEDEP}]"
 
