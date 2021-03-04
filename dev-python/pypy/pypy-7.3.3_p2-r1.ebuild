@@ -10,7 +10,7 @@ MY_P=pypy2.7-v${PYPY_PV}
 PATCHSET="pypy2.7-gentoo-patches-${PV}"
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
-HOMEPAGE="https://pypy.org/"
+HOMEPAGE="https://www.pypy.org/"
 SRC_URI="https://buildbot.pypy.org/pypy/${MY_P}-src.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}-src"
@@ -23,8 +23,8 @@ IUSE="bzip2 gdbm +jit libressl ncurses sqlite tk"
 
 RDEPEND="
 	|| (
-		dev-python/pypy-exe:${PYPY_PV}[bzip2?,ncurses?]
-		dev-python/pypy-exe-bin:${PYPY_PV}
+		>=dev-python/pypy-exe-${PV}:${PYPY_PV}[bzip2?,ncurses?]
+		>=dev-python/pypy-exe-bin-${PV}:${PYPY_PV}
 	)
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
