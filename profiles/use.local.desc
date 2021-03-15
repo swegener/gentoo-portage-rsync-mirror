@@ -3999,7 +3999,6 @@ media-gfx/gmic:cli - Build CLI interface
 media-gfx/gmic:digikam - Build media-gfx/digikam plugin
 media-gfx/gmic:krita - Build media-gfx/krita plugin
 media-gfx/gmic:opencv - Enable support for webcams using the OpenCV library
-media-gfx/gnofract4d:doc - Install user manual
 media-gfx/gnome-photos:flickr - Ensure runtime Flickr support
 media-gfx/graphicsmagick:dynamic-loading - Compile graphicsmagick with dynamically loadable modules
 media-gfx/graphicsmagick:fpx - Enable FlashPix support with media-libs/libfpx
