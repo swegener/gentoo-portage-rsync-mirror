@@ -24,7 +24,7 @@ RDEPEND="dev-python/lxml[${PYTHON_USEDEP}]"
 if [[ ${PV} == *9999 ]]; then
 	RDEPEND+=" ~dev-python/snakeoil-9999[${PYTHON_USEDEP}]"
 else
-	RDEPEND+=" >=dev-python/snakeoil-0.9.0[${PYTHON_USEDEP}]"
+	RDEPEND+=" >=dev-python/snakeoil-0.9.3[${PYTHON_USEDEP}]"
 fi
 BDEPEND="
 	test? (
@@ -33,7 +33,16 @@ BDEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}/pkgcore-0.10.13-metadata-xsd-2.patch"
+)
+
 distutils_enable_tests setup.py
+
+src_test() {
+	local -x PYTHONDONTWRITEBYTECODE=
+	distutils-r1_src_test
+}
 
 python_install_all() {
 	local DOCS=( NEWS.rst )
