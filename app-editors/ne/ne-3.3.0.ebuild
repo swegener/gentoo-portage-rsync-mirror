@@ -3,18 +3,18 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
-DESCRIPTION="the nice editor, easy to use for the beginner and powerful for the wizard"
-HOMEPAGE="http://ne.di.unimi.it/"
-SRC_URI="http://ne.di.unimi.it/${P}.tar.gz"
+DESCRIPTION="The nice editor, easy to use for the beginner and powerful for the wizard"
+HOMEPAGE="https://ne.di.unimi.it/"
+SRC_URI="https://ne.di.unimi.it/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 
 BDEPEND="virtual/pkgconfig"
-DEPEND="sys-libs/ncurses:0="
+DEPEND="sys-libs/ncurses:="
 RDEPEND="
 	${DEPEND}
 	dev-lang/perl
@@ -24,6 +24,7 @@ HTML_DOCS=( doc/html/. )
 
 src_prepare() {
 	default
+
 	sed -i -e 's/-O3//' src/makefile || die
 }
 
