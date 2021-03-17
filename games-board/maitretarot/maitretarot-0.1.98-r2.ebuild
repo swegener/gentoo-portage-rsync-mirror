@@ -3,9 +3,9 @@
 
 EAPI=7
 
-inherit autotools toolchain-funcs
+inherit autotools
 
-DESCRIPTION="client for the french tarot game maitretarot"
+DESCRIPTION="Server for the french tarot game maitretarot"
 HOMEPAGE="http://www.nongnu.org/maitretarot/"
 SRC_URI="https://savannah.nongnu.org/download/maitretarot/${PN}.pkg/${PV}/${P}.tar.bz2"
 
@@ -16,9 +16,7 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="virtual/pkgconfig"
 DEPEND="dev-libs/glib:2
 	dev-libs/libxml2
-	dev-games/libmaitretarot
-	dev-games/libmt_client
-	sys-libs/ncurses:0"
+	dev-games/libmaitretarot"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
@@ -35,11 +33,10 @@ src_prepare() {
 
 	# Ensure we generate auto* with the fixed macros in tree
 	# (not bundled)
-	# bug #716102
+	# bug #739142
 	eautoreconf
 }
 
 src_configure() {
-	export LIBS="$( $(tc-getPKG_CONFIG) --libs ncurses )"
-	default
+	econf --with-default-config-file="/etc/maitretarotrc.xml"
 }
