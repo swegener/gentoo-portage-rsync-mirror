@@ -29,7 +29,7 @@ DEPEND="
 	client? ( sys-libs/readline:0= )
 "
 
-[[ -z "${ELL_REQ}" ]] || COMMON_DEPEND+=" ~dev-libs/ell-${ELL_REQ}"
+[[ -z "${ELL_REQ}" ]] || DEPEND+=" ~dev-libs/ell-${ELL_REQ}"
 
 RDEPEND="
 	${DEPEND}
@@ -45,7 +45,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-[[ ${PV} == *9999* ]] && DEPEND+=" dev-python/docutils"
+[[ ${PV} == *9999* ]] && BDEPEND+=" dev-python/docutils"
 
 pkg_setup() {
 	CONFIG_CHECK="
