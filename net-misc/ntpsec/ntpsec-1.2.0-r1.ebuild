@@ -3,10 +3,11 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{6..9} )
 PYTHON_REQ_USE='threads(+)'
+DISTUTILS_USE_SETUPTOOLS=no
 
-inherit flag-o-matic python-r1 waf-utils systemd
+inherit distutils-r1 flag-o-matic waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -59,6 +60,7 @@ DEPEND="${CDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-1.1.8-fix-missing-scmp_sys-on-aarch64.patch"
 	"${FILESDIR}/${PN}-1.1.9-remove-asciidoctor-from-config.patch"
+	"${FILESDIR}/${PN}-1.2.0-move-newfstatat.patch"
 )
 
 WAF_BINARY="${S}/waf"
@@ -72,6 +74,7 @@ src_prepare() {
 	fi
 	# remove extra default pool servers
 	sed -i '/use-pool/s/^/#/' "${S}"/etc/ntp.d/default.conf
+
 	python_copy_sources
 }
 
@@ -122,6 +125,7 @@ src_compile() {
 src_install() {
 	python_install() {
 		waf-utils_src_install
+		python_fix_shebang "${ED}"
 	}
 	python_foreach_impl run_in_build_dir python_install
 	python_foreach_impl python_optimize
