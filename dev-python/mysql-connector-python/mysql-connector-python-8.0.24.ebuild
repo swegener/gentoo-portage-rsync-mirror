@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python client library for MariaDB/MySQL"
 HOMEPAGE="https://dev.mysql.com/downloads/connector/python/"
-SRC_URI="https://dev.mysql.com/get/Downloads/Connector-Python/${P}.tar.gz"
+SRC_URI="https://github.com/mysql/mysql-connector-python/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 
 KEYWORDS="~amd64 ~arm ~x86"
 LICENSE="GPL-2"
