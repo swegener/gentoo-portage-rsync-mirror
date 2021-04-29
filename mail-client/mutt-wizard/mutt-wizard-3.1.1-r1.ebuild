@@ -21,7 +21,7 @@ SLOT="0"
 
 RDEPEND="
 	app-admin/pass
-	mail-client/neomutt[notmuch]
+	mail-client/neomutt[notmuch,sasl]
 	mail-mta/msmtp
 	net-mail/isync[ssl]
 "
@@ -32,7 +32,7 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${EPREFIX}/usr" DESTDIR="${D}" install
+	emake PREFIX="/usr" DESTDIR="${D}" install
 	einstalldocs
 }
 
