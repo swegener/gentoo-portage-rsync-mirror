@@ -16,7 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-lang/erlang"
-DEPEND=""
 
 S="${WORKDIR}"
 
