@@ -2,8 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 inherit go-module systemd
+GIT_COMMIT=3cafc58827d1ebd1a67749f88be4218f0bab3d8d
+MY_PV=v${PV/_rc/-rc.}
+
+DESCRIPTION="Prometheus monitoring system and time series database"
+HOMEPAGE="https://github.com/prometheus/prometheus"
 
 EGO_SUM=(
 	"cloud.google.com/go v0.26.0/go.mod"
@@ -1334,16 +1338,10 @@ EGO_SUM=(
 	"sigs.k8s.io/yaml v1.2.0/go.mod"
 	"sourcegraph.com/sourcegraph/appdash v0.0.0-20190731080439-ebfcffb1b5c0/go.mod"
 )
-
 go-module_set_globals
-
-MY_PV=v${PV/_rc/-rc.}
-
-DESCRIPTION="Prometheus monitoring system and time series database"
-HOMEPAGE="https://github.com/prometheus/prometheus"
 SRC_URI="https://github.com/prometheus/prometheus/archive/${MY_PV}.tar.gz -> ${P}.tar.gz
-https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}-asset.tar.xz
-${EGO_SUM_SRC_URI}"
+	https://dev.gentoo.org/~zlogene/distfiles/${CATEGORY}/${PN}/${P}-asset.tar.xz
+	${EGO_SUM_SRC_URI}"
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
@@ -1353,7 +1351,6 @@ COMMON_DEPEND="acct-group/prometheus
 	acct-user/prometheus"
 DEPEND="!app-metrics/prometheus-bin
 	${COMMON_DEPEND}"
-
 RDEPEND="${COMMON_DEPEND}"
 
 BDEPEND=">=dev-util/promu-0.3.0"
@@ -1363,15 +1360,19 @@ RESTRICT+=" test"
 src_prepare() {
 	default
 	mv ../assets_vfsdata.go web/ui || die
+	sed -i \
+		-e "s/{{.Branch}}/HEAD/" \
+		-e "s/{{.Revision}}/${GIT_COMMIT}/" \
+		-e "s/{{.Version}}/${PV}/" \
+		.promu.yml || die
 }
 
 src_compile() {
-	promu build --prefix bin -v || die
+	promu build -v --prefix bin || die
 }
 
 src_install() {
-	dobin "${S}"/bin/prometheus
-	dobin "${S}"/bin/promtool
+	dobin bin/*
 	dodoc -r {documentation,{README,CHANGELOG,CONTRIBUTING}.md}
 	insinto /etc/prometheus
 	doins documentation/examples/prometheus.yml
