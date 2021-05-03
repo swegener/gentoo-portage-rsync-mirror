@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 inherit gnome.org gnome2-utils meson python-any-r1 systemd xdg
 
 DESCRIPTION="Remote desktop daemon for GNOME using pipewire"
-HOMEPAGE="https://gitlab.gnome.org/jadahl/gnome-remote-desktop"
+HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-remote-desktop"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -17,9 +17,8 @@ RESTRICT="test" # Tests run xvfb-run directly
 
 DEPEND="
 	x11-libs/cairo
-	dev-libs/glib:2
+	>=dev-libs/glib-2.68:2
 	>=media-video/pipewire-0.3.0:0/0.3
-	sys-apps/systemd
 	app-crypt/libsecret
 	x11-libs/libnotify
 	rdp? (
@@ -40,6 +39,11 @@ BDEPEND="
 	dev-util/glib-utils
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	default
+	sed -i -e '/systemd_dep/d' meson.build || die
+}
 
 src_configure() {
 	local emesonargs=(
