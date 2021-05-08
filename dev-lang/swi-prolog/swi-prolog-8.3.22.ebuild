@@ -3,18 +3,17 @@
 
 EAPI=7
 
-inherit cmake flag-o-matic multilib
+inherit cmake desktop xdg-utils flag-o-matic multilib
 
 PATCHSET_VER="0"
 
 DESCRIPTION="versatile implementation of the Prolog programming language"
 HOMEPAGE="https://www.swi-prolog.org/"
-SRC_URI="https://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz
-	https://dev.gentoo.org/~keri/distfiles/swi-prolog/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
+SRC_URI="https://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="archive berkdb debug doc +gmp java +libedit minimal odbc pcre qt5 readline ssl test uuid X yaml"
 RESTRICT="!test? ( test )"
 
@@ -99,4 +98,27 @@ src_test() {
 	USE_PUBLIC_NETWORK_TESTS=false \
 	USE_ODBC_TESTS=false \
 		cmake_src_test -V
+}
+
+src_install() {
+	cmake_src_install
+
+	if use qt5; then
+		doicon "${S}"/snap/gui/swipl.png
+		make_desktop_entry swipl-win "SWI-Prolog" swipl "Development"
+	fi
+}
+
+pkg_postinst() {
+	if use qt5; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+	fi
+}
+
+pkg_postrm() {
+	if use qt5; then
+		xdg_icon_cache_update
+		xdg_desktop_database_update
+	fi
 }
