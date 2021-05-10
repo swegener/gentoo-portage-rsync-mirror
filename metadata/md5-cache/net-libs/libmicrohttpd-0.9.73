@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig
+BDEPEND=virtual/pkgconfig test? ( net-misc/curl[ssl?] )
 DEFINED_PHASES=compile configure install test
 DEPEND=ssl? ( >net-libs/gnutls-2.12.20:= ) test? ( net-misc/curl[ssl?] )
 DESCRIPTION=Small C library to run an HTTP server as part of another application
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0/12
 SRC_URI=mirror://gnu/libmicrohttpd/libmicrohttpd-0.9.73.tar.gz
 _eclasses_=multibuild	6b3d5ee849dafe6cdfd7b859c211fb01	multilib	d410501a125f99ffb560b0c523cd3d1e	multilib-build	ac696f0bea6c503f5980bfd5a0f312e5	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	24921b57d6561d87cbef4916a296ada4
-_md5_=b68aea071a8d9c215ea1e543befb6db6
+_md5_=772b1c21fcf17be1f5d8437b257e47c6
