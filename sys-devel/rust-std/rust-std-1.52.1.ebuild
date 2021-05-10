@@ -38,8 +38,6 @@ QA_FLAGS_IGNORED="usr/lib/rust/${PV}/rustlib/.*/lib/lib.*.so"
 
 S="${WORKDIR}/${P/-std/c}-src"
 
-PATCHES=( "${FILESDIR}"/1.51.0-bootstrap-panic.patch )
-
 #
 # The cross magic
 #
