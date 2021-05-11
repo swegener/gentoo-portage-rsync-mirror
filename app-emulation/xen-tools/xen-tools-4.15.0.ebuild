@@ -17,21 +17,21 @@ if [[ ${PV} == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=6
-	SECURITY_VER=29
+	UPSTREAM_VER=0
+	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=21
+	GENTOO_VER=23
 	# xen-tools's gentoo patches version which apply to this specific ebuild
-	GENTOO_GPV=1
+	GENTOO_GPV=0
 	# xen-tools ovmf's patches
 	OVMF_VER=
 
-	SEABIOS_VER="1.12.1"
+	SEABIOS_VER="1.14.0"
 	EDK2_COMMIT="06dc822d045c2bb42e497487935485302486e151"
 	EDK2_OPENSSL_VERSION="1_1_1g"
 	EDK2_SOFTFLOAT_COMMIT="b64af41c3276f97f0e181920400ee056b9c88037"
 	EDK2_BROTLI_COMMIT="666c3280cc11dc433c303d79a83d4ffbdd12cc8d"
-	IPXE_COMMIT="1dd56dbd11082fb622c2ed21cfaced4f47d798a6"
+	IPXE_COMMIT="988d2c13cdf0f0b4140685af35ced70ac5b3283c"
 
 	[[ -n ${UPSTREAM_VER} ]] && \
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz
@@ -93,7 +93,10 @@ COMMON_DEPEND="
 "
 
 DEPEND="${COMMON_DEPEND}
+	app-misc/pax-utils
+	dev-lang/perl
 	>=sys-kernel/linux-headers-4.11
+	x11-libs/pixman
 	$(python_gen_cond_dep '
 		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
 		pam? ( dev-python/pypam[${PYTHON_MULTI_USEDEP}] )
@@ -113,8 +116,6 @@ DEPEND="${COMMON_DEPEND}
 		system-seabios? ( sys-firmware/seabios )
 		system-ipxe? ( sys-firmware/ipxe[qemu] )
 		rombios? ( sys-devel/bin86 sys-devel/dev86 ) )
-	dev-lang/perl
-	app-misc/pax-utils
 	doc? (
 		app-text/ghostscript-gpl
 		app-text/pandoc
@@ -127,7 +128,6 @@ DEPEND="${COMMON_DEPEND}
 	hvm? ( x11-base/xorg-proto )
 	qemu? (
 		app-arch/snappy:=
-		x11-libs/pixman
 		sdl? (
 			media-libs/libsdl[X]
 			media-libs/libsdl2[X]
@@ -150,6 +150,7 @@ RDEPEND="${COMMON_DEPEND}
 # Approved by QA team in bug #144032
 QA_WX_LOAD="
 	usr/libexec/xen/boot/hvmloader
+	usr/libexec/xen/boot/xen-shim
 	usr/share/qemu-xen/qemu/hppa-firmware.img
 	usr/share/qemu-xen/qemu/s390-ccw.img
 	usr/share/qemu-xen/qemu/u-boot.e500
@@ -165,8 +166,13 @@ QA_PREBUILT="
 	usr/libexec/xen/bin/qemu-keymap
 	usr/libexec/xen/bin/qemu-nbd
 	usr/libexec/xen/bin/qemu-pr-helper
+	usr/libexec/xen/bin/qemu-storage-daemon
 	usr/libexec/xen/bin/qemu-system-i386
 	usr/libexec/xen/bin/virtfs-proxy-helper
+	usr/libexec/xen/boot/xen-shim
+	usr/libexec/xen/libexec/qemu-pr-helper
+	usr/libexec/xen/libexec/virtfs-proxy-helper
+	usr/libexec/xen/libexec/virtiofsd
 	usr/libexec/xen/libexec/xen-bridge-helper
 	usr/share/qemu-xen/qemu/s390-ccw.img
 	usr/share/qemu-xen/qemu/s390-netboot.img
@@ -239,7 +245,7 @@ src_prepare() {
 	fi
 
 	# move before Gentoo patch, one patch should apply to seabios, to fix gcc-4.5.x build err
-	mv ../seabios-rel-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
+	mv ../seabios-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
 	pushd tools/firmware/ > /dev/null
 	ln -s seabios-dir-remote seabios-dir || die
 	popd > /dev/null
@@ -278,9 +284,9 @@ src_prepare() {
 	if use ipxe; then
 		cp "${DISTDIR}/ipxe-git-${IPXE_COMMIT}.tar.gz" tools/firmware/etherboot/_ipxe.tar.gz || die
 
-		# gcc 10
-		cp "${WORKDIR}/patches-gentoo/xen-tools-4.13.0-ipxe-gcc10.patch" tools/firmware/etherboot/patches/ipxe-gcc10.patch || die
-		echo ipxe-gcc10.patch >> tools/firmware/etherboot/patches/series || die
+		# gcc 11
+		cp "${WORKDIR}/patches-gentoo/${P}-ipxe-gcc11.patch" tools/firmware/etherboot/patches/ipxe-gcc11.patch || die
+		echo ipxe-gcc11.patch >> tools/firmware/etherboot/patches/series || die
 	fi
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
@@ -336,7 +342,6 @@ src_prepare() {
 	# Reset bash completion dir; Bug 472438
 	sed -e "s:^BASH_COMPLETION_DIR ?= \$(CONFIG_DIR)/bash_completion.d:BASH_COMPLETION_DIR ?= $(get_bashcompdir):" \
 		-i Config.mk || die
-	sed -i -e "/bash-completion/s/xl\.sh/xl/g" tools/libxl/Makefile || die
 
 	# xencommons, Bug #492332, sed lighter weight than patching
 	sed -e 's:\$QEMU_XEN -xen-domid:test -e "\$QEMU_XEN" \&\& &:' \
@@ -369,6 +374,18 @@ src_prepare() {
 	sed -e "s:\$\$source/configure:\0 --disable-glusterfs:" \
 		-i tools/Makefile || die
 
+	# disable jpeg automagic
+	sed -e "s:\$\$source/configure:\0 --disable-vnc-jpeg:" \
+		-i tools/Makefile || die
+
+	# disable png automagic
+	sed -e "s:\$\$source/configure:\0 --disable-vnc-png:" \
+		-i tools/Makefile || die
+
+	# disable docker (Bug #732970)
+	sed -e "s:\$\$source/configure:\0 --disable-containers:" \
+		-i tools/Makefile || die
+
 	default
 }
 
@@ -377,6 +394,7 @@ src_configure() {
 		--libdir=${PREFIX}/usr/$(get_libdir) \
 		--libexecdir=${PREFIX}/usr/libexec \
 		--localstatedir=${EPREFIX}/var \
+		--disable-golang \
 		--disable-werror \
 		--disable-xen \
 		--enable-tools \
@@ -401,7 +419,8 @@ src_configure() {
 src_compile() {
 	local myopt
 	use debug && myopt="${myopt} debug=y"
-	use python && myopt="${myopt} XENSTAT_PYTHON_BINDINGS=y"
+	# Currently broken
+	#use python && myopt="${myopt} XENSTAT_PYTHON_BINDINGS=y"
 
 	if test-flag-CC -fno-strict-overflow; then
 		append-flags -fno-strict-overflow
@@ -480,10 +499,11 @@ src_install() {
 	keepdir /var/lib/xenstored
 	keepdir /var/log/xen
 
-	if use python; then
-		python_domodule "${S}/tools/xenstat/libxenstat/bindings/swig/python/xenstat.py"
-		python_domodule "${S}/tools/xenstat/libxenstat/bindings/swig/python/_xenstat.so"
-	fi
+	# Currently broken
+	#if use python; then
+		#python_domodule "${S}/tools/libs/stat/bindings/swig/python/xenstat.py"
+		#python_domodule "${S}/tools/libs/stat/bindings/swig/python/_xenstat.so"
+	#fi
 
 	python_optimize
 }

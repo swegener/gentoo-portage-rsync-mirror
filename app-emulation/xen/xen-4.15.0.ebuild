@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit flag-o-matic mount-boot multilib python-any-r1 toolchain-funcs
 
@@ -15,8 +15,8 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/xen.git"
 	SRC_URI=""
 else
-	KEYWORDS="amd64 ~arm -x86"
-	UPSTREAM_VER=4
+	KEYWORDS="~amd64 ~arm -x86"
+	UPSTREAM_VER=0
 	SECURITY_VER=
 	GENTOO_VER=
 
@@ -98,7 +98,11 @@ src_prepare() {
 	# Gentoo's patchset
 	[[ -n ${GENTOO_VER} ]] && eapply "${WORKDIR}"/patches-gentoo
 
-	eapply "${FILESDIR}"/${PN}-4.11-efi.patch
+	# Symlinks do not work on fat32 volumes
+	eapply "${FILESDIR}"/${PN}-4.15-efi.patch
+
+	# Workaround new gcc-11 options
+	sed -e '/^CFLAGS/s/-Werror//g' -i xen/Makefile || die
 
 	# Drop .config
 	sed -e '/-include $(XEN_ROOT)\/.config/d' -i Config.mk || die "Couldn't	drop"
