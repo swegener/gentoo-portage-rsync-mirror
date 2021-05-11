@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6..9} )
+PYTHON_COMPAT=( python3_{7..9} )
 PYTHON_REQ_USE='ncurses,xml,threads(+)'
 
 inherit bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs
@@ -20,18 +20,18 @@ else
 	UPSTREAM_VER=
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=22
+	GENTOO_VER=23
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
 	OVMF_VER=
 
-	SEABIOS_VER="1.13.0"
+	SEABIOS_VER="1.14.0"
 	EDK2_COMMIT="06dc822d045c2bb42e497487935485302486e151"
 	EDK2_OPENSSL_VERSION="1_1_1g"
 	EDK2_SOFTFLOAT_COMMIT="b64af41c3276f97f0e181920400ee056b9c88037"
 	EDK2_BROTLI_COMMIT="666c3280cc11dc433c303d79a83d4ffbdd12cc8d"
-	IPXE_COMMIT="1dd56dbd11082fb622c2ed21cfaced4f47d798a6"
+	IPXE_COMMIT="988d2c13cdf0f0b4140685af35ced70ac5b3283c"
 
 	[[ -n ${UPSTREAM_VER} ]] && \
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz
@@ -239,7 +239,7 @@ src_prepare() {
 	fi
 
 	# move before Gentoo patch, one patch should apply to seabios, to fix gcc-4.5.x build err
-	mv ../seabios-rel-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
+	mv ../seabios-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
 	pushd tools/firmware/ > /dev/null
 	ln -s seabios-dir-remote seabios-dir || die
 	popd > /dev/null
@@ -278,9 +278,9 @@ src_prepare() {
 	if use ipxe; then
 		cp "${DISTDIR}/ipxe-git-${IPXE_COMMIT}.tar.gz" tools/firmware/etherboot/_ipxe.tar.gz || die
 
-		# gcc 10
-		cp "${WORKDIR}/patches-gentoo/xen-tools-4.13.0-ipxe-gcc10.patch" tools/firmware/etherboot/patches/ipxe-gcc10.patch || die
-		echo ipxe-gcc10.patch >> tools/firmware/etherboot/patches/series || die
+		# gcc 11
+		cp "${WORKDIR}/patches-gentoo/xen-tools-4.15.0-ipxe-gcc11.patch" tools/firmware/etherboot/patches/ipxe-gcc11.patch || die
+		echo ipxe-gcc11.patch >> tools/firmware/etherboot/patches/series || die
 	fi
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
@@ -369,6 +369,18 @@ src_prepare() {
 	sed -e "s:\$\$source/configure:\0 --disable-glusterfs:" \
 		-i tools/Makefile || die
 
+	# disable jpeg automagic
+	sed -e "s:\$\$source/configure:\0 --disable-vnc-jpeg:" \
+		-i tools/Makefile || die
+
+	# disable png automagic
+	sed -e "s:\$\$source/configure:\0 --disable-vnc-png:" \
+		-i tools/Makefile || die
+
+	# disable docker (Bug #732970)
+	sed -e "s:\$\$source/configure:\0 --disable-containers:" \
+		-i tools/Makefile || die
+
 	default
 }
 
@@ -377,6 +389,7 @@ src_configure() {
 		--libdir=${PREFIX}/usr/$(get_libdir) \
 		--libexecdir=${PREFIX}/usr/libexec \
 		--localstatedir=${EPREFIX}/var \
+		--disable-golang \
 		--disable-werror \
 		--disable-xen \
 		--enable-tools \
