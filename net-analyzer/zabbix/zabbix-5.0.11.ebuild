@@ -20,8 +20,6 @@ EGO_SUM=(
 	"github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38="
 	"github.com/dustin/gomemcached v0.0.0-20160817010731-a2284a01c143 h1:K9CFK8HRZWzmoIWbpA7u0XYLggCyfa/N77eVaq/nUiA="
 	"github.com/dustin/gomemcached v0.0.0-20160817010731-a2284a01c143/go.mod h1:BLhrehfVmtABJWBZTJV8HyPWCSZoiMzjjcZ3+vHHhPI="
-	"github.com/eclipse/paho.mqtt.golang v1.2.0 h1:1F8mhG9+aO5/xpdtFkW4SxOJB67ukuDC3t2y2qayIX0="
-	"github.com/eclipse/paho.mqtt.golang v1.2.0/go.mod h1:H9keYFcgq3Qr5OUJm/JZI/i6U7joQ8SYLhZwfeOo6Ts="
 	"github.com/fsnotify/fsnotify v1.4.9 h1:hsms1Qyu0jgnwNXIxa+/V/PDsU6CfLf6CNO8H7IWoS4="
 	"github.com/fsnotify/fsnotify v1.4.9/go.mod h1:znqG4EE+3YCdAaPaxE2ZRY/06pZUdp0tY4IgpuI1SZQ="
 	"github.com/go-ldap/ldap v3.0.3+incompatible h1:HTeSZO8hWMS1Rgb2Ziku6b8a7qRIZZMHjsvuZyatzwk="
@@ -33,10 +31,6 @@ EGO_SUM=(
 	"github.com/go-sql-driver/mysql v1.5.0 h1:ozyZYNQW3x3HtqT1jira07DN2PArx2v7/mN66gGcHOs="
 	"github.com/go-sql-driver/mysql v1.5.0/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LBy8hT2VhHyBg="
 	"github.com/go-stack/stack v1.8.0/go.mod h1:v0f6uXyyMGvRgIKkXu+yp6POWl0qKG85gN/melR3HDY="
-	"github.com/goburrow/modbus v0.1.0 h1:DejRZY73nEM6+bt5JSP6IsFolJ9dVcqxsYbpLbeW/ro="
-	"github.com/goburrow/modbus v0.1.0/go.mod h1:Kx552D5rLIS8E7TyUwQ/UdHEqvX5T8tyiGBTlzMcZBg="
-	"github.com/goburrow/serial v0.1.0 h1:v2T1SQa/dlUqQiYIT8+Cu7YolfqAi3K96UmhwYyuSrA="
-	"github.com/goburrow/serial v0.1.0/go.mod h1:sAiqG0nRVswsm1C97xsttiYCzSLBmUZ/VSlVLZJ8haA="
 	"github.com/godbus/dbus v4.1.0+incompatible h1:WqqLRTsQic3apZUK9qC5sGNfXthmPXzUZ7nQPrNITa4="
 	"github.com/godbus/dbus v4.1.0+incompatible/go.mod h1:/YcGZj5zSblfDWMMoOzV4fas9FZnQYTkDnsGvmh2Grw="
 	"github.com/godror/godror v0.20.1 h1:s/ehD65nfVzWR2MrZGChDkLvVPlIVxbt+Jpzfwkl1c8="
@@ -232,6 +226,8 @@ EGO_SUM=(
 	"gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0="
 	"gopkg.in/errgo.v2 v2.1.0/go.mod h1:hNsd1EY+bozCKY1Ytp96fpM3vjJbqLJn88ws8XvfDNI="
 	"gopkg.in/inconshreveable/log15.v2 v2.0.0-20180818164646-67afb5ed74ec/go.mod h1:aPpfJ7XW+gOuirDoZ8gHhLh3kZ1B08FtV2bbmy7Jv3s="
+	"gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22 h1:VpOs+IwYnYBaFnrNAeB8UUWtL3vEUnzSCL1nVjPhqrw="
+	"gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22/go.mod h1:yeKp02qBN3iKW1OzL3MGk2IdtZzaj7SFntXj72NppTA="
 	"gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce h1:+JknDZhAj8YMt7GC73Ei8pv4MzjDUNPHgQWJdtMAaDU="
 	"gopkg.in/natefinch/npipe.v2 v2.0.0-20160621034901-c1b8fa8bdcce/go.mod h1:5AcXVHNjg+BDxry382+8OKon8SEWiKktQR07RKPsv1c="
 	"gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI="
@@ -368,25 +364,25 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		"$(use_enable agent)" \
-		"$(use_enable agent2)" \
-		"$(use_enable ipv6)" \
-		"$(use_enable java)" \
-		"$(use_enable proxy)" \
-		"$(use_enable server)" \
-		"$(use_enable static)" \
-		"$(use_with curl libcurl)" \
-		"$(use_with ldap)" \
-		"$(use_with libxml2)" \
-		"$(use_with mysql)" \
-		"$(use_with odbc unixodbc)" \
-		"$(use_with openipmi openipmi)" \
-		"$(use_with oracle)" \
-		"$(use_with postgres postgresql)" \
-		"$(use_with snmp net-snmp)" \
-		"$(use_with sqlite sqlite3)" \
-		"$(use_with ssh ssh2)" \
-		"$(use_with ssl openssl)"
+		$(use_enable agent) \
+		$(use_enable agent2) \
+		$(use_enable ipv6) \
+		$(use_enable java) \
+		$(use_enable proxy) \
+		$(use_enable server) \
+		$(use_enable static) \
+		$(use_with curl libcurl) \
+		$(use_with ldap) \
+		$(use_with libxml2) \
+		$(use_with mysql) \
+		$(use_with odbc unixodbc) \
+		$(use_with openipmi openipmi) \
+		$(use_with oracle) \
+		$(use_with postgres postgresql) \
+		$(use_with snmp net-snmp) \
+		$(use_with sqlite sqlite3) \
+		$(use_with ssh ssh2) \
+		$(use_with ssl openssl)
 }
 
 src_compile() {
@@ -461,6 +457,7 @@ src_install() {
 		systemd_dounit "${FILESDIR}"/zabbix-agentd.service
 		systemd_newtmpfilesd "${FILESDIR}"/zabbix-agentd.tmpfiles zabbix-agentd.conf
 	fi
+
 	if use agent2; then
 		insinto /etc/zabbix
 		doins "${S}"/src/go/conf/zabbix_agent2.conf
@@ -515,15 +512,15 @@ src_install() {
 			/${ZABBIXJAVA_BASE}/lib
 		keepdir /${ZABBIXJAVA_BASE}
 		exeinto /${ZABBIXJAVA_BASE}/bin
-		doexe src/zabbix_java/bin/zabbix-java-gateway-"${MY_PV}".jar
+		doexe src/zabbix_java/bin/zabbix-java-gateway-${MY_PV}.jar
 		exeinto /${ZABBIXJAVA_BASE}/lib
 		doexe \
-			src/zabbix_java/lib/logback-classic-0.9.27.jar \
+			src/zabbix_java/lib/logback-classic-1.2.3.jar \
 			src/zabbix_java/lib/logback-console.xml \
-			src/zabbix_java/lib/logback-core-0.9.27.jar \
+			src/zabbix_java/lib/logback-core-1.2.3.jar \
 			src/zabbix_java/lib/logback.xml \
 			src/zabbix_java/lib/android-json-4.3_r3.1.jar \
-			src/zabbix_java/lib/slf4j-api-1.6.1.jar
+			src/zabbix_java/lib/slf4j-api-1.7.30.jar
 		newinitd "${FILESDIR}"/zabbix-jmx-proxy.init zabbix-jmx-proxy
 		newconfd "${FILESDIR}"/zabbix-jmx-proxy.conf zabbix-jmx-proxy
 	fi
@@ -538,7 +535,7 @@ pkg_postinst() {
 
 		zabbix_homedir=$(egethome zabbix)
 		if [ -n "${zabbix_homedir}" ] && \
-			[ "${zabbix_homedir}" != "/var/lib/zabbix/home" ]; then
+		   [ "${zabbix_homedir}" != "/var/lib/zabbix/home" ]; then
 			ewarn
 			ewarn "The user 'zabbix' should have his homedir changed"
 			ewarn "to /var/lib/zabbix/home if you want to use"
