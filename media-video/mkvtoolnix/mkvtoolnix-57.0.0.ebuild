@@ -11,7 +11,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://mkvtoolnix.download/sources/${P}.tar.xz"
-	KEYWORDS="amd64 ~ppc ~ppc64 x86"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Tools to create, alter, and inspect Matroska files"
@@ -31,7 +31,7 @@ RDEPEND="
 	dev-libs/libpcre2:=
 	dev-libs/pugixml:=
 	media-libs/flac:=
-	>=media-libs/libmatroska-1.6.0:=
+	>=media-libs/libmatroska-1.6.3:=
 	media-libs/libogg:=
 	media-libs/libvorbis:=
 	sys-apps/file
@@ -64,7 +64,8 @@ BDEPEND="
 	)
 "
 
-PATCHES=( "${FILESDIR}"/mkvtoolnix-49.0.0-qt5dbus.patch )
+PATCHES=( "${FILESDIR}"/mkvtoolnix-49.0.0-qt5dbus.patch
+	"${FILESDIR}"/mkvtoolnix-56.1.0-optlevel.patch )
 
 src_prepare() {
 	xdg_src_prepare
