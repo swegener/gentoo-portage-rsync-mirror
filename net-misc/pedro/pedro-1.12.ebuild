@@ -8,12 +8,12 @@ inherit toolchain-funcs
 DESCRIPTION="Pedro is a subscription/notification communications system"
 HOMEPAGE="https://staff.itee.uq.edu.au/pjr/HomePages/PedroHome.html"
 SRC_URI="https://staff.itee.uq.edu.au/pjr/HomePages/PedroFiles/${P}.tgz
-	doc? ( mirror://gentoo/${PN}-manual-${PV}.tar.gz )"
+	doc? ( https://dev.gentoo.org/~keri/distfiles/pedro/${PN}-manual-1.x.tar.gz )"
 S="${WORKDIR}"/${P}
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc examples"
 
 RDEPEND="dev-libs/glib:2"
