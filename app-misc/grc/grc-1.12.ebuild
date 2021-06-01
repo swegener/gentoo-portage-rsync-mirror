@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{3..10} )
 inherit python-r1
 
 DESCRIPTION="Generic Colouriser beautifies your logfiles or output of commands"
@@ -35,10 +35,10 @@ src_install() {
 	einstalldocs
 
 	insinto /usr/share/grc
-	doins \
+	doins  \
 		contrib/mrsmith/conf.* \
 		colourfiles/conf.* \
-		grc.bashrc \
+		grc.sh \
 		grc.fish \
 		grc.zsh
 
