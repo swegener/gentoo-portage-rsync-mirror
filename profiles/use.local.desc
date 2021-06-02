@@ -2343,7 +2343,7 @@ dev-php/phing:zip - Support zip archives by requiring said support in dev-lang/p
 dev-php/swoole:http2 - Add support for HTTP/2 protocol via net-libs/nghttp2
 dev-python/PyQt5:bluetooth - Build bindings for the QtBluetooth module
 dev-python/PyQt5:dbus - Build bindings for the QtDBus module
-dev-python/PyQt5:declarative - Build bindings for the QtQml/QtQuick modules and enable the qmlscene plugin
+dev-python/PyQt5:declarative - Build bindings for the QtQml and QtQuick modules and enable the qmlscene plugin
 dev-python/PyQt5:designer - Build bindings for the QtDesigner module and enable the designer plugin
 dev-python/PyQt5:gui - Build bindings for the QtGui module
 dev-python/PyQt5:help - Build bindings for the QtHelp module
@@ -2356,6 +2356,7 @@ dev-python/PyQt5:positioning - Build bindings for the QtPositioning module
 dev-python/PyQt5:printsupport - Build bindings for the QtPrintSupport module
 dev-python/PyQt5:sensors - Build bindings for the QtSensors module
 dev-python/PyQt5:serialport - Build bindings for the QtSerialPort module
+dev-python/PyQt5:speech - Build bindings for the QtTextToSpeech module
 dev-python/PyQt5:sql - Build bindings for the QtSql module
 dev-python/PyQt5:svg - Build bindings for the QtSvg module
 dev-python/PyQt5:testlib - Build bindings for the QtTest module
@@ -2365,7 +2366,7 @@ dev-python/PyQt5:websockets - Build bindings for the QtWebSockets module
 dev-python/PyQt5:widgets - Build bindings for the QtWidgets module
 dev-python/PyQt5:x11extras - Build bindings for the QtX11Extras module
 dev-python/PyQt5:xmlpatterns - Build bindings for the QtXmlPatterns module
-dev-python/QtPy:declarative - Pull in bindings for the QtQml/QtQuick modules and enable the qmlscene plugin
+dev-python/QtPy:declarative - Build bindings for the QtQml and QtQuick modules and enable the qmlscene plugin
 dev-python/QtPy:designer - Pull in bindings for the QtDesigner module and enable the designer plugin
 dev-python/QtPy:gui - Pull in bindings for the QtGui module
 dev-python/QtPy:help - Pull in bindings for the QtHelp module
@@ -2379,6 +2380,7 @@ dev-python/QtPy:pyqt5 - Use dev-python/PyQt5 as Qt for Python implementation
 dev-python/QtPy:pyside2 - Use dev-python/pyside2 as Qt for Python implementation
 dev-python/QtPy:sensors - Pull in bindings for the QtSensors module
 dev-python/QtPy:serialport - Pull in bindings for the QtSerialPort module
+dev-python/QtPy:speech - Build bindings for the QtTextToSpeech module
 dev-python/QtPy:sql - Pull in bindings for the QtSql module
 dev-python/QtPy:svg - Pull in bindings for the QtSvg module
 dev-python/QtPy:testlib - Pull in bindings for the QtTest module
