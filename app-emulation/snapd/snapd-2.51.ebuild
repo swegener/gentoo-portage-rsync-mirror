@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 2020-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,14 +42,15 @@ RDEPEND="
 	virtual/libudev
 	systemd? ( sys-apps/systemd[cgroup-hybrid(+)?] )
 	sys-libs/libcap:=
-	sys-fs/squashfs-tools"
+	sys-fs/squashfs-tools[lzma]"
 
 DEPEND="${RDEPEND}"
 
 BDEPEND="
 	>=dev-lang/go-1.9
 	dev-python/docutils
-	sys-devel/gettext"
+	sys-devel/gettext
+	sys-fs/xfsprogs"
 
 PDEPEND="sys-auth/polkit[gtk?,kde?]"
 
@@ -67,12 +68,6 @@ src_prepare() {
 	# Update apparmor profile to allow libtinfow.so*
 	sed -i 's/libtinfo/libtinfo{,w}/' \
 		"${MY_S}/cmd/snap-confine/snap-confine.apparmor.in" || die
-
-	# Add "gentoo" to altDirDistros: https://github.com/snapcore/snapd/pull/9588
-	echo -e '@@ -289,2 +289,3 @@ func SetRootDir(rootdir string) {
-\x20		"fedora",
-+		"gentoo",
-\x20		"manjaro",' | patch "${MY_S}/dirs/dirs.go" || die
 
 	if ! use forced-devmode; then
 		sed -e 's#return \(!apparmorFull || cgroupv2\)#//\1\n\tif !apparmorFull || cgroupv2 {\n\t\tpanic("USE=forced-devmode is disabled")\n\t}\n\treturn false#' \
