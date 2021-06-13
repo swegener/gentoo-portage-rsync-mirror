@@ -3,15 +3,13 @@
 
 EAPI=7
 
-inherit git-r3
-
-EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
-EGIT_BRANCH="master"
-DESCRIPTION="Gentoo Package Manager Specification (draft)"
+DESCRIPTION="Gentoo Package Manager Specification"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Package_Manager_Specification"
+SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="CC-BY-SA-4.0"
-SLOT="live"
+SLOT="0"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="html twoside"
 
 # texlive-bibtexextra for unsrturl.bst
