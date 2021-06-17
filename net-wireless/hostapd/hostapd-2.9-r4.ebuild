@@ -23,7 +23,7 @@ else
 	fi
 
 	# Never stabilize snapshot ebuilds please
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc x86"
 fi
 
 LICENSE="BSD"
@@ -32,7 +32,7 @@ IUSE="internal-tls ipv6 netlink sqlite +suiteb +wps +crda"
 
 DEPEND="
 	internal-tls? ( dev-libs/libtommath )
-	!internal-tls? ( dev-libs/openssl:0=[-bindist] )
+	!internal-tls? ( dev-libs/openssl:0=[-bindist(-)] )
 	kernel_linux? (
 		dev-libs/libnl:3
 		crda? ( net-wireless/crda )
