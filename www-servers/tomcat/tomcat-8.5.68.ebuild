@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/${PN}/tomcat-8/v${PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="8.5"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
@@ -52,7 +52,7 @@ src_prepare() {
 	# Remove bundled servlet-api
 	rm -rv java/javax/{el,servlet} || die
 
-	eapply "${FILESDIR}/${PN}-8.5.65-build.xml.patch"
+	eapply "${FILESDIR}/${PN}-8.5.66-build.xml.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
