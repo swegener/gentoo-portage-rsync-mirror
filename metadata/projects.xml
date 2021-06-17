@@ -297,7 +297,7 @@
     <email>base-system@gentoo.org</email>
     <name>Base System</name>
     <url>https://wiki.gentoo.org/wiki/Project:Base</url>
-    <description>The Base System Project provides an umbrella project for keeping the system tools, libraries, compilers and layout consistent for all the various architectures under Gentoo Linux.</description>
+    <description>The Base System Project provides an umbrella project for keeping system tools, libraries, and layout consistent for all the various architectures under Gentoo Linux.</description>
     <member>
       <email>chainsaw@gentoo.org</email>
       <name>Tony Vroon</name>
