@@ -7,26 +7,21 @@ JAVA_PKG_IUSE="source"
 
 inherit java-pkg-2 java-pkg-simple
 
-MY_A="apache-${PN}-${PV}-src"
+MY_A="apache-${P}-src"
 MY_P="${MY_A/-servlet-api/}"
-DESCRIPTION="Tomcat's Servlet API 5.0/JSP API 3.0/EL API 4.0 implementation"
+DESCRIPTION="Tomcat's Servlet API 3.1/JSP API 2.3/EL API 3.0 implementation"
 HOMEPAGE="https://tomcat.apache.org/"
-SRC_URI="mirror://apache/tomcat/tomcat-10/v${PV}/src/${MY_P}.tar.gz"
+SRC_URI="mirror://apache/tomcat/tomcat-8/v${PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="5.0"
-KEYWORDS="amd64 ~arm ~arm64 x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+SLOT="3.1"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND=">=virtual/jre-1.8:*"
 
 S="${WORKDIR}/${MY_P}/"
-
-# we don't have the aQute.bnd.annotation.spi packaged
-PATCHES=(
-	"${FILESDIR}/${PN}-10.0.2-patch-out-aQute.bnd.annotation.spi.ServiceConsumer.patch"
-)
 
 JAVA_TEST_SRC_DIR="src/test"
 
@@ -43,17 +38,18 @@ JSP_API_RESOURCES="src/resources/jsp-api"
 src_prepare() {
 	default
 
-	# The sources and also resources are mixed together so we first give it a structure to make it easier to compile and package
+	# The sources and also resources are mixed together so we first give it a structure to make it easier to compila and package
+
 	mkdir -p ${SERVLET_API_SRC} ${SERVLET_API_RESOURCES} \
 		${EL_API_SRC} ${EL_API_RESOURCES} \
-		${JSP_API_SRC}/jakarta/servlet ${JSP_API_RESOURCES} \
+		${JSP_API_SRC}/javax/servlet ${JSP_API_RESOURCES} \
 		${JAVA_TEST_SRC_DIR} || die "Failed to create source directory"
 
 	pushd java || die "Failed to cd to java dir"
 
-	cp --parents -R jakarta/servlet "${S}/${SERVLET_API_SRC}/" || die "Failed to copy servlet-api sources"
-	mv "${S}/${SERVLET_API_SRC}/jakarta/servlet/jsp" "${S}/${JSP_API_SRC}/jakarta/servlet" || die "Failed to copy jsp-api sources"
-	cp --parents -R jakarta/el "${S}/${EL_API_SRC}/" || die "Failed to copy el-api sources"
+	cp --parents -R javax/servlet "${S}/${SERVLET_API_SRC}/" || die "Failed to copy servlet-api sources"
+	mv "${S}/${SERVLET_API_SRC}/javax/servlet/jsp" "${S}/${JSP_API_SRC}/javax/servlet" || die "Failed to copy jsp-api sources"
+	cp --parents -R javax/el "${S}/${EL_API_SRC}/" || die "Failed to copy el-api sources"
 
 	popd
 
@@ -63,7 +59,7 @@ src_prepare() {
 		mv $file ${target_dir} || die "Failed to move resource file"
 	done
 
-	mv test/jakarta ${JAVA_TEST_SRC_DIR} || die "Failed to copy test sources"
+	mv test/javax ${JAVA_TEST_SRC_DIR} || die "Failed to copy test sources"
 
 	java-pkg-2_src_prepare
 }
