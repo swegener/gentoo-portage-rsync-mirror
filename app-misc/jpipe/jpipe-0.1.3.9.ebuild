@@ -3,7 +3,7 @@
 
 EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9,10} )
 
 inherit distutils-r1
 
@@ -14,29 +14,25 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 KEYWORDS="~amd64"
 SLOT="0"
-IUSE="jpp jp-symlink test"
+IUSE="jpp-symlink jp-symlink test"
 RESTRICT="!test? ( test )"
 RDEPEND="
-	jpp? ( !app-misc/jp[jpp] )
+	jpp-symlink? ( !app-misc/jp[jpp] )
 	jp-symlink? ( !app-misc/jp[jp] )
 	dev-python/jmespath[${PYTHON_USEDEP}]
 "
 
 python_prepare_all() {
-	if ! use jpp; then
-		sed -e '/jpp_main/d' -i setup.py || die
+	if ! use jpp-symlink; then
+		sed -e '/"jpp = jpipe/d' -i setup.py || die
+	fi
+	if ! use jp-symlink; then
+		sed -e '/"jp = jpipe/d' -i setup.py || die
 	fi
 	distutils-r1_python_prepare_all
 }
 
 python_test() {
-	"${PYTHON}" test/test_jpipe.py || die "tests failed for ${EPYTHON}"
-	if use jpp; then
-		"${PYTHON}" test/test_jpp.py || die "jpp tests failed for ${EPYTHON}"
-	fi
-}
-
-src_install() {
-	distutils-r1_src_install
-	use jp-symlink && dosym jpipe /usr/bin/jp
+	"${PYTHON}" test/test_jp.py || die "jp tests failed for ${EPYTHON}"
+	"${PYTHON}" test/test_jpp.py || die "jpp tests failed for ${EPYTHON}"
 }
