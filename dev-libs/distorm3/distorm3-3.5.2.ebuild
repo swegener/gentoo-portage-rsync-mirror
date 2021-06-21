@@ -24,6 +24,8 @@ BDEPEND="test? ( dev-lang/yasm )"
 
 distutils_enable_tests pytest
 
+PATCHES=("${FILESDIR}"/${P}-under.patch)
+
 python_install() {
 	distutils-r1_python_install
 
@@ -34,6 +36,7 @@ python_install() {
 python_test() {
 	local exclude=(
 		# outdated tests? API udage mismatch
+		# https://github.com/gdabah/distorm/issues/173
 		python/test_distorm3.py::Test::test_dummy
 		python/test_distorm3.py::InstBin::test_dummy
 		python/test_distorm3.py::Inst::test_dummy
