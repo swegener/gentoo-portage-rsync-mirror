@@ -1640,11 +1640,6 @@
       <role>Lead, core LLVM/clang</role>
     </member>
     <member>
-      <email>soap@gentoo.org</email>
-      <name>David Seifert</name>
-      <role>Toolchain liaison</role>
-    </member>
-    <member>
       <email>williamh@gentoo.org</email>
       <name>William Hubbs</name>
     </member>
