@@ -21,7 +21,7 @@ if [[ "${PV}" == "9999" ]]; then
 	BDEPEND="dev-python/sphinx"
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 fi
 
 RDEPEND="
@@ -30,7 +30,6 @@ RDEPEND="
 	dev-python/pyasn1[${PYTHON_USEDEP}]
 	>=dev-python/slixmpp-1.5.0[${PYTHON_USEDEP}]
 "
-DEPEND="test? ( ${RDEPEND} )"
 
 PATCHES=(
 	"${FILESDIR}/Do-not-install-man-pages-and-files-in-usr-share-poez.patch"
