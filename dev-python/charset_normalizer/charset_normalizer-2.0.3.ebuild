@@ -19,3 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 distutils_enable_tests pytest
+
+src_prepare() {
+	sed -i -e '/addopts/d' setup.cfg || die
+	distutils-r1_src_prepare
+}
