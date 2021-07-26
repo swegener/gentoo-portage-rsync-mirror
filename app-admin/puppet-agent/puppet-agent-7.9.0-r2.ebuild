@@ -30,7 +30,7 @@ RDEPEND="${CDEPEND}
 	sys-libs/libselinux
 	sys-libs/glibc
 	sys-libs/readline:0/8
-	sys-libs/libxcrypt
+	sys-libs/libxcrypt[compat]
 	sys-libs/ncurses:0[tinfo]
 	selinux? (
 		sys-libs/libselinux[ruby]
@@ -70,5 +70,5 @@ src_install() {
 	dosym ../../opt/puppetlabs/bin/facter /usr/bin/facter
 	dosym ../../opt/puppetlabs/bin/hiera /usr/bin/hiera
 	dosym ../../opt/puppetlabs/bin/puppet /usr/bin/puppet
-	dosym ../../../../usr/lib64/xcrypt/libcrypt.so.1 /opt/puppetlabs/puppet/lib/libcrypt.so.1
+	dosym ../../../../lib/libcrypt.so.1 /opt/puppetlabs/puppet/lib/libcrypt.so.1
 }
