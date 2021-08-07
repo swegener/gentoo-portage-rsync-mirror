@@ -30,7 +30,7 @@ fi
 
 KEYWORDS="-* amd64"
 
-FFMPEG_VERSION="91.0.4472.19"
+FFMPEG_VERSION="92.0.4515.20"
 
 SRC_URI="${SRC_URI_BASE[@]/%//${PV}/linux/${MY_PN}_${PV}_amd64.deb}
 	proprietary-codecs? (
@@ -50,7 +50,7 @@ RDEPEND="
 	dev-libs/nss
 	gnome-base/gsettings-desktop-schemas
 	media-libs/alsa-lib
-	media-libs/mesa[gbm]
+	media-libs/mesa[gbm(+)]
 	net-misc/curl
 	net-print/cups
 	sys-apps/dbus
@@ -60,6 +60,7 @@ RDEPEND="
 	x11-libs/libdrm
 	x11-libs/libxcb
 	x11-libs/libxkbcommon
+	x11-libs/libxshmfence
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
