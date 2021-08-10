@@ -1,31 +1,36 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit epatch flag-o-matic toolchain-funcs multilib multilib-minimal
+EAPI=8
+
+inherit flag-o-matic toolchain-funcs multilib multilib-minimal
 
 DESCRIPTION="Extremely fast library for floating-point convolution"
-HOMEPAGE="http://cr.yp.to/djbfft.html"
-SRC_URI="http://cr.yp.to/djbfft/${P}.tar.gz"
+HOMEPAGE="https://cr.yp.to/djbfft.html"
+SRC_URI="https://cr.yp.to/djbfft/${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
-IUSE=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~sparc ~x86 ~amd64-linux ~x86-linux"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc3.patch
+	"${FILESDIR}"/${P}-shared.patch
+	"${FILESDIR}"/${P}-headers.patch
+)
+
 DOCS=( CHANGES README TODO VERSION )
 
 src_prepare() {
-	SOVER="${PV:0:1}.${PV:2:1}.${PV:3:1}" # a.bc -> a.b.c
-	# mask out everything, which is not suggested by the author (RTFM)!
+	default
+
+	# mask out everything which is not suggested by the author (RTFM)!
 	ALLOWED_FLAGS="-fstack-protector -march -mcpu -pipe -mpreferred-stack-boundary -ffast-math"
 	strip-flags
 
+	SOVER="${PV:0:1}.${PV:2:1}.${PV:3:1}" # a.bc -> a.b.c
 	SONAME="libdjbfft.so.${SOVER}"
 
-	epatch \
-		"${FILESDIR}"/${P}-gcc3.patch \
-		"${FILESDIR}"/${P}-shared.patch \
-		"${FILESDIR}"/${P}-headers.patch
 	multilib_copy_sources
 }
 
@@ -35,7 +40,7 @@ multilib_src_configure() {
 	sed -i -e "s:\"lib\":\"$(get_libdir)\":" hier.c || die
 	echo "$(tc-getCC) ${CFLAGS} -fPIC" > "conf-cc"
 	echo "$(tc-getCC) ${LDFLAGS}" > "conf-ld"
-	echo "${ED}usr" > "conf-home"
+	echo "${ED}/usr" > "conf-home"
 	einfo "conf-cc: $(<conf-cc)"
 }
 
