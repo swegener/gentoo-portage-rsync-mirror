@@ -291,11 +291,6 @@
     <url>https://wiki.gentoo.org/wiki/Project:Base</url>
     <description>The Base System Project provides an umbrella project for keeping system tools, libraries, and layout consistent for all the various architectures under Gentoo Linux.</description>
     <member>
-      <email>chainsaw@gentoo.org</email>
-      <name>Tony Vroon</name>
-      <role>LILO</role>
-    </member>
-    <member>
       <email>chutzpah@gentoo.org</email>
       <name>Patrick McLean</name>
       <role>Misc stuff that needs to get done</role>
@@ -313,10 +308,6 @@
       <email>gyakovlev@gentoo.org</email>
       <name>Georgy Yakovlev</name>
       <role>new helper</role>
-    </member>
-    <member>
-      <email>lu_zero@gentoo.org</email>
-      <name>Luca Barbato</name>
     </member>
     <member>
       <email>mattst88@gentoo.org</email>
