@@ -1,17 +1,14 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="8"
 ETYPE="sources"
 KEYWORDS="~amd64 ~arm64"
 
 HOMEPAGE="https://wiki.linuxfoundation.org/realtime/start"
 
-inherit eapi7-ver
-
 CKV="$(ver_cut 1-3)"
 K_SECURITY_UNSUPPORTED="1"
-K_DEBLOB_AVAILABLE="1"
 RT_PATCHSET="${PV/*_p}"
 
 inherit kernel-2
