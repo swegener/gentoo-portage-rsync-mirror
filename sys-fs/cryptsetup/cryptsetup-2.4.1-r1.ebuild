@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info tmpfiles
+inherit linux-info tmpfiles
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
@@ -46,7 +46,9 @@ BDEPEND="
 
 S="${WORKDIR}/${P/_/-}"
 
-PATCHES=( "${FILESDIR}"/${PN}-2.0.4-fix-static-pwquality-build.patch )
+PATCHES=(
+	"${FILESDIR}"/cryptsetup-2.4.1-external-tokens.patch
+)
 
 pkg_setup() {
 	local CONFIG_CHECK="~DM_CRYPT ~CRYPTO ~CRYPTO_CBC ~CRYPTO_SHA256"
@@ -60,7 +62,6 @@ pkg_setup() {
 src_prepare() {
 	sed -i '/^LOOPDEV=/s:$: || exit 0:' tests/{compat,mode}-test || die
 	default
-	eautoreconf
 }
 
 src_configure() {
@@ -82,6 +83,7 @@ src_configure() {
 		$(use_enable nls)
 		$(use_enable pwquality)
 		$(use_enable reencrypt cryptsetup-reencrypt)
+		$(use_enable !static external-tokens)
 		$(use_enable static static-cryptsetup)
 		$(use_enable static-libs static)
 		$(use_enable udev)
