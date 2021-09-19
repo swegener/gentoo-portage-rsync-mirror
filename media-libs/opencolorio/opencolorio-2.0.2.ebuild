@@ -12,9 +12,9 @@ HOMEPAGE="https://opencolorio.org https://github.com/AcademySoftwareFoundation/O
 SRC_URI="https://github.com/AcademySoftwareFoundation/OpenColorIO/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/OpenColorIO-${PV}"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="cpu_flags_x86_sse2 doc opengl python static-libs test"
 REQUIRED_USE="
 	doc? ( python )
@@ -87,7 +87,7 @@ src_configure() {
 
 	# We need this to work around asserts that can trigger even in proper use cases.
 	# See https://github.com/AcademySoftwareFoundation/OpenColorIO/issues/1235
-	append-flags  -DNDEBUG
+	append-flags -DNDEBUG
 
 	cmake_src_configure
 }
