@@ -1,10 +1,10 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 # Require python-2 with sqlite USE flag
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="sqlite"
 
 inherit python-single-r1 systemd
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/sabnzbd/sabnzbd/releases/download/${MY_PV}/${MY_P}-s
 # Sabnzbd is GPL-2 but bundles software with the following licenses.
 LICENSE="GPL-2 BSD LGPL-2 MIT BSD-1"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="+7za +rar unzip"
 
 # Sabnzbd is installed to /usr/share/ as upstream makes it clear they should not
@@ -40,6 +40,7 @@ COMMON_DEPS="
 		>=dev-python/feedparser-6[${PYTHON_USEDEP}]
 		dev-python/notify2[${PYTHON_USEDEP}]
 		dev-python/portend[${PYTHON_USEDEP}]
+		dev-python/puremagic[${PYTHON_USEDEP}]
 		>=dev-python/sabyenc-4[${PYTHON_USEDEP}]
 	')
 "
