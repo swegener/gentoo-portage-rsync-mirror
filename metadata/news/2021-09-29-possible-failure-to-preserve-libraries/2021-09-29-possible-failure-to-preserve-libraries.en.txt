@@ -17,8 +17,8 @@ new major version, but pax-utils has not yet been upgraded to a version
 compatible with it (but at that moment stays undetected).
 
 The full technical details and investigation can be found on a Wiki page
-[0] and on Bugzilla [1]. Work is underway to prevent this happening
-again both within Portage [2] (possibly more to come) and within the
+[0] and on Bugzilla [1]. Changes have been made to prevent this happening
+again both within Portage [7] (with possibly more to come [2]) and within the
 glibc and pax-utils ebuilds [3][4].
 
 To detect whether a system is affected, emerge the
@@ -34,7 +34,9 @@ Then run recover-broken-vdb-find-broken.sh:
 $ recover-broken-vdb-find-broken.sh | tee broken_vdb_packages
 ```
 
-This check should be run on all Gentoo systems.
+This check should be run on all Gentoo systems. It is only necessary
+to run this as a one-off, as changes have been made to prevent such
+problems occurring in future.
 
 If you have any output, read on.
 
@@ -99,3 +101,4 @@ being affected by system breakage [6] as a result of the bug.
 [4] https://bugs.gentoo.org/811462#c7
 [5] https://github.com/thesamesam/recover-broken-vdb
 [6] https://wiki.gentoo.org/wiki/Fix_my_Gentoo
+[7] https://gitweb.gentoo.org/proj/portage.git/commit/?id=83af7270fafbd7b1eed0031a5e06836ad1edf06d
