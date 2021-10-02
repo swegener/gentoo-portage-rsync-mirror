@@ -20,19 +20,28 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 IUSE="+ocamlopt test"
 RESTRICT="!test? ( test )"
 
-DEPEND="
-	>=dev-ml/base-0.11.0:=
-	dev-ml/findlib:=
+RDEPEND="
 	>=dev-ml/ocaml-compiler-libs-0.11.0:=
-	>=dev-ml/ocaml-migrate-parsetree-2.0.0:=
-	dev-ml/cinaps:=
+	>=dev-ml/ocaml-migrate-parsetree-2.1.0:=
 	dev-ml/sexplib0:=
 	dev-ml/stdlib-shims:=
 	>=dev-ml/ppx_derivers-1.2.1:=
-	>=dev-ml/stdio-0.11.0:=
 "
-RDEPEND="${DEPEND}"
 DEPEND="${DEPEND}
 	test? (
-		dev-ml/cinaps
-	)"
+		dev-ml/findlib:=
+		>=dev-ml/base-0.11.0:=
+		dev-ml/cinaps:=
+		dev-ml/re:=
+		>=dev-ml/stdio-0.11.0:=
+	)
+"
+BDEPEND=">=dev-ml/dune-2.8"
+
+src_install() {
+	dune_src_install
+
+	# Clashes with dev-libs/nss[utils], accidentally installed upstream
+	# https://github.com/ocaml-ppx/ppxlib/issues/224
+	rm "${ED}"/usr/bin/pp || die
+}
