@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,9 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
+# < dep on hdf5 because of bug #809221
+# Needs a proper fix.
 DEPEND="
 	virtual/mpi
-	sci-libs/hdf5[mpi]
+	<sci-libs/hdf5-1.12[mpi]
 	"
 RDEPEND="${DEPEND}"
 
