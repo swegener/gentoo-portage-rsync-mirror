@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 MY_COMMIT="16456168430c9e185dd94b8215aa77d02bbb8a2c"
 DESCRIPTION="A very small C compiler for ix86/amd64"
-HOMEPAGE="https://bellard.org/tcc/"
+HOMEPAGE="https://bellard.org/tcc/ https://repo.or.cz/tinycc.git/"
 
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://repo.or.cz/r/tinycc.git"
@@ -51,18 +51,24 @@ src_prepare() {
 }
 
 src_configure() {
+	local libc
+
 	use test && unset CFLAGS LDFLAGS # Tests run with CC=tcc etc, they will fail hard otherwise
 					# better fixes welcome, it feels wrong to hack the env like this
 
+	use elibc_musl && libc=musl
+	use elibc_uclibc && libc=uClibc
+
 	# not autotools, so call configure directly
 	./configure --cc="$(tc-getCC)" \
+		${libc:+--config-${libc}} \
 		--prefix="${EPREFIX}/usr" \
 		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 }
 
 src_compile() {
-	emake AR="$(tc-getAR)"
+	emake AR="$(tc-getAR)" LDFLAGS="${LDFLAGS}"
 }
 
 src_test() {
