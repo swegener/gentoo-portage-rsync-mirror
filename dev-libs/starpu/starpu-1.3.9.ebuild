@@ -82,6 +82,14 @@ src_configure() {
 }
 
 src_test() {
+	# Avoids timeouts in e.g. starpu_task_wait_for_all, starpu_task_wait
+	# See bug #803158
+	# https://gitub.u-bordeaux.fr/starpu/starpu/-/blob/master/contrib/ci.inria.fr/job-1-check.sh
+	export STARPU_TIMEOUT_ENV=3600
+	export MPIEXEC_TIMEOUT=3600
+
+	# Could switch(?) to quick check if timeouts end up being a real problem, but let's not
+	# do it for now. https://gitub.u-bordeaux.fr/starpu/starpu/-/blob/master/contrib/ci.inria.fr/job-1-check.sh#L85
 	MAKEOPTS='-j1' default
 }
 
