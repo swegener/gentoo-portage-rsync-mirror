@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="8"
 
 inherit autotools
 
@@ -9,7 +9,7 @@ DESCRIPTION="Delivery framework for general Input Method configuration"
 HOMEPAGE="https://tagoh.bitbucket.io/imsettings"
 SRC_URI="https://bitbucket.org/tagoh/${PN}/downloads/${P}.tar.bz2"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gconf qt5 +introspection xfconf"
