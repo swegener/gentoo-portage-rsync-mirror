@@ -39,7 +39,9 @@ BDEPEND="python? (
 	)"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2.0.4-boost-1.76.patch
 	"${FILESDIR}"/${P}-boost-1.77.patch
+	"${FILESDIR}"/${P}-python-symbols.patch
 )
 
 pkg_setup() {
