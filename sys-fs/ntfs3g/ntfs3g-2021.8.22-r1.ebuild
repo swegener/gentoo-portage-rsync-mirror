@@ -4,19 +4,19 @@
 EAPI=7
 inherit linux-info toolchain-funcs
 
-MY_P="ntfs-3g_ntfsprogs-${PV%.*}AR.${PV##*.}"
+MY_P="ntfs-3g_ntfsprogs-${PV}"
 
 DESCRIPTION="Open source read-write NTFS driver that runs under FUSE"
 HOMEPAGE="http://www.tuxera.com/community/ntfs-3g-download/"
 HOMEPAGE="https://jp-andre.pagesperso-orange.fr/advanced-ntfs-3g.html"
-#SRC_URI="http://tuxera.com/opensource/${MY_P}.tgz"
-SRC_URI="https://jp-andre.pagesperso-orange.fr/${MY_P}.tgz"
+SRC_URI="http://tuxera.com/opensource/${MY_P}.tgz"
+#SRC_URI="https://jp-andre.pagesperso-orange.fr/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 # The subslot matches the SONAME major #.
-SLOT="0/885"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
-IUSE="acl debug ntfsdecrypt +ntfsprogs static-libs suid xattr"
+SLOT="0/89"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux"
+IUSE="acl debug +mount-ntfs ntfsdecrypt +ntfsprogs static-libs suid xattr"
 
 RDEPEND="
 	sys-apps/util-linux:0=
@@ -64,6 +64,8 @@ src_configure() {
 		# disable hd library until we have the right library in the tree and
 		# don't links to hwinfo one causing issues like bug #602360
 		--without-hd
+
+		--with-fuse=internal
 	)
 
 	econf "${myconf[@]}"
@@ -72,8 +74,8 @@ src_configure() {
 src_install() {
 	default
 	use suid && fperms u+s /usr/bin/ntfs-3g
-	dosym mount.ntfs-3g /sbin/mount.ntfs
-	find "${D}" -name '*.la' -type f -delete || die
+	use mount-ntfs && dosym mount.ntfs-3g /sbin/mount.ntfs
+	find "${ED}" -name '*.la' -type f -delete || die
 	# https://bugs.gentoo.org/760780
 	keepdir "/usr/$(get_libdir)/ntfs-3g"
 }
