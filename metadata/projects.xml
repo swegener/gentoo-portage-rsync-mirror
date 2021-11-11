@@ -924,7 +924,7 @@
       <name>Agostino Sarubbo</name>
       <role>Member ( Language Moderator (Italian) )</role>
     </member>
-    <member>
+    <member is-lead="1">
       <email>chiitoo@gentoo.org</email>
       <name>Jimi Huotari</name>
       <role>Member ( Administrator )</role>
