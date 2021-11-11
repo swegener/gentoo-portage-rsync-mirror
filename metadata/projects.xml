@@ -1704,7 +1704,7 @@
     <name>LXQt</name>
     <url>https://wiki.gentoo.org/wiki/Project:LXQt</url>
     <description>Maintains LXQt DE related packages.</description>
-    <member>
+    <member is-lead="1">
       <email>chiitoo@gentoo.org</email>
       <name>Jimi Huotari</name>
     </member>
