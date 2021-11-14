@@ -14,7 +14,7 @@ SRC_URI="https://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE="archive berkdb debug doc +gmp java +libedit minimal odbc pcre qt5 readline ssl test uuid X yaml"
+IUSE="archive berkdb debug doc +gmp java +libedit minimal odbc pcre qt5 readline ssl test +uuid X yaml"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/ncurses:=
@@ -59,6 +59,10 @@ src_prepare() {
 	sed -e "s|\(SWIPL_INSTALL_PREFIX\)   lib/.*)|\1   $(get_libdir)/swipl)|" \
 		-e "s|\(SWIPL_INSTALL_CMAKE_CONFIG_DIR\) lib/|\1   $(get_libdir)/|" \
 		-i CMakeLists.txt || die
+
+	local ncurses_lib_flags=$(pkg-config --libs ncurses)
+	sed -i "/project(SWI-Prolog)/a set(CMAKE_REQUIRED_LIBRARIES \${CMAKE_REQUIRED_LIBRARIES} ${ncurses_lib_flags})" CMakeLists.txt || die
+	sed -i "s:\${CURSES_LIBRARIES}:${ncurses_lib_flags}:" src/CMakeLists.txt || die
 
 	cmake_src_prepare
 }
