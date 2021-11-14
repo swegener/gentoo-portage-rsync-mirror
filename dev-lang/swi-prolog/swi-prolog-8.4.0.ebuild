@@ -9,8 +9,7 @@ PATCHSET_VER="0"
 
 DESCRIPTION="Versatile implementation of the Prolog programming language"
 HOMEPAGE="https://www.swi-prolog.org/"
-SRC_URI="https://www.swi-prolog.org/download/devel/src/swipl-${PV}.tar.gz
-	 https://dev.gentoo.org/~keri/distfiles/swi-prolog/${P}-gentoo-patchset-${PATCHSET_VER}.tar.gz"
+SRC_URI="https://www.swi-prolog.org/download/stable/src/swipl-${PV}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -60,6 +59,10 @@ src_prepare() {
 	sed -e "s|\(SWIPL_INSTALL_PREFIX\)   lib/.*)|\1   $(get_libdir)/swipl)|" \
 		-e "s|\(SWIPL_INSTALL_CMAKE_CONFIG_DIR\) lib/|\1   $(get_libdir)/|" \
 		-i CMakeLists.txt || die
+
+	local ncurses_lib_flags=$(pkg-config --libs ncurses)
+	sed -i "/project(SWI-Prolog)/a set(CMAKE_REQUIRED_LIBRARIES \${CMAKE_REQUIRED_LIBRARIES} ${ncurses_lib_flags})" CMakeLists.txt || die
+	sed -i "s:\${CURSES_LIBRARIES}:${ncurses_lib_flags}:" src/CMakeLists.txt || die
 
 	cmake_src_prepare
 }
