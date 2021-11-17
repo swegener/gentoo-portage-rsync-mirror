@@ -25,7 +25,7 @@ else
 	SRC_URI="https://github.com/darktable-org/${PN}/releases/download/release-${MY_PV}/${MY_P}.tar.xz
 		doc? ( https://docs.darktable.org/usermanual/${DOC_PV}/${PN}_user_manual.pdf -> ${PN}-usermanual-${DOC_PV}.pdf )"
 
-	KEYWORDS="~amd64 ~arm64 -x86"
+	KEYWORDS="amd64 ~arm64 -x86"
 	LANGS=" af de eo es fr he hu it nl pt-BR ru sl uk"
 fi
 
@@ -70,7 +70,7 @@ DEPEND="dev-db/sqlite:3
 	jpeg2k? ( media-libs/openjpeg:2= )
 	lua? ( ${LUA_DEPS} )
 	opencl? ( virtual/opencl )
-	openexr? ( <media-libs/openexr-3.0.0:0= )
+	openexr? ( media-libs/openexr:= )
 	webp? ( media-libs/libwebp:0= )"
 RDEPEND="${DEPEND}
 	kwallet? ( >=kde-frameworks/kwallet-5.34.0-r1 )"
