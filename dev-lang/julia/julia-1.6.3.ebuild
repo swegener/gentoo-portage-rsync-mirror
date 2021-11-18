@@ -38,7 +38,7 @@ RDEPEND+="
 	dev-libs/libgit2:0
 	>=dev-libs/libpcre2-10.23:0=[jit,unicode]
 	dev-libs/mpfr:0=
-	dev-libs/libutf8proc:0=
+	dev-libs/libutf8proc:0=[-cjk]
 	dev-util/patchelf
 	>=net-libs/mbedtls-2.2
 	net-misc/curl[http2,ssh]
@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}"-1.1.0-fix_llvm_install.patch
 	"${FILESDIR}/${PN}"-1.4.0-no_symlink_llvm.patch
-	"${FILESDIR}/${PN}"-1.6.0-fix-system-csl.patch
+	"${FILESDIR}/${PN}"-1.6.0-fix-hardcoded-libs.patch
 )
 
 pkg_setup() {
