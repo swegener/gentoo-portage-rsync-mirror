@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 MY_PN=tables
 MY_P=${MY_PN}-${PV}
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r1
 
 DESCRIPTION="Hierarchical datasets for Python"
 HOMEPAGE="https://www.pytables.org/"
@@ -49,6 +49,7 @@ DOCS=( RELEASE_NOTES.txt THANKS )
 PATCHES=(
 	"${FILESDIR}"/${P}-numpy-float.patch
 	"${FILESDIR}"/${P}-py310.patch
+	"${FILESDIR}"/${PN}-3.6.1-big-endian-tests-skip-subset.patch
 )
 
 python_prepare_all() {
