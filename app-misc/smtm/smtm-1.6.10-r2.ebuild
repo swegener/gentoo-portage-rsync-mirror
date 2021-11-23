@@ -1,19 +1,18 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=8
 
 inherit perl-module
 
 DESCRIPTION="Stock ticker, profit/loss calculator and chart tool"
 HOMEPAGE="https://eddelbuettel.com/dirk/code/smtm.html"
-SRC_URI="https://eddelbuettel.com/dirk/code/smtm/smtm_${PV}.tar.gz"
+SRC_URI="https://eddelbuettel.com/dirk/code/${PN}/${PN}_${PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
-# This warrants USE examples
-IUSE=""
+KEYWORDS="~amd64 ~ppc ~x86"
+IUSE="examples"
 
 DEPEND="dev-perl/Tk
 	dev-perl/Date-Manip
@@ -21,12 +20,10 @@ DEPEND="dev-perl/Tk
 	dev-perl/Finance-YahooQuote
 	dev-perl/libwww-perl"
 
-SRC_TEST="do parallel"
-
 src_install() {
 	perl-module_src_install
-	# install examples into own folder for now
-	docompress -x usr/share/doc/${PF}/examples
-	insinto usr/share/doc/${PF}/examples
-	doins examples/*
+	if use examples; then
+		docompress -x usr/share/doc/${PF}/examples
+		dodoc -r examples
+	fi
 }
