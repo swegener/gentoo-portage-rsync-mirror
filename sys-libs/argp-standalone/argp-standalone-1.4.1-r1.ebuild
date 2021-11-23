@@ -16,6 +16,10 @@ IUSE="static-libs"
 
 DEPEND="!sys-libs/glibc"
 
+PATCHES=(
+	"${FILESDIR}"/argp-standalone-1.3-shared.patch
+)
+
 src_prepare() {
 	default
 
@@ -25,7 +29,7 @@ src_prepare() {
 src_configure() {
 	append-cflags "-fgnu89-inline"
 
-	econf
+	econf $(use_enable static-libs static)
 }
 
 src_install() {
