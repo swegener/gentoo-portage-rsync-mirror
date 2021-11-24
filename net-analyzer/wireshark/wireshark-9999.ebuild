@@ -18,7 +18,8 @@ else
 	SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
 	S="${WORKDIR}/${P/_/}"
 
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86"
+	# Seems to break libvirt?
+	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
@@ -212,6 +213,29 @@ src_install() {
 
 	# FAQ is not required as is installed from help/faq.txt
 	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
+
+	# install headers
+	insinto /usr/include/wireshark
+	doins ws_diag_control.h ws_symbol_export.h \
+		"${BUILD_DIR}"/config.h
+
+	# If trying to remove this, try build e.g. libvirt first!
+	# At last check, Fedora is still doing this too.
+	local dir dirs=(
+		epan
+		epan/crypt
+		epan/dfilter
+		epan/dissectors
+		epan/ftypes
+		wiretap
+		wsutil
+		wsutil/wmem
+	)
+
+	for dir in "${dirs[@]}" ; do
+		insinto /usr/include/wireshark/${dir}
+		doins ${dir}/*.h
+	done
 
 	if use qt5; then
 		local s
