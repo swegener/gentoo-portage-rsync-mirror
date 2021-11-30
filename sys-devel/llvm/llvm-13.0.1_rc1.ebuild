@@ -58,7 +58,7 @@ PDEPEND="sys-devel/llvm-common
 
 LLVM_COMPONENTS=( llvm )
 LLVM_MANPAGES=build
-LLVM_PATCHSET=9999-1
+LLVM_PATCHSET=${PV/_/-}
 LLVM_USE_TARGETS=provide
 llvm.org_set_globals
 
@@ -111,7 +111,7 @@ check_distribution_components() {
 
 				case ${l} in
 					# shared libs
-					LLVM|LLVMbinutils-plugin)
+					LLVM|LLVMgold)
 						;;
 					# TableGen lib + deps
 					LLVMDemangle|LLVMSupport|LLVMTableGen)
@@ -309,7 +309,7 @@ get_distribution_components() {
 		)
 
 		use binutils-plugin && out+=(
-			LLVMbinutils-plugin
+			LLVMgold
 		)
 	fi
 
