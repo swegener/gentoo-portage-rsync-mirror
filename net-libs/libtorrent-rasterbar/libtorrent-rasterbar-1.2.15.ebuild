@@ -3,28 +3,27 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} )
+PYTHON_COMPAT=( python3_{8,9,10} )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_OPTIONAL=true
 DISTUTILS_IN_SOURCE_BUILD=true
 
 inherit autotools distutils-r1
 
-MY_PV=$(ver_rs 1-2 '_')
-MY_P=${PN/-rasterbar}-${MY_PV}
-
 DESCRIPTION="C++ BitTorrent implementation focusing on efficiency and scalability"
 HOMEPAGE="https://libtorrent.org https://github.com/arvidn/libtorrent"
-SRC_URI="https://github.com/arvidn/libtorrent/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/arvidn/libtorrent/archive/v${PV}.tar.gz -> libtorrent-${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/10"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug +dht doc examples python +ssl static-libs test"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RESTRICT="!test? ( test )"
+
+S="${WORKDIR}/libtorrent-${PV}"
 
 RDEPEND="
 	dev-libs/boost:=[threads(+)]
@@ -38,14 +37,12 @@ RDEPEND="
 		dev-libs/openssl:0=
 	)
 "
-DEPEND="${RDEPEND}
-	sys-devel/libtool
-"
-
-S="${WORKDIR}/${PN/-rasterbar}-${MY_P}"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/libtool
+	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )"
 
 src_prepare() {
-	mkdir "${S}"/build-aux/ || die
+	mkdir -p "${S}"/build-aux || die
 	touch "${S}"/build-aux/config.rpath || die
 	eautoreconf
 
@@ -66,12 +63,15 @@ src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
 		$(use_enable debug export-all)
+		$(use_enable debug logging)
 		$(use_enable dht)
 		$(use_enable examples)
 		$(use_enable ssl encryption)
 		$(use_enable static-libs static)
 		$(use_enable test tests)
-		--with-boost
+		--with-boost="${ESYSROOT}/usr"
+		# Needed because of bug #767835
+		--with-boost-libdir="${ESYSROOT}/usr/$(get_libdir)"
 		--with-libiconv
 		--enable-logging
 	)
