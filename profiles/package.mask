@@ -41,6 +41,14 @@
 =sys-kernel/vanilla-kernel-5.14*
 =virtual/dist-kernel-5.14*
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-18)
+# Package without consumers. Bug #829517 Bug_#614480.  Removal in 30 days.
+dev-java/libreadline-java
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-18)
+# Package without consumers. Bug_#736880. Removal in 30 days.
+dev-java/jrrd
+
 # Michał Górny <mgorny@gentoo.org> (2021-12-17)
 # Annoying package with deps pinned to old versions of packages.
 # All revdeps were eliminated.
@@ -81,6 +89,12 @@ net-fs/docker-volume-netshare
 # Removal on 2022-01-12.  Bug #824830.
 media-gfx/apngasm
 
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-13)
+# Blocks removal of dev-java/log4j:0 bug #828657.
+# Java packages with no active consumer. Removal in 30 days.
+dev-java/slf4j-log4j12
+dev-java/jibx
+
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2021-12-13)
 # Outdated, all versions in core Perl are newer. Removal in 30 days.
 perl-core/IO-Zlib
@@ -96,6 +110,10 @@ perl-core/version
 # log4j-2.15.0 depends on masked >=virtual/{jdk,jre}-11
 >=dev-java/log4j-api-java9-2.15.0
 >=dev-java/log4j-api-2.15.0
+
+# Volkmar W. Pogatzki <gentoo@pogatzki.net> (2021-12-11)
+# Package without consumers. Bug #732792.  Removal in 30 days.
+app-arch/fastjar
 
 # Andrew Ammerlaan <andrewammerlaan@gentoo.org> (2021-12-10)
 # As of MultiMC version 0.6.14 source built versions of MultiMC are no longer
