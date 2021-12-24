@@ -34,7 +34,7 @@ S="${WORKDIR}/${PARCH}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="abi_mips_n32 audit debug hpn kerberos kernel_linux ldns libedit livecd pam +pie +scp sctp security-key selinux +ssl static test X X509 xmss"
 
@@ -92,16 +92,14 @@ BDEPEND="
 pkg_pretend() {
 	# this sucks, but i'd rather have people unable to `emerge -u openssh`
 	# than not be able to log in to their server any more
-	maybe_fail() { [[ -z ${!2} ]] && echo "$1" ; }
-	local fail="
-		$(use hpn && maybe_fail hpn HPN_VER)
-		$(use sctp && maybe_fail sctp SCTP_PATCH)
-		$(use X509 && maybe_fail X509 X509_PATCH)
-	"
-	fail=$(echo ${fail})
-	if [[ -n ${fail} ]] ; then
+	local missing=()
+	check_feature() { use "${1}" && [[ -z ${!2} ]] && missing+=( "${1}" ); }
+	check_feature hpn HPN_VER
+	check_feature sctp SCTP_PATCH
+	check_feature X509 X509_PATCH
+	if [[ ${#missing[@]} -ne 0 ]] ; then
 		eerror "Sorry, but this version does not yet support features"
-		eerror "that you requested:	 ${fail}"
+		eerror "that you requested: ${missing[*]}"
 		eerror "Please mask ${PF} for now and check back later:"
 		eerror " # echo '=${CATEGORY}/${PF}' >> /etc/portage/package.mask"
 		die "Missing requested third party patch."
