@@ -2836,7 +2836,7 @@
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
-      <role>RISC-V; ARM; qemu autobuilds</role>
+      <role>amd64, m68k, riscv, x86; musl; qemu autobuilds</role>
     </member>
     <member>
       <email>gyakovlev@gentoo.org</email>
