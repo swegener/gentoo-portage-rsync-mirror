@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>base-system@gentoo.org</email>
-		<name>Gentoo Base System</name>
-	</maintainer>	
-	<stabilize-allarches/>
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
 </pkgmetadata>
