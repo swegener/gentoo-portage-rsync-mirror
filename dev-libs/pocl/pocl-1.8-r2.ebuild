@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -73,7 +73,7 @@ src_configure() {
 		-DENABLE_HSA=OFF
 		-DENABLE_ICD=ON
 		-DENABLE_POCL_BUILDING=ON
-		-DKERNELLIB_HOST_CPU_VARIANTS=native
+		-DKERNELLIB_HOST_CPU_VARIANTS=distro
 		-DPOCL_ICD_ABSOLUTE_PATH=ON
 		-DSTATIC_LLVM=OFF
 		-DWITH_LLVM_CONFIG=$(get_llvm_prefix -d "${LLVM_MAX_SLOT}")/bin/llvm-config
