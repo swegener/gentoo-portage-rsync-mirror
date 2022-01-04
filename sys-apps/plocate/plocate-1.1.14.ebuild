@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://plocate.sesse.net/download/${P}.tar.gz"
 # GPL-2+ for plocate itself
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="+io-uring"
 
 RDEPEND="
