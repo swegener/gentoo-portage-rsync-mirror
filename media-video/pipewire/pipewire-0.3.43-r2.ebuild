@@ -21,7 +21,7 @@ HOMEPAGE="https://pipewire.org/"
 LICENSE="MIT LGPL-2.1+ GPL-2"
 # ABI was broken in 0.3.42 for https://gitlab.freedesktop.org/pipewire/wireplumber/-/issues/49
 SLOT="0/0.4"
-IUSE="bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk pipewire-alsa ssl systemd test usb v4l zeroconf"
+IUSE="bluetooth doc echo-cancel extra gstreamer jack-client jack-sdk lv2 pipewire-alsa ssl systemd test v4l zeroconf"
 
 # Once replacing system JACK libraries is possible, it's likely that
 # jack-client IUSE will need blocking to avoid users accidentally
@@ -57,6 +57,7 @@ RDEPEND="
 		media-libs/libfreeaptx
 		media-libs/sbc
 		>=net-wireless/bluez-4.101:=
+		virtual/libusb:1
 	)
 	echo-cancel? ( media-libs/webrtc-audio-processing:0 )
 	extra? (
@@ -72,6 +73,7 @@ RDEPEND="
 		!media-sound/jack-audio-connection-kit
 		!media-sound/jack2
 	)
+	lv2? ( media-libs/lv2 )
 	pipewire-alsa? (
 		>=media-libs/alsa-lib-1.1.7[${MULTILIB_USEDEP}]
 		!media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio]
@@ -79,7 +81,6 @@ RDEPEND="
 	!pipewire-alsa? ( media-plugins/alsa-plugins[${MULTILIB_USEDEP},pulseaudio] )
 	ssl? ( dev-libs/openssl:= )
 	systemd? ( sys-apps/systemd )
-	usb? ( virtual/libusb:1 )
 	v4l? ( media-libs/libv4l )
 	zeroconf? ( net-dns/avahi )
 "
@@ -161,6 +162,7 @@ multilib_src_configure() {
 		$(meson_native_use_feature bluetooth bluez5-codec-aac)
 		$(meson_native_use_feature bluetooth bluez5-codec-aptx)
 		$(meson_native_use_feature bluetooth bluez5-codec-ldac)
+		$(meson_native_use_feature bluetooth libusb) # At least for now only used by bluez5 native (quirk detection of adapters)
 		$(meson_native_use_feature echo-cancel echo-cancel-webrtc) #807889
 		-Dcontrol=enabled # Matches upstream
 		-Daudiotestsrc=enabled # Matches upstream
@@ -172,10 +174,10 @@ multilib_src_configure() {
 		-Dsupport=enabled # Miscellaneous/common plugins, such as null sink
 		-Devl=disabled # Matches upstream
 		-Dtest=disabled # fakesink and fakesource plugins
+		$(meson_native_use_feature lv2)
 		$(meson_native_use_feature v4l v4l2)
 		-Dlibcamera=disabled # libcamera is not in Portage tree
 		$(meson_native_use_feature ssl raop)
-		$(meson_native_use_feature usb libusb)
 		-Dvideoconvert=enabled # Matches upstream
 		-Dvideotestsrc=enabled # Matches upstream
 		-Dvolume=enabled # Matches upstream
