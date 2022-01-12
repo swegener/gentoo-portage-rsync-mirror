@@ -7,14 +7,14 @@ MODULES_OPTIONAL_USE="driver"
 inherit desktop flag-o-matic linux-mod multilib readme.gentoo-r1 \
 	systemd toolchain-funcs unpacker
 
-NV_KERNEL_MAX="5.15"
+NV_KERNEL_MAX="5.16"
 
 DESCRIPTION="NVIDIA Accelerated Graphics Driver"
 HOMEPAGE="https://www.nvidia.com/download/index.aspx"
 SRC_URI="
 	amd64? ( https://us.download.nvidia.com/XFree86/Linux-x86_64/${PV}/NVIDIA-Linux-x86_64-${PV}.run )
 	arm64? ( https://us.download.nvidia.com/XFree86/aarch64/${PV}/NVIDIA-Linux-aarch64-${PV}.run )
-	$(printf "https://github.com/NVIDIA/%s/archive/refs/tags/${PV}.tar.gz -> %s-${PV}.tar.gz " \
+	$(printf "https://download.nvidia.com/XFree86/%s/%s-${PV}.tar.bz2 " \
 		nvidia-{installer,modprobe,persistenced,settings,xconfig}{,})"
 # nvidia-installer is unused but here for GPL-2's "distribute sources"
 S="${WORKDIR}"
@@ -26,6 +26,7 @@ IUSE="+X abi_x86_32 abi_x86_64 +driver persistenced static-libs +tools wayland"
 
 COMMON_DEPEND="
 	acct-group/video
+	X? ( x11-libs/libpciaccess )
 	persistenced? (
 		acct-user/nvpd
 		net-libs/libtirpc:=
@@ -51,10 +52,9 @@ RDEPEND="
 		x11-libs/libXext[abi_x86_32(-)?]
 	)
 	wayland? (
+		gui-libs/egl-gbm
 		>=gui-libs/egl-wayland-1.1.7-r1
 		media-libs/libglvnd
-		>=media-libs/mesa-21.2[gbm(+)]
-		x11-libs/libdrm
 	)"
 DEPEND="
 	${COMMON_DEPEND}
@@ -156,9 +156,11 @@ src_prepare() {
 	sed 's/defined(CONFIG_DRM/defined(CONFIG_DRM_KMS_HELPER/g' \
 		-i kernel/conftest.sh || die
 
+	# adjust service files
 	sed 's/__USER__/nvpd/' \
 		nvidia-persistenced/init/systemd/nvidia-persistenced.service.template \
 		> "${T}"/nvidia-persistenced.service || die
+	sed -i "s|/usr|${EPREFIX}/opt|" systemd/system/nvidia-powerd.service || die
 
 	# enable nvidia-drm.modeset=1 by default with USE=wayland
 	cp "${FILESDIR}"/nvidia-470.conf "${T}"/nvidia.conf || die
@@ -218,11 +220,10 @@ src_install() {
 		$(usex X '' '
 			libGLX_nvidia libglxserver_nvidia
 			nvidia_icd.json nvidia_layers.json')
-		$(usex wayland '' '
-			libnvidia-egl-gbm 15_nvidia_gbm
-			libnvidia-vulkan-producer')
+		$(usex wayland '' 'libnvidia-vulkan-producer')
 		libGLX_indirect # non-glvnd unused fallback
 		libnvidia-gtk nvidia-{settings,xconfig} # built from source
+		libnvidia-egl-gbm 15_nvidia_gbm # gui-libs/egl-gbm
 		libnvidia-egl-wayland 10_nvidia_wayland # gui-libs/egl-wayland
 	)
 	local skip_modules=(
@@ -363,7 +364,10 @@ https://wiki.gentoo.org/wiki/NVIDIA/nvidia-drivers"
 	exeinto /lib/systemd/system-sleep
 	doexe systemd/system-sleep/nvidia
 	dobin systemd/nvidia-sleep.sh
-	systemd_dounit systemd/system/nvidia-{hibernate,resume,suspend}.service
+	systemd_dounit systemd/system/nvidia-{hibernate,powerd,resume,suspend}.service
+
+	insinto /usr/share/dbus-1/system.d
+	doins nvidia-dbus.conf
 
 	dobin nvidia-bug-report.sh
 }
