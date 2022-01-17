@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,18 +6,18 @@ EAPI=7
 inherit flag-o-matic multilib
 
 DESCRIPTION="An MTA designed specifically for maildirs"
-HOMEPAGE="http://www.courier-mta.org/"
+HOMEPAGE="https://www.courier-mta.org/"
 SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ppc ppc64 ~s390 sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 IUSE="postgres ldap mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls"
 
 DEPEND="
-	>=net-libs/courier-authlib-0.69.0-r1
-	>=net-libs/courier-unicode-2.1:=
+	>=net-libs/courier-authlib-0.71.3
+	>=net-libs/courier-unicode-2.2.3:=
 	net-dns/libidn:=
 	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
@@ -102,7 +102,6 @@ src_configure() {
 		--disable-autorenamesent \
 		--cache-file="${S}/configuring.cache" \
 		--host="${CHOST}" debug=true || die "./configure"
-	sed -e'/^install-perms-local:/a\	sed -e\"s|^|'"${D}"'|g\" -i permissions.dat' -i Makefile
 }
 
 src_compile() {
@@ -132,7 +131,7 @@ src_install() {
 	keepdir /var/lib/courier/tmp
 	keepdir /var/lib/courier/msgs
 	make install DESTDIR="${D}" || die "install"
-	make install-configure || die "install-configure"
+	make install-configure DESTDIR="${D}" || die "install-configure"
 
 	# init script takes care of this
 	rm -rf "${D}/var/run"
@@ -242,6 +241,8 @@ src_install() {
 
 src_test() {
 	if [ `whoami` != 'root' ]; then
+		# Disable valgrind checks
+		echo '#!/bin/sh' > libs/imap/testsuitevalgrind
 		emake -j1 check
 	else
 		einfo "make check skipped, can't run as root."
@@ -252,11 +253,6 @@ src_test() {
 pkg_postinst() {
 	use fam && elog "fam daemon is needed for courier-imapd" \
 		|| ewarn "courier was built without fam support"
-
-	ewarn "If you are updating from pre-1.0 courier versions to"
-	ewarn "1.x versions you may need to update your maildir's"
-	ewarn "to the new Unicode format, see also:"
-	ewarn "https://www.courier-mta.org/maildirmake.html"
 }
 
 pkg_config() {
