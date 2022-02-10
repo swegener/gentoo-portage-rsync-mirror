@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -45,14 +45,19 @@ RDEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	x11-libs/libXScrnSaver
+	x11-libs/libxshmfence
 	x11-libs/libXtst
 	x11-libs/pango
+"
+IDEPEND="
+	dev-util/desktop-file-utils
+	dev-util/gtk-update-icon-cache
 "
 
 S="${WORKDIR}"
 
 QA_PREBUILT="
-	opt/Bitwarden/*.so
+	opt/Bitwarden/*.so*
 	opt/Bitwarden/bitwarden
 	opt/Bitwarden/chrome-sandbox
 "
