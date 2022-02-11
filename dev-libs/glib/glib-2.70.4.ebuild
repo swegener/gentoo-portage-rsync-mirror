@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=7
 PYTHON_REQ_USE="xml"
 PYTHON_COMPAT=( python3_{8..10} )
 
@@ -136,7 +136,7 @@ src_prepare() {
 	chmod a+x "${T}/glib-test-ld-wrapper" || die
 	sed -i -e "s|'ld'|'${T}/glib-test-ld-wrapper'|g" gio/tests/meson.build || die
 
-	xdg_src_prepare
+	default
 	gnome2_environment_reset
 	# TODO: python_name sedding for correct python shebang? Might be relevant mainly for glib-utils only
 }
