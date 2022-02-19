@@ -9,4 +9,5 @@ RDEPEND=dev-libs/glib media-fonts/dejavu media-libs/ftgl media-libs/glu media-li
 RESTRICT=mirror
 SLOT=0
 SRC_URI=http://gareus.org/misc/x42-plugins/x42-plugins-20211016.tar.xz
-_md5_=ab4f8ec9e5200680c198831c04dbfdc2
+_eclasses_=multilib	de4beb52bfa93c4c5d96792a6b5e1784	toolchain-funcs	badd6e329e1f3e6bee99b35bf8763ce8
+_md5_=3ed7e7c1f2bfa8287f23f891a7c5c3d4
