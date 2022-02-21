@@ -1,12 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
-KFMIN=5.64.0
-QTMIN=5.12.3
+KDE_ORG_CATEGORY="pim"
+KFMIN=5.82.0
+QTMIN=5.15.2
 inherit ecm kde.org
 
 DESCRIPTION="Todo management and time tracker"
@@ -41,6 +42,11 @@ DEPEND="
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
-RDEPEND="${DEPEND}
-	!kde-apps/ktimetracker
-"
+RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-table-column-visibility.patch" # KDE-bug 417988
+	"${FILESDIR}/${P}-fix-formatTime-in-non-decimal-mode.patch"
+	"${FILESDIR}/${P}-fix-edit-history-dialog-crash.patch" # KDE-bug 424993
+	"${FILESDIR}/${P}-fix-sorting-of-time-columns.patch"
+)
