@@ -5,9 +5,10 @@ EAPI=7
 
 inherit flag-o-matic
 
-HOMEPAGE="https://ocaml.org/"
-SRC_URI="https://github.com/ocaml/ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz"
 DESCRIPTION="Programming language supporting functional, imperative & object-oriented styles"
+HOMEPAGE="https://ocaml.org/"
+SRC_URI="https://github.com/ocaml/ocaml/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${P}-patches-1.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0/$(ver_cut 1-2)"
@@ -21,10 +22,10 @@ BDEPEND="${RDEPEND}
 PDEPEND="emacs? ( app-emacs/ocaml-mode )
 	xemacs? ( app-xemacs/ocaml )"
 
-QA_FLAGS_IGNORED='/usr/lib.*/ocaml/bigarray.cmxs'
+QA_FLAGS_IGNORED='usr/lib.*/ocaml/bigarray.cmxs'
 
 PATCHES=(
-	"${FILESDIR}"/${P}-cflags.patch
+	"${WORKDIR}"/${P}-patches-1/
 )
 
 src_prepare() {
@@ -63,7 +64,8 @@ src_configure() {
 		$(use_enable flambda)
 		$(use_enable spacetime)
 	)
-	econf ${opt[@]}
+
+	econf "${opt[@]}"
 }
 
 src_compile() {
@@ -86,14 +88,12 @@ src_test() {
 src_install() {
 	default
 	dodir /usr/include
-
 	# Create symlink for header files
 	dosym "../$(get_libdir)/ocaml/caml" /usr/include/caml
 	dodoc Changes README.adoc
-
 	# Create envd entry for latex input files
 	if use latex ; then
-		echo "TEXINPUTS=\"${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:\"" > "${T}/99ocamldoc" || die
+		echo "TEXINPUTS=\"${EPREFIX}/usr/$(get_libdir)/ocaml/ocamldoc:\"" > "${T}"/99ocamldoc || die
 		doenvd "${T}"/99ocamldoc
 	fi
 
