@@ -1,49 +1,51 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
-inherit cmake-utils
+inherit cmake
 
-JSON_VER="3.4.0"
-GOOGLEAPIS_COMMIT="6a3277c0656219174ff7c345f31fb20a90b30b97"
+# From cmake/GoogleapisConfig.cmake
+GOOGLEAPIS_COMMIT="28c6bb97cac6f16c69879be4e655674a74b886ef"
 
 DESCRIPTION="Google Cloud Client Library for C++"
 HOMEPAGE="https://cloud.google.com/"
 SRC_URI="https://github.com/GoogleCloudPlatform/google-cloud-cpp/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/nlohmann/json/releases/download/v${JSON_VER}/json.hpp -> nlohmann-json-${JSON_VER}-json.hpp
 	https://github.com/googleapis/googleapis/archive/${GOOGLEAPIS_COMMIT}.tar.gz -> googleapis-${GOOGLEAPIS_COMMIT}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="test"
 
+# Tests need a GCP account
 RESTRICT="test"
-RDEPEND="dev-libs/protobuf:=
+RDEPEND="dev-cpp/abseil-cpp:=
+	dev-cpp/nlohmann_json
+	dev-libs/protobuf:=
 	dev-libs/crc32c
 	dev-libs/openssl:=
+	dev-libs/re2:=
 	net-misc/curl
-	net-libs/grpc:="
+	net-libs/grpc:=
+	sys-libs/zlib"
 DEPEND="${RDEPEND}
-	dev-cpp/gtest"
+	dev-cpp/gtest
+	test? (
+		dev-cpp/benchmark
+	)"
 
 DOCS=( README.md )
-PATCHES=(
-	"${FILESDIR}/google-cloud-cpp-0.9.0-offline_nlohmannjson.patch"
-)
 
 src_configure() {
 	local mycmakeargs=(
-		-DGOOGLE_CLOUD_CPP_DEPENDENCY_PROVIDER=package
-		-DBUILD_SHARED_LIBS=ON
-		-DBUILD_TESTING=OFF
+		-DGOOGLE_CLOUD_CPP_ENABLE_WERROR=OFF
+		-DGOOGLE_CLOUD_CPP_ENABLE_EXAMPLES=OFF
+		-DBUILD_TESTING=$(usex test)
+		-DCMAKE_CXX_STANDARD=17
 	)
 
-	cmake-utils_src_configure
-
-	mkdir -p "${BUILD_DIR}/external/nlohmann_json/src/" || die
-	cp "${DISTDIR}/nlohmann-json-${JSON_VER}-json.hpp" "${BUILD_DIR}/external/nlohmann_json/src/json.hpp" || die
+	cmake_src_configure
 
 	mkdir -p "${BUILD_DIR}/external/googleapis/src/" || die
 	cp "${DISTDIR}/googleapis-${GOOGLEAPIS_COMMIT}.tar.gz" \
@@ -56,5 +58,5 @@ src_test() {
 		-E internal_parse_rfc3339_test
 	)
 
-	cmake-utils_src_test
+	cmake_src_test
 }
