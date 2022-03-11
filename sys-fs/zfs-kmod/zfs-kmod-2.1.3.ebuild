@@ -25,10 +25,9 @@ else
 	ZFS_KERNEL_DEP="${ZFS_KERNEL_COMPAT_OVERRIDE:-${ZFS_KERNEL_COMPAT}}"
 	ZFS_KERNEL_DEP="${ZFS_KERNEL_DEP%%.*}.$(( ${ZFS_KERNEL_DEP##*.} + 1))"
 
-	# 2.1.3 unkeyworded briefly for some testing
-	#if [[ ${PV} != *_rc* ]]; then
-	#	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
-	#fi
+	if [[ ${PV} != *_rc* ]]; then
+		KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
+	fi
 fi
 
 LICENSE="CDDL MIT debug? ( GPL-2+ )"
@@ -111,6 +110,24 @@ pkg_setup() {
 	fi
 
 	kernel_is -ge 3 10 || die "Linux 3.10 or newer required"
+
+	if tc-is-clang ; then
+		# See bug #814194
+		ewarn "Warning: building ${PN} with LLVM/Clang is experimental!"
+		export KERNEL_CC="$(tc-getBUILD_CC)"
+
+		if tc-ld-is-lld ; then
+			export KERNEL_LD="$(tc-getBUILD_LD)"
+
+			KERNEL_LLVM=1
+
+			local tool
+			for tool in AR NM STRIP OBJCOPY READELF; do
+				[[ $(tc-getBUILD_${tool}) != *llvm-${tool,,} ]] && KERNEL_LLVM=0
+			done
+			export KERNEL_LLVM
+		fi
+	fi
 
 	linux-mod_pkg_setup
 }
