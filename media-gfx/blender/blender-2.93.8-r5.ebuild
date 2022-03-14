@@ -16,6 +16,8 @@ if [[ ${PV} = *9999* ]] ; then
 	EGIT_REPO_URI="https://git.blender.org/blender.git"
 else
 	SRC_URI="https://download.blender.org/source/${P}.tar.xz"
+	SRC_URI+=" https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-3.0.1-ffmpeg-5.0.patch.bz2"
+
 	TEST_TARBALL_VERSION=2.93.0
 	SRC_URI+=" test? ( https://dev.gentoo.org/~sam/distfiles/${CATEGORY}/${PN}/${PN}-${TEST_TARBALL_VERSION}-tests.tar.bz2 )"
 	KEYWORDS="amd64 ~arm ~arm64"
@@ -64,7 +66,7 @@ RDEPEND="${PYTHON_DEPS}
 	color-management? ( >=media-libs/opencolorio-2.1.1-r7:= )
 	cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	embree? ( >=media-libs/embree-3.10.0[raymask] )
-	ffmpeg? ( <media-video/ffmpeg-5.0:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
+	ffmpeg? ( media-video/ffmpeg:=[x264,mp3,encode,theora,jpeg2k?,vpx,vorbis,opus,xvid] )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? ( dev-libs/gmp )
 	!headless? (
@@ -127,6 +129,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.0-intern-ghost-fix-typo-in-finding-XF86VMODE.patch
 	"${FILESDIR}"/${PN}-3.0.1-openexr.patch
 	"${FILESDIR}"/${PN}-3.0.1-openimageio-2.3.patch
+	"${WORKDIR}"/${PN}-3.0.1-ffmpeg-5.0.patch
 )
 
 blender_check_requirements() {
