@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="multiuser +transcode tsmuxer"
 
 BDEPEND="app-arch/unzip"
-RDEPEND=">=virtual/jre-1.6.0
+RDEPEND=">=virtual/jre-1.8:*
 	media-libs/libmediainfo
 	media-libs/libzen
 	tsmuxer? ( media-video/tsmuxer )
@@ -28,7 +28,7 @@ src_prepare() {
 	default
 
 	if use multiuser; then
-		cat > ${PN} <<-EOF
+		cat > ${PN} <<-EOF || die
 		#!/bin/sh
 		if [ ! -e ~/.${PN} ]; then
 			echo "Copying ${PMS_HOME} to ~/.${PN}"
@@ -38,14 +38,14 @@ src_prepare() {
 		exec "\${PMS_HOME}/PMS.sh" "\$@"
 		EOF
 	else
-		cat > ${PN} <<-EOF
+		cat > ${PN} <<-EOF || die
 		#!/bin/sh
 		export PMS_HOME=${PMS_HOME}
 		exec "\${PMS_HOME}/PMS.sh" "\$@"
 		EOF
 	fi
 
-	cat > ${PN}.desktop <<-EOF
+	cat > ${PN}.desktop <<-EOF || die
 	[Desktop Entry]
 	Name=PS3 Media Server
 	GenericName=Media Server
