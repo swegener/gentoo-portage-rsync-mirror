@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 PYTHON_REQ_USE="xml"
@@ -39,7 +39,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/XML-Parser
 	dev-util/desktop-file-utils
 	dev-util/intltool
-	sys-devel/gettext
+	>=sys-devel/gettext-0.20
 	virtual/pkgconfig
 "
 RDEPEND="${COMMON_DEPEND}
@@ -61,6 +61,7 @@ pkg_setup() {
 
 src_configure() {
 	local myeconfargs=(
+		--with-xmlto
 		--enable-nls
 		--with-desktop-vendor=Gentoo
 		--with-udev-rules
@@ -69,8 +70,14 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
+src_compile() {
+	default
+	python_optimize cupshelpers
+}
+
 src_install() {
 	default
 	python_fix_shebang "${ED}"
 	python_optimize
+	python_domodule cupshelpers
 }
