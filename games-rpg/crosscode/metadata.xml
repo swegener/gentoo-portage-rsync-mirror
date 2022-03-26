@@ -2,10 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>ruby@gentoo.org</email>
-		<name>Gentoo Ruby Project</name>
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
 	</maintainer>
-	<upstream>
-		<remote-id type="github">piotrmurach/tty-editor</remote-id>
-	</upstream>
 </pkgmetadata>
