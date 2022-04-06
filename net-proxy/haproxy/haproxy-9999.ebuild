@@ -16,12 +16,12 @@ if [[ ${PV} != *9999 ]]; then
 	SRC_URI="http://haproxy.1wt.eu/download/$(ver_cut 1-2)/src/${MY_P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
 else
-	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy-$(ver_cut 1-2).git/"
+	EGIT_REPO_URI="https://git.haproxy.org/git/haproxy.git/"
 	EGIT_BRANCH=master
 fi
 
 LICENSE="GPL-2 LGPL-2.1"
-SLOT="0/$(ver_cut 1-2)"
+SLOT="0/${PV}"
 IUSE="+crypt doc examples +slz +net_ns +pcre pcre-jit pcre2 pcre2-jit prometheus-exporter
 ssl systemd +threads tools vim-syntax zlib lua device-atlas 51degrees wurfl"
 REQUIRED_USE="pcre-jit? ( pcre )
