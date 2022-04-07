@@ -3,7 +3,8 @@
 
 EAPI=8
 
-inherit gnome.org meson
+PYTHON_COMPAT=( python3_{8..10} )
+inherit gnome.org meson python-any-r1
 
 DESCRIPTION="Graphical front-ends to various networking command-line"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-nettool"
@@ -12,12 +13,12 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
-COMMON_DEPEND="
+DEPEND="
 	>=x11-libs/gtk+-3.0.0:3
 	>=dev-libs/glib-2.26:2
 	gnome-base/libgtop:2=
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	|| (
 		net-misc/iputils
 		net-analyzer/tcptraceroute
@@ -28,7 +29,8 @@ RDEPEND="${COMMON_DEPEND}
 	net-misc/netkit-fingerd
 	net-misc/whois
 "
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
+	${PYTHON_DEPS}
 	app-text/yelp-tools
 	virtual/pkgconfig
 	sys-devel/gettext
