@@ -25,18 +25,21 @@ SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.t
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="boot selinux sysusers +tmpfiles test +udev"
+IUSE="+acl boot +kmod selinux sysusers +tmpfiles test +udev"
 REQUIRED_USE="|| ( boot tmpfiles sysusers udev )"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
-	sys-apps/acl:0=
-	>=sys-apps/kmod-15:0=
 	selinux? ( sys-libs/libselinux:0= )
+	tmpfiles? (
+		acl? ( sys-apps/acl:0= )
+	)
 	udev? (
 		>=sys-apps/util-linux-2.30:0=[${MULTILIB_USEDEP}]
 		sys-libs/libcap:0=[${MULTILIB_USEDEP}]
 		virtual/libcrypt:=[${MULTILIB_USEDEP}]
+		acl? ( sys-apps/acl:0= )
+		kmod? ( >=sys-apps/kmod-15:0= )
 	)
 	!udev? (
 		>=sys-apps/util-linux-2.30:0=
@@ -115,7 +118,6 @@ multilib_src_configure() {
 	local emesonargs=(
 		-Drootprefix="${EPREFIX:-/}"
 		-Dsysvinit-path=
-		$(meson_native_true acl)
 		$(meson_native_use_bool boot efi)
 		$(meson_native_use_bool boot gnu-efi)
 		$(meson_native_use_bool selinux)
@@ -123,7 +125,6 @@ multilib_src_configure() {
 		$(meson_use test tests)
 		$(meson_native_use_bool tmpfiles)
 		$(meson_use udev hwdb)
-		$(meson_native_use_bool udev kmod)
 
 		-Defi-libdir="${ESYSROOT}/usr/$(get_libdir)"
 
@@ -205,6 +206,18 @@ multilib_src_configure() {
 		-Dzlib=false
 		-Dzstd=false
 	)
+
+	if use tmpfiles || use udev; then
+		emesonargs+=( $(meson_native_use_bool acl) )
+	else
+		emesonargs+=( -Dacl=false )
+	fi
+
+	if use udev; then
+		emesonargs+=( $(meson_native_use_bool kmod) )
+	else
+		emesonargs+=( -Dkmod=false )
+	fi
 
 	if use elibc_musl; then
 		# Avoid redefinition of struct ethhdr.

@@ -4277,7 +4277,6 @@ media-libs/libtgvoip:dsp - Enable signal processing (echo cancellation, noise su
 media-libs/libvisio:tools - Build conversion tools
 media-libs/libvpx:highbitdepth - Enable 10 and 12 bit support for VP9.
 media-libs/libvpx:postproc - Enable additional post processing filters
-media-libs/libvpx:svc - Enable spatial-svc support (experimental)
 media-libs/libwebp:swap-16bit-csp - Enable byte swapping for 16 bit colorspace
 media-libs/libzmf:tools - Build conversion tools
 media-libs/lilv:dyn-manifest - Add LV2 Dynamic Manifest support. See http://lv2plug.in/ns/ext/dynmanifest/
@@ -7923,6 +7922,7 @@ sys-apps/systemd:tpm - Enable TPM support
 sys-apps/systemd:vanilla - Disable Gentoo-specific behavior and compatibility quirks
 sys-apps/systemd:xkb - Depend on x11-libs/libxkbcommon to allow logind to control the X11 keymap
 sys-apps/systemd-utils:boot - Enable systemd-boot (UEFI boot manager)
+sys-apps/systemd-utils:kmod - Enable kernel module loading via sys-apps/kmod
 sys-apps/systemd-utils:sysusers - Enable systemd-sysusers
 sys-apps/systemd-utils:tmpfiles - Enable systemd-tmpfiles
 sys-apps/systemd-utils:udev - Enable systemd-udev (userspace device manager)
