@@ -3496,6 +3496,10 @@
     <subproject ref="openstack@gentoo.org"/>
     <subproject ref="xen@gentoo.org"/>
     <member>
+      <email>ajak@gentoo.org</email>
+      <name>John Helmert III</name>
+    </member>
+    <member>
       <email>dlan@gentoo.org</email>
       <name>Yixun Lan</name>
     </member>
@@ -3506,6 +3510,10 @@
     <member>
       <email>lu_zero@gentoo.org</email>
       <name>Luca Barbato</name>
+    </member>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
     </member>
     <member>
       <email>tamiko@gentoo.org</email>
