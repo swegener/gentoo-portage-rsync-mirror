@@ -2,11 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python</name>
+		<email>ml@gentoo.org</email>
+		<name>ML</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="pypi">lark</remote-id>
-		<remote-id type="github">lark-parser/lark</remote-id>
+		<remote-id type="github">janestreet/ppx_log</remote-id>
 	</upstream>
 </pkgmetadata>
