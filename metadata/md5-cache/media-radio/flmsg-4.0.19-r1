@@ -8,4 +8,4 @@ LICENSE=GPL-3
 RDEPEND=media-radio/fldigi x11-libs/fltk:= x11-libs/libX11:=
 SLOT=0
 SRC_URI=mirror://sourceforge/fldigi/flmsg-4.0.19.tar.gz
-_md5_=af1b3e961205ab75b305db4dfe85f59d
+_md5_=8aa49634d6fecaec8cce835b5ca31814
