@@ -19,3 +19,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( AUTHORS ChangeLog INSTALL README )
+
+src_configure() {
+	econf --without-flxmlrpc
+}
