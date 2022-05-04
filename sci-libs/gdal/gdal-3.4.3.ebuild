@@ -14,7 +14,7 @@ SRC_URI="https://download.osgeo.org/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="BSD Info-ZIP MIT"
 SLOT="0/30" # subslot is libgdal.so.<SONAME>
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ppc ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="armadillo +aux-xml curl cpu_flags_x86_avx cpu_flags_x86_sse cpu_flags_x86_ssse3 debug doc fits geos gif gml hdf5 heif java jpeg jpeg2k lzma mdb mysql netcdf odbc ogdi opencl oracle pdf perl png postgres python spatialite sqlite threads webp xls zstd"
 
 REQUIRED_USE="
@@ -41,7 +41,7 @@ BDEPEND="
 DEPEND="
 	dev-libs/expat
 	dev-libs/json-c:=
-	dev-libs/libpcre2
+	dev-libs/libpcre
 	dev-libs/libxml2:2
 	dev-libs/openssl:=
 	media-libs/tiff
@@ -89,7 +89,6 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-soname.patch"
-	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
 	"${FILESDIR}/${PN}-3.3.0-libdir.patch"
 )
 
@@ -149,7 +148,6 @@ src_configure() {
 		--with-libtiff
 		--with-libtool
 		--with-libz="${ESYSROOT}"/usr
-		--with-pcre2
 		--without-blosc
 		--without-charls
 		--without-dods-root
@@ -178,7 +176,6 @@ src_configure() {
 		--without-rasterlite2
 		# Revisit when OpenEXR 3 / ilmmath migration is more complete in tree
 		--without-exr
-		--without-pcre
 		--without-pcraster
 		--without-pdfium
 		--without-perl
@@ -297,7 +294,7 @@ src_install() {
 	if use java; then
 		# bug #752399
 		java-pkg_dojar "${S}"/swig/java/gdal.jar
-		dolib.so "${S}"/swig/java/.libs/libgdalalljni.so*
+		dolib.so "${S}"/swig/java/.libs/libgdalalljni.so.*
 	fi
 
 	if use perl; then
