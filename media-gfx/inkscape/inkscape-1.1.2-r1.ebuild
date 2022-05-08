@@ -105,6 +105,11 @@ RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.1.2-r1-poppler-22.03.0.patch" # bug 835424
+	"${FILESDIR}/${PN}-1.1.2-r1-poppler-22.04.0.patch" # bug 835661 / bug 843275
+)
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != binary ]] && use openmp; then
 		tc-has-openmp || die "Please switch to an openmp compatible compiler"
