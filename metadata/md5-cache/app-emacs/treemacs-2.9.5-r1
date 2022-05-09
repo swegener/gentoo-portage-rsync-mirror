@@ -3,6 +3,7 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup test unpa
 DESCRIPTION=Tree style project file explorer
 EAPI=8
 HOMEPAGE=https://github.com/Alexander-Miller/treemacs/
+INHERIT=elisp
 IUSE=test
 KEYWORDS=~amd64
 LICENSE=GPL-3+
