@@ -5,15 +5,10 @@ EAPI=8
 
 inherit meson
 
-if [[ ${PV} == 9999 ]]; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/bus1/dbus-broker.git"
-else
-	KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
-fi
-
+SRC_URI="https://github.com/bus1/${PN}/releases/download/v${PV}/${P}.tar.xz"
 DESCRIPTION="Linux D-Bus Message Broker"
 HOMEPAGE="https://github.com/bus1/dbus-broker/wiki"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -37,13 +32,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-if [[ ${PV} == 9999 ]]; then
-src_unpack() {
-	git-r3_src_unpack
-	cd "${P}" || die
-	meson subprojects download || die
-}
-fi
+PATCHES=( "${FILESDIR}"/${P}-user-free-assertion.patch )
 
 src_configure() {
 	local emesonargs=(
