@@ -1,9 +1,10 @@
-# Copyright 2019-2021 Gentoo Authors
+# Copyright 2019-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-PYTHON_COMPAT=( python3_{7..9} pypy3 )
+PYTHON_COMPAT=( python3_{8..11} pypy3 )
+DISTUTILS_USE_PEP517=poetry
 inherit distutils-r1
 
 DESCRIPTION="tmux session manager. built on libtmux"
@@ -12,28 +13,27 @@ SRC_URI="https://github.com/tmux-python/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 RDEPEND="
 	>=app-misc/tmux-3.0a
 	>=dev-python/kaptan-0.5.10[${PYTHON_USEDEP}]
-	>=dev-python/libtmux-0.8.5[${PYTHON_USEDEP}]
-	<dev-python/libtmux-0.9[${PYTHON_USEDEP}]
-	>=dev-python/click-7.0[${PYTHON_USEDEP}]
+	~dev-python/libtmux-0.10.3[${PYTHON_USEDEP}]
+	>=dev-python/click-8.0[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.3.9[${PYTHON_USEDEP}]
+	dev-python/pathspec[${PYTHON_USEDEP}]
+	>=dev-python/tomli-1.1.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/pytest-rerunfailures-4.2[${PYTHON_USEDEP}]
 		!dev-python/flaky
 	)
 "
 
 PATCHES=(
-	"${FILESDIR}/tmuxp-1.6.4-tests.patch"
 	"${FILESDIR}/tmuxp-1.7.2-tests.patch"
-	"${FILESDIR}/tmuxp-1.7.2-relax-click-dep.patch"
+	"${FILESDIR}/tmuxp-1.9.2-tests.patch"
 )
 
 distutils_enable_tests pytest
