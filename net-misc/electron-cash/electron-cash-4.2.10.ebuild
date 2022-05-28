@@ -19,6 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="amodem cli cosign digitalbitbox email ncurses qrcode +qt5 sync vkb
 	l10n_es l10n_ja l10n_pt l10n_zh-CN"
+RESTRICT+=" test"
 
 REQUIRED_USE="
 	|| ( cli ncurses qt5 )
@@ -53,6 +54,8 @@ RDEPEND="
 	ncurses? ( dev-lang/python )
 	dev-libs/libsecp256k1
 "
+
+distutils_enable_tests pytest
 
 S="${WORKDIR}/${MY_P}"
 
