@@ -4,13 +4,13 @@
 EAPI="8"
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras experimental"
-K_GENPATCHES_VER="35"
+K_GENPATCHES_VER="3"
 
 inherit kernel-2
 detect_version
 detect_arch
 
-KEYWORDS="~alpha hppa ~ia64 ~m68k ~mips ~riscv ~s390"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 HOMEPAGE="https://dev.gentoo.org/~mpagano/genpatches"
 IUSE="experimental"
 
