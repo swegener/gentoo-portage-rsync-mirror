@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools linux-info flag-o-matic toolchain-funcs systemd
+inherit autotools linux-info flag-o-matic toolchain-funcs systemd udev
 
 DESCRIPTION="A performant, transport independent, multi-platform implementation of RFC3720"
 HOMEPAGE="https://www.open-iscsi.com/"
@@ -95,7 +95,8 @@ src_compile() {
 }
 
 src_install() {
-	emake \
+	# Force serial install to avoid race conditions
+	emake -j1 \
 		DESTDIR="${ED}" \
 		sbindir="/usr/sbin" \
 		SED="${EPREFIX}/bin/sed" \
@@ -104,6 +105,15 @@ src_install() {
 
 	# Upstream make is not deterministic, per bug #601514
 	rm -f "${ED}"/etc/initiatorname.iscsi
+
+	# QA: install udev rule into right place
+	mkdir -p "${ED}"/lib/udev/rules.d
+	mv "${ED}"/etc/udev/rules.d/50-iscsi-firmware-login.rules \
+		"${ED}"/lib/udev/rules.d || die "mv failed"
+
+	# QA: let docompress compress man pages
+	gunzip -r "${ED}"/usr/share/man/man3/ || die "gunzip failed"
+	gunzip -r "${ED}"/usr/share/man/man8/ || die "gunzip failed"
 
 	dodoc README THANKS
 
@@ -130,4 +140,6 @@ pkg_postinst() {
 		  echo "InitiatorName=$(${ROOT}/usr/sbin/iscsi-iname)"
 		} >> "${EROOT}${in}.tmp" && mv -f "${EROOT}${in}.tmp" "${EROOT}${in}"
 	fi
+
+	udev_reload
 }
