@@ -16,16 +16,28 @@ S="${WORKDIR}"/${PN}-${H}
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
-BDEPEND="
-	sys-apps/texinfo
-	test? ( >=app-editors/emacs-27.2[json] )
-"
+BDEPEND="sys-apps/texinfo"
 
 ELISP_TEXINFO="${PN}.texi"
 
 src_compile() {
 	emake compile ${PN}.info
+}
+
+src_test() {
+	local has_json="$("${EMACS}" ${EMACSFLAGS} --eval "(princ (fboundp 'json-parse-string))")"
+	if [[ "${has_json}" != t ]] ; then
+		local line
+		while read line ; do
+			ewarn "${line}"
+		done <<-EOF
+		Your current Emacs version does not support native JSON parsing,
+		which is required for running tests of ${CATEGORY}/${PN}.
+		Use "eselect emacs" to select an Emacs version with such feature.
+		EOF
+		die "Unable to run tests, missing \">=app-editors/emacs-27.2[json]\"."
+	else
+		emake test
+	fi
 }
