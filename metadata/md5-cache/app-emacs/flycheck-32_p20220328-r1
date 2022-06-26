@@ -3,6 +3,7 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Modern on-the-fly syntax checking extension for GNU Emacs
 EAPI=8
 HOMEPAGE=https://www.flycheck.org/
+INHERIT=elisp
 KEYWORDS=~amd64
 LICENSE=GPL-3+
 RDEPEND=>=app-emacs/dash-2.12.1 >=app-emacs/pkg-info-0.4 >=app-editors/emacs-24.3:*
