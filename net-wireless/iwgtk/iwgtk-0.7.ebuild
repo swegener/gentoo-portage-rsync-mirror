@@ -16,9 +16,10 @@ IUSE=""
 DEPEND="
 	dev-libs/atk:0
 	dev-libs/glib:2
+	gui-libs/gtk:4
+	media-gfx/qrencode:=
 	x11-libs/cairo:0
 	x11-libs/gdk-pixbuf:2
-	gui-libs/gtk:4
 	x11-libs/pango:0
 "
 
