@@ -13,16 +13,17 @@ LICENSE="GPL-3"
 SLOT="0"
 # Before giving keywords (or ideally even bumping), please check https://www.gnu.org/software/gsasl/ to see
 # if it's a stable release or not!
-KEYWORDS="~amd64 arm arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="+client gcrypt gnutls idn kerberos nls ntlm +server static-libs"
 REQUIRED_USE="|| ( client server )"
 
 DEPEND="
 	!net-libs/libgsasl
-	gcrypt? ( dev-libs/libgcrypt:0= )
+	sys-libs/readline:=
+	gcrypt? ( dev-libs/libgcrypt:= )
 	gnutls? ( net-libs/gnutls:= )
 	idn? ( net-dns/libidn:= )
-	kerberos? ( virtual/krb5 )
+	kerberos? ( >=net-libs/libgssglue-0.5-r1 )
 	nls? ( >=sys-devel/gettext-0.18.1 )
 	ntlm? ( >=net-libs/libntlm-0.3.5 )
 "
@@ -40,26 +41,20 @@ src_prepare() {
 }
 
 src_configure() {
-	local krb5_impl
+	local krb5_impl="--with-gssapi-impl=no"
 
+	# See https://blog.josefsson.org/2022/07/14/towards-pluggable-gss-api-modules/
 	if use kerberos; then
-		krb5_impl="--with-gssapi-impl="
-
-		# These are the two providers of virtual/krb5
-		if has_version app-crypt/mit-krb5; then
-			krb5_impl+="mit"
-		else
-			krb5_impl+="heimdal"
-		fi
+		krb5_impl="--with-gssapi-impl=gssglue"
 	fi
 
 	local myeconfargs=(
 		--disable-valgrind-tests
 		--disable-rpath
 
+		--with-packager="Gentoo Linux"
 		--with-packager-bug-reports="https://bugs.gentoo.org"
 		--with-packager-version="r${PR}"
-		--with-packager="Gentoo Linux"
 
 		$(use_enable client)
 		$(use_enable server)
@@ -87,4 +82,11 @@ src_install() {
 	fi
 
 	doman doc/gsasl.1 doc/man/*.3
+}
+
+pkg_postinst() {
+	ewarn "For USE=kerberos, ${PN} now uses libgssglue to allow choosing"
+	ewarn "the Kerberos implementation at runtime."
+	elog "See https://blog.josefsson.org/2022/07/14/towards-pluggable-gss-api-modules/"
+	elog "for more details."
 }
