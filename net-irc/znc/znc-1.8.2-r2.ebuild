@@ -70,6 +70,11 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.7.1-inttest-dir.patch
+	# All these are backports
+	"${FILESDIR}"/${P}-fix-systemd-datadir.patch
+	"${FILESDIR}"/${P}-add-libera.patch
+	"${FILESDIR}"/${P}-fix-python-3.10.patch
+	"${FILESDIR}"/${P}-fix-odr-violation.patch
 )
 
 pkg_setup() {
