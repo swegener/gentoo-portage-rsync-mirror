@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.mumble.info"
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mumble-voip/mumble.git"
-	EGIT_SUBMODULES=( '-*' 3rdparty/FindPythonInterpreter 3rdparty/gsl 3rdparty/tracy )
+	EGIT_SUBMODULES=( '-*' )
 else
 	MY_PN="mumble"
 	if [[ "${PV}" == *_pre* ]] ; then
@@ -20,12 +20,16 @@ else
 	else
 		MY_PV="${PV/_/-}"
 		MY_P="${MY_PN}-${MY_PV}"
-		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/${MY_PV}/${MY_P}.tar.gz
+		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz
 			https://dl.mumble.info/${MY_P}.tar.gz"
-		S="${WORKDIR}/${MY_PN}-${PV/_*}.src"
+		S="${WORKDIR}/${MY_PN}-src"
 	fi
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
+
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/mumble-1.4-openssl3.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/mumble-1.4-crypto-threads.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/mumble-1.4-odr.patch.xz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -79,6 +83,12 @@ DOC_CONTENTS="
 	registration will fail.
 "
 
+PATCHES=(
+	"${WORKDIR}/mumble-1.4-openssl3.patch"
+	"${WORKDIR}/mumble-1.4-crypto-threads.patch"
+	"${WORKDIR}/mumble-1.4-odr.patch"
+)
+
 src_prepare() {
 	if [[ "${PV}" == *9999 ]] ; then
 		pushd scripts &>/dev/null || die
@@ -130,7 +140,7 @@ src_configure() {
 src_install() {
 	cmake_src_install
 
-	dodoc README.md
+	dodoc README.md CHANGES
 
 	docinto scripts
 	dodoc -r scripts/server
@@ -164,7 +174,7 @@ src_install() {
 	fowners root:murmur ${etcdir}/murmur.ini
 	fperms 640 ${etcdir}/murmur.ini
 
-	newman man/mumble-server.1 murmurd.1
+	doman man/mumble-server.1
 
 	readme.gentoo_create_doc
 }
