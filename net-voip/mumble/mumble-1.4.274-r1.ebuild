@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.mumble.info"
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/mumble-voip/mumble.git"
-	EGIT_SUBMODULES=( '-*' celt-0.7.0-src celt-0.11.0-src themes/Mumble 3rdparty/rnnoise-src 3rdparty/FindPythonInterpreter 3rdparty/tracy 3rdparty/gsl )
+	EGIT_SUBMODULES=( '-*' celt-0.7.0-src celt-0.11.0-src themes/Mumble 3rdparty/rnnoise-src 3rdparty/FindPythonInterpreter )
 else
 	if [[ "${PV}" == *_pre* ]] ; then
 		SRC_URI="https://dev.gentoo.org/~concord/distfiles/${P}.tar.xz"
@@ -19,10 +19,14 @@ else
 		MY_PV="${PV/_/-}"
 		MY_P="${PN}-${MY_PV}"
 		SRC_URI="https://github.com/mumble-voip/mumble/releases/download/v${MY_PV}/${MY_P}.tar.gz"
-		S="${WORKDIR}/${P/_*}.src"
+		S="${WORKDIR}/${PN}-src"
 	fi
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
+
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${PN}-1.4-openssl3.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${PN}-1.4-crypto-threads.patch.xz"
+SRC_URI+=" https://dev.gentoo.org/~concord/distfiles/${PN}-1.4-odr.patch.xz"
 
 LICENSE="BSD MIT"
 SLOT="0"
@@ -59,7 +63,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	dev-cpp/nlohmann_json
 	dev-qt/qtconcurrent:5
 	dev-qt/qttest:5
 	>=dev-libs/boost-1.41.0
@@ -70,13 +73,17 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${WORKDIR}/${PN}-1.4-openssl3.patch"
+	"${WORKDIR}/${PN}-1.4-crypto-threads.patch"
+	"${WORKDIR}/${PN}-1.4-odr.patch"
+)
+
 pkg_setup() {
 	python-any-r1_pkg_setup
 }
 
 src_prepare() {
-	sed '/TRACY_ON_DEMAND/s@ ON @ OFF @' -i src/CMakeLists.txt || die
-
 	# required because of xdg.eclass also providing src_prepare
 	cmake_src_prepare
 }
@@ -85,8 +92,8 @@ src_configure() {
 
 	local mycmakeargs=(
 		-Dalsa="$(usex alsa)"
+		-Dtests="$(usex test)"
 		-Dbundled-celt="ON"
-		-Dbundled-json="OFF"
 		-Dbundled-opus="OFF"
 		-Dbundled-speex="OFF"
 		-Ddbus="$(usex dbus)"
@@ -100,8 +107,6 @@ src_configure() {
 		-Drnnoise="$(usex rnnoise)"
 		-Dserver="OFF"
 		-Dspeechd="$(usex speech)"
-		-Dtests="$(usex test)"
-		-Dtracy="OFF"
 		-Dtranslations="$(usex nls)"
 		-Dupdate="OFF"
 		-Dwarnings-as-errors="OFF"
