@@ -26,8 +26,8 @@ SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.t
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
-IUSE="+acl boot +kmod selinux sysusers +tmpfiles test +udev"
+#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+IUSE="+acl boot +kmod selinux split-usr sysusers +tmpfiles test +udev"
 REQUIRED_USE="|| ( boot tmpfiles sysusers udev )"
 RESTRICT="!test? ( test )"
 
@@ -141,7 +141,9 @@ multilib_src_configure() {
 	fi
 
 	local emesonargs=(
-		-Drootprefix="${EPREFIX:-/}"
+		$(meson_use split-usr)
+		$(meson_use split-usr split-bin)
+		-Drootprefix="$(usex split-usr "${EPREFIX:-/}" "${EPREFIX}/usr")"
 		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
 		-Dsysvinit-path=
 		$(meson_native_use_bool boot efi)
@@ -399,6 +401,11 @@ multilib_src_test() {
 	fi
 }
 
+src_install() {
+	local rootprefix="$(usex split-usr '' /usr)"
+	meson-multilib_src_install
+}
+
 multilib_src_install() {
 	if multilib_is_native_abi; then
 		if use boot; then
@@ -409,27 +416,27 @@ multilib_src_install() {
 			doins src/boot/efi/{linux$(efi_arch).{efi,elf}.stub,systemd-boot$(efi_arch).efi}
 		fi
 		if use sysusers; then
-			into /
+			into "${rootprefix:-/}"
 			newbin systemd-sysusers{.standalone,}
 			doman man/{systemd-sysusers.8,sysusers.d.5}
 		fi
 		if use tmpfiles; then
-			into /
+			into "${rootprefix:-/}"
 			newbin systemd-tmpfiles{.standalone,}
 			doman man/{systemd-tmpfiles.8,tmpfiles.d.5}
 		fi
 		if use udev; then
-			into /
+			into "${rootprefix:-/}"
 			dobin udevadm systemd-hwdb
-			dosym ../../bin/udevadm /lib/systemd/systemd-udevd
+			dosym ../../bin/udevadm "${rootprefix}"/lib/systemd/systemd-udevd
 
-			exeinto /lib/udev
+			exeinto "${rootprefix}"/lib/udev
 			doexe src/udev/{ata_id,cdrom_id,fido_id,mtd_probe,scsi_id,v4l_id}
 
-			insinto /lib/udev/rules.d
+			insinto "${rootprefix}"/lib/udev/rules.d
 			doins rules.d/*.rules
 
-			insinto /lib/udev/hwdb.d
+			insinto "${rootprefix}"/lib/udev/hwdb.d
 			doins hwdb.d/*.hwdb
 
 			insinto /usr/share/pkgconfig
@@ -470,7 +477,7 @@ multilib_src_install_all() {
 		doins src/udev/udev.conf
 		keepdir /etc/udev/{hwdb.d,rules.d}
 
-		insinto /lib/systemd/network
+		insinto "${rootprefix}"/lib/systemd/network
 		doins network/99-default.link
 
 		# Remove to avoid conflict with elogind
