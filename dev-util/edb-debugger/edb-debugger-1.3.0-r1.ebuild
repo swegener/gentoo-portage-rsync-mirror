@@ -7,16 +7,23 @@ inherit cmake
 
 DESCRIPTION="edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg"
 HOMEPAGE="https://github.com/eteran/edb-debugger"
-SRC_URI="https://github.com/eteran/edb-debugger/releases/download/${PV}/edb-debugger-${PV}.tgz"
-S="${WORKDIR}"/${PN}
+
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/eteran/edb-debugger"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/eteran/edb-debugger/releases/download/${PV}/edb-debugger-${PV}.tgz"
+	S="${WORKDIR}"/${PN}
+
+	KEYWORDS="~amd64 ~x86"
+fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
 IUSE="graphviz"
 
 RDEPEND="dev-libs/capstone:=
-	dev-libs/double-conversion
+	dev-libs/double-conversion:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -32,6 +39,7 @@ BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc12.patch
+	"${FILESDIR}"/${PN}-1.3.0-capstone-5.patch
 )
 
 src_prepare() {
