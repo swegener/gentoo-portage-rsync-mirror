@@ -38,7 +38,10 @@ DEPEND="
 	portaudio? ( media-libs/portaudio )
 "
 RDEPEND="${DEPEND}"
-BDEPEND="dev-lang/ruby:*"
+BDEPEND="
+	dev-lang/ruby:*
+	doc? ( app-doc/doxygen )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-docs.patch
