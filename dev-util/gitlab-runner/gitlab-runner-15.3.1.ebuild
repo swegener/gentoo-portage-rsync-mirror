@@ -5,7 +5,7 @@ EAPI=8
 inherit go-module systemd tmpfiles
 
 # make sure this gets updated for every bump
-GIT_COMMIT=bbcb5aba7
+GIT_COMMIT=447840fe
 
 DESCRIPTION="The official GitLab Runner, written in Go"
 HOMEPAGE="https://gitlab.com/gitlab-org/gitlab-runner"
@@ -53,8 +53,8 @@ src_install() {
 	systemd_dounit "${FILESDIR}/${PN}.service"
 	newtmpfiles "${FILESDIR}"/${PN}.tmpfile ${PN}.conf
 	keepdir /{etc,var/log}/${PN}
-	fowners gitlab-runner:gitlab-runner /{etc,var/log}/${PN}
 	fperms 0700 /{etc,var/log}/gitlab-runner
+	fowners gitlab-runner:gitlab-runner /{etc,var/log}/${PN}
 }
 
 pkg_postinst() {
