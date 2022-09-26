@@ -1285,6 +1285,28 @@
     </member>
   </project>
   <project>
+    <email>libera-groupcontacts@gentoo.org</email>
+    <name>Group Contacts</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Group_Contacts</url>
+    <description>Group Contacts for libera.chat administration</description>
+    <member>
+      <email>jmbsvicetto@gentoo.org</email>
+      <name>Jorge Manuel B. S. Vicetto</name>
+    </member>
+    <member>
+      <email>juippis@gentoo.org</email>
+      <name>Joonas Niilola</name>
+    </member>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+    </member>
+    <member is-lead="1">
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
+    </member>
+  </project>
+  <project>
     <email>hppa@gentoo.org</email>
     <name>HPPA Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:HPPA</url>
