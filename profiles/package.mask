@@ -186,52 +186,6 @@ app-backup/attic
 # bugs #829447, #836227, #862504
 mail-filter/sigh
 
-# Michał Górny <mgorny@gentoo.org> (2022-08-30)
-# Flask-Security-Too is a package with high maintenance cost
-# and no revdeps in ::gentoo.  The next version bump (once more)
-# introduces more dependencies.
-#
-# The remaining listed packages are used exclusively by this package
-# (or its tests).  If you find one of them useful, please let us know
-# and we'll keep it.
-#
-# Removal on 2022-09-29.  Bug #867415.
-dev-python/flask-security
-dev-python/flask-babelex
-dev-python/flask-mail
-dev-python/flask-principal
-dev-python/flask-wtf
-dev-python/mongomock
-dev-python/pony
-dev-python/pyqrcode
-dev-python/sentinels
-dev-python/speaklater
-dev-python/zxcvbn
-
-# Matt Turner <mattst88@gentoo.org> (2022-08-29)
-# Unpatched security vulerabilities. Bug #857780.
-# Removal on 2022-09-29.
-=x11-base/xorg-server-1.20*
-=x11-base/xorg-drivers-1.20*
-
-# Matt Turner <mattst88@gentoo.org> (2022-08-29)
-# Fails to build with xorg-server-21. Bug #828426.
-# Removal on 2022-09-29.
-x11-drivers/xf86-video-glint
-
-# Hans de Graaff <graaff@gentoo.org> (2022-08-27)
-# No longer maintained upstream and more modern alternatives such as
-# www-servers/puma are available.
-# Removal in 30 days.
-dev-ruby/async_sinatra
-
-# Sam James <sam@gentoo.org> (2022-08-27)
-# Stuck on deprecated and removed Ruby 2.6. Removal on 2022-09-27.
-dev-ruby/aws-sdk
-dev-ruby/aws-sdk-core
-dev-ruby/aws-sdk-resources
-dev-ruby/travis
-
 # hololeap <hololeap@protonmail.com> (2022-08-21)
 # doctest-parallel does not currently work with Setup.hs (used internally by
 # haskell-cabal.eclass)
