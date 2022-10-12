@@ -9,8 +9,12 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<longdescription>
+		A command-line tool and Python library and Pytest plugin for automated testing of RESTful APIs,
+		with a simple, concise and flexible YAML-based syntax.
+	</longdescription>
 	<upstream>
-		<remote-id type="github">sabnzbd/sabyenc</remote-id>
-		<remote-id type="pypi">sabyenc</remote-id>
+		<remote-id type="github">taverntesting/tavern</remote-id>
+		<remote-id type="pypi">tavern</remote-id>
 	</upstream>
 </pkgmetadata>
