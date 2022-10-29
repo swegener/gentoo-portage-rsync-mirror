@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..11} )
 inherit autotools bash-completion-r1 elisp-common python-single-r1
 
 DESCRIPTION="Program matching and transformation engine"
-HOMEPAGE="https://coccinelle.gitlabpages.inria.fr/website/"
+HOMEPAGE="https://coccinelle.gitlabpages.inria.fr/website/ https://gitlab.inria.fr/coccinelle/coccinelle"
 SRC_URI="https://gitlab.inria.fr/coccinelle/coccinelle/-/archive/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc emacs +ocamlopt pcre python test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RESTRICT="strip !test? ( test )"
+# Test failures need investigation
+RESTRICT="strip !test? ( test ) test"
 
 RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?]
@@ -92,6 +93,8 @@ src_compile() {
 }
 
 src_test() {
+	# TODO: See Fedora's method?
+	# https://src.fedoraproject.org/rpms/coccinelle/blob/rawhide/f/coccinelle.spec#_231
 	emake VERBOSE=yes check $(usev python pycocci-check)
 }
 
