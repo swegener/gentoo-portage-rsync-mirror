@@ -508,10 +508,6 @@
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
     </member>
-    <member>
-      <email>whissi@gentoo.org</email>
-      <name>Thomas Deutschmann</name>
-    </member>
   </project>
   <project>
     <email>comrel@gentoo.org</email>
@@ -1148,10 +1144,6 @@
       <name>Robin Johnson</name>
     </member>
     <member>
-      <email>whissi@gentoo.org</email>
-      <name>Thomas Deutschmann</name>
-    </member>
-    <member>
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
     </member>
@@ -1604,11 +1596,6 @@
       <role>Member (Kernel, gentoo-sources, genpatches)</role>
     </member>
     <member>
-      <email>whissi@gentoo.org</email>
-      <name>Thomas Deutschmann</name>
-      <role>Member (Kernel, gentoo-sources, genpatches)</role>
-    </member>
-    <member>
       <email>zorry@gentoo.org</email>
       <name>Magnus Granberg</name>
       <role>Member (Kernel, hardened)</role>
@@ -1869,10 +1856,6 @@
       <name>Piotr Karbowski</name>
     </member>
     <member>
-      <email>whissi@gentoo.org</email>
-      <name>Thomas Deutschmann</name>
-    </member>
-    <member>
       <email>zerochaos@gentoo.org</email>
       <name>Rick Farina</name>
     </member>
@@ -1912,10 +1895,6 @@
     <member>
       <email>robbat2@gentoo.org</email>
       <name>Robin Johnson</name>
-    </member>
-    <member>
-      <email>whissi@gentoo.org</email>
-      <name>Thomas Deutschmann</name>
     </member>
   </project>
   <project>
@@ -2082,10 +2061,6 @@
     <member>
       <email>grknight@gentoo.org</email>
       <name>Brian Evans</name>
-    </member>
-    <member>
-      <email>whissi@gentoo.org</email>
-      <name>Thomas Deutschmann</name>
     </member>
   </project>
   <project>
@@ -3565,11 +3540,6 @@
     <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-    </member>
-    <member>
-      <email>whissi@gentoo.org</email>
-      <name>Thomas Deutschmann</name>
-      <role>Stabilization primarily</role>
     </member>
     <member>
       <email>zlogene@gentoo.org</email>
