@@ -21,9 +21,11 @@ S="${WORKDIR}/${MY_PF}"
 LICENSE="BSD GPL-2"
 SLOT="0"
 if [[ ${PV} != *_alpha* && ${PV} != *_beta* && ${PV} != *_rc* ]]; then
-	KEYWORDS="amd64 arm arm64 ~hppa ~mips ppc ppc64 ~riscv ~sparc x86 ~ppc-macos"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86 ~ppc-macos"
 fi
 IUSE="caps doc lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
+RESTRICT="!test? ( test )"
+
 VERIFY_SIG_OPENPGP_KEY_PATH=${BROOT}/usr/share/openpgp-keys/torproject.org.asc
 
 BDEPEND="verify-sig? ( >=sec-keys/openpgp-keys-tor-20220216 )"
@@ -51,13 +53,16 @@ DEPEND+="
 		${PYTHON_DEPS}
 	)"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
-)
-
 DOCS=()
 
-RESTRICT="!test? ( test )"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.7.4-torrc.sample.patch
+	"${FILESDIR}"/${P}-strict-prototypes-clang16.patch
+)
+
+# EAPI 8 tries to append it but it doesn't exist here
+# bug #831311 etc
+QA_CONFIGURE_OPTIONS="--disable-static"
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
@@ -76,7 +81,7 @@ src_unpack() {
 }
 
 src_configure() {
-	use doc && DOCS+=( README ChangeLog ReleaseNotes doc/HACKING )
+	use doc && DOCS+=( README.md ChangeLog ReleaseNotes doc/HACKING )
 	export ac_cv_lib_cap_cap_init=$(usex caps)
 	econf \
 		--localstatedir="${EPREFIX}/var" \
@@ -88,7 +93,6 @@ src_configure() {
 		--enable-missing-doc-warnings \
 		--disable-module-dirauth \
 		--enable-pic \
-		--disable-rust \
 		--disable-restart-debugging \
 		--disable-zstd-advanced-apis  \
 		$(use_enable man asciidoc) \
