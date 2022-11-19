@@ -18,9 +18,17 @@ RESTRICT="test"
 
 BDEPEND="~dev-ml/dune-${PV}"
 DEPEND="
-	dev-ml/stdune:=
+	dev-ml/csexp:=[ocamlopt?]
 "
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+	default
+
+	# This enables dune-configurator to use the vendored csexp module
+	sed -i 's/stdune.csexp/dune-configurator.csexp/' \
+		vendor/csexp/src/dune || die
+}
 
 src_configure() {
 	./configure \
