@@ -11,9 +11,9 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/sdk-${PV}.0.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/sdk-${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
-	S="${WORKDIR}"/${MY_PN}-sdk-${PV}.0
+	S="${WORKDIR}"/${MY_PN}-sdk-${PV}
 fi
 
 DESCRIPTION="Vulkan Installable Client Driver (ICD) Loader"
@@ -45,7 +45,6 @@ multilib_src_configure() {
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS} -DNDEBUG"
 		-DCMAKE_SKIP_RPATH=ON
 		-DBUILD_TESTS=OFF
-		-DBUILD_LOADER=ON
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
