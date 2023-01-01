@@ -1,8 +1,9 @@
 Title: Hardened profiles improvements
 Author: Sam James <sam@gentoo.org>
 Posted: 2023-01-01
-Revision: 1
+Revision: 2
 News-Item-Format: 2.0
+Display-If-Installed: sys-devel/gcc[hardened]
 Display-If-Profile: features/hardened
 Display-If-Profile: default/linux/ppc64le/17.0/musl/hardened
 Display-If-Profile: default/linux/ppc/17.0/musl/hardened
@@ -39,9 +40,10 @@ of these improvements early, before GCC 12 is marked stable.
 
 To fully take advantage of these new settings, GCC must first
 be upgraded, and then all packages must be re-emerged:
-1. emerge --sync
-2. emerge --verbose --oneshot ">=sys-devel/gcc-12.2.1_p20221231"
-3. emerge --verbose --emptytree @world
+1. # emerge --sync
+2. # emerge --verbose --oneshot ">=sys-devel/gcc-12.2.1_p20221231"
+3. # gcc-config latest
+4. # emerge --verbose --emptytree @world
 
 ## Troubleshooting
 
