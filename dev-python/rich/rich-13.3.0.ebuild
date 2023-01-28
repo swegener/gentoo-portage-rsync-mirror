@@ -20,12 +20,13 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~loong ~m68k ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/commonmark[${PYTHON_USEDEP}]
-	dev-python/pygments[${PYTHON_USEDEP}]
+	<dev-python/markdown-it-py-3[${PYTHON_USEDEP}]
+	>=dev-python/markdown-it-py-2.1.0[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.14.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/typing-extensions[${PYTHON_USEDEP}]
 	' 3.8)
