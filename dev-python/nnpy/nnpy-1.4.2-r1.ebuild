@@ -8,22 +8,26 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1
 
-DESCRIPTION="Simple user session protection extension for Flask"
+DESCRIPTION="cffi-based Python bindings for nanomsg"
 HOMEPAGE="
-	https://github.com/miguelgrinberg/flask-paranoid/
-	https://pypi.org/project/Flask-Paranoid/
+	https://github.com/nanomsg/nnpy/
+	https://pypi.org/project/nnpy/
 "
 SRC_URI="
-	https://github.com/miguelgrinberg/flask-paranoid/archive/v${PV}.tar.gz
+	https://github.com/nanomsg/nnpy/archive/${PV}.tar.gz
 		-> ${P}.gh.tar.gz
 "
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~arm"
 
+DEPEND="
+	dev-python/cffi:=[${PYTHON_USEDEP}]
+	dev-libs/nanomsg:=
+"
 RDEPEND="
-	dev-python/flask[${PYTHON_USEDEP}]
+	${DEPEND}
 "
 
 distutils_enable_tests unittest
