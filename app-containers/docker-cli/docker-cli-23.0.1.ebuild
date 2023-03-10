@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-GIT_COMMIT=715524332f
+GIT_COMMIT=a5ee5b1dfc
 EGO_PN="github.com/docker/cli"
 MY_PV=${PV/_/-}
 inherit bash-completion-r1  golang-vcs-snapshot
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/docker/cli/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
+# KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 IUSE="hardened selinux"
 
 RDEPEND="!<app-containers/docker-20.10.1
