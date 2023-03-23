@@ -4,6 +4,7 @@
 EAPI=8
 
 CRATES="
+	Inflector-0.11.4
 	adler-1.0.2
 	ahash-0.7.6
 	aho-corasick-0.7.20
@@ -25,7 +26,7 @@ CRATES="
 	bitflags-1.3.2
 	block-buffer-0.10.3
 	bstr-0.2.17
-	bstr-1.2.0
+	bstr-1.3.0
 	bumpalo-3.12.0
 	cachedir-0.3.0
 	cast-0.3.0
@@ -37,11 +38,12 @@ CRATES="
 	ciborium-io-0.2.0
 	ciborium-ll-0.2.0
 	clap-3.2.23
-	clap-4.1.6
-	clap_complete-4.1.1
-	clap_complete_command-0.4.0
-	clap_complete_fig-4.1.0
-	clap_derive-4.1.0
+	clap-4.1.8
+	clap_complete-4.1.2
+	clap_complete_command-0.5.1
+	clap_complete_fig-4.1.1
+	clap_complete_nushell-0.1.10
+	clap_derive-4.1.8
 	clap_lex-0.2.4
 	clap_lex-0.3.1
 	clearscreen-2.0.0
@@ -50,7 +52,7 @@ CRATES="
 	configparser-3.0.2
 	console-0.15.5
 	console_error_panic_hook-0.1.7
-	console_log-0.2.0
+	console_log-0.2.1
 	core-foundation-sys-0.8.3
 	cpufeatures-0.2.5
 	crc32fast-1.3.2
@@ -62,10 +64,11 @@ CRATES="
 	crossbeam-utils-0.8.14
 	crunchy-0.2.2
 	crypto-common-0.1.6
-	cxx-1.0.90
-	cxx-build-1.0.90
-	cxxbridge-flags-1.0.90
-	cxxbridge-macro-1.0.90
+	ctor-0.1.26
+	cxx-1.0.91
+	cxx-build-1.0.91
+	cxxbridge-flags-1.0.91
+	cxxbridge-macro-1.0.91
 	diff-0.1.13
 	difflib-0.4.0
 	digest-0.10.6
@@ -108,13 +111,13 @@ CRATES="
 	indexmap-1.9.2
 	inotify-0.9.6
 	inotify-sys-0.1.5
-	insta-1.26.0
+	insta-1.28.0
 	instant-0.1.12
 	io-lifetimes-1.0.5
-	is-terminal-0.4.3
+	is-macro-0.2.2
+	is-terminal-0.4.4
 	itertools-0.10.5
 	itoa-1.0.5
-	joinery-2.1.0
 	js-sys-0.3.61
 	kqueue-1.0.7
 	kqueue-sys-1.0.3
@@ -137,30 +140,29 @@ CRATES="
 	memoffset-0.7.1
 	mimalloc-0.1.34
 	miniz_oxide-0.6.2
-	mio-0.8.5
+	mio-0.8.6
 	natord-1.0.9
 	new_debug_unreachable-1.0.4
 	nextest-workspace-hack-0.1.0
 	nix-0.26.2
 	nohash-hasher-0.2.0
 	nom-5.1.2
-	nom8-0.2.0
 	notify-5.1.0
 	num-bigint-0.4.3
 	num-complex-0.4.3
 	num-integer-0.1.45
 	num-traits-0.2.15
 	num_cpus-1.15.0
-	num_enum-0.5.9
-	num_enum_derive-0.5.9
-	once_cell-1.17.0
+	once_cell-1.17.1
 	oorandom-11.1.3
 	os_str_bytes-6.4.1
+	output_vt100-0.1.3
 	parking_lot-0.12.1
 	parking_lot_core-0.9.7
 	paste-1.0.11
 	path-absolutize-3.0.14
 	path-dedot-3.0.18
+	pathdiff-0.2.1
 	peg-0.8.1
 	peg-macros-0.8.1
 	peg-runtime-0.8.1
@@ -180,12 +182,13 @@ CRATES="
 	plotters-0.3.4
 	plotters-backend-0.3.4
 	plotters-svg-0.3.3
+	pmutil-0.5.3
 	ppv-lite86-0.2.17
 	precomputed-hash-0.1.1
 	predicates-2.1.5
 	predicates-core-1.0.5
 	predicates-tree-1.0.7
-	proc-macro-crate-1.3.0
+	pretty_assertions-1.3.0
 	proc-macro-error-1.0.4
 	proc-macro-error-attr-1.0.4
 	proc-macro2-1.0.51
@@ -196,14 +199,16 @@ CRATES="
 	rand-0.8.5
 	rand_chacha-0.3.1
 	rand_core-0.6.4
-	rayon-1.6.1
-	rayon-core-1.10.2
+	rayon-1.7.0
+	rayon-core-1.11.0
 	redox_syscall-0.2.16
 	redox_users-0.4.3
 	regex-1.7.1
 	regex-automata-0.1.10
 	regex-syntax-0.6.28
 	remove_dir_all-0.5.3
+	result-like-0.4.6
+	result-like-derive-0.4.6
 	ring-0.16.20
 	rust-stemmers-1.2.0
 	rustc-hash-1.1.0
@@ -212,15 +217,15 @@ CRATES="
 	rustversion-1.0.11
 	ryu-1.0.12
 	same-file-1.0.6
-	schemars-0.8.11
-	schemars_derive-0.8.11
+	schemars-0.8.12
+	schemars_derive-0.8.12
 	scoped-tls-1.0.1
 	scopeguard-1.1.0
 	scratch-1.0.3
 	sct-0.7.0
 	semver-1.0.16
 	serde-1.0.152
-	serde-wasm-bindgen-0.4.5
+	serde-wasm-bindgen-0.5.0
 	serde_derive-1.0.152
 	serde_derive_internals-0.26.0
 	serde_json-1.0.93
@@ -238,14 +243,16 @@ CRATES="
 	strsim-0.10.0
 	strum-0.24.1
 	strum_macros-0.24.3
-	syn-1.0.107
+	syn-1.0.109
+	syn-ext-0.4.0
 	tempfile-3.3.0
 	term-0.7.0
 	termcolor-1.2.0
 	terminfo-0.7.5
 	termtree-0.4.0
-	test-case-2.2.2
-	test-case-macros-2.2.2
+	test-case-3.0.0
+	test-case-core-3.0.0
+	test-case-macros-3.0.0
 	textwrap-0.16.0
 	thiserror-1.0.38
 	thiserror-impl-1.0.38
@@ -257,11 +264,11 @@ CRATES="
 	tinytemplate-1.2.1
 	tinyvec-1.6.0
 	tinyvec_macros-0.1.1
-	titlecase-2.2.1
-	toml-0.6.0
-	toml_datetime-0.5.1
-	toml_edit-0.18.1
+	toml-0.7.2
+	toml_datetime-0.6.1
+	toml_edit-0.19.4
 	tracing-0.1.37
+	tracing-attributes-0.1.23
 	tracing-core-0.1.30
 	twox-hash-1.6.3
 	typenum-1.16.0
@@ -279,7 +286,6 @@ CRATES="
 	unicode-normalization-0.1.22
 	unicode-width-0.1.10
 	unicode-xid-0.2.4
-	unicode_names2-0.5.1
 	untrusted-0.7.1
 	ureq-2.6.2
 	url-2.3.1
@@ -317,15 +323,17 @@ CRATES="
 	windows_x86_64_gnu-0.42.1
 	windows_x86_64_gnullvm-0.42.1
 	windows_x86_64_msvc-0.42.1
+	winnow-0.3.3
 	yaml-rust-0.4.5
+	yansi-0.5.1
 	yansi-term-0.1.2
 "
 
 PYTHON_COMPAT=( python3_{9..11} )
 DISTUTILS_USE_PEP517=maturin
 
-LIBCST_COMMIT="f2f0b7a487a8725d161fe8b3ed73a6758b21e177"
-RUSTPYTHON_COMMIT="edf5995a1e4c366976304ca05432dd27c913054e"
+LIBCST_COMMIT="80e4c1399f95e5beb532fdd1e209ad2dbb470438"
+RUSTPYTHON_COMMIT="c15f670f2c30cfae6b41a1874893590148c74bc4"
 declare -A GIT_CRATES=(
 	[libcst]="https://github.com/charliermarsh/LibCST;${LIBCST_COMMIT};LibCST-%commit%/native/libcst"
 	[libcst_derive]="https://github.com/charliermarsh/LibCST;${LIBCST_COMMIT};LibCST-%commit%/native/libcst_derive"
@@ -333,6 +341,8 @@ declare -A GIT_CRATES=(
 	[rustpython-common]="https://github.com/RustPython/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/common"
 	[rustpython-compiler-core]="https://github.com/RustPython/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/compiler/core"
 	[rustpython-parser]="https://github.com/RustPython/RustPython;${RUSTPYTHON_COMMIT};RustPython-%commit%/compiler/parser"
+	[pep440_rs]="https://github.com/konstin/pep440-rs;a8fef4ec47f4c25b070b39cdbe6a0b9847e49941;pep440-rs-%commit%"
+	[unicode_names2]="https://github.com/youknowone/unicode_names2;4ce16aa85cbcdd9cc830410f1a72ef9a235f2fde"
 )
 
 inherit distutils-r1 cargo
@@ -349,7 +359,7 @@ SRC_URI="
 
 # License set may be more restrictive as OR is not respected
 # use cargo-license for a more accurate license picture
-LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions Artistic-2 BSD Boost-1.0 CC0-1.0 ISC LGPL-3+ MIT MPL-2.0 Unicode-DFS-2016 Unlicense WTFPL-2 ZLIB"
+LICENSE="0BSD Apache-2.0 Apache-2.0-with-LLVM-exceptions Artistic-2 BSD BSD-2 Boost-1.0 CC0-1.0 ISC LGPL-3+ MIT MPL-2.0 Unicode-DFS-2016 Unlicense WTFPL-2 ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -390,7 +400,10 @@ src_compile() {
 	distutils-r1_src_configure
 	distutils-r1_src_compile
 
-	patchelf --set-soname libruff.so target/$(usex 'debug' 'debug' 'release')/libruff.so || die
+	local solib
+	for solib in $(find target/$(usex 'debug' 'debug' 'release') -maxdepth 1 -name '*.so'); do
+		patchelf --set-soname "${solib##*/}" "${solib}" || die
+	done
 }
 
 src_test() {
@@ -403,8 +416,8 @@ src_install() {
 
 	local releasedir=target/$(usex 'debug' 'debug' 'release')
 
-	dobin ${releasedir}/ruff
-	dolib.so ${releasedir}/libruff.so
+	dobin ${releasedir}/{ruff,flake8-to-ruff,ruff_python_formatter}
+	dolib.so $(find target/$(usex 'debug' 'debug' 'release') -maxdepth 1 -name '*.so')
 
 	dodoc "${DOCS[@]}"
 }
