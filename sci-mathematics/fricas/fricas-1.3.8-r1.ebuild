@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -30,9 +30,9 @@ n=${#LISPS[*]}
 for ((n--; n > 0; n--)); do
 	LISP=${LISPS[$n]}
 	if [ "${REST[$n]}" = "." ]; then
-	    DEP="dev-lisp/${LISP}"
+		DEP="dev-lisp/${LISP}"
 	else
-	    DEP="${REST[$n]}"
+		DEP="${REST[$n]}"
 	fi
 	RDEPEND="${RDEPEND} ${LISP}? ( ${DEP}:= ) !${LISP}? ("
 done
@@ -51,6 +51,8 @@ DEPEND="${RDEPEND}"
 
 # necessary for clisp and gcl
 RESTRICT="strip"
+
+PATCHES=( "${FILESDIR}"/${PN}-sbcl-2.3.2.patch )
 
 src_configure() {
 	local LISP n GMP
