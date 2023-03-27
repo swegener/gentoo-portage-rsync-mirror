@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-USE_RUBY="ruby27"
+USE_RUBY="ruby27 ruby30 ruby31"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md CHANGELOG.md PLUGINS.md"
@@ -12,8 +12,8 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Encrypted YAML backend for hiera"
-HOMEPAGE="https://github.com/TomPoulton/hiera-eyaml"
-SRC_URI="https://github.com/TomPoulton/hiera-eyaml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/voxpupuli/hiera-eyaml"
+SRC_URI="https://github.com/voxpupuli/hiera-eyaml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="3"
@@ -24,7 +24,13 @@ ruby_add_rdepend ">=dev-ruby/highline-1.6.19:*"
 ruby_add_rdepend "dev-ruby/optimist"
 ruby_add_rdepend "!!dev-ruby/hiera-eyaml:0" # both install the /usr/bin/eyaml binary
 
-ruby_add_bdepend "test? ( dev-util/cucumber ~dev-util/aruba-0.6.2 <app-admin/puppet-6 dev-ruby/hiera-eyaml-plaintext )"
+ruby_add_bdepend "test? (
+	dev-util/cucumber
+	~dev-util/aruba-0.6.2
+	dev-ruby/hiera-eyaml-plaintext
+)"
+
+BDEPEND+=" test? ( || ( app-admin/puppet-agent app-admin/puppet ) )"
 
 all_ruby_prepare() {
 	# Fix highline dependency to be compatible with more versions.
@@ -45,5 +51,5 @@ each_ruby_prepare() {
 }
 
 each_ruby_test() {
-	${RUBY} -S cucumber --format progress features || die
+	CUCUMBER_PUBLISH_QUIET=true ${RUBY} -S cucumber --format progress features || die
 }
