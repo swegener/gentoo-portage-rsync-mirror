@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 "
 BDEPEND="dev-lang/sassc"
 
-PATCHES=( "${WORKDIR}/${P}-patchset-1" ) # KDE-bugs 461106, 466463
+PATCHES=( "${WORKDIR}/${P}-patchset-1" ) # KDE-bugs 468203, 421745
 
 src_configure() {
 	local mycmakeargs=(
