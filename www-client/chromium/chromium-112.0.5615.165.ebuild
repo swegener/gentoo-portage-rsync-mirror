@@ -173,11 +173,11 @@ BDEPEND="
 		qt5? ( dev-qt/qtcore:5 )
 	)
 	libcxx? ( >=sys-devel/clang-13 )
-	lto? ( $(depend_clang_llvm_versions 14 15) )
+	lto? ( $(depend_clang_llvm_versions 16) )
 	pgo? (
 		>=dev-python/selenium-3.141.0
 		>=dev-util/web_page_replay_go-20220314
-		$(depend_clang_llvm_versions 14 15)
+		$(depend_clang_llvm_versions 16)
 	)
 	dev-lang/perl
 	>=dev-util/gn-0.1807
@@ -194,7 +194,7 @@ BDEPEND="
 : ${CHROMIUM_FORCE_CLANG=no}
 
 if [[ ${CHROMIUM_FORCE_CLANG} == yes ]]; then
-	BDEPEND+=" >=sys-devel/clang-13"
+	BDEPEND+=" >=sys-devel/clang-16"
 fi
 
 if ! has chromium_pkg_die ${EBUILD_DEATH_HOOKS}; then
@@ -306,8 +306,8 @@ pkg_setup() {
 			else
 				CPP="${CHOST}-clang++ -E"
 			fi
-			if ! ver_test "$(clang-major-version)" -ge 13; then
-				die "At least clang 13 is required"
+			if ! ver_test "$(clang-major-version)" -ge 16; then
+				die "At least clang 16 is required"
 			fi
 		fi
 	fi
