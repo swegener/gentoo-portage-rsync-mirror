@@ -4,7 +4,7 @@
 EAPI=8
 inherit go-module
 
-DESCRIPTION="Kubernetes Scheduler"
+DESCRIPTION="Kubernetes Controller Manager"
 HOMEPAGE="https://kubernetes.io"
 SRC_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kubernetes-${PV}.tar.gz"
 
@@ -13,8 +13,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64"
 IUSE="hardened"
 
-COMMON_DEPEND="acct-group/kube-scheduler
-	acct-user/kube-scheduler"
+COMMON_DEPEND="acct-group/kube-controller-manager
+	acct-user/kube-controller-manager"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 BDEPEND=">=dev-lang/go-1.20"
@@ -22,13 +22,9 @@ BDEPEND=">=dev-lang/go-1.20"
 RESTRICT+=" test"
 S="${WORKDIR}/kubernetes-${PV}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-make-gomaxprocs-install-optional.patch
-)
-
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
-		emake -j1 GOFLAGS="" GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
+		emake -j1 GOFLAGS=-v GOLDFLAGS="" LDFLAGS="" WHAT=cmd/${PN}
 }
 
 src_install() {
