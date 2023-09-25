@@ -60,6 +60,7 @@ src_compile() {
 		--library-type=cdylib
 		--prefix=/usr
 		--libdir="/usr/$(get_libdir)"
+		$(usev !debug '--release')
 	)
 
 	cargo cbuild "${cargoargs[@]}" || die "cargo cbuild failed"
@@ -71,6 +72,7 @@ src_install() {
 		--prefix=/usr
 		--libdir="/usr/$(get_libdir)"
 		--destdir="${ED}"
+		$(usex debug '--debug' '--release')
 	)
 
 	cargo cinstall "${cargoargs[@]}" || die "cargo cinstall failed"
