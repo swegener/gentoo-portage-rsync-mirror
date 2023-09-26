@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( pypy3 python3_{9..11} )
-inherit python-single-r1 systemd
+inherit systemd toolchain-funcs
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
 HOMEPAGE="https://github.com/systemd-cron/systemd-cron/"
@@ -11,23 +10,23 @@ SRC_URI="https://github.com/systemd-cron/${PN}/archive/v${PV}.tar.gz -> systemd-
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 IUSE="cron-boot etc-crontab-systemd minutely +runparts setgid test yearly"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=sys-apps/systemd-217
-	sys-apps/debianutils
+BDEPEND="virtual/pkgconfig"
+
+RDEPEND=">=sys-apps/systemd-253
+	dev-libs/openssl
+	runparts? ( sys-apps/debianutils )
 	!sys-process/cronie[anacron]
 	!etc-crontab-systemd? ( !sys-process/dcron )
-	${PYTHON_DEPS}
 	sys-process/cronbase
 	acct-user/_cron-failure
 	acct-group/_cron-failure"
 
 DEPEND="sys-process/cronbase
-	test? ( sys-apps/man-db dev-python/pyflakes )"
-
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+	test? ( sys-apps/man-db || ( dev-util/shellcheck dev-util/shellcheck-bin ) )"
 
 pkg_pretend() {
 	if use runparts && ! [ -x /usr/bin/run-parts ] ; then
@@ -38,8 +37,6 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	python_fix_shebang --force "${S}/src/bin"
-
 	sed -i \
 		-e 's/^crontab/crontab-systemd/' \
 		-e 's/^CRONTAB/CRONTAB-SYSTEMD/' \
@@ -49,7 +46,8 @@ src_prepare() {
 	then	sed -i \
 			-e "s!/etc/crontab!/etc/crontab-systemd!" \
 			-- "${S}/src/man/crontab."{1,5}".in" \
-			"${S}/src/bin/systemd-crontab-generator.py" || die
+			"${S}/src/bin/systemd-crontab-generator.cpp" \
+			"${S}/test/test-generator" || die
 	fi
 
 	eapply_user
@@ -64,9 +62,10 @@ my_use_enable() {
 }
 
 src_configure() {
+	tc-export PKG_CONFIG CXX CC
+
 	./configure \
 		--prefix="${EPREFIX}/usr" \
-		--confdir="${EPREFIX}/etc" \
 		--mandir="${EPREFIX}/usr/share/man" \
 		--unitdir="$(systemd_get_systemunitdir)" \
 		--generatordir="$(systemd_get_systemgeneratordir)" \
@@ -75,8 +74,7 @@ src_configure() {
 		$(my_use_enable runparts) \
 		$(my_use_enable yearly) \
 		$(my_use_enable yearly quarterly) \
-		$(my_use_enable yearly semi_annually) \
-		$(my_use_enable setgid) || die
+		$(my_use_enable yearly semi_annually) || die
 
 		export CRONTAB=crontab-systemd
 }
@@ -84,6 +82,10 @@ src_configure() {
 src_install() {
 	default
 	rm -f "${ED}"/usr/lib/sysusers.d/systemd-cron.conf
+}
+
+src_test() {
+	emake test-nounshare
 }
 
 pkg_postinst() {
