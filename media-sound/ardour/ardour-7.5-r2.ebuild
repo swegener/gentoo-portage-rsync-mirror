@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{9..12} )
 PYTHON_REQ_USE='threads(+)'
 PLOCALES="ca cs de el en_GB es eu fr it ja ko nn pl pt pt_PT ru sv zh"
 inherit toolchain-funcs flag-o-matic plocale python-any-r1 waf-utils desktop xdg
@@ -35,7 +35,6 @@ RDEPEND="
 	media-libs/aubio
 	media-libs/flac:=
 	media-libs/freetype:2
-	media-libs/libart_lgpl
 	media-libs/liblo
 	media-libs/liblrdf
 	media-libs/libsamplerate
@@ -89,7 +88,10 @@ pkg_setup() {
 src_prepare() {
 	default
 
+	# delete optimization flags
 	sed 's/'full-optimization\'\ :\ \\[.*'/'full-optimization\'\ :\ \'\','/' -i "${S}"/wscript || die
+
+	# handle arch
 	MARCH=$(get-flag march)
 	OPTFLAGS=""
 	if use cpu_flags_x86_sse; then
@@ -111,9 +113,13 @@ src_prepare() {
 	sed 's/flag_line\ =\ o.*/flag_line\ =\ \": '"${OPTFLAGS}"' just some place holders\"/' \
 		-i "${S}"/wscript || die
 	sed 's/cpu\ ==\ .*/cpu\ ==\ "LeaveMarchAsIs":/' -i "${S}"/wscript || die
+
+	# boost and shebang
 	append-flags "-lboost_system"
 	python_fix_shebang "${S}"/wscript
 	python_fix_shebang "${S}"/waf
+
+	# handle locales
 	my_lcmsg() {
 		rm -f {gtk2_ardour,gtk2_ardour/appdata,libs/ardour,libs/gtkmm2ext}/po/${1}.po
 	}
@@ -141,6 +147,7 @@ src_configure() {
 		$(usex nls "--nls" "--no-nls")
 		$(usex phonehome "--phone-home" "--no-phone-home")
 		# not possible right now  --use-external-libs
+		# missing dependency: https://github.com/c4dm/qm-dsp
 	)
 
 	waf-utils_src_configure "${myconf[@]}"
@@ -174,6 +181,7 @@ src_install() {
 
 	insinto /usr/share/mime/packages
 	newins build/gtk2_ardour/ardour.xml ardour${SLOT}.xml
+	rm "${D}/usr/share/mime/packages/ardour.xml" || die
 }
 
 pkg_postinst() {
