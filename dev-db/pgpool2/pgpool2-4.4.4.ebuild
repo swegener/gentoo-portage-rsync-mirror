@@ -3,7 +3,7 @@
 
 EAPI=7
 
-POSTGRES_COMPAT=( 9.6 {10..15} )
+POSTGRES_COMPAT=( {10..16} )
 
 inherit autotools postgres-multi
 
@@ -15,7 +15,7 @@ SRC_URI="https://www.pgpool.net/download.php?f=${MY_P}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="doc memcached pam ssl static-libs"
 
@@ -40,7 +40,7 @@ src_prepare() {
 		"${FILESDIR}/pgpool-4.2.0-configure-memcached.patch" \
 		"${FILESDIR}/pgpool-configure-pam.patch" \
 		"${FILESDIR}/pgpool-4.2.0-configure-pthread.patch" \
-		"${FILESDIR}/pgpool-4.3.1-run_paths.patch"
+		"${FILESDIR}/pgpool-4.4.4-run_paths.patch"
 
 	eautoreconf
 
