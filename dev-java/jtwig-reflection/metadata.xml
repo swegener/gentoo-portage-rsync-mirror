@@ -5,6 +5,6 @@
 		<email>java@gentoo.org</email>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">bndtools/bnd</remote-id>
+		<remote-id type="github">jtwig/jtwig</remote-id>
 	</upstream>
 </pkgmetadata>
