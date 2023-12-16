@@ -105,6 +105,11 @@ nssarch() {
 }
 
 nssbits() {
+	# bgo#917792
+	if tc-is-clang && use x86 ; then
+		filter-lto
+	fi
+
 	local cc cppflags="${1}CPPFLAGS" cflags="${1}CFLAGS"
 	if [[ ${1} == BUILD_ ]]; then
 		cc=$(tc-getBUILD_CC)
@@ -170,6 +175,10 @@ multilib_src_compile() {
 		export CC_IS_GCC=1
 	elif tc-is-clang; then
 		export CC_IS_CLANG=1
+		if use x86 ; then
+			filter-lto
+			elog "lto disabled when using clang on x86. bgo#917792"
+		fi
 	fi
 
 	export NSS_DISABLE_GTESTS=$(usex !test 1 0)
@@ -237,8 +246,10 @@ multilib_src_test() {
 	export DOMSUF="localdomain"
 	export USE_IP=TRUE
 	export IP_ADDRESS="127.0.0.1"
-	# Per README, this is recommended to make run tests quicker.
-	export NSS_CYCLES="standard"
+
+	# Only run the standard cycle instead of full, reducing testing time from 45 minutes to 15
+	# per lib implementation.
+	export NSS_CYCLES=standard
 
 	NSINSTALL="${PWD}/$(find -type f -name nsinstall)"
 
