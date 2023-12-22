@@ -93,10 +93,6 @@ media-video/mpv lua_single_target_lua5-1
 # See e.g. bugs 617518, 638522, 711302, 802435, 904987
 dev-lang/ruby jemalloc
 
-# Joonas Niilola <juippis@gentoo.org> (2023-07-14)
-# Calendar is broken with some languages on 115.0 release. Bug #910229
->=mail-client/thunderbird-115.0 system-icu
-
 # Marek Szuba <marecki@gentoo.org> (2023-07-10)
 # dev-python/mkdocs-material is by design directly integrated with
 # Google Fonts and as such violates the network sandbox [1].
@@ -595,10 +591,6 @@ dev-util/meson test
 # Alfredo Tupone <tupone@gentoo.org> (2020-04-04)
 # Ada support is not yet ready for sys-devel/gcc
 sys-devel/gcc ada
-
-# Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
-# Requires dev-libs/cudnn which is only available on amd64
-sci-physics/root cudnn
 
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
 # Encrypted Media Extensions (eme-free) can't be disabled everywhere
