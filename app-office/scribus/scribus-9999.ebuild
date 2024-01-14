@@ -38,7 +38,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-qt/qt5compat:6
-	dev-qt/qtbase:6[gui,network,opengl,xml,widgets]
+	dev-qt/qtbase:6[cups,gui,network,opengl,xml,widgets]
 	dev-qt/qtsvg:6
 	media-libs/fontconfig
 	media-libs/freetype:2
@@ -142,7 +142,7 @@ src_install() {
 		newicon -s $size resources/iconsets/artwork/icon_${size}x${size}.png scribus-${SLOT}.png
 	done
 	newicon -s 64 resources/iconsets/artwork/icon_32x32@2x.png scribus-${SLOT}.png
-	newicon resources/iconsets/1_5_1/scribus.png scribus-${SLOT}.png
+	newicon resources/iconsets/1_7_0/scribus-icon.svg scribus-${SLOT}.png
 	newmenu scribus.desktop scribus-${SLOT}.desktop
 }
 
