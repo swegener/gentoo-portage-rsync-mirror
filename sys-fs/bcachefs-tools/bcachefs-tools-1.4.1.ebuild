@@ -43,7 +43,6 @@ CRATES="
 	hermit-abi@0.3.3
 	io-lifetimes@1.0.11
 	is-terminal@0.4.9
-	itertools@0.9.0
 	lazy_static@1.4.0
 	lazycell@1.3.0
 	libc@0.2.150
@@ -121,7 +120,7 @@ else
 	SRC_URI="https://github.com/koverstreet/bcachefs-tools/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
 		${CARGO_CRATE_URIS}"
 	S="${WORKDIR}/${P}"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="Apache-2.0 BSD GPL-2 MIT"
@@ -159,10 +158,6 @@ BDEPEND="
 	virtual/pkgconfig
 	virtual/rust
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.0-fix-clang-musl.patch
-)
 
 llvm_check_deps() {
 	has_version -b "sys-devel/clang:${LLVM_SLOT}"
@@ -230,9 +225,6 @@ src_test() {
 		'tests/test_fixture.py::test_leak'
 		'tests/test_fixture.py::test_check'
 		# Fails in portage because of usersandbox; ensure that these pass before bumping!
-		'tests/test_basic.py::test_format'
-		'tests/test_basic.py::test_fsck'
-		'tests/test_basic.py::test_list'
 		'tests/test_basic.py::test_list_inodes'
 		'tests/test_basic.py::test_list_dirent'
 	)
