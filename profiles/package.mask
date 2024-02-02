@@ -249,51 +249,6 @@ x11-misc/sw-notify-send
 >=dev-util/hip-6.0.0
 >=dev-util/rocminfo-6.0.0
 
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Unmaintained.  Last release in 2001.  media-gfx/xfig
-# (that is still maintained) is recommended instead.
-# Removal on 2024-01-21.  Bug #899790.
-media-gfx/figurine
-
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Broken on Python 3.11+.  No revdeps.
-# Removal on 2024-01-21.  Bug #896752.
-dev-python/awxkit
-
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Crashes.  Discontinued upstream.  No revdeps.
-# Removal on 2024-01-21.  Bug #907758.
-media-sound/guayadeque
-
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Abandoned and archived upstream.  Known broken.  No revdeps.
-# dev-go/lichen is the recommended replacement.
-# Removal on 2024-01-21.  Bug #913755.
-dev-go/golicense
-
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Unmaintained tool with NIH libraries that (optionally) depend
-# on vulnerable media-gfx/transfig.  Homepage gone.  No other revdeps.
-# Removal on 2024-01-21.  Bug #917248.
-dev-libs/liblist
-dev-libs/libstrl
-dev-util/difffilter
-
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Ancient.  The website is gone.  No revdeps.
-# Removal on 2024-01-21.  Bug #918622.
-net-analyzer/lilac
-
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Unmaintained.  Unfetchable and mirror-restricted.  No revdeps.
-# Removal on 2024-01-21.  Bug #918905.
-sys-block/hpacucli
-
-# Michał Górny <mgorny@gentoo.org> (2023-12-22)
-# Unmaintained.  EAPI 6.  Last commit in 2017.  No revdeps.
-# Removal on 2024-01-21.  Bug #919050.
-app-containers/go-secbench
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-01-31)
 # KDE Plasma 6 RC2 (5.93) and Frameworks 6 RC2 (5.249) mask
 # *** PRE-RELEASE *** NO BUGS WILL BE FIXED *** OVERLAY PRs WELCOME ***
