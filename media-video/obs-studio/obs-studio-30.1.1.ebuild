@@ -7,12 +7,15 @@ CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 LUA_COMPAT=( luajit )
 PYTHON_COMPAT=( python3_{9..12} )
 
-inherit cmake lua-single optfeature python-single-r1 xdg
+inherit cmake flag-o-matic lua-single optfeature python-single-r1 xdg
 
 CEF_DIR="cef_binary_5060_linux_x86_64"
 CEF_REVISION="_v3"
-OBS_BROWSER_COMMIT="a3ae78b5c6ce6d4ddb29d49b29f2f60014d554e1"
-OBS_WEBSOCKET_COMMIT="ede66a68cbc043a6fc7c8af683ae0924d4068941"
+OBS_BROWSER_COMMIT="996b5a7bc43d912f1f4992e0032d4f263ac8b060"
+OBS_WEBSOCKET_COMMIT="d2d4bfb3e78cf2b02c8e2f5dda1d805eda8d8f32"
+
+DESCRIPTION="Software for Recording and Streaming Live Video Content"
+HOMEPAGE="https://obsproject.com"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -27,12 +30,10 @@ else
 		https://github.com/obsproject/obs-browser/archive/${OBS_BROWSER_COMMIT}.tar.gz -> obs-browser-${OBS_BROWSER_COMMIT}.tar.gz
 		https://github.com/obsproject/obs-websocket/archive/${OBS_WEBSOCKET_COMMIT}.tar.gz -> obs-websocket-${OBS_WEBSOCKET_COMMIT}.tar.gz
 	"
-	KEYWORDS="~amd64 ~arm64 ~ppc64"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
-SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}${CEF_REVISION}.tar.xz )"
 
-DESCRIPTION="Software for Recording and Streaming Live Video Content"
-HOMEPAGE="https://obsproject.com"
+SRC_URI+=" browser? ( https://cdn-fastly.obsproject.com/downloads/${CEF_DIR}${CEF_REVISION}.tar.xz )"
 
 LICENSE="Boost-1.0 GPL-2+ MIT Unlicense"
 SLOT="0"
@@ -57,7 +58,7 @@ DEPEND="
 	dev-libs/jansson:=
 	dev-qt/qtbase:6[network,widgets,xml(+)]
 	dev-qt/qtsvg:6
-	media-libs/libglvnd
+	media-libs/libglvnd[X]
 	media-libs/libva
 	media-libs/rnnoise
 	media-libs/x264:=
@@ -172,6 +173,11 @@ src_prepare() {
 	default
 
 	sed -i '/-Werror$/d' "${WORKDIR}"/${P}/cmake/Modules/CompilerConfig.cmake || die
+
+	# -Werror=lto-type-mismatch
+	# https://bugs.gentoo.org/867250
+	# https://github.com/obsproject/obs-studio/issues/8988
+	use wayland && filter-lto
 
 	cmake_src_prepare
 }
