@@ -1100,7 +1100,6 @@ app-portage/conf-update:colordiff - Use colors when displaying diffs (app-misc/c
 app-portage/eix:debug - Build with upstream's CXXFLAGS/LDFLAGS for debugging support; not recommended for normal use.
 app-portage/eix:doc - Create description of the eix cache file additionally in html format
 app-portage/eix:sqlite - Compile in support for portage's sqlite backend; to actually use it you need additional configuration of portage and eix
-app-portage/g-sorcery:bson - Support BSON file format for package DB
 app-portage/gemato:gpg - Install dependencies needed for OpenPGP signature verification support
 app-portage/gemato:pretty-log - Pull dev-python/rich to enable pretty logs
 app-portage/gemato:tools - Install additional utilities (benchmarks, hash testing tools, fast Manifest generators) to /usr/share/gemato.
