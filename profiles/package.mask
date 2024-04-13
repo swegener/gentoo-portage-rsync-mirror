@@ -33,6 +33,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2024-04-13)
+# Python wrapper around liblmsensors, no reverse dependencies
+# Removal on 2024-05-13, bug #929495
+dev-python/PySensors
+
 # Arthur Zamarin <arthurzam@gentoo.org> (2024-04-12)
 # EAPI6. Fails to compile with go versions in tree. Upstream is archived.
 # Uses deprecated go eclasses. Maintainer needed, no rev deps.
@@ -269,13 +274,6 @@ dev-ruby/atomic
 # dev-python/six instead, anyways.  Bug #888271
 # Removal on 2024-04-13.
 dev-python/future
-
-# Petr Vaněk <arkamar@gentoo.org> (2024-03-13)
-# dev-libs/hyperscan upstream is inactive [1], please switch to more portable,
-# drop-in replacement dev-libs/vectorscan.
-# [1] https://github.com/intel/hyperscan/issues/421
-# Removal: 2024-04-12.
-dev-libs/hyperscan
 
 # Alfredo Tupone <tupone@gentoo.org> (2024-03-12)
 # Not more needed, >=sci-visualization/dash-2.11 provide
