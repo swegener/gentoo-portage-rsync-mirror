@@ -33,16 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
-# Maciej Barć <xgqt@gentoo.org> (2024-04-25)
-# Very old package failing to compile with modern GNU Emacs.
-# Open bugs: #930655
-# Removal on 2024-05-25.
-app-emacs/windows
-
 # Matt Turner <mattst88@gentoo.org> (2024-04-25)
 # Masked for testing
-dev-util/intel_clc-24.1*
-media-libs/mesa-24.1*
+=dev-util/intel_clc-24.1*
+=media-libs/mesa-24.1*
 
 # Michał Górny <mgorny@gentoo.org> (2024-04-23)
 # No py3.12, no tests, no maintainer.  Also no revdeps.
