@@ -3611,10 +3611,6 @@ kde-apps/kpimtextedit:designer - Build plugins for dev-qt/designer
 kde-apps/krdc:activities - Enable Plasma Activities support via kde-plasma/plasma-activities
 kde-apps/ksystemlog:kdesu - Run as root using kdesu from kde-plasma/kde-cli-tools
 kde-apps/ktouch:X - Enable support for X11 Keyboard Layout Detection
-kde-apps/ktp-accounts-kcm:experimental - Enables disabled telepathy services (currently only steam)
-kde-apps/ktp-common-internals:otr - Enable support for encrypted conversations using Off-The-Records messaging
-kde-apps/ktp-common-internals:sso - Enable support for Single sign-on through KAccounts
-kde-apps/ktp-text-ui:speech - Enable incoming messages to be read out using text-to-speech
 kde-apps/kwave:qtmedia - Enable playback via Qt5Multimedia
 kde-apps/libkcddb:kf6compat - Disable components colliding with KF6, depend on KF6 components instead
 kde-apps/libkcompactdisc:kf6compat - Disable components colliding with KF6, depend on KF6 components instead
@@ -4340,8 +4336,6 @@ media-libs/libmp4v2:utils - Install command-line utilities
 media-libs/libmypaint:gegl - Add support for media-libs/gegl
 media-libs/libopenglrecorder:openh264 - Enable H.264 support using media-libs/openh264
 media-libs/libopenglrecorder:vpx - Enable VP8/VP9 codec support via media-libs/libvpx
-media-libs/libopenshot:babl - Enable media-libs/babl support
-media-libs/libopenshot:opencv - Enable media-libs/opencv support
 media-libs/libpagemaker:tools - Build command line file format conversion tools
 media-libs/libpano13:suitesparse - Use Sparse Levenberg Marquardt algorithm instead of dense Levenberg Marquardt algorithm
 media-libs/libplacebo:glslang - Use dev-util/glslang to compile GLSL
