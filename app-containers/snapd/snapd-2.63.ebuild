@@ -1,14 +1,14 @@
-# Copyright 2020-2022 Gentoo Authors
+# Copyright 2020-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-inherit autotools bash-completion-r1 flag-o-matic go-module linux-info readme.gentoo-r1 systemd xdg-utils
+inherit autotools bash-completion-r1 flag-o-matic go-module linux-info readme.gentoo-r1 systemd tmpfiles xdg-utils
 
 DESCRIPTION="Service and tools for management of snap packages"
 HOMEPAGE="http://snapcraft.io/"
 
-SRC_URI="https://github.com/snapcore/${PN}/releases/download/${PV}/${PN}_${PV}.vendor.tar.xz -> ${P}.tar.xz"
+SRC_URI="https://github.com/snapcore/snapd/releases/download/${PV}/snapd_${PV}.vendor.tar.xz -> ${P}.tar.xz"
 MY_PV=${PV}
 KEYWORDS="~amd64"
 
@@ -39,7 +39,7 @@ RDEPEND="
 	virtual/libudev
 	systemd? ( sys-apps/systemd )
 	sys-libs/libcap:=
-	sys-fs/squashfs-tools[lzma]"
+	sys-fs/squashfs-tools[lzma,lzo]"
 
 DEPEND="${RDEPEND}"
 
@@ -166,6 +166,7 @@ src_install() {
 pkg_postinst() {
 	readme.gentoo_print_elog
 	xdg_desktop_database_update
+	tmpfiles_process snapd.conf
 
 	if use apparmor && [[ -z ${ROOT} && -e /sys/kernel/security/apparmor/profiles &&
 		$(wc -l < /sys/kernel/security/apparmor/profiles) -gt 0 ]]; then
