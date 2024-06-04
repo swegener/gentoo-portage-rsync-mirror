@@ -1,0 +1,25 @@
+--- a/base/runtime/c-libs/posix-io/makefile	2024-06-04 08:38:20.192453601 +0200
++++ b/base/runtime/c-libs/posix-io/makefile	2024-06-04 08:39:09.504903619 +0200
+@@ -37,7 +37,9 @@
+         lseek.o \
+         fsync.o
+ 
+-$(LIBRARY)	: $(VERSION) $(OBJS)
++$(LIBRARY)	:
++	$(MAKE) $(VERSION)
++	$(MAKE) $(OBJS)
+ 	rm -rf $(LIBRARY)
+ 	$(AR) $(ARFLAGS) $(LIBRARY) $(OBJS)
+ 	$(RANLIB) $(LIBRARY)
+--- a/base/runtime/objs/makefile	2024-06-04 09:26:03.961409055 +0200
++++ b/base/runtime/objs/makefile	2024-06-04 09:27:12.461586788 +0200
+@@ -113,7 +113,8 @@
+ 	(cd $(MP_DIR); $(MAKE) MAKE="$(MAKE)" clean)
+ 
+ 
+-$(RUNTIME):	$(VERSION) main.o $(OBJS) $(ALL_LIBS)
++$(RUNTIME): $(VERSION)
++	$(MAKE) main.o $(OBJS) $(ALL_LIBS)
+ 	$(CC) -o $(RUNTIME) $(CFLAGS) $(LDFLAGS) main.o $(OBJS) $(ALL_LIBS) $(LD_LIBS)
+ 
+ $(RUNTIME_A):	$(VERSION) main.o $(OBJS) $(ALL_LIBS)
