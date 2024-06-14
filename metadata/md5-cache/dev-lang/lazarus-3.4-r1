@@ -14,4 +14,4 @@ RESTRICT=strip
 SLOT=0/3.0
 SRC_URI=https://downloads.sourceforge.net/lazarus/lazarus-3.4-0.tar.gz https://dev.gentoo.org/~sam/distfiles/dev-lang/lazarus/lazarus-3.0-makefile.patch.xz
 _eclasses_=desktop	021728fdc1b03b36357dbc89489e0f0d
-_md5_=60c4edfa74de174fd2970dd11c7ab6b7
+_md5_=6284803f07a26c7151ea2af176e3167a
