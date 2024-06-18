@@ -1,25 +1,28 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
-# Python3 support: https://github.com/github/backup-utils/pull/627
-PYTHON_COMPAT=( python3_{9..10} )
-inherit python-any-r1
+# PYTHON_COMPAT=( python3_{10..12} )
+# inherit python-any-r1
 
 DESCRIPTION="Backup and recovery utilities for GitHub Enterprise"
 HOMEPAGE="https://github.com/github/backup-utils"
-SRC_URI="https://github.com/github/backup-utils/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/github/backup-utils/releases/download/v${PV}/${PN}-v${PV}.tar.gz"
+S=${WORKDIR}/${PN}-v${PV}
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test"
-RESTRICT="!test? ( test )"
+
+# tests restricted due to bug #796815
+RESTRICT="test"
 
 # moreutils parallel is now used for speedups in main code:
 # https://github.com/github/backup-utils/pull/635
-RDEPEND="net-misc/rsync
+RDEPEND="app-misc/jq
+	app-arch/pigz
+	net-misc/rsync
 	sys-apps/moreutils"
 
 # tests invoke parallel & rsync
@@ -29,8 +32,9 @@ DEPEND="test? (
 	${PYTHON_DEPS}
 )"
 
-MY_PN="${PN/#github-/}"
-S="${WORKDIR}/${MY_PN}-${PV}"
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_compile() {
 	:;

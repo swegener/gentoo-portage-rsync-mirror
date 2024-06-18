@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install setup test
+DEPEND=test? ( app-misc/jq app-arch/pigz net-misc/rsync sys-apps/moreutils dev-util/checkbashisms )
+DESCRIPTION=Backup and recovery utilities for GitHub Enterprise
+EAPI=8
+HOMEPAGE=https://github.com/github/backup-utils
+KEYWORDS=~amd64
+LICENSE=MIT
+RDEPEND=app-misc/jq app-arch/pigz net-misc/rsync sys-apps/moreutils
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/github/backup-utils/releases/download/v3.12.3/github-backup-utils-v3.12.3.tar.gz
+_md5_=0b35d4a3469d21549282fc6d80d7fb17
