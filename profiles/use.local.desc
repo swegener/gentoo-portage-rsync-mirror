@@ -2275,8 +2275,6 @@ dev-libs/weston:resize-optimization - Increase performance, allocate more RAM. R
 dev-libs/weston:screen-sharing - Enable screen-sharing through RDP
 dev-libs/weston:wayland-compositor - Enable Wayland compositor support
 dev-libs/weston:xwayland - Enable ability support native X11 applications
-dev-libs/xapian:inmemory - Enabled inmemory backend db support
-dev-libs/xapian:remote - Enabled remote backend db support
 dev-libs/xerces-c:iconv - Use iconv (virtual/libiconv) as message loader and transcoder (in general it would be possible to use iconv only as message loader and something else like icu or the native method as transcoder and vice-versa, but this is a less common case and hard to handle)
 dev-libs/xerces-c:threads - Enable threading support through pthread (or other libraries on AIX, IRIX, HPUX, Solars). Highly recommended
 dev-libs/xmlrpc-c:abyss - Build the Abyss mini web-server.
@@ -3157,6 +3155,7 @@ games-emulation/mupen64plus:ui-m64py - Enable PyQt5 UI using games-emulation/m64
 games-emulation/mupen64plus:video-glide64mk2 - Enable Glide64mk2 video plugin.
 games-emulation/mupen64plus:video-rice - Enable Rice video plugin.
 games-emulation/mupen64plus-core:debugger - Build the debugger
+games-emulation/mupen64plus-core:netplay - Enable netplay functionality
 games-emulation/mupen64plus-core:new-dynarec - Enable new experimental dynamic recompiler implementation (only for x86 and arm)
 games-emulation/mupen64plus-core:opencv - Support video capture via media-libs/opencv
 games-emulation/mupen64plus-core:osd - Overlay emulator messages using on-screen-display
