@@ -57,3 +57,4 @@ tar --owner 0 --group 0 --posix -acf "${1}"-deps.tar.xz go-mod
 rm -fr go-mod
 )
 mv "${work}"/*xz .
+rmdir "${work}"
