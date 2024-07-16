@@ -13,5 +13,5 @@ KEYWORDS="~amd64 ~arm ~arm64 ~loong ~mips ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux 
 S="${WORKDIR}"
 
 src_install() {
-	newbin "${FILESDIR}/go-dep-tarball-0" go-dep-tarball
+	newbin "${FILESDIR}/go-dep-tarball-${PV}" go-dep-tarball
 }
