@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -38,9 +38,9 @@ RDEPEND="
 	dev-ml/ppx_pipebang:=
 	dev-ml/ppx_sexp_message:=
 	dev-ml/ppx_sexp_value:=
-	dev-ml/ppx_stable:=
-	dev-ml/ppx_string:=
-	dev-ml/ppx_ignore_instrumentation:=
-	dev-ml/typerep:=
+	dev-ml/ppx_stable:${SLOT}[ocamlopt?]
+	dev-ml/ppx_string:${SLOT}[ocamlopt?]
+	dev-ml/ppx_ignore_instrumentation:${SLOT}[ocamlopt?]
+	dev-ml/typerep:${SLOT}[ocamlopt?]
 "
 DEPEND="${RDEPEND}"
