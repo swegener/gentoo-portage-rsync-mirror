@@ -5,8 +5,8 @@ EAPI=8
 
 inherit edo flag-o-matic linux-info systemd toolchain-funcs udev
 
-DESCRIPTION="Dynamic systemwide tracing tool"
-HOMEPAGE="https://github.com/oracle/dtrace-utils"
+DESCRIPTION="Dynamic BPF-based system-wide tracing tool"
+HOMEPAGE="https://github.com/oracle/dtrace-utils https://wiki.gentoo.org/wiki/DTrace"
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_BRANCH="devel"
@@ -60,9 +60,9 @@ RDEPEND="
 "
 BDEPEND="
 	dev-build/make
-	>=sys-devel/bpf-toolchain-14.1.0
 	sys-apps/gawk
 	sys-devel/bison
+	>=sys-devel/bpf-toolchain-14.1.0
 	sys-devel/flex
 "
 
@@ -70,11 +70,11 @@ pkg_pretend() {
 	# TODO: optional kernel patches
 
 	# Basics for debugging information, BPF
-	local CONFIG_CHECK="~BPF ~DEBUG_INFO_BTF ~KALLSYMS_ALL ~CUSE"
+	local CONFIG_CHECK="~BPF ~DEBUG_INFO_BTF ~KALLSYMS_ALL"
+
+	CONFIG_CHECK+=" ~CUSE"
 
 	# Tracing
-	# TODO: CONFIG_HAVE_SYSCALL_TRACEPOINTS - is it auto?
-	# TODO: CONFIG_UPROBE_EVENTS maybe?
 	CONFIG_CHECK+=" ~FTRACE_SYSCALLS ~UPROBE_EVENTS ~DYNAMIC_FTRACE ~FUNCTION_TRACER"
 
 	# https://gcc.gnu.org/PR84052
@@ -95,7 +95,6 @@ src_configure() {
 	tc-export CC
 
 	# TODO: Can drop once https://lore.kernel.org/dtrace/20240425164057.420580-1-nick.alcock@oracle.com/ is in
-	# XXX: That wasn't enough, need to report upstream the other issues during build
 	tc-enables-fortify-source && append-cppflags -U_FORTIFY_SOURCE
 
 	# lld does this by default, so fix that, although lld fails anyway...
@@ -151,6 +150,8 @@ pkg_postinst() {
 
 	# TODO: Restart it on upgrade? (it will carry across its own persistent state)
 	if [[ -n ${REPLACING_VERSIONS} ]]; then
+		einfo "See https://wiki.gentoo.org/wiki/DTrace for getting started."
+
 		# TODO: Make this more intelligent wrt comparison
 		if systemd_is_booted ; then
 			einfo "Restart the DTrace 'dtprobed' service after upgrades:"
