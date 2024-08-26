@@ -306,6 +306,10 @@
       <name>Vadim Misbakh-Soloviov</name>
       <role>Not assigned (pretend to be sysadmin)</role>
     </member>
+    <member>
+      <email>sam@gentoo.org</email>
+      <name>Sam James</name>
+    </member>
   </project>
   <project>
     <email>sci-biology@gentoo.org</email>
