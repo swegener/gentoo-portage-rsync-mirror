@@ -33,6 +33,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Fabian Groffen <grobian@gentoo.org> (2024-09-02)
+# exim_tinydb utility crashes due to invalid free() (used in startup script)
+=mail-mta/exim-4.98
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-31)
 # KDE PIM 5 depends on deprecated kde-frameworks/kross:5,
 # blocking deprecated dev-qt/qtscript:5 removal, and deprecated
@@ -103,12 +107,6 @@ app-text/kjots:5
 # 2017). That was never merged to master, project archived for a long time.
 # Bug #759772. Removal on 2024-09-31.
 media-gfx/kcoloredit
-
-# Sam James <sam@gentoo.org> (2024-08-31)
-# Please unmask and test. If you have any issues, please file a new bug.
-# The mask will be lifted by 2024-09-02. Test it before then please!
-=net-dns/bind-9.18.29
-=net-dns/bind-tools-9.18.0
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2024-08-29)
 # No signs of development upstream (last commit in 2016). If you use this,
