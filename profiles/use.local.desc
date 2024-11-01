@@ -1037,7 +1037,6 @@ app-office/calligraplan:kwallet - Enable access to encrypted OpenDocument files 
 app-office/glabels:barcode - Enable barcode support through external libraries.
 app-office/gnucash:aqbanking - Connect to some internet banks via AqBanking
 app-office/gnucash:quotes - Enable online stock quote retrieval
-app-office/gnucash:register2 - Use the new register (Experimental)
 app-office/gnumeric:libgda - Enable database support through gnome-extra/libgda.
 app-office/gnumeric:perl - Enable perl plugin loader.
 app-office/grisbi:goffice - enable goffice graphic support
@@ -8081,7 +8080,6 @@ sys-cluster/ceph:system-boost - Use system dev-libs/boost instead of the bundled
 sys-cluster/ceph:uring - Build with support for sys-libs/liburing
 sys-cluster/ceph:xfs - Add xfs support
 sys-cluster/ceph:zbd - Enable sys-block/libzbd bluestore backend
-sys-cluster/ceph:zfs - Add zfs support
 sys-cluster/charliecloud:ch-image - Build the internal builder ch-image (previously named ch-grow)
 sys-cluster/charm:ampi - Build implementation of MPI on top of Charm++
 sys-cluster/charm:charmdebug - Enable the charm debugger
