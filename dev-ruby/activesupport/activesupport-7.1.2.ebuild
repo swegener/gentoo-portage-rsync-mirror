@@ -27,15 +27,16 @@ PATCHES=( "${FILESDIR}/${PN}-7.1.1-backport-pr50097.patch" )
 
 RUBY_S="rails-${PV}/${PN}"
 
-# bigdecimal and mutex_m are bundled with ruby as default gems
 ruby_add_rdepend "
 	dev-ruby/base64
-	>=dev-ruby/concurrent-ruby-1.0.2:1
+	dev-ruby/bigdecimal
+	>=dev-ruby/concurrent-ruby-1.3.1:1
 	>=dev-ruby/connection_pool-2.2.5
 	dev-ruby/drb
 	>=dev-ruby/i18n-1.6:1
 	>=dev-ruby/minitest-5.1
-	dev-ruby/tzinfo:2
+	>=dev-ruby/securerandom-0.3
+	>=dev-ruby/tzinfo-2.0.5:2
 	msgpack? ( >=dev-ruby/msgpack-1.7.0 )
 "
 
@@ -58,7 +59,7 @@ all_ruby_prepare() {
 
 	# Remove items from the common Gemfile that we don't need for this
 	# test run. This also requires handling some gemspecs.
-	sed -i -e "/\(system_timer\|execjs\|jquery-rails\|journey\|ruby-prof\|stackprof\|benchmark-ips\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|bcrypt\|uglifier\|minitest\|sprockets\|stackprof\|rack-cache\|sqlite\|websocket-client-simple\|\libxml-ruby\|bootsnap\|aws-sdk\|webmock\|capybara\|sass-rails\|selenium-webdriver\|webpacker\|webrick\|propshaft\|rack-test\|terser\|cgi\|net-smtp\|net-imap\|net-pop\|digest\|matrix\|web-console\|error_highlight\|jbuilder\)/ s:^:#:" \
+	sed -i -e "/\(system_timer\|execjs\|jquery-rails\|journey\|ruby-prof\|stackprof\|benchmark-ips\|turbolinks\|coffee-rails\|debugger\|sprockets-rails\|bcrypt\|uglifier\|minitest\|sprockets\|stackprof\|rack-cache\|sqlite\|websocket-client-simple\|\libxml-ruby\|bootsnap\|aws-sdk\|webmock\|capybara\|sass-rails\|selenium-webdriver\|webpacker\|webrick\|propshaft\|rack-test\|terser\|cgi\|net-smtp\|net-imap\|net-pop\|digest\|matrix\|web-console\|error_highlight\|jbuilder\|httpclient\|prism\|useragent\)/ s:^:#:" \
 		-e '/stimulus-rails/,/tailwindcss-rails/ s:^:#:' \
 		-e '/^group :test/,/^end/ s:^:#:' \
 		-e '/^\s*group :\(db\|doc\|rubocop\|job\|cable\|lint\|mdl\|storage\|ujs\|test\|view\) do/,/^\s*end/ s:^:#:' \
