@@ -19,7 +19,7 @@ SRC_URI="https://github.com/haml/haml/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="$(ver_cut 1)"
-KEYWORDS="~amd64 ~arm arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~riscv ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x64-solaris"
 
 IUSE="doc test"
 
@@ -30,6 +30,7 @@ ruby_add_bdepend "
 		dev-ruby/minitest:5
 		dev-ruby/nokogiri
 		<dev-ruby/rails-7.2
+		|| ( dev-ruby/sassc dev-ruby/sass )
 		dev-ruby/unindent
 	)
 	doc? (
