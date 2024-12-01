@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{10..13} )
 
 QA_PKGCONFIG_VERSION=$(ver_cut 1)
 
@@ -12,18 +12,11 @@ inherit python-single-r1 secureboot udev
 DESCRIPTION="Utilities split out from systemd for OpenRC users"
 HOMEPAGE="https://systemd.io/"
 
-if [[ ${PV} == *.* ]]; then
-	MY_P="systemd-stable-${PV}"
-	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/systemd/systemd-stable/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-else
-	MY_P="systemd-${PV}"
-	S="${WORKDIR}/${MY_P}"
-	SRC_URI="https://github.com/systemd/systemd/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz"
-fi
-
-MUSL_PATCHSET="systemd-musl-patches-255.6"
-SRC_URI+=" elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.tar.gz )"
+MY_P="systemd-${PV}"
+MUSL_PATCHSET="systemd-musl-patches-256.8"
+SRC_URI="https://github.com/systemd/systemd/archive/refs/tags/v${PV}.tar.gz -> ${MY_P}.tar.gz
+	elibc_musl? ( https://dev.gentoo.org/~floppym/dist/${MUSL_PATCHSET}.tar.gz )"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2 LGPL-2.1 MIT public-domain"
 SLOT="0"
@@ -131,9 +124,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	local PATCHES=(
-		"${FILESDIR}/systemd-utils-255-musl-fgetxxent.patch"
-	)
+	local PATCHES=()
 
 	if use elibc_musl; then
 		PATCHES+=(
