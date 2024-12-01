@@ -2,8 +2,12 @@
 # your descriptions to your package's metadata.xml ONLY.
 # * generated automatically using egencache *
 
+acct-user/apache:icingaweb2 - Prepare group membership for www-apps/icingaweb2
+acct-user/apache:mgraph - Prepare group membership for net-mail/mailgraph
 acct-user/git:gitea - Set home directory for git hosting via www-apps/gitea.
 acct-user/git:gitolite - Set home directory for git hosting via dev-vcs/gitolite or dev-vcs/gitolite-gentoo.
+acct-user/nginx:icingaweb2 - Prepare group membership for www-apps/icingaweb2
+acct-user/nginx:mgraph - Prepare group membership for net-mail/mailgraph
 acct-user/vdr:graphlcd - Prepare group membership for media-plugins/vdr-graphlcd.
 acct-user/vdr:legacy-homedir - Keep old home directory /var/vdr of an existing installation. When this useflag is cleared, the home directory is switched to FHS conformant /var/lib/vdr
 acct-user/vdr:remote - Prepare group membership for media-plugins/vdr-remote.
@@ -2105,14 +2109,12 @@ dev-libs/librelp:gnutls - Use GnuTLS
 dev-libs/librelp:openssl - Use OpenSSL
 dev-libs/libsecp256k1:ecdh - Enable ECDH shared secret computation
 dev-libs/libsecp256k1:ellswift - Enable ElligatorSwift encoding for public keys
-dev-libs/libsecp256k1:endomorphism - Enable endomorphism
 dev-libs/libsecp256k1:experimental - Allow experimental USE flags
 dev-libs/libsecp256k1:extrakeys - Enable extrakeys module
 dev-libs/libsecp256k1:lowmem - Reduce runtime memory usage at the expense of performance (ecmult window size 4, gen precision 2)
 dev-libs/libsecp256k1:musig - Enable MuSig2 module
 dev-libs/libsecp256k1:recovery - Enable ECDSA pubkey recovery module
 dev-libs/libsecp256k1:schnorr - Enable Schnorr signature module
-dev-libs/libsecp256k1:test-openssl - Enable OpenSSL comparison tests
 dev-libs/libslz:tools - Install additional tools (zenc, zdec)
 dev-libs/libsodium:urandom - Use /dev/urandom instead of /dev/random
 dev-libs/libtermkey:demos - Install demos, which pulls in dev-libs/glib
@@ -5592,6 +5594,7 @@ net-dns/getdns:getdns-server-mon - Add getdns_server_mon tool
 net-dns/getdns:libev - Enable dev-libs/libev support
 net-dns/getdns:libevent - Enable dev-libs/libevent support
 net-dns/getdns:libuv - Enable dev-libs/libuv support
+net-dns/getdns:minimal - Only build stub resolution mode
 net-dns/getdns:stubby - Add Stubby DNS Privacy Deamon
 net-dns/getdns:unbound - Enable net-dns/unbound libraries support
 net-dns/hash-slinger:ipsec - Enable support for IPSECKEY records (ipseckey)
@@ -6162,6 +6165,7 @@ net-mail/lbdb:abook - Enables app-misc/abook support
 net-mail/lbdb:bbdb - Include support for app-emacs/bbdb
 net-mail/lbdb:evo - Add support for mail-client/evolution
 net-mail/lbdb:finger - Enables finger support
+net-mail/mailgraph:nginx - Add nginx support
 net-mail/mailutils:clients - Build client programs - frm maidag mail sieve messages readmsg dotlock movemail mimeview mh
 net-mail/mailutils:kyotocabinet - Enable Kyoto Cabinet database support
 net-mail/mailutils:servers - Build server programs - imap4d pop3d comsatd
@@ -7124,6 +7128,7 @@ sci-electronics/kicad-meta:minimal - Do not install extra data like 3D packages 
 sci-electronics/ktechlab:gpsim - Enable support for Microchip PIC microcontrollers similation using dev-embedded/gpsim
 sci-electronics/librepcb:opencascade - Build with sci-libs/opencascadethe 3D features (e.g. reading/writing STEP files)
 sci-electronics/ngspice:deprecated - Build old and deprecated apps
+sci-electronics/ngspice:klu - Add support for KLU (embedded version of suitesparse)
 sci-electronics/ngspice:shared - Build ngspice as a shared library
 sci-electronics/nvc:llvm - Build LLVM code generator
 sci-electronics/pcb:gcode - gcode file export
