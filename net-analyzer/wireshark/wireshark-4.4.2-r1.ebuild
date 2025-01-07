@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -118,10 +118,6 @@ RDEPEND="
 if [[ ${PV} != *9999* ]] ; then
 	BDEPEND+=" verify-sig? ( sec-keys/openpgp-keys-wireshark )"
 fi
-
-PATCHES=(
-	"${FILESDIR}/${P}-cares.patch"
-)
 
 python_check_deps() {
 	use test || return 0
@@ -247,6 +243,7 @@ src_configure() {
 		-DENABLE_SPANDSP=$(usex spandsp)
 		-DBUILD_wifidump=$(usex wifi)
 		-DENABLE_ZLIB=$(usex zlib)
+		-DENABLE_ZLIBNG=OFF
 		-DENABLE_ZSTD=$(usex zstd)
 	)
 
