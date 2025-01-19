@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=!<sys-devel/crossdev-20230209-r1
 SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/config-site.git/snapshot/config-site-0.tar.bz2
-_md5_=bedd7f8476d6c71b2da816382af25aa9
+_md5_=8029cbe4ef800cbfef66f692baedcfab
