@@ -148,9 +148,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.1-cloak.patch
 	"${FILESDIR}"/${PN}-2.6.1-flags.patch
 	"${FILESDIR}"/${PN}-2.6.1-fix-missing-mapping.v2.patch
-	#"${FILESDIR}"/${PN}-2.6.6-fix-type-mismatch-lloadd.patch
 	"${FILESDIR}"/${PN}-2.6.x-gnutls-pointer-error.patch
-	#"${FILESDIR}"/${PN}-2.6.x-slapd-pointer-types.patch # included upstream
+	"${FILESDIR}"/${PN}-2.5.19-gcc14-SDWORD-vs-SQLINTEGER.patch
 )
 
 openldap_filecount() {
@@ -422,10 +421,6 @@ multilib_src_configure() {
 		--without-fetch
 		$(multilib_native_use_with sasl cyrus-sasl)
 	)
-
-	# error: passing argument 3 of ‘ldap_bv2rdn’ from incompatible pointer type [-Wincompatible-pointer-types]
-	# expected ‘char **’ but argument is of type ‘const char **’
-	#append-flags $(test-flags-CC -Wno-error=incompatible-pointer-types)
 
 	if use experimental ; then
 		# connectionless ldap per bug #342439
