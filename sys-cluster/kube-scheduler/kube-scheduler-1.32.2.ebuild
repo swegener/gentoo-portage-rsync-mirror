@@ -8,19 +8,20 @@ DESCRIPTION="Kubernetes Scheduler"
 HOMEPAGE="https://kubernetes.io"
 SRC_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kubernetes-${PV}.tar.gz"
 
+S="${WORKDIR}/kubernetes-${PV}"
+
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="hardened"
 
 COMMON_DEPEND="acct-group/kube-scheduler
 	acct-user/kube-scheduler"
 DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
-BDEPEND=">=dev-lang/go-1.21.6"
+BDEPEND=">=dev-lang/go-1.23.3"
 
 RESTRICT+=" test"
-S="${WORKDIR}/kubernetes-${PV}"
 
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
