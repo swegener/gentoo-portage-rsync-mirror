@@ -8,16 +8,17 @@ DESCRIPTION="Kubernetes Proxy service"
 HOMEPAGE="https://github.com/kubernetes/kubernetes https://kubernetes.io"
 SRC_URI="https://github.com/kubernetes/kubernetes/archive/v${PV}.tar.gz -> kubernetes-${PV}.tar.gz"
 
+S="${WORKDIR}/kubernetes-${PV}"
+
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64"
 IUSE="hardened"
 
 RDEPEND="net-firewall/conntrack-tools"
-BDEPEND=">=dev-lang/go-1.23.0"
+BDEPEND=">=dev-lang/go-1.23.3"
 
 RESTRICT+=" test"
-S="${WORKDIR}/kubernetes-${PV}"
 
 src_compile() {
 	CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')" \
