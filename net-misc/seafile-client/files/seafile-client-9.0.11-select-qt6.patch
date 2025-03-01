@@ -11,10 +11,10 @@ index 1c4a4447..5747df46 100644
 -    bash -c "${qmake_executable} --version | grep -iE '^using qt version [0-9.]+' | awk '{print $4}'"
 -    OUTPUT_VARIABLE DETECTED_QT_VERSION
 -    OUTPUT_STRIP_TRAILING_WHITESPACE)
-+FIND_PACKAGE(Qt5Core)
-+SET(DETECTED_QT_VERSION ${Qt5Core_VERSION})
++FIND_PACKAGE(Qt6Core)
++SET(DETECTED_QT_VERSION ${Qt6Core_VERSION})
  MESSAGE("Qt version: ${DETECTED_QT_VERSION}")
-+GET_TARGET_PROPERTY(QMAKE_EXECUTABLE_PATH Qt5::qmake IMPORTED_LOCATION)
++GET_TARGET_PROPERTY(QMAKE_EXECUTABLE_PATH Qt6::qmake IMPORTED_LOCATION)
  EXECUTE_PROCESS(COMMAND
 -    bash -c "qmake --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
 +    bash -c "${QMAKE_EXECUTABLE_PATH} --version|grep -iE '^using qt version [0-9]'|awk '{print $4}'|grep -iE '^[0-9]'|awk -F . '{print $1}'"
