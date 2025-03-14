@@ -19,10 +19,10 @@ SRC_URI="https://github.com/huggingface/${PN}/archive/refs/tags/v${PV}.tar.gz
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test" # Need network, too long to execute
+RESTRICT="test" # Need some modules, not yet packaged, need network
 
 RDEPEND="
-	=sci-libs/tokenizers-0.21*[${PYTHON_SINGLE_USEDEP}]
+	=sci-ml/tokenizers-0.21*[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
 		dev-python/filelock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
@@ -31,7 +31,7 @@ RDEPEND="
 		dev-python/regex[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/tqdm[${PYTHON_USEDEP}]
-		>=sci-libs/huggingface_hub-0.26[${PYTHON_USEDEP}]
+		sci-ml/huggingface_hub[${PYTHON_USEDEP}]
 		>=sci-libs/safetensors-0.4.1[${PYTHON_USEDEP}]
 	')
 "
@@ -69,7 +69,6 @@ src_test() {
 		tests/models/llava_next_video/test_image_processing_llava_next_video.py
 		tests/models/llava_onevision/test_image_processing_llava_onevision.py
 		tests/models/markuplm/test_feature_extraction_markuplm.py
-		tests/models/marian/test_modeling_marian.py
 		tests/models/mask2former/test_image_processing_mask2former.py
 		tests/models/maskformer/test_image_processing_maskformer.py
 		tests/models/mluke/test_tokenization_mluke.py
@@ -92,10 +91,8 @@ src_test() {
 		tests/models/speecht5/test_processor_speecht5.py
 		tests/models/speecht5/test_tokenization_speecht5.py
 		tests/models/superpoint/test_image_processing_superpoint.py
-		tests/models/textnet/test_image_processing_textnet.py
 		tests/models/trocr/test_processor_trocr.py
 		tests/models/univnet/test_feature_extraction_univnet.py
-		tests/models/vitpose/test_image_processing_vitpose.py
 		tests/models/wav2vec2/test_feature_extraction_wav2vec2.py
 		tests/models/whisper/test_feature_extraction_whisper.py
 		tests/models/yolos/test_image_processing_yolos.py
@@ -109,7 +106,6 @@ src_test() {
 
 	local EPYTEST_DESELECT=(
 		tests/agents/test_agents.py::AgentTests::test_init_agent_with_different_toolsets
-		tests/models/textnet/test_image_processing_textnet.py::TextNetImageProcessingTester
 	)
 
 	EPYTEST_FLAGS="--dist=loadfile -s ./tests/"
