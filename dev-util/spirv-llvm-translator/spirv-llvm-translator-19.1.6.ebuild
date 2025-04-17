@@ -3,7 +3,7 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 18 )
+LLVM_COMPAT=( 19 )
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	llvm-core/llvm:${SLOT}=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	>=dev-util/spirv-headers-1.3.280
+	>=dev-util/spirv-headers-1.4.309.0
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -34,9 +34,6 @@ BDEPEND="
 		llvm-core/clang:${SLOT}
 	)
 "
-
-PATCHES=(
-)
 
 src_prepare() {
 	append-flags -fPIC
