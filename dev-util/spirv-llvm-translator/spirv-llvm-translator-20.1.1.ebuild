@@ -3,11 +3,11 @@
 
 EAPI=8
 
-LLVM_COMPAT=( 19 )
+LLVM_COMPAT=( 20 )
 MY_PN="SPIRV-LLVM-Translator"
 MY_P="${MY_PN}-${PV}"
 
-inherit cmake-multilib flag-o-matic llvm-r1 multiprocessing
+inherit cmake-multilib flag-o-matic llvm-r2 multiprocessing
 
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
@@ -16,7 +16,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)"
-KEYWORDS="amd64 arm64 ~loong ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	llvm-core/llvm:${SLOT}=[${MULTILIB_USEDEP}]
 "
 DEPEND="${RDEPEND}
-	>=dev-util/spirv-headers-1.3.280
+	>=dev-util/spirv-headers-1.4.309.0
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -35,15 +35,13 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-)
-
 src_prepare() {
 	append-flags -fPIC
 	cmake_src_prepare
 
-	# https://github.com/KhronosGroup/SPIRV-LLVM-Translator/pull/2555
-	sed -i -e 's/%triple/x86_64-unknown-linux-gnu/' test/DebugInfo/X86/*.ll || die
+	# do not force a specific LLVM version to find_package(), this only
+	# causes issues and we force a specific path anyway
+	sed -i -e '/find_package/s:${BASE_LLVM_VERSION}::' CMakeLists.txt || die
 }
 
 multilib_src_configure() {
