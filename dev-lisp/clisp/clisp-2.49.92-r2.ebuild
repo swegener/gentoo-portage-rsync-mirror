@@ -19,16 +19,19 @@ RESTRICT="test"
 
 RDEPEND="
 	>=dev-lisp/asdf-2.33-r3
-	virtual/libcrypt:=
-	virtual/libiconv
 	>=dev-libs/libsigsegv-2.10
 	>=dev-libs/ffcall-1.10
+	virtual/libcrypt:=
+	virtual/libiconv
 	dbus? ( sys-apps/dbus )
 	fastcgi? ( dev-libs/fcgi )
-	gdbm? ( sys-libs/gdbm:0= )
-	gtk? ( >=x11-libs/gtk+-2.10:2 >=gnome-base/libglade-2.6 )
+	gdbm? ( sys-libs/gdbm:= )
+	gtk? (
+		>=gnome-base/libglade-2.6
+		>=x11-libs/gtk+-2.10:2
+	)
 	postgres? ( >=dev-db/postgresql-8.0:* )
-	readline? ( >=sys-libs/readline-7.0:0= )
+	readline? ( >=sys-libs/readline-7.0:= )
 	pcre? ( dev-libs/libpcre:3 )
 	svm? ( sci-libs/libsvm )
 	zlib? ( sys-libs/zlib )
@@ -44,7 +47,7 @@ BDEPEND="X? ( x11-misc/imake )"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-after_glibc_cfree_bdb.patch
-	"${FILESDIR}"/"${P}"-gdbm_and_bdb5.3.patch
+	"${FILESDIR}"/${P}-gdbm_and_bdb5.3.patch
 )
 
 BUILDDIR="builddir"
@@ -93,10 +96,11 @@ src_configure() {
 	# https://gitlab.com/gnu-clisp/clisp/-/issues/49
 	filter-lto
 
-	# We need this to build on alpha
 	if use alpha; then
+		# We need this to build on alpha
 		replace-flags -O? -O1
 	elif use x86; then
+		# bug #585182
 		append-flags -falign-functions=4
 	fi
 
