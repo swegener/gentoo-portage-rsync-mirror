@@ -1,0 +1,13 @@
+BDEPEND=sys-devel/m4 verify-sig? ( >=sec-keys/openpgp-keys-midipix-20250517 ) verify-sig? ( app-crypt/gnupg >=app-portage/gemato-20 )
+DEFINED_PHASES=configure unpack
+DESCRIPTION=Surrogate ltdl implementation
+EAPI=8
+HOMEPAGE=https://dev.midipix.org/cross/sltdl
+INHERIT=edo toolchain-funcs verify-sig
+IUSE=verify-sig
+KEYWORDS=~amd64
+LICENSE=MIT
+SLOT=0
+SRC_URI=https://dl.foss21.org/sltdl/sltdl-0.5.0.tar.xz verify-sig? ( https://dl.foss21.org/sltdl/sltdl-0.5.0.tar.xz.sig )
+_eclasses_=eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	edo	a5e294016aa84979fcb2459749eb80b2	toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	verify-sig	7433426b6b28bf2737ba4b82c8aa8c53
+_md5_=3d8c64719c6c6dcd73bbe3d2ec1d67dd
