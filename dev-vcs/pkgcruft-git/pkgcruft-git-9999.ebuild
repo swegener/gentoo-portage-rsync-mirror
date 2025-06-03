@@ -7,9 +7,9 @@ CRATES=" "
 LLVM_COMPAT=( {17..20} )
 RUST_MIN_VER="1.85.0"
 
-inherit cargo edo llvm-r2 multiprocessing shell-completion toolchain-funcs
+inherit cargo edo llvm-r2 multiprocessing toolchain-funcs
 
-DESCRIPTION="QA library and tools based on pkgcraft"
+DESCRIPTION="QA support for verifying git commits via pkgcruft"
 HOMEPAGE="https://pkgcraft.github.io/"
 
 if [[ ${PV} == 9999 ]] ; then
@@ -27,11 +27,18 @@ LICENSE="MIT"
 # Dependent crate licenses
 LICENSE+="
 	Apache-2.0 BSD-2 BSD CC0-1.0 CDLA-Permissive-2.0 ISC MIT MPL-2.0
+	Unicode-3.0
 "
 SLOT="0"
 IUSE="test"
-RESTRICT="!test? ( test )"
+# Fails to link w/ missing libssh2
+RESTRICT="!test? ( test ) test"
 
+DEPEND="
+	dev-libs/libgit2:=
+	dev-libs/openssl:=
+"
+RDEPEND="${DEPEND}"
 # clang needed for bindgen
 BDEPEND+="
 	$(llvm_gen_dep '
@@ -40,7 +47,7 @@ BDEPEND+="
 	test? ( dev-util/cargo-nextest )
 "
 
-QA_FLAGS_IGNORED="usr/bin/pkgcruft"
+QA_FLAGS_IGNORED="usr/bin/pkgcruft-git"
 
 pkg_setup() {
 	llvm-r2_pkg_setup
@@ -61,15 +68,6 @@ src_compile() {
 	tc-export AR CC
 
 	cargo_src_compile
-
-	if [[ ${PV} == 9999 ]] ; then
-		einfo "Generating shell completions"
-		mkdir shell || die
-		local BIN="${WORKDIR}/${P}/$(cargo_target_dir)/pkgcruft"
-		"${BIN}" completion bash > shell/pkgcruft.bash || die
-		"${BIN}" completion zsh > shell/_pkgcruft || die
-		"${BIN}" completion fish > shell/pkgcruft.fish || die
-	fi
 }
 
 src_test() {
@@ -85,12 +83,4 @@ src_test() {
 		--all-features \
 		--tests \
 		--no-fail-fast
-}
-
-src_install() {
-	cargo_src_install
-
-	newbashcomp shell/pkgcruft.bash pkgcruft
-	dozshcomp shell/_pkgcruft
-	dofishcomp shell/pkgcruft.fish
 }
