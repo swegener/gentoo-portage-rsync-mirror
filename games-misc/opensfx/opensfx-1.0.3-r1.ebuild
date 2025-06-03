@@ -3,31 +3,29 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} python3_13t )
+PYTHON_COMPAT=( python3_{11..13} )
 
 inherit python-any-r1 toolchain-funcs
 
-DESCRIPTION="OpenGFX data files for OpenTTD"
-HOMEPAGE="https://wiki.openttd.org/en/Basesets/OpenGFX https://github.com/OpenTTD/OpenGFX"
-SRC_URI="https://cdn.openttd.org/${PN}-releases/${PV}/${P}-source.tar.xz"
-S="${WORKDIR}/${P}-source"
+DESCRIPTION="OpenSFX data files for OpenTTD"
+HOMEPAGE="https://wiki.openttd.org/en/Basesets/OpenSFX https://github.com/OpenTTD/OpenSFX"
+SRC_URI="https://cdn.openttd.org/opensfx-releases/${PV}/${P}-source.tar.xz"
+S="${WORKDIR}"/${P}-source
 
-LICENSE="GPL-2"
+LICENSE="CC-BY-SA-3.0 CDDL-1.1 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-# Mismatch appears somewhat intentional w/ changing versions of deps (bug #928269)
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+# Missing files (bug #948588)
 RESTRICT="test"
 
 BDEPEND="
+	games-util/catcodec
 	games-util/grfcodec
-	games-util/nml
 	${PYTHON_DEPS}
 "
 
-DOCS=( "README.md" "changelog.txt" )
-
 PATCHES=(
-	"${FILESDIR}"/${PN}-7.1-no-which.patch
+	"${FILESDIR}"/${PN}-1.0.3-no-which.patch
 )
 
 src_compile() {
@@ -58,5 +56,6 @@ src_install() {
 
 	emake "${myemakeargs[@]}" install
 
+	dodoc docs/{changelog.txt,readme.ptxt}
 	einstalldocs
 }
