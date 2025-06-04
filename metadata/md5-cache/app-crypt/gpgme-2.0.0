@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=1/45.0
 SRC_URI=mirror://gnupg/gpgme/gpgme-2.0.0.tar.bz2 verify-sig? ( mirror://gnupg/gpgme/gpgme-2.0.0.tar.bz2.sig )
 _eclasses_=eapi9-pipestatus	d2c134036ac31c3085aebc9147f572bd	flag-o-matic	b892042b2667b8ac69ec8a2571dc290a	libtool	c81bd096be5f4c82f4e8f156ef112402	out-of-source	15ce2b6ae214f3abe70892ce1e517abd	toolchain-funcs	f9d71a6efe9d083aec750dd13968e169	verify-sig	7433426b6b28bf2737ba4b82c8aa8c53
-_md5_=c07035583b8e547000599fcfdf43ad35
+_md5_=6ddcacbd24e1106c2bc0ee45862c35e0
