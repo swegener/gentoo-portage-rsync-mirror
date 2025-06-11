@@ -1,4 +1,4 @@
-# Copyright 2018-2025 Gentoo Authors
+# Copyright 2018-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -9,7 +9,7 @@ DESCRIPTION="Fast static HTML and CSS website generator"
 HOMEPAGE="https://gohugo.io https://github.com/gohugoio/hugo"
 SRC_URI="
 	https://github.com/gohugoio/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~jayf/dist/${P}-vendor.tar.xz
+	https://tastytea.de/files/gentoo/${P}-vendor.tar.xz
 "
 
 # NOTE: To create the vendor tarball, run:
@@ -17,10 +17,11 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD BSD-2 MIT MPL-2.0 Unlicense"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~loong ~riscv ~x86"
-IUSE="+deploy doc +extended test"
+KEYWORDS="amd64 ~arm64 ~loong ~riscv ~x86"
+IUSE="doc +extended test"
 
 BDEPEND="
+	>=dev-lang/go-1.22.2
 	test? (
 		dev-python/docutils
 		dev-ruby/asciidoctor
@@ -36,10 +37,9 @@ DEPEND="${RDEPEND}"
 
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="deploy? ( extended )"
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.121.0-unbundle-libwebp-and-libsass.patch
+	"${FILESDIR}"/${PN}-0.128.0-skip-some-tests.patch
 )
 
 _check_reqs() {
@@ -64,23 +64,12 @@ pkg_setup() {
 }
 
 src_configure() {
-	if use extended; then
-		if use deploy; then
-			# per 5dd0ba00f79d5888c8d6d05d3327a74d15073a7b (upstream) this is
-			# the way to build fully extended with deploy support
-			export MY_BUILD_FLAGS="-tags extended,withdeploy"
-		else
-			export MY_BUILD_FLAGS="-tags extended"
-		fi
-	else
-		export MY_BUILD_FLAGS=""
-	fi
-
 	export CGO_ENABLED=1
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CPPFLAGS="${CPPFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
+	export MY_BUILD_FLAGS="$(usev extended "-tags extended")"
 
 	default
 }
@@ -88,20 +77,6 @@ src_configure() {
 src_prepare() {
 	# wants to run command that require network access
 	rm testscripts/commands/mod{,_vendor,__disable,_get,_get_u,_npm{,_withexisting}}.txt || die
-
-	# NOTE(JayF): Avoiding a hard depednency on sass tooling for tests. Even if
-	# installed, the tests still don't quite work.
-	rm resources/resource_transformers/tocss/dartsass/dartsass_integration_test.go || die
-
-	# TODO(JayF): Over half of the tests in these modules require network, and it's
-	# extremely likely more remote-depending tests will be added in the future.
-	# Ideally, we'd be less blunt in how we disable these tests.
-	rm tpl/tplimpl/shortcodes_integration_test.go || die
-	rm resources/resource_factories/create/create_integration_test.go || die
-	rm modules/client_test.go || die
-
-	# NOTE(JayF): Tests depend on reaching out to npm registry
-	rm internal/js/esbuild/batch_integration_test.go || die
 
 	default
 }
@@ -128,10 +103,6 @@ src_test() {
 		elog "You're missing virtual/pandoc - some tests will be skipped."
 	fi
 
-	if ! has_version -b dev-ruby/asciidoctor ; then
-		elog "You're missing dev-ruby/asciidoctor - some tests will be skipped."
-	fi
-
 	ego test "./..." ${MY_BUILD_FLAGS}
 }
 
@@ -146,4 +117,9 @@ src_install() {
 	if use doc ; then
 		dodoc -r doc/*
 	fi
+}
+
+pkg_postinst() {
+	elog "the sass USE-flag was renamed to extended. the functionality is the" \
+		"same, except it also toggles the dependency on libwebp (for encoding)"
 }
