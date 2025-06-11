@@ -6,8 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<upstream>
-		<bugs-to>https://bugs.kde.org/enter_bug.cgi?product=kig</bugs-to>
-		<remote-id type="kde-invent">education/kig</remote-id>
+		<bugs-to>https://bugs.kde.org/</bugs-to>
 	</upstream>
 	<use>
 		<flag name="geogebra">Support files created by <pkg>sci-mathematics/geogebra-bin</pkg></flag>
