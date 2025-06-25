@@ -1,7 +1,7 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit autotools flag-o-matic systemd
 
@@ -9,32 +9,38 @@ MY_PV="${PV/_rc/-rc}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="High-performance, distributed memory object caching system"
-HOMEPAGE="http://memcached.org/"
-SRC_URI="https://www.memcached.org/files/${MY_P}.tar.gz
-	https://www.memcached.org/files/old/${MY_P}.tar.gz"
+HOMEPAGE="https://memcached.org/"
+SRC_URI="
+	https://memcached.org/files/${MY_P}.tar.gz
+	https://memcached.org/files/old/${MY_P}.tar.gz
+"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~loong ~mips ppc ppc64 ~riscv ~s390 x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="debug sasl seccomp selinux slabs-reassign ssl test" # hugetlbfs later
+RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-libs/libevent-1.4:=
+RDEPEND="
+	>=dev-libs/libevent-1.4:=
 	dev-lang/perl
 	sasl? ( dev-libs/cyrus-sasl )
 	seccomp? ( sys-libs/libseccomp )
 	selinux? ( sec-policy/selinux-memcached )
-	ssl? ( >=dev-libs/openssl-1.1.0g:= )"
-DEPEND="${RDEPEND}
+	ssl? ( >=dev-libs/openssl-1.1.0g:= )
+"
+DEPEND="
+	${RDEPEND}
 	acct-user/memcached
-	test? ( virtual/perl-Test-Harness >=dev-perl/Cache-Memcached-1.24 ssl? ( dev-perl/IO-Socket-SSL ) )"
-
-S="${WORKDIR}/${MY_P}"
-
-RESTRICT="!test? ( test )"
+	test? (
+		>=dev-perl/Cache-Memcached-1.24
+		ssl? ( dev-perl/IO-Socket-SSL )
+	)
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.0-fix-as-needed-linking.patch"
-	"${FILESDIR}/${PN}-1.4.17-EWOULDBLOCK.patch"
 )
 
 QA_CONFIG_IMPL_DECL_SKIP=(
@@ -60,17 +66,20 @@ src_prepare() {
 		/Environment=/{s,OPTIONS,MISC_OPTS,g;};
 		/EnvironmentFile=/{s,/sysconfig/,/conf.d/,g;};
 		' \
-		"${S}"/scripts/memcached.service
+		"${S}"/scripts/memcached.service || die
 }
 
 src_configure() {
-	econf \
-		--disable-docs \
-		--disable-werror \
-		$(use_enable sasl) \
+	local myeconfargs=(
+		--disable-docs
+		--disable-werror
+		$(use_enable sasl)
 		$(use_enable ssl tls)
-	# The xml2rfc tool to build the additional docs requires TCL :-(
-	# `use_enable doc docs`
+		# The xml2rfc tool to build the additional docs requires TCL :-(
+		# `use_enable doc docs`
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
