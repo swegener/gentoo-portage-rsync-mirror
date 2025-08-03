@@ -47,7 +47,9 @@ EPYTEST_DESELECT=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.0.4.0-fix-docs-cmd.patch"
+	"${FILESDIR}"/${PN}-3.0.4.0-fix-docs-cmd.patch
+	"${FILESDIR}"/${PN}-3.0.5-dont-repeat-standard-paths.patch
+	"${FILESDIR}"/${PN}-3.0.5-TotalDestinationSizeChange-concurrency.patch
 )
 
 distutils_enable_tests pytest
