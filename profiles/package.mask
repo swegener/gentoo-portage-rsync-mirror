@@ -36,6 +36,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Arthur Zamarin <arthurzam@gentoo.org> (2025-08-28)
+# EAPI=7, maintainer-needed, Gentoo is last distro to package it,
+# unmaintained in Gentoo since 2016.
+# Removal on 2025-09-27.  Bug #962064.
+app-misc/glastree
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2025-08-27)
 # EAPI-7 cmake.eclass straggler sci-libs/ libraries without revdeps.
 # If you need them, raise your hand by doing the necessary EAPI-8 porting.
@@ -253,23 +259,6 @@ dev-util/cucumber-gherkin:23
 dev-util/cucumber-gherkin:25
 dev-util/cucumber-messages:19
 dev-util/cucumber-messages:24
-
-# Bernard Cafarelli <voyageur@gentoo.org> (2025-07-27)
-# Current version in tree only supports python <=3.11
-# Needs major version bump, relevant dependencies, and tests fixes
-# Removal on 2025-08-26. Bug #952156.
-dev-python/aiocache
-dev-python/arsenic
-dev-python/browser-cookie3
-dev-python/tld
-dev-python/yaswfp
-net-analyzer/wapiti
-
-# Michał Górny <mgorny@gentoo.org> (2025-07-26)
-# Another pytest plugin causing random breakage.  Discontinued upstream,
-# last revdep stopped using it.
-# Removal on 2025-08-25.  Bug #960760.
-dev-python/noseofyeti
 
 # Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
 # End of life software. Relies on a commercial internet service which removed
