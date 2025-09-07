@@ -2,18 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{11..14} )
 
-inherit gnome.org gnome2-utils meson optfeature python-single-r1 virtualx xdg
+inherit flag-o-matic gnome.org gnome2-utils meson optfeature python-single-r1 virtualx xdg
 
 DESCRIPTION="Provides core UI functions for the GNOME desktop"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-shell"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
 
-IUSE="elogind gtk-doc +ibus +networkmanager pipewire systemd test"
+IUSE="X elogind gtk-doc +ibus +networkmanager pipewire systemd test wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	?? ( elogind systemd )"
 RESTRICT="!test? ( test )"
@@ -25,10 +25,10 @@ DEPEND="
 	>=dev-libs/glib-2.68:2
 	>=dev-libs/gobject-introspection-1.49.1:=
 	>=dev-libs/gjs-1.73.1[cairo(+)]
-	>=gui-libs/gtk-4:4[introspection]
-	>=x11-wm/mutter-47.0:0/15[introspection,test?]
+	>=gui-libs/gtk-4:4[X?,introspection,wayland?]
+	>=x11-wm/mutter-48.0:0/16[introspection,test?]
 	>=sys-auth/polkit-0.120_p20220509[introspection]
-	>=gnome-base/gsettings-desktop-schemas-47_alpha[introspection]
+	>=gnome-base/gsettings-desktop-schemas-48_beta[introspection]
 	>=app-i18n/ibus-1.5.19
 	dev-python/docutils
 	>=gnome-base/gnome-desktop-40.0:4=
@@ -87,7 +87,7 @@ RDEPEND="${DEPEND}
 	app-accessibility/at-spi2-core:2[introspection]
 	app-misc/geoclue:2.0[introspection]
 	media-libs/graphene[introspection]
-	x11-libs/pango[introspection]
+	>=x11-libs/pango-1.46.0[introspection]
 	net-libs/libsoup:3.0[introspection]
 	>=sys-power/upower-0.99:=[introspection]
 	gnome-base/librsvg:2[introspection]
@@ -115,6 +115,7 @@ PDEPEND="
 	>=gnome-base/gnome-control-center-3.26[networkmanager(+)?]
 "
 BDEPEND="
+	>=dev-build/meson-1.3.0
 	dev-libs/libxslt
 	>=dev-util/gdbus-codegen-2.45.3
 	dev-util/glib-utils
@@ -132,11 +133,6 @@ BDEPEND="
 # dev-lang/sassc
 # app-text/asciidoc
 
-PATCHES=(
-	# Change favorites defaults, bug #479918
-	"${FILESDIR}"/46.4-defaults.patch
-)
-
 src_prepare() {
 	default
 	xdg_environment_reset
@@ -145,6 +141,9 @@ src_prepare() {
 }
 
 src_configure() {
+	use X || append-cppflags -DGENTOO_GTK_HIDE_X11
+	use wayland || append-cppflags -DGENTOO_GTK_HIDE_WAYLAND
+
 	local emesonargs=(
 		$(meson_use pipewire camera_monitor)
 		-Dextensions_tool=true
