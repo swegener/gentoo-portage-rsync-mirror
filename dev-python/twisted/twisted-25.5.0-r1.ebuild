@@ -22,8 +22,8 @@ SRC_URI+="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~loong ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sparc x86 ~arm64-macos ~x64-macos"
-IUSE="conch http2 serial ssl test"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+IUSE="conch http2 serial ssl test websockets"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -52,6 +52,9 @@ RDEPEND="
 		>=dev-python/service-identity-18.1.0[${PYTHON_USEDEP}]
 		>=dev-python/idna-2.4[${PYTHON_USEDEP}]
 	)
+	websockets? (
+		dev-python/wsproto[${PYTHON_USEDEP}]
+	)
 "
 IDEPEND="
 	>=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
@@ -76,6 +79,7 @@ BDEPEND="
 			dev-python/pyasn1[${PYTHON_USEDEP}]
 			>=dev-python/pyhamcrest-2[${PYTHON_USEDEP}]
 			>=dev-python/pyserial-3.0[${PYTHON_USEDEP}]
+			dev-python/wsproto[${PYTHON_USEDEP}]
 			virtual/openssh
 			ssl? (
 				>=dev-python/pyopenssl-21.0.0[${PYTHON_USEDEP}]
@@ -86,6 +90,15 @@ BDEPEND="
 "
 
 python_prepare_all() {
+	local PATCHES=(
+		# https://github.com/twisted/twisted/pull/12460
+		"${FILESDIR}/${P}-rebuild.patch"
+		# https://github.com/twisted/twisted/pull/12508
+		"${FILESDIR}/${P}-py314.patch"
+	)
+
+	distutils-r1_python_prepare_all
+
 	# upstream test for making releases; not very useful and requires
 	# sphinx (including on py2)
 	rm src/twisted/python/test/test_release.py || die
@@ -96,8 +109,6 @@ python_prepare_all() {
 		-e 's:test_multiListen:_&:' \
 		-e 's:test_multicast:_&:' \
 		-i src/twisted/test/test_udp.py || die
-
-	distutils-r1_python_prepare_all
 }
 
 src_test() {
