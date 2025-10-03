@@ -7907,6 +7907,7 @@ sys-apps/fwupd:gusb - Enable dev-libs/libgusb support
 sys-apps/fwupd:logitech - Build and install Logitech bulk controller plugin
 sys-apps/fwupd:modemmanager - Build and install Modem Manager plugin
 sys-apps/fwupd:nvme - Build and install NVMe plugin
+sys-apps/fwupd:protobuf - Enable protobuf plugins
 sys-apps/fwupd:spi - Install Intel-SPI plugin
 sys-apps/fwupd:synaptics - Install synaptics plugin
 sys-apps/fwupd:test-full - Enable tests known not to play nicely with the sandbox
