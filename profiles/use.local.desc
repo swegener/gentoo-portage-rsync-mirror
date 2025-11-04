@@ -425,6 +425,7 @@ app-crypt/mit-krb5:lmdb - Add support for using dev-db/lmdb for lookup tables
 app-crypt/mit-krb5:openldap - Enable support for ldap as a database backend
 app-crypt/mit-krb5:pkinit - Enable pkinit support for the initial ticket
 app-crypt/mkp224o:pcre - Search with a regex instead of prefix/suffix matching
+app-crypt/onak:daemon - Enable the backend caching key daemon
 app-crypt/onak:dynamic - Support for dynamic loading of backends
 app-crypt/onak:hkp - Proxying backend support
 app-crypt/ophcrack:tables - Require the additional tables used to carry out cracking (app-crypt/ophcrack-tables)
@@ -7312,7 +7313,6 @@ sci-libs/armadillo:superlu - Use SuperLU for sparse linear equation solving sci-
 sci-libs/arprec:qd - Use sci-libs/qd for quad-double datatype
 sci-libs/atlas:generic - Build atlas assuming a fairly generic architecture (sse2 for x86, core2 for amd64)
 sci-libs/avogadrolibs:archive - Enable archive support using app-arch/libarchive
-sci-libs/avogadrolibs:mmtf - Enable support of MMTF format using dev-libs/mmtf-cpp
 sci-libs/avogadrolibs:spglib - Find and set the Hall number for a crystal using sci-libs/spglib
 sci-libs/avogadrolibs:vtk - Enable sci-libs/vtk support
 sci-libs/blas-lapack-aux-wrapper:index64 - Create ILP64 wrappers as well
