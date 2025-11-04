@@ -263,7 +263,7 @@ app-arch/libarchive:blake2 - Enable Blake2 hash support via app-crypt/libb2.
 app-arch/libarchive:bzip2 - Allow accessing bzip2-compressed archives through libbz2 (which comes with app-arch/bzip2). This only affects libarchive's native support: bsdtar will keep using bunzip2 as a filter if that's not built-in.
 app-arch/libarchive:e2fsprogs - Use file flags from sys-fs/e2fsprogs headers instead of virtual/os-headers headers
 app-arch/libarchive:nettle - Use dev-libs/nettle as crypto backend
-app-arch/libdeflate:test - Build the test programs (requires sys-libs/zlib)
+app-arch/libdeflate:test - Build the test programs (requires virtual/zlib)
 app-arch/libdeflate:utils - Build the libdeflate-gzip program
 app-arch/lrzip-next:largefile - Enables support for large files
 app-arch/lrzip-next:year2038 - Enables support for 64-bit 'time_t' (sets D_TIME_BITS=64; glibc only)
