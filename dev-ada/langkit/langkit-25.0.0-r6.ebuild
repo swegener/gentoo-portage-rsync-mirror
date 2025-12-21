@@ -3,7 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..13} )
 ADA_COMPAT=( gcc_{12..16} )
 
 DISTUTILS_USE_PEP517=setuptools
@@ -29,6 +29,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-ada/gnatcoll-bindings[shared,static-libs?,static-pic?]
 	dev-ada/gnatcoll-core:=[${ADA_USEDEP},shared,static-libs?,static-pic?]
 	dev-ada/prettier-ada:=[${ADA_USEDEP},shared,static-libs?,static-pic?]
+	dev-ada/VSS:=[${ADA_USEDEP},shared,static-libs?,static-pic?]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/funcy[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
