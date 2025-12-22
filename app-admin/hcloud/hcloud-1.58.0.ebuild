@@ -13,6 +13,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
+BDEPEND=">=dev-lang/go-1.25.5"
+
 src_compile() {
 	ego build -o ${PN} -ldflags "-w -X github.com/hetznercloud/cli/internal/version.versionPrerelease=gentoo" ./cmd/${PN}
 }
@@ -27,7 +29,7 @@ src_test() {
 	# Avoid error like:
 	# -buildmode=pie not supported when -race is enabled on linux/amd64
 	GOFLAGS=${GOFLAGS//-buildmode=pie}
-	ego test -coverpkg=./... -coverprofile=coverage.txt -v -race ./...
+	ego test -coverpkg=./internal/... -coverprofile=coverage.txt -v -race ./...
 }
 
 src_install() {
