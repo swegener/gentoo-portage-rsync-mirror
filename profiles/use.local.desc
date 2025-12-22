@@ -1010,7 +1010,6 @@ app-misc/sphinx:mariadb - Add mariadb database support
 app-misc/sphinx:stemmer - Enable language stemming support
 app-misc/task:sync - Enable "task sync" support
 app-misc/tinysparql:localsearch - Install the app-misc/localsearch package for actual data mining support for tinysparql
-app-misc/tinysparql:miners - Install the app-misc/localsearch package for actual data mining support for tracker
 app-misc/tinysparql:stemmer - Add word stemming via dev-libs/snowball-stemmer.
 app-misc/tmux:sixel - Enable sixel support
 app-misc/tmux:utempter - Include libutempter support
@@ -4973,6 +4972,7 @@ media-sound/qtractor:aubio - Enable media-libs/aubio support
 media-sound/qtractor:dssi - Enable support for DSSI Soft Synth Interface
 media-sound/qtractor:rubberband - Enable support for in-place audio clip pitch-shifting through the rubberband library
 media-sound/rhythmbox:daap - Build the local network music sharing plugin which uses the DAAP protocol using net-libs/libdmapsharing
+media-sound/rosegarden:lv2 - Add support for Ladspa V2 plugins
 media-sound/scream:pcap - Support sniffing packets from network using net-libs/libpcap
 media-sound/shntool:alac - Add support for Apple Lossless Audio Codec files
 media-sound/shntool:mac - Add support for Monkey's Audio files
