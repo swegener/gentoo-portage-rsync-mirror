@@ -1,0 +1,757 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Uses GLEP 84 format
+
+####################################################################
+#
+# When you add an entry to the top of this file, add your name, the date
+# in the UTC timezone with a format of YYYY-MM-DD, and an explanation of why
+# something is getting masked.
+# Please be extremely careful not to commit atoms that are not valid, as it can
+# cause large-scale breakage, especially if it ends up in the daily snapshot.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
+## # Masking  these versions until we can get the
+## # v4l stuff to work properly again
+## =media-video/mplayer-0.90_pre5
+## =media-video/mplayer-0.90_pre5-r1
+#
+# - Best last rites (removal) practices -
+# Include the following info:
+# a) reason for masking
+# b) date of removal
+# c) bug # for the removal (and yes you should have one)
+#
+# See GLEP 84 for the full description of the format.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
+## # Doesn't work with new libfoo. Upstream dead, gtk-1, smells funny.
+## # Removal on 2019-08-01. Bug #987654.
+## app-misc/some-package
+
+#--- END OF EXAMPLES ---
+
+# Fabian Groffen <grobian@gentoo.org> (2026-01-08)
+# Too many issues already.  Further testing is appreciated, but expect
+# breakage.
+=app-portage/portage-utils-0.99
+
+# James Le Cuirot <chewi@gentoo.org> (2025-12-24)
+# The upstream community has forked with the vast majority going to UZDoom, now
+# packaged as games-engines/uzdoom in Gentoo. https://zdoom.org now follows this
+# new fork. Bug #967252. Removal on 2026-01-24.
+games-fps/gzdoom
+
+# Eray Aslan <eras@gentoo.org> (2025-12-24)
+# Mask experimental software
+=mail-mta/postfix-3.12*
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-12-15)
+# This version has lit a firecracker under the community and attracted
+# some ire. The situation is in a state of mild flux, and more generally
+# requires further consideration to determine the correct course of
+# action. Use at your own risk.
+>=app-text/calibre-8.11.0
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-21)
+# Fails to build against Qt 6.10, upstream repository was archived.
+# Bug #966389. Removal on 2026-01-15
+gui-libs/hyprland-qtutils
+
+# Michał Górny <mgorny@gentoo.org> (2025-12-20)
+# Packages that are missing Python 3.12+ support (or in case
+# of dev-lang/julia, all versions are unkeyworded).
+# Bug #921826.  Removal on 2026-01-20.
+dev-lang/julia
+dev-libs/redland-bindings
+dev-python/happybase
+games-engines/scrap-engine
+games-rpg/pokete
+net-misc/pulseaudio-dlna
+www-client/seamonkey
+
+# Sam James <sam@gentoo.org> (2025-12-18)
+# Another change to multiprocessing broke Portage. >=sys-apps/portage-3.0.73-r2
+# is fixed, but a fixed version of Portage must be running in order to safely
+# upgrade or re-emerge Portage with >= Python 3.14.2. Mask until more users
+# have had a chance to upgrade Portage.
+#
+# This only affects users with non-default PYTHON_TARGETS (3.14) set.
+#
+# If you are unable to upgrade Portage, please manually edit
+# /usr/lib/python-exec/python3.14/emerge and /usr/lib/python-exec/python3.14/ebuild
+# by deleting the first 3 lines beginning with 'signal.signal(' (bug #967199).
+~app-doc/python-docs-3.14.2
+~dev-lang/python-3.14.2
+~dev-lang/python-0.3.14.2
+~dev-python/python-tests-3.14.2
+~dev-python/python-tests-0.3.14.2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-15)
+# Last release depends on Qt5, upstream appears dormant. Bug #959826
+# Removal on 2026-01-15
+net-misc/electrum-ltc
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
+# Still depends on Qt5 with no upstream activity in years. Bug #960814
+# Removal on 2026-01-15
+media-sound/qmidiroute
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
+# Still depends on Qt5 with no upstream porting activity. Bug #960220
+# Removal on 2026-01-15
+media-sound/mp3diags
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-14)
+# Last release depends on Qt5, upstream appears dormant. Bug #950474
+# Removal on 2026-01-15
+media-gfx/luminance-hdr
+
+# Michał Górny <mgorny@gentoo.org> (2025-12-12)
+# Upstream has switched to LLM-first coding which has already caused
+# a number of suspicious bugs.  At this point, new versions
+# of the packages cannot be trusted to be safe to use.  Furthermore,
+# the maintenance cost of dealing with packaging bugs alone
+# is overwhelming to human maintainers of this package.
+>=dev-python/autobahn-25.10
+>=dev-python/txaio-25.10
+
+# Hans de Graaff <graaff@gentoo.org> (2025-12-11)
+# The twitter API is no longer available making this package
+# useless. Upstream has archived the gem and refers to an X gem as an
+# alternative. Removal on 2026-01-11.
+dev-ruby/twitter
+
+# Michael Orlitzky <mjo@gentoo.org> (2025-12-08)
+# An experimental attempt to avoid the gtk -> librsvg -> rust dependency
+# that is now obsolete because upstream gtk links directly to librsvg.
+# Removal on or after 2026-01-08.
+media-libs/libsvgtiny-pixbuf
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
+# Last release depends on Qt5, upstream appears dormant. Several
+# alternatives are available in ::gentoo. Bug #967107
+# Removal on 2026-01-15
+games-fps/doomsday
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
+# Depends on PyQt5, stalled porting effort upstream.
+# Needs porting to Python 3.13, but 0.6.5 requires unpackaged dependency.
+# Bugs #948094, #952551. Removal on 2026-01-15
+media-sound/linux-show-player
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-07)
+# IUSE qt5 feature sees no porting effort upstream. 2.4.9-r1 remains
+# available with IUSE qt5 removed. Bug #965503
+# Removal on 2026-01-15
+=media-libs/libffado-2.4.9
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
+# Depends on Qt5, stalled porting effort upstream. Bug #955277
+# Removal on 2026-01-15
+games-engines/qtads
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-12-05)
+# Depends on Qt5, no signs of porting work upstream. Bug #949881
+# Removal on 2026-01-15
+games-strategy/hedgewars
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2025-12-05)
+# Stuck on Qt5, no upstream action.
+# Please use the games-action/prismlauncher fork instead.
+# Removal on 2026-01-05. Bug 967108.
+games-action/multimc-bin
+
+# Michał Górny <mgorny@gentoo.org> (2025-12-03)
+# Upstream changed how multiprocessing shares data between processes,
+# which means the upgrade randomly breaks some currently running Python
+# applications, notably Portage.
+~app-doc/python-docs-3.13.10
+~app-doc/python-docs-3.14.1
+~dev-lang/python-3.13.10
+~dev-lang/python-0.3.13.10
+~dev-lang/python-3.14.1
+~dev-lang/python-0.3.14.1
+~dev-python/python-tests-3.13.10
+~dev-python/python-tests-0.3.13.10
+~dev-python/python-tests-3.14.1
+~dev-python/python-tests-0.3.14.1
+
+# Jaco Kroon <jkroon@gentoo.org> (2025-12-02)
+# Dead upstream, limited usefulness.  If you're still using it please reach out
+# so we can discuss options.  Likely not worth the effort to fix the compiler
+# warnings soon to be errors.
+# No revdeps.
+# Open bugs: #929259
+# Removal on 2026-01-02.
+net-proxy/sqtop
+
+# David Seifert <soap@gentoo.org> (2025-12-01)
+# Last release over 20 years ago, ancient codebase, lots of QA warnings, no
+# other distro packages this anymore. Removal on 2025-12-31. Bug #944877.
+sci-biology/rnaview
+
+# David Seifert <soap@gentoo.org> (2025-11-30)
+# Last release over 15 years ago, GTK+2, EAPI 7, broken C constructs, removed
+# by other distros already. Removal on 2025-12-30. Bug #944347.
+sys-apps/gscanbus
+
+# David Seifert <soap@gentoo.org> (2025-11-30)
+# Unmaintained, dead package, last release over 20 years ago, no other distro
+# packages this anymore, EAPI 7. Removal on 2025-12-30. Bug #943810.
+sys-fs/lde
+
+# David Seifert <soap@gentoo.org> (2025-11-30)
+# More than 26 years since release, ancient C code, no revdeps in tree,
+# no other distro still packages this.
+# Removal on 2025-12-30. Bug #881017, #944864, #945018.
+sci-libs/djbfft
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-11-30)
+# Abandoned and unmaintained. It existed solely as a test dep for
+# dev-python/sphinx-rtd-theme, which no longer uses it, so nobody should
+# have it installed anyway.
+# Removal on 2025-12-30.  Bugs #966396, #963998.
+dev-python/readthedocs-sphinx-ext
+
+# Sam James <sam@gentoo.org> (2025-11-25)
+# Generates session keys with weak (no) randomness. Please re-encrypt
+# any data/messages using this librnp version. <0.18 is fine as is >=0.18.1.
+# See bug #966299.
+=dev-util/librnp-0.18.0
+
+# Michał Górny <mgorny@gentoo.org> (2025-11-22)
+# A NIH replacement for dev-python/faker with a very slow test suite.
+# No reverse dependencies left.
+# Removal on 2025-12-22.  Bug #966327.
+dev-python/fake-py
+
+# orbea <orbea@riseup.net> (2025-11-16)
+# Dead upstream, non-free licenses, depends on libsdl, no revdeps.
+# Use games-emulation/geolith-jg instead.
+# Bugs #744043, #896336, #926370.
+# Removal on 2025-12-16.
+games-emulation/gngeo
+
+# Petr Vaněk <arkamar@gentoo.org> (2025-11-13)
+# The MDEV-38068 issue has been discovered with MariaDB 11.8.4. The issue
+# caused a partial data deletion when using the DELETE statement on MyISAM or
+# Aria tables under specific conditions. InnoDB tables are not affected by
+# this. See:
+# https://jira.mariadb.org/browse/MDEV-38068
+# https://lists.mariadb.org/hyperkitty/list/packagers@lists.mariadb.org/thread/IT3YIRPIS4ZVDZ5LBIDV7MPUDIL2VGIA/
+#
+# Affected package was removed from the tree, but this message shall be kept
+# untill 2025-12-15.
+~dev-db/mariadb-11.8.4
+
+# Sam James <sam@gentoo.org> (2025-11-13)
+# Reported crashes (https://bugs.gentoo.org/914256#c18)
+=sys-libs/musl-1.2.5-r6
+
+# Sam James <sam@gentoo.org> (2025-11-05)
+# re 8.3.0: Has regressions breaking media-video/subliminal and 8.3.1
+# which fixes some (but not all of those regressions) is semi-released only.
+# re 8.3.1: Release not on PyPI (yet?), causing regressions in dev-python/black.
+# https://github.com/pallets/click/issues/3087
+~dev-python/click-8.3.0
+=dev-python/click-8.3.1
+
+# Sam James <sam@gentoo.org> (2025-10-13)
+# Crashes in memtodest when handling PATH. Not yet reported upstream.
+=app-shells/dash-0.5.13.1
+
+# Michał Górny <mgorny@gentoo.org> (2025-10-12)
+# Requires Rust with RUST_SYSROOTS=bpf, which isn't currently supported
+# by dev-lang/rust-bin.  Also needs net-proxy/mitmproxy-linux updates.
+>=dev-util/bpf-linker-0.9.15-r1
+
+# Lukas Schmelting <lschmelting@posteo.com> (2025-10-03)
+# Breaks e.g. in combination with gnome-shell-48.4, gettext/gjs (bug #963815)
+>=dev-libs/glib-2.86.0
+>=dev-libs/gobject-introspection-1.86.0
+>=dev-libs/gobject-introspection-common-1.86.0
+>=dev-util/gdbus-codegen-2.86.0
+>=dev-util/glib-utils-2.86.0
+
+# Sam James <sam@gentoo.org> (2025-09-21)
+# Breaks (common) mt7921e WiFi driver with a hang in many cases, affecting
+# not just network. See bug #963106.
+=sys-kernel/linux-firmware-20250917
+=sys-kernel/linux-firmware-20251011
+
+# Viorel Munteanu <ceamac@gentoo.org> (2025-09-16)
+# Unmaintained upstream, last release more than 7 years old.
+# Old data is getting harder to read.
+# Alternatives: sys-fs/gocryptfs or rclone crypt.
+# Removal on 2025-12-16.  Bug #960358.
+sys-fs/encfs
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-08-29)
+# Obsolete transitional meta package. Bug #961795. Removal on 2025-09-28.
+media-sound/pulseaudio
+
+# Michał Górny <mgorny@gentoo.org> (2025-08-21)
+# Version yanked due to "unintended change in behavior".
+=dev-python/click-8.2.2
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-07-18)
+# End of life software. Relies on a commercial internet service which removed
+# suppor for the old APIs this package needs. Impossible to use anymore.
+# Removal on 2025-08-17.  Bug #927026.
+net-vpn/protonvpn-cli
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-07-08)
+# Unmaintained, out of date, QA issues, outstanding bugs for compilation
+# failure / test failure. Still uses python 3.11. No revdeps.
+# Removal on 2025-08-07.  Bug #725252, #873304, #731876, #929772
+sci-libs/eccodes
+
+# Eli Schwartz <eschwartz@gentoo.org> (2025-07-06)
+# Unmaintained, abandoned upstream since 2012, stuck on Python 3.11,
+# no revdeps since a year ago.
+# Removal on 2025-08-05.  Bug #928479, #929362.
+dev-libs/libindicate
+app-text/gnome-doc-utils
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2025-07-04)
+# Obsolete Perl virtuals that will be removed (the list is work in progress).
+# If you have any of these installed, just remove them; they should not be
+# required anymore.
+virtual/perl-bignum
+virtual/perl-HTTP-Tiny
+virtual/perl-IO-Zlib
+virtual/perl-Locale-Maketext
+virtual/perl-Math-BigInt-FastCalc
+virtual/perl-Math-BigRat
+virtual/perl-Math-Complex
+virtual/perl-Module-Load-Conditional
+virtual/perl-Parse-CPAN-Meta
+virtual/perl-Params-Check
+perl-core/Params-Check
+virtual/perl-Term-ReadLine
+virtual/perl-Unicode-Collate
+virtual/perl-Unicode-Normalize
+
+# Michał Górny <mgorny@gentoo.org> (2025-06-29)
+# File collision against gnome-base/gnome-keyring[pam], which is
+# required via pambase.  Masked until the maintainer determines a good
+# solution.  Bug #959274.
+=app-crypt/libsecret-0.21.7-r1
+
+# Michał Górny <mgorny@gentoo.org> (2025-06-28)
+# Rust/eBPF does not support 32-bit x86 host.  As such, mitmproxy can
+# no longer be used on this architecture.
+=net-proxy/mitmproxy-9.0.1
+
+# Sam James <sam@gentoo.org> (2025-06-12)
+# Breaks several applications (bug #957943)
+>=dev-python/pygobject-3.52
+>=net-im/gajim-2.3.0
+
+# Sam James <sam@gentoo.ogr> (2025-06-08)
+# Masked for testing (bug #957583).
+>=sys-devel/gettext-0.24
+>=dev-libs/libintl-0.24
+
+# Michał Górny <mgorny@gentoo.org> (2025-06-07)
+# Destabilized due to unresolved test failures.  If you need this
+# package, please use the ~arch version.
+=dev-python/lmdb-1.5.1
+
+# Sam James <sam@gentoo.org> (2025-06-03)
+# Fetching from GitHub seems broken with this:
+# > Connecting to github.com|20.26.156.215|:443... connected.
+# > ERROR: cannot verify github.com's certificate, issued by 'CN=Sectigo ECC Domain Validation Secure Server CA,O=Sectigo Limited,L=Salford,ST=Greater Manchester,C=GB':
+# >  Unable to locally verify the issuer's authority.
+# See bug #963400.
+=app-misc/ca-certificates-20250419.3.112
+
+# Sam James <sam@gentoo.org> (2025-05-26)
+# Breaks some reverse dependencies and is abandoned upstream (bug #956630).
+=dev-cpp/glog-0.7.1
+
+# Sam James <sam@gentoo.org> (2025-05-23)
+# Severe memory leak (bug #953874)
+=app-i18n/ibus-anthy-1.5.17
+
+# Alfred Wingate <parona@protonmail.com> (2025-05-17)
+# Masked for testing
+dev-db/mysql:8.4
+
+# Michał Górny <mgorny@gentoo.org> (2025-05-08)
+# Vulnerable, EOL branch of dev-python/django.  Bug #955606.
+# Pleas upgrade to 5.1, 5.2 LTS, or downgrade to 4.2 LTS.
+=dev-python/django-5.0*
+
+# Michał Górny <mgorny@gentoo.org> (2025-05-04)
+# New wave of breakage from random removals.
+# Bugs #955398, #955396, #955411.
+=dev-python/ensurepip-setuptools-80.3.0
+=dev-python/setuptools-80.3.0
+
+# Michał Górny <mgorny@gentoo.org> (2025-04-19)
+# This package will no longer feature stable keywords, due to unresolved
+# test failures blocking the stabilization request for months.
+<dev-python/mpi4py-4
+
+# Norbert Norbiros <norbiros@protonmail.com> (2025-04-01)
+# Screen v5.0.0 has a lot of regressions
+# https://lists.gnu.org/archive/html/screen-devel/2024-10/msg00007.html
+# Unmask it after it is properly tested & fixed
+=app-misc/screen-5*
+
+# Michał Górny <mgorny@gentoo.org> (2025-03-17)
+# Xfce 4.22 prereleases.  Masked because they tend to be quite unstable.
+>=app-office/orage-4.21
+>=dev-build/xfce4-dev-tools-4.21
+>=xfce-base/exo-4.21
+>=xfce-base/garcon-4.21
+>=xfce-base/libxfce4ui-4.21
+>=xfce-base/thunar-4.21
+>=xfce-base/tumbler-4.21
+>=xfce-base/xfce4-appfinder-4.21
+>=xfce-base/xfce4-panel-4.21
+>=xfce-base/xfce4-power-manager-4.21
+>=xfce-base/xfce4-session-4.21
+>=xfce-base/xfce4-settings-4.21
+>=xfce-base/xfconf-4.21
+
+# John Helmert III <ajak@gentoo.org> (2025-03-02)
+# Doesn't seem to cleanly load, see:
+# https://github.com/lkrg-org/lkrg/issues/364
+=app-antivirus/lkrg-0.9.9
+
+# Eray Aslan <eras@gentoo.org> (2025-02-24)
+# Mask experimental software
+=mail-mta/postfix-3.11*
+
+# Sam James <sam@gentoo.org> (2025-02-22)
+# (Only) needed for no-yet-released LibreOffice. Mask for now to avoid
+# unnecessary conflicts/backtracking for LO users.
+=dev-libs/liborcus-0.20.0
+=dev-libs/libixion-0.20.0
+=dev-util/mdds-3.0.0
+
+# Maciej Barć <xgqt@gentoo.org> (2025-02-12)
+# Masked for testing. Fails to update from previous version. See bug #949626.
+>=x11-themes/fluent-icon-theme-2025.02.10
+
+# Matt Jolly <kangie@gentoo.org> (2025-02-10)
+# Rust ebuilds are migrating to use RPATH/RUNPATH to find their libraries.
+# New revisions for each Slot are already in-tree and should be used instead.
+# Bug 949374
+=dev-lang/rust-1.71.1-r100
+=dev-lang/rust-1.74.1-r100
+=dev-lang/rust-1.75.0-r100
+=dev-lang/rust-1.76.0-r100
+=dev-lang/rust-1.77.1-r100
+=dev-lang/rust-1.79.0-r100
+=dev-lang/rust-1.78.0-r100
+=dev-lang/rust-1.80.1-r100
+=dev-lang/rust-1.81.0-r100
+=dev-lang/rust-1.82.0-r100
+=dev-lang/rust-1.82.0-r101
+=dev-lang/rust-1.83.0-r1
+=dev-lang/rust-1.84.0
+=dev-lang/rust-1.84.1
+=dev-lang/rust-bin-1.71.1-r101
+=dev-lang/rust-bin-1.74.1-r101
+=dev-lang/rust-bin-1.75.0-r101
+=dev-lang/rust-bin-1.77.1-r101
+=dev-lang/rust-bin-1.79.0-r101
+=dev-lang/rust-bin-1.80.1-r101
+=dev-lang/rust-bin-1.81.0-r101
+=dev-lang/rust-bin-1.82.0-r101
+=dev-lang/rust-bin-1.83.0
+=dev-lang/rust-bin-1.84.0
+=dev-lang/rust-bin-1.84.1
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
+# Qt5 tools without any revdeps. Removal on 2025-06-10.
+dev-qt/assistant
+dev-qt/linguist
+dev-qt/pixeltool
+dev-qt/qdbus
+dev-qt/qdbusviewer
+dev-qt/qdoc
+dev-qt/qtdiag
+dev-qt/qtpaths
+dev-qt/qtplugininfo
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2025-01-23)
+# Qt5 packages without any revdeps. Removal on 2025-06-01.
+dev-qt/qt3d:5
+dev-qt/qtdatavis3d:5
+dev-qt/qtgamepad:5
+dev-qt/qtlocation:5
+dev-qt/qtnetworkauth:5
+dev-qt/qtpositioning:5
+dev-qt/qtquicktimeline:5
+dev-qt/qtsensors:5
+dev-qt/qtserialbus:5
+dev-qt/qtserialport:5
+dev-qt/qtvirtualkeyboard:5
+dev-qt/qtwebchannel:5
+dev-qt/qtwebview:5
+
+# Michał Górny <mgorny@gentoo.org> (2024-12-05)
+# 6.12.2 does not boot for me.
+=sys-kernel/gentoo-kernel-6.12.2
+=sys-kernel/gentoo-kernel-bin-6.12.2
+=sys-kernel/vanilla-kernel-6.12.2
+=virtual/dist-kernel-6.12.2
+
+# Ionen Wolkens <ionen@gentoo.org> (2024-11-19)
+# NVIDIA dropped support for the 470.xx branch in September 2024[1].
+#
+# Users are free to unmask and keep using, but be warned it is very
+# likely to be affected by security issues[2] as NVIDIA does not
+# track nor fix these for this branch anymore.
+#
+# Gentoo will keep it packaged for as long as reasonably possible
+# (albeit masked) but no true support will be given nor patches
+# for newer kernels. It is recommended to use 6.6.x LTS kernels or
+# older (6.6.x will be supported upstream until December 2026,
+# and 6.1.x a year further to December 2027).
+#
+# Major issues will lead to removal without further warning, e.g.
+# if no usable kernels left in tree, or if broken with a newer Xorg.
+#
+# >> It is recommended to switch to nouveau[3] drivers (regardless
+#    of its worse performance), or ideally replace the hardware.
+#
+# [1] https://nvidia.custhelp.com/app/answers/detail/a_id/3142
+#     https://nvidia.custhelp.com/app/answers/detail/a_id/5202
+# [2] https://bugs.gentoo.org/942031#c7
+# [3] https://wiki.gentoo.org/wiki/Nouveau
+x11-drivers/nvidia-drivers:0/470
+
+# Matt Jolly <kangie@gentoo.org> (2024-11-09)
+# The legacy Rust ebuilds are no longer maintained and have been
+# replaced by the new slotted Rust. Removal in 30 days.
+=dev-lang/rust-1.71.1
+=dev-lang/rust-1.74.1
+=dev-lang/rust-1.75.0-r1
+=dev-lang/rust-1.77.1
+=dev-lang/rust-1.79.0
+=dev-lang/rust-1.80.1
+=dev-lang/rust-1.81.0
+=dev-lang/rust-1.82.0
+=dev-lang/rust-bin-1.71.1
+=dev-lang/rust-bin-1.74.1
+=dev-lang/rust-bin-1.75.0
+=dev-lang/rust-bin-1.77.1
+=dev-lang/rust-bin-1.79.0
+=dev-lang/rust-bin-1.80.1
+=dev-lang/rust-bin-1.81.0
+=dev-lang/rust-bin-1.82.0
+=virtual/rust-1.71.1-r2
+=virtual/rust-1.74.1-r1
+=virtual/rust-1.75.0-r1
+=virtual/rust-1.77.1
+=virtual/rust-1.79.0
+=virtual/rust-1.80.1
+=virtual/rust-1.81.0-r1
+=virtual/rust-1.82.0
+
+# Viorel Munteanu <ceamac@gentoo.org> (2024-10-18)
+# Experimental version, for testing purposes only.
+# Bug #941566.
+app-emulation/virtualbox-kvm
+
+# Nowa Ammerlaan <nowa@gentoo.org> (2024-10-05)
+# This version is known to break on certain systems. At the
+# same time it fixes several reported issues. Masked until
+# we can work out how to resolve the situation.
+# See also: https://github.com/gentoo/gentoo/pull/36091
+~sys-boot/plymouth-24.004.60
+
+# Sam James <sam@gentoo.org> (2024-09-30)
+# GCC 12 and older no longer receive upstream support or fixes for
+# bugs. Please switch to a newer GCC version using gcc-config.
+#
+# The earliest supported version of GCC is GCC 13, but 11/12 remain unmasked
+# for now to ease sys-devel/gcc[d] bootstrapping.
+<sys-devel/gcc-11
+<sys-devel/kgcc64-11
+
+# Fabian Groffen <grobian@gentoo.org> (2024-09-02)
+# exim_tinydb utility crashes due to invalid free() (used in startup script)
+=mail-mta/exim-4.98
+
+# Sam James <sam@gentoo.org> (2024-06-25)
+# The symbol versioning "fix" breaks anything built with 3.0.0.
+>=dev-libs/libassuan-3.0.1
+
+# Sam James <sam@gentoo.org> (2023-12-14)
+# Gentoo's kernel maintainers have decided to discontinue gentoo-sources and
+# gentoo-kernel for old kernel LTS branches because of the resources to require
+# testing and patching them, combined with changing kernel lifecycles.
+#
+# The new policy is to support kernels with genpatches for 3 years after their
+# release.
+#
+# Specifically, 4.14/4.19/5.4 have been dropped. See https://www.mpagano.com/blog/?p=315
+# and http://www.kroah.com/log/blog/2018/08/24/what-stable-kernel-should-i-use/.
+#
+# sys-kernel/vanilla-sources will continue to be provided for all branches
+# until they reach formal upstream EOL.
+#
+<sys-kernel/gentoo-sources-5.10
+<sys-kernel/gentoo-kernel-5.10
+<virtual/dist-kernel-5.10
+
+# Sam James <sam@gentoo.org> (2023-09-09)
+# OpenSSL 1.1.x is EOL on 2023-09-11. Please upgrade immediately to >= OpenSSL 3.
+# https://www.openssl.org/blog/blog/2023/03/28/1.1.1-EOL/
+# https://www.openssl.org/blog/blog/2023/06/15/1.1.1-EOL-Reminder/
+# Please run a full world upgrade, especially checking /etc/portage and your world file
+# for old PHP or Ruby references.
+<dev-libs/openssl-3
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2023-07-12)
+# The catalyst-3 branch is outdated and not used by Gentoo
+# Release Engineering anymore. Please either use git master
+# (9999) as all Release Engineering build machines or wait
+# for catalyst-4. Questions or bug reports about catalyst-3
+# may or may not lead to useful results.
+<dev-util/catalyst-4
+
+# Michał Górny <mgorny@gentoo.org> (2023-06-21)
+# suitesparseconfig-7.0.0 fails to build with multilib enabled
+# because of dependencies that cannot be satisfied.  All the other
+# packages require it.  Bug #908851.
+=sci-libs/amd-3.0.3
+=sci-libs/btf-2.0.3
+=sci-libs/camd-3.0.3
+=sci-libs/ccolamd-3.0.3
+=sci-libs/cholmod-4.0.3
+=sci-libs/colamd-3.0.3
+=sci-libs/cxsparse-4.0.3
+=sci-libs/klu-2.0.3
+=sci-libs/ldl-3.0.3
+=sci-libs/spqr-3.0.3
+=sci-libs/suitesparseconfig-7.0.0
+=sci-libs/umfpack-6.1.0
+
+# Ionen Wolkens <ionen@gentoo.org> (2023-03-30)
+# NVIDIA dropped support for the 390.xx branch in December 2022[1].
+#
+# Users are free to unmask and keep using, but be warned it is very
+# likely to be affected by security issues as NVIDIA does not track
+# nor fix these for this branch anymore.
+#
+# Gentoo will keep it packaged for as long as reasonably possible
+# (albeit masked) but no true support will be given nor patches
+# for newer kernels. It is recommended to use 6.1.x LTS kernels or
+# older (6.1.x will be supported upstream until December 2027).
+#
+# Major issues will lead to removal without further warning, e.g.
+# if no usable kernels left in tree, or if broken with a newer Xorg.
+#
+# >> It is recommended to switch to nouveau[2] drivers (regardless
+#    of its worse performance), or ideally replace the hardware.
+#
+# [1] https://nvidia.custhelp.com/app/answers/detail/a_id/3142
+# [2] https://wiki.gentoo.org/wiki/Nouveau
+x11-drivers/nvidia-drivers:0/390
+
+# Joonas Niilola <juippis@gentoo.org> (2022-04-29)
+# Apparently the "b" in version means "beta". 3.24 is available, we
+# should update to that. #841437
+~sci-physics/bullet-3.22b
+
+# Brian Evans <grknight@gentoo.org> (2022-01-07)
+# The main consumer, phpunit, does not initiate the new timer correctly
+# This is likely to cause issues in tests; Unmask if using for other purposes
+>=dev-php/PHP_Timer-5.0
+
+# Ionen Wolkens <ionen@gentoo.org> (2021-10-09)
+# Vulkan beta driver branch aimed at Vulkan developers for testing
+# new features. Beside vulkan, it is typically behind the main branch
+# and may be buggier or less secure. Only unmask if really wanted.
+x11-drivers/nvidia-drivers:0/vulkan
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2021-09-18)
+# dev-build/automake version 1.11 is EOL and is only useful for testing
+# old de-ANSI-fication/ansi2knr/AM_C_PROTOTYPES code. Please uninstall.
+dev-build/automake:1.11
+
+# Michał Górny <mgorny@gentoo.org> (2021-07-06)
+# Upstream changed license to GPL-3+ in order to deliberately cause
+# incompatiblity with revdep licenses.  Mask until the situation
+# is resolved.  Bug #791259.
+>=media-libs/libopenaptx-0.2.1
+
+# Sam James <sam@gentoo.org> (2021-03-30)
+# Seems to break dev-tex/culmus-latex
+# Masking until we can investigate & fix
+# bug #737406
+=media-fonts/culmus-0.133-r1
+
+# Sam James <sam@gentoo.org> (2021-03-03)
+# Doesn't seem to sync clock correctly
+# in some cases.
+# bug #772998
+~net-misc/openntpd-6.8_p1
+
+# Michał Górny <mgorny@gentoo.org> (2020-11-10)
+# This old Kodi version requires vulnerable dev-python/pillow
+# and prevents users from upgrading.  Masked for the time being.
+# Bug #729672.
+media-plugins/kodi-game-libretro-nestopia
+media-plugins/kodi-game-libretro-dosbox
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
+# Mask transition ebuilds that were needed only for <glibc-2.26
+# We will keep them in the tree as long as we have masked
+# <glibc-2.26.
+~net-libs/libnsl-0
+~net-libs/rpcsvc-proto-0
+
+# Nicolas Bock <nicolasbock@gentoo.org> (2017-10-31)
+# There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).
+# If you still would like to use this version, please report any issues to
+# upstream.
+>=app-text/jabref-bin-4.0
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-21)
+# (and others, updated later)
+# These old versions of toolchain packages (binutils, gcc, glibc) are no
+# longer officially supported and are not suitable for general use. Using
+# these packages can result in build failures (and possible breakage) for
+# many packages, and may leave your system vulnerable to known security
+# exploits.
+# If you still use one of these old toolchain packages, please upgrade (and
+# switch the compiler / the binutils) ASAP. If you need them for a specific
+# (isolated) use case, feel free to unmask them on your system.
+<sys-libs/glibc-2.40-r8
+<sys-libs/binutils-libs-2.44
+<sys-devel/binutils-2.44
+<sys-devel/binutils-hppa64-2.44
+
+# Michael Orlitzky <mjo@gentoo.org> (2017-01-07)
+# This package has some dangerous quality and security issues, but
+# people may still find it useful. It is masked to prevent accidental
+# use. See bugs 603346 and 604998 for more information.
+app-admin/amazon-ec2-init
+
+# Mike Gilbert <floppym@gentoo.org> (2014-03-04)
+# Dev channel releases are only for people who are developers or want more
+# experimental features and accept a more unstable release.
+www-plugins/chrome-binary-plugins:unstable
+
+# Diego E. Pettenò <flameeyes@gentoo.org> (2009-01-03)
+# These packages are not supposed to be merged directly, instead
+# please use sys-devel/crossdev to install them.
+dev-util/mingw64-runtime
+sys-libs/newlib
+dev-embedded/avr-libc
+sys-devel/nvptx-tools
+sys-devel/clang-crossdev-wrappers
