@@ -27,6 +27,7 @@ RDEPEND="
 	>=app-arch/lz4-1.9.4:=[${MULTILIB_USEDEP}]
 	app-arch/zstd:=[${MULTILIB_USEDEP}]
 	dev-libs/openssl:=[${MULTILIB_USEDEP}]
+	net-libs/libtirpc:=[${MULTILIB_USEDEP}]
 	>=virtual/zlib-1.2.13:=[${MULTILIB_USEDEP}]
 	ldap? ( dev-libs/cyrus-sasl:=[${MULTILIB_USEDEP}] )
 "
@@ -83,12 +84,8 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	# Code is now requiring C++17 due to
-	# https://github.com/mysql/mysql-server/commit/236ab55bedd8c9eacd80766d85edde2a8afacd08
+	# Code is now requiring C++17 due to https://github.com/mysql/mysql-server/commit/236ab55bedd8c9eacd80766d85edde2a8afacd08
 	append-cxxflags -std=c++17
-
-	# LTO leads to double free in mysql-connector-c++ tests
-	filter-lto
 
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS_RELWITHDEBINFO=-DNDEBUG
