@@ -13,7 +13,7 @@ SRC_URI="
 	verify-sig? ( https://github.com/roddhjav/pass-update/releases/download/v${PV}/${P}.tar.gz.asc )
 "
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -35,4 +35,9 @@ src_install() {
 		BASHCOMPDIR="$(get_bashcompdir)" \
 		ZSHCOMPDIR="$(get_zshcompdir)" \
 		install
+
+	# https://github.com/roddhjav/pass-update/issues/25
+	rm -r "${ED}"/usr/share/bash-completion || die
+	insinto /etc/bash_completion.d
+	doins share/bash-completion/completions/pass-update
 }
