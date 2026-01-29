@@ -22,7 +22,7 @@ SRC_URI="
 	)
 "
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 
@@ -99,8 +99,12 @@ src_install() {
 	doexe import.bash
 
 	doman share/man/man1/pass-import.1 share/man/man1/pimport.1
-	dobashcomp share/bash-completion/completions/pass-import \
-		share/bash-completion/completions/pimport
+	dobashcomp share/bash-completion/completions/pimport
+
+	# bug #767871
+	insinto /etc/bash_completion.d
+	doins share/bash-completion/completions/pass-import
+
 	dozshcomp share/zsh/site-functions/_pass-import \
 		share/zsh/site-functions/_pimport
 }
