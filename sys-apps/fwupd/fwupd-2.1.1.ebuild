@@ -1,20 +1,23 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_{11..14} )
-
-inherit meson python-single-r1 vala udev xdg
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/hughsie.asc
+inherit meson python-single-r1 vala verify-sig udev xdg
 
 DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliable"
 HOMEPAGE="https://fwupd.org"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="
+	https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz
+	verify-sig? ( https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz.asc )
+"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
-IUSE="amdgpu +archive bash-completion bluetooth cbor elogind flashrom gnutls gtk-doc introspection lzma minimal modemmanager nvme policykit protobuf seccomp spi synaptics systemd test tpm uefi"
+IUSE="amdgpu +archive bash-completion bluetooth cbor elogind flashrom gnutls gtk-doc introspection lzma minimal modemmanager nvme policykit seccomp spi synaptics systemd test tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	minimal? ( !introspection )
@@ -24,7 +27,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	test? ( archive )
 	uefi? ( gnutls )
 "
-RESTRICT="!test? ( test )"
+# DBus permission failures in 2.0.20 and then other new issues in 2.1.1
+# Likely needs wrangling for ebuild environment
+RESTRICT="!test? ( test ) test"
 
 BDEPEND="$(vala_depend)
 	$(python_gen_cond_dep '
@@ -49,25 +54,23 @@ BDEPEND="$(vala_depend)
 			dev-python/pygobject:3[cairo]
 		')
 	)
+	verify-sig? ( sec-keys/openpgp-keys-hughsie )
 "
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-arch/gcab-1.0
 	app-arch/xz-utils
 	>=dev-libs/glib-2.72:2
-	>=dev-libs/json-glib-1.6.0
-	>=dev-libs/libjcat-0.2.0[gpg,pkcs7]
+	>=dev-libs/libjcat-0.2.0[pkcs7]
 	>=dev-libs/libxmlb-0.3.19:=[introspection?]
 	$(python_gen_cond_dep '
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=net-misc/curl-7.62.0
-	archive? ( app-arch/libarchive:= )
 	cbor? ( >=dev-libs/libcbor-0.7.0:= )
 	elogind? ( >=sys-auth/elogind-211 )
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
 	gnutls? ( >=net-libs/gnutls-3.6.0 )
 	virtual/libusb:1
-	protobuf? ( dev-libs/protobuf-c:= )
 	lzma? ( app-arch/xz-utils )
 	modemmanager? ( >=net-misc/modemmanager-1.22.0[mbim,qmi] )
 	policykit? ( >=sys-auth/polkit-0.114 )
@@ -95,17 +98,17 @@ DEPEND="
 	)
 "
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.14-elogind.patch
-)
-
 src_prepare() {
 	default
 
 	vala_setup
 
-	sed -e "/install_dir.*'doc'/s/doc/gtk-doc/" \
-		-i docs/meson.build || die
+	sed -i -e "/install_dir.*'doc'/s/doc/gtk-doc/" \
+		docs/meson.build || die
+
+	# Fails with DBus permission error
+	#sed -i -e "/g_test_add_data_func.*plugin-gtypes/d" \
+	#	src/fu-self-test.c || die
 
 	python_fix_shebang "${S}"/contrib/*.py
 }
@@ -113,7 +116,6 @@ src_prepare() {
 src_configure() {
 	local plugins=(
 		$(meson_feature flashrom plugin_flashrom)
-		$(meson_feature protobuf protobuf)
 		$(meson_feature modemmanager plugin_modem_manager)
 		$(meson_use uefi plugin_uefi_capsule_splash)
 	)
@@ -126,26 +128,30 @@ src_configure() {
 		-Dman="true"
 		-Dsupported_build="enabled"
 		-Dsystemd_unit_user=""
-		$(meson_feature archive libarchive)
 		$(meson_use bash-completion bash_completion)
 		$(meson_feature bluetooth bluez)
 		$(meson_feature cbor)
-		$(meson_feature elogind)
 		$(meson_feature gnutls)
 		$(meson_feature gtk-doc docs)
 		$(meson_feature introspection)
 		$(meson_feature policykit polkit)
-		$(meson_feature systemd)
 		$(meson_use test tests)
 
 		${plugins[@]}
 	)
+
+	if use elogind || use systemd ; then
+		emesonargs+=( -Dlogind=enabled )
+	else
+		emesonargs+=( -Dlogind=disabled )
+	fi
+
 	export CACHE_DIRECTORY="${T}"
 	meson_src_configure
 }
 
 src_test() {
-	LC_ALL="C" meson_src_test
+	LC_ALL="C.UTF-8" meson_src_test
 }
 
 src_install() {
