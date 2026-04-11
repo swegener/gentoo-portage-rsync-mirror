@@ -1,20 +1,23 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
-
-inherit meson python-single-r1 vala udev xdg
+PYTHON_COMPAT=( python3_{11..14} )
+VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/hughsie.asc
+inherit meson python-single-r1 vala verify-sig udev xdg
 
 DESCRIPTION="Aims to make updating firmware on Linux automatic, safe and reliable"
 HOMEPAGE="https://fwupd.org"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="
+	https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz
+	verify-sig? ( https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.xz.asc )
+"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="amd64 ~arm arm64 ~loong ppc64 ~riscv x86"
-IUSE="amdgpu amt +archive bash-completion bluetooth cbor elogind fastboot flashrom gnutls gtk-doc introspection logitech lzma minimal modemmanager nvme policykit seccomp spi +sqlite synaptics systemd test tpm uefi"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc64 ~riscv ~x86"
+IUSE="amdgpu +archive bash-completion bluetooth cbor elogind flashrom gnutls gtk-doc introspection lzma minimal modemmanager nvme policykit protobuf seccomp spi synaptics systemd test tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( elogind minimal systemd )
 	minimal? ( !introspection )
@@ -49,6 +52,7 @@ BDEPEND="$(vala_depend)
 			dev-python/pygobject:3[cairo]
 		')
 	)
+	verify-sig? ( sec-keys/openpgp-keys-hughsie )
 "
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-arch/gcab-1.0
@@ -67,14 +71,13 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	flashrom? ( >=sys-apps/flashrom-1.2-r3 )
 	gnutls? ( >=net-libs/gnutls-3.6.0 )
 	virtual/libusb:1
-	logitech? ( dev-libs/protobuf-c:= )
+	protobuf? ( dev-libs/protobuf-c:= )
 	lzma? ( app-arch/xz-utils )
-	modemmanager? ( net-misc/modemmanager[mbim,qmi] )
+	modemmanager? ( >=net-misc/modemmanager-1.22.0[mbim,qmi] )
 	policykit? ( >=sys-auth/polkit-0.114 )
 	seccomp? ( sys-apps/systemd[seccomp] )
-	sqlite? ( dev-db/sqlite )
-	systemd? ( >=sys-apps/systemd-211 )
-	tpm? ( app-crypt/tpm2-tss:= )
+	dev-db/sqlite
+	systemd? ( >=sys-apps/systemd-249 )
 	uefi? (
 		sys-apps/fwupd-efi
 		sys-boot/efibootmgr
@@ -90,14 +93,14 @@ RDEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	x11-libs/pango[introspection]
+	sys-kernel/linux-headers
 	amdgpu? (
-		sys-kernel/linux-headers
 		x11-libs/libdrm[video_cards_amdgpu]
 	)
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.0.3-pango.patch
+	"${FILESDIR}"/${PN}-2.0.18-elogind.patch
 )
 
 src_prepare() {
@@ -105,40 +108,29 @@ src_prepare() {
 
 	vala_setup
 
-	sed -e "/install_dir.*'doc'/s/doc/gtk-doc/" \
-		-i docs/meson.build || die
+	sed -i -e "/install_dir.*'doc'/s/doc/gtk-doc/" \
+		docs/meson.build || die
+
+	# Fails with DBus permission error
+	sed -i -e "/g_test_add_data_func.*plugin-gtypes/d" \
+		src/fu-self-test.c || die
 
 	python_fix_shebang "${S}"/contrib/*.py
 }
 
 src_configure() {
 	local plugins=(
-		-Dplugin_gpio="enabled"
-		-Dplugin_uf2="enabled"
-		$(meson_feature amdgpu plugin_amdgpu)
-		$(meson_feature amt plugin_intel_me)
-		$(meson_feature fastboot plugin_fastboot)
 		$(meson_feature flashrom plugin_flashrom)
-		$(meson_feature logitech plugin_logitech_bulkcontroller)
+		$(meson_feature protobuf protobuf)
 		$(meson_feature modemmanager plugin_modem_manager)
-		$(meson_feature nvme plugin_nvme)
-		$(meson_feature synaptics plugin_synaptics_mst)
-		$(meson_feature synaptics plugin_synaptics_rmi)
-		$(meson_feature tpm plugin_tpm)
-		$(meson_feature uefi plugin_uefi_capsule)
 		$(meson_use uefi plugin_uefi_capsule_splash)
-		$(meson_feature uefi plugin_uefi_pk)
 	)
-	if use ppc64 || use riscv ; then
-		plugins+=( -Dplugin_msr="disabled" )
-	fi
 
 	local emesonargs=(
 		--localstatedir "${EPREFIX}"/var
 		-Dbuild="$(usex minimal standalone all)"
-		-Dconsolekit="disabled"
-		-Dcurl="enabled"
 		-Defi_binary="false"
+		-Defi_os_dir="gentoo"
 		-Dman="true"
 		-Dsupported_build="enabled"
 		-Dsystemd_unit_user=""
@@ -149,23 +141,19 @@ src_configure() {
 		$(meson_feature elogind)
 		$(meson_feature gnutls)
 		$(meson_feature gtk-doc docs)
-		$(meson_feature lzma)
 		$(meson_feature introspection)
 		$(meson_feature policykit polkit)
-		$(meson_feature sqlite)
 		$(meson_feature systemd)
-		$(meson_use seccomp systemd_syscall_filter)
 		$(meson_use test tests)
 
 		${plugins[@]}
 	)
-	use uefi && emesonargs+=( -Defi_os_dir="gentoo" )
 	export CACHE_DIRECTORY="${T}"
 	meson_src_configure
 }
 
 src_test() {
-	LC_ALL="C" meson_src_test
+	LC_ALL="C.UTF-8" meson_src_test
 }
 
 src_install() {
