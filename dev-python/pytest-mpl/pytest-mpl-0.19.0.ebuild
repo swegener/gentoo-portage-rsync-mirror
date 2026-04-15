@@ -4,7 +4,6 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYPI_NO_NORMALIZE=1
 PYTHON_COMPAT=( python3_{11..14} )
 
 inherit distutils-r1 pypi
@@ -27,21 +26,17 @@ RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]
 "
 
+EPYTEST_PLUGINS=( "${PN}" )
+EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 EPYTEST_XDIST=1
 distutils_enable_tests pytest
 
-python_test() {
-	local EPYTEST_DESELECT=(
-		# these tests are pinned to specific output image hashes
-		# and none match nowadays
-		tests/subtests/test_subtest.py
-		tests/test_baseline_path.py::test_config
-		tests/test_pytest_mpl.py::test_formats
-		tests/test_results_always.py::test_config
-		tests/test_use_full_test_name.py::test_config
-	)
-
-	local -x PYTEST_DISABLE_PLUGIN_AUTOLOAD=1
-	local -x PYTEST_PLUGINS=pytest_mpl.plugin
-	epytest
-}
+EPYTEST_DESELECT=(
+	# these tests are pinned to specific output image hashes
+	# and none match nowadays
+	tests/subtests/test_subtest.py
+	tests/test_baseline_path.py::test_config
+	tests/test_pytest_mpl.py::test_formats
+	tests/test_results_always.py::test_config
+	tests/test_use_full_test_name.py::test_config
+)
