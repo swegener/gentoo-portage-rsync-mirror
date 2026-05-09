@@ -1,4 +1,4 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -8,14 +8,14 @@ CRATES="
 "
 
 declare -A GIT_CRATES=(
-	[compiletest_rs]='https://github.com/Manishearth/compiletest-rs;0c1418d5cd5177ee9d863a5c2f300c0973cfc4f1;compiletest-rs-%commit%'
+	[compiletest_rs]='https://github.com/Manishearth/compiletest-rs;02b122626320f562914710bada39e637f051c7bb;compiletest-rs-%commit%'
 )
 
-# LLVM 19 fails on assertions
-LLVM_COMPAT=( {20..21} )
+LLVM_COMPAT=( {20..22} )
 RUST_REQ_USE="llvm_targets_BPF(+),rust_sysroots_bpf(-)"
+RUST_NEEDS_LLVM=1
 
-inherit cargo llvm-r2 toolchain-funcs
+inherit cargo llvm-r1 toolchain-funcs
 
 DESCRIPTION="Simple BPF static linker"
 HOMEPAGE="https://github.com/aya-rs/bpf-linker/"
@@ -33,7 +33,6 @@ LICENSE+="
 	|| ( Apache-2.0 Boost-1.0 )
 "
 SLOT="0"
-KEYWORDS="~amd64 ~arm64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -72,7 +71,7 @@ src_configure() {
 	)
 	cargo_src_configure --no-default-features
 
-	export "LLVM_SYS_${LLVM_SLOT}1_PREFIX"="$(get_llvm_prefix -d)"
+	export "LLVM_PREFIX"="$(get_llvm_prefix -d)"
 
 	if [[ $(tc-get-cxx-stdlib) == "libc++" ]]; then
 		export LLVM_SYS_LIBCPP=c++
