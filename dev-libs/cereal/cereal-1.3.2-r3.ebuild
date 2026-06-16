@@ -17,6 +17,7 @@ RESTRICT="!test? ( test )"
 
 BDEPEND="doc? ( app-text/doxygen )"
 DEPEND="dev-libs/rapidjson"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	if ! use doc ; then
