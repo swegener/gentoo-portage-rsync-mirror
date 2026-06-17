@@ -27,7 +27,7 @@ else
 		https://download.qt.io/${QTC_REL}_releases/qtcreator/$(ver_cut 1-2)/${PV/_/-}/${QTC_P}.tar.xz
 	"
 	S=${WORKDIR}/${QTC_P}
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 fi
 
 DESCRIPTION="Lightweight IDE for C++/QML development centering around Qt"
@@ -50,6 +50,8 @@ COMMON_DEPEND="
 	dev-cpp/yaml-cpp:=
 	>=dev-qt/qtbase-${QT_PV}=[concurrent,dbus,gui,network,ssl,widgets,xml]
 	>=dev-qt/qtdeclarative-${QT_PV}=
+	>=dev-qt/qthttpserver-${QT_PV}
+	>=dev-qt/qttasktree-${QT_PV}
 	clang? (
 		$(llvm_gen_dep '
 			llvm-core/clang:${LLVM_SLOT}=
@@ -106,7 +108,7 @@ src_prepare() {
 		-i cmake/QtCreatorAPIInternal.cmake || die
 
 	# avoid building manual tests (aka not ran) for nothing (bug #950010)
-	sed -i '/add_subdirectory(manual)/d' tests/CMakeLists.txt || die
+	cmake_comment_add_subdirectory -f tests/CMakeLists.txt manual
 
 	if use plugin-dev; then #928423
 		# cmake --install --component integrates poorly with the cmake
