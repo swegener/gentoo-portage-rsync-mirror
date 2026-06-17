@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -16,17 +16,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	media-libs/libsdl2[joystick,sound,video]
-	media-libs/sdl2-mixer[vorbis]
+	media-libs/sdl2-mixer[mod,wav]
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	test? ( dev-lang/ruby )
 "
-
-src_prepare() {
-	default
-	rm -r resources/audio-{l,m}q || die
-}
 
 src_compile() {
 	append-cflags -DFILE_FHS_XDG_DIRS -DFILE_DATA_PATH="${EPREFIX}/usr/share/OpenSupaplex"
@@ -50,6 +45,6 @@ src_install() {
 	dobin linux/opensupaplex
 	insinto /usr/share/OpenSupaplex
 	doins -r resources/*
-	doicon "${FILESDIR}/open-supaplex.svg"
+	doicon open-supaplex.svg
 	make_desktop_entry opensupaplex OpenSupaplex open-supaplex
 }

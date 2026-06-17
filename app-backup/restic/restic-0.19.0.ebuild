@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,14 +10,13 @@ DESCRIPTION="A backup program that is fast, efficient and secure"
 HOMEPAGE="https://restic.net/"
 SRC_URI="
 	https://github.com/restic/restic/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/gentoo-golang-dist/${PN}/releases/download/v${PV}/${P}-vendor.tar.xz
 	verify-sig? ( https://github.com/restic/restic/releases/download/v${PV}/${P}.tar.gz.asc )
 "
 
-SRC_URI+=" https://gentoo.kropotkin.rocks/go-pkgs/${P}-deps.tar.xz"
-
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~riscv ~x86"
 
 RDEPEND="sys-fs/fuse:0"
 DEPEND="${RDEPEND}"
@@ -28,7 +27,7 @@ src_unpack() {
 		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz "${DISTDIR}"/${P}.tar.gz.asc
 	fi
 
-	default
+	go-module_src_unpack
 }
 
 src_compile() {

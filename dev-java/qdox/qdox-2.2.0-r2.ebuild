@@ -1,11 +1,10 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 JAVA_PKG_IUSE="doc source test"
 JAVA_TESTING_FRAMEWORKS="junit-jupiter"
-MAVEN_ID="com.thoughtworks.qdox:qdox:${PV}"
 
 inherit java-pkg-2 java-pkg-simple junit5
 
@@ -24,7 +23,7 @@ DEPEND="
 	>=dev-java/javacup-11b_p20160615-r2:0
 	|| ( virtual/jdk:25 virtual/jdk:21 virtual/jdk:17 virtual/jdk:11 )
 	test? (
-		>=dev-java/asm-9.8-r1:=
+		>=dev-java/asm-9.8-r1:0
 		>=dev-java/assertj-core-3.27.6:0
 		>=dev-java/mockito-5.20.0:0
 	)
