@@ -3,10 +3,10 @@
 
 EAPI=8
 
-LLVM_COMPAT=( {19..21} )
+LLVM_COMPAT=( {19..22} )
 inherit llvm-r2
 
-DESCRIPTION="Limine is a modern, advanced, and portable BIOS/UEFI multiprotocol bootloader"
+DESCRIPTION="Modern, secure, portable, multiprotocol bootloader and boot manager."
 HOMEPAGE="https://limine-bootloader.org/"
 SRC_URI="https://github.com/Limine-Bootloader/Limine/releases/download/v${PV}/${P}.tar.gz"
 
@@ -45,4 +45,12 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
+}
+
+pkg_postinst() {
+	ewarn "Limine 12.0.0 and later forces hash verification for systems with Secure Boot"
+	ewarn "enabled if the config hash has been enrolled into the EFI binary with"
+	ewarn "'limine enroll-config'."
+	ewarn "If you're using Secure Boot, and are enrolling the config file hash, make sure"
+	ewarn "the config contains correct hashes for all files referenced within it."
 }
