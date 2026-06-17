@@ -83,10 +83,7 @@ src_install() {
 	fperms u+s /opt/Signal/chrome-sandbox
 	pax-mark m opt/Signal/signal-desktop opt/Signal/chrome-sandbox opt/Signal/chrome_crashpad_handler
 
-	newbin - signal-desktop <<- _EOF_
-		#!/bin/sh
-		exec ${EPREFIX}/opt/Signal/signal-desktop --ozone-platform-hint=auto "\${@}"
-	_EOF_
+	dosym ../../opt/Signal/${MY_PN} /usr/bin/${MY_PN}
 }
 
 pkg_postinst() {
