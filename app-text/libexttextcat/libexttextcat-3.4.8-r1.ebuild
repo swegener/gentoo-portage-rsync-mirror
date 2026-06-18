@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/Libexttextcat"
 SRC_URI="https://dev-www.libreoffice.org/src/${P}.tar.xz"
 
 LICENSE="BSD-2"
-SLOT="0"
+SLOT="0/1"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 PATCHES=(
