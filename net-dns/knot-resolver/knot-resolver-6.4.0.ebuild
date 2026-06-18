@@ -8,7 +8,7 @@ DISTUTILS_EXT=1
 DISTUTILS_OPTIONAL=1
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=poetry
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 eapi9-ver lua-single meson optfeature tmpfiles verify-sig
 
@@ -21,7 +21,7 @@ SRC_URI="
 
 LICENSE="Apache-2.0 BSD CC0-1.0 GPL-3+ LGPL-2.1+ MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64"
+KEYWORDS="~amd64 ~arm64"
 
 IUSE="caps dnstap +manager nghttp2 quic selinux systemd test xdp"
 RESTRICT="!test? ( test )"
@@ -60,15 +60,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	test? (
-		dev-util/cmocka
-		manager? (
-			$(python_gen_cond_dep '
-				dev-python/pyparsing[${PYTHON_USEDEP}]
-				dev-python/pytest-asyncio[${PYTHON_USEDEP}]
-			')
-		)
-	)
+	test? ( dev-util/cmocka )
 "
 BDEPEND="
 	virtual/pkgconfig
@@ -79,8 +71,15 @@ BDEPEND="
 	manager? (
 		${DISTUTILS_DEPS}
 		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			>=dev-python/setuptools-75.3.2[${PYTHON_USEDEP}]
+			test? (
+				>=dev-python/pyparsing-3.1.4[${PYTHON_USEDEP}]
+				>=dev-python/pytest-asyncio-0.23.8[${PYTHON_USEDEP}]
+			)
+		')
 	)
-	verify-sig? ( >=sec-keys/openpgp-keys-knot-resolver-20251203 )
+	verify-sig? ( >=sec-keys/openpgp-keys-knot-resolver-20260304 )
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.asc
@@ -91,7 +90,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.0.9-config-example.patch
 	"${FILESDIR}"/${PN}-6.0.12-pytest_tomllib.patch
 	"${FILESDIR}"/${PN}-6.1.0-libsystemd.patch
-	"${FILESDIR}"/${PN}-6.2.0-fix_luajit_include.patch
 )
 
 pkg_setup() {
