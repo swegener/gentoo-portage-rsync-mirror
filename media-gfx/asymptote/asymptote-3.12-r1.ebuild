@@ -14,7 +14,7 @@ SRC_URI="https://downloads.sourceforge.net/asymptote/${P}.src.tgz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
-IUSE="context curl doc emacs examples fftw gsl gui +imagemagick latex lsp +opengl python sigsegv svg test vim-syntax vulkan"
+IUSE="context curl doc emacs examples fftw gsl gui +imagemagick latex lsp +opengl python sigsegv svg test vim-syntax"
 RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -25,7 +25,6 @@ RDEPEND="
 	net-libs/libtirpc:=
 	imagemagick? ( media-gfx/imagemagick[png] )
 	opengl? ( media-libs/mesa[X] media-libs/freeglut media-libs/glew:0 media-libs/glm media-libs/glfw )
-	vulkan? ( media-libs/mesa[vulkan] media-libs/vulkan-loader )
 	svg? ( app-text/dvisvgm )
 	sigsegv? ( dev-libs/libsigsegv )
 	fftw? ( >=sci-libs/fftw-3.0.1:= )
@@ -91,6 +90,7 @@ src_configure() {
 		CFLAGS="${CXXFLAGS}" \
 		--disable-gc-debug \
 		--disable-gc-full-debug \
+		--disable-vulkan \
 		--with-latex=/usr/share/texmf-site/tex/latex \
 		--with-context=/usr/share/texmf-site/tex/context \
 		$(use_enable curl) \
@@ -98,7 +98,6 @@ src_configure() {
 		$(use_enable fftw) \
 		$(use_enable gsl) \
 		$(use_enable opengl gl) \
-		$(use_enable vulkan) \
 		$(use_enable sigsegv)
 	pushd gc > /dev/null || die "pushd gc failed"
 	econf
