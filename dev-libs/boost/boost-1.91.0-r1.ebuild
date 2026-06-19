@@ -54,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.89.0-predef-include-path.patch
 	"${FILESDIR}"/${PN}-1.89.0-python-exclude-broken-tests.patch
 	"${FILESDIR}"/${PN}-1.89.0-unordered-no-tbb.patch
+	"${FILESDIR}"/${PN}-1.90.0-cobalt.patch
 	"${FILESDIR}"/${PN}-1.90.0-msm-std.patch
 	"${FILESDIR}"/${PN}-1.90.0-unsigned-char-EOF.patch
 	"${FILESDIR}"/${PN}-1.91.0-spirit-test.patch
