@@ -14,12 +14,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~riscv ~x86"
 IUSE="audiofile gcrypt jpeg png zlib"
 
-RDEPEND=">=app-emulation/libspectrum-1.4.4:=[audiofile?,gcrypt?,zlib?]
+RDEPEND="
+	>=app-emulation/libspectrum-1.6.0:=[audiofile?,gcrypt?,zlib?]
+	dev-libs/glib:2
 	audiofile? ( >=media-libs/audiofile-0.3.6 )
 	gcrypt? ( dev-libs/libgcrypt )
 	jpeg? ( media-libs/libjpeg-turbo:= )
-	png? ( media-libs/libpng:0 )
-	zlib? ( virtual/zlib:= )"
+	png? ( media-libs/libpng:0= )
+	zlib? ( virtual/zlib:= )
+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 

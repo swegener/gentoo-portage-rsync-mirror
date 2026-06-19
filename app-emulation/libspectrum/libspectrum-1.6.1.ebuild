@@ -10,7 +10,7 @@ HOMEPAGE="https://fuse-emulator.sourceforge.net/libspectrum.php"
 SRC_URI="https://downloads.sourceforge.net/fuse-emulator/${P}.tar.gz"
 
 LICENSE="GPL-2"
-SLOT="0/9"
+SLOT="0/18"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
 IUSE="audiofile bzip2 gcrypt zlib"
 
