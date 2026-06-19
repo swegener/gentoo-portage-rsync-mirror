@@ -12,7 +12,7 @@ SRC_URI="https://downloads.sourceforge.net/fuse-emulator/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~riscv ~x86"
-IUSE="alsa ao backend-X backend-fbcon +backend-gtk3 backend-sdl gpm joystick memlimit png pulseaudio +xml +zlib"
+IUSE="alsa ao backend-X backend-fbcon +backend-gtk3 backend-sdl backend-sdl2 gpm joystick memlimit png pulseaudio +xml +zlib"
 
 # TODO:
 # - allow using sdl audio driver without using for the UI
@@ -20,12 +20,12 @@ IUSE="alsa ao backend-X backend-fbcon +backend-gtk3 backend-sdl gpm joystick mem
 # - when using sdl for one of the above but not the UI, allow using sdl2 instead
 
 # At most one audio driver and at most one UI back-end can be enabled at a time
-REQUIRED_USE="?? ( alsa ao backend-sdl pulseaudio )
-	?? ( backend-X backend-fbcon backend-gtk3 backend-sdl )
+REQUIRED_USE="?? ( alsa ao backend-sdl backend-sdl2 pulseaudio )
+	?? ( backend-X backend-fbcon backend-gtk3 backend-sdl backend-sdl2 )
 	png? ( zlib )"
 
 RDEPEND="
-	>=app-emulation/libspectrum-1.5.0:=[zlib?]
+	>=app-emulation/libspectrum-1.6.0:=[zlib?]
 	dev-libs/glib:2
 	alsa? ( media-libs/alsa-lib )
 	ao? ( media-libs/libao )
@@ -41,8 +41,15 @@ RDEPEND="
 		x11-libs/pango
 	)
 	backend-sdl? ( media-libs/libsdl[joystick,sound] )
+	backend-sdl2? ( media-libs/libsdl2[joystick,sound] )
 	gpm? ( backend-fbcon? ( sys-libs/gpm ) )
-	joystick? ( !backend-sdl? ( media-libs/libjsw ) )
+	joystick? (
+		!backend-sdl? (
+			!backend-sdl2? (
+				media-libs/libjsw
+			)
+		)
+	)
 	png? ( media-libs/libpng:0= )
 	pulseaudio? ( media-libs/libpulse )
 	xml? ( dev-libs/libxml2:2= )
@@ -56,7 +63,6 @@ DOCS=( AUTHORS ChangeLog README THANKS )
 
 PATCHES=(
 	"${FILESDIR}"/remove-local-prefix.patch
-	"${FILESDIR}"/${P}-fix-joystick.patch
 )
 
 _fuse_audio_driver() {
@@ -66,11 +72,23 @@ _fuse_audio_driver() {
 		echo "libao"
 	elif use backend-sdl; then
 		echo "sdl"
+	elif use backend-sdl2; then
+		echo "sdl2"
 	elif use pulseaudio; then
 		echo "pulseaudio"
 	else
 		echo "null"
 	fi
+}
+
+_fuse_joystick_driver() {
+	if use joystick; then
+		if use backend-sdl || use backend-sdl2; then
+			echo "--enable-ui-joystick"
+			return
+		fi
+	fi
+	echo "--disable-ui-joystick"
 }
 
 src_prepare() {
@@ -87,6 +105,7 @@ src_configure() {
 		--enable-desktop-integration
 		--without-win32
 		--with-audio-driver="$(_fuse_audio_driver)"
+		$(_fuse_joystick_driver)
 		$(use_with gpm)
 		$(use_with joystick)
 		$(use_enable memlimit smallmem)
@@ -105,13 +124,11 @@ src_configure() {
 	elif use backend-gtk3; then
 		myconf+=("--with-gtk")
 	elif use backend-sdl; then
-		myconf+=("--with-sdl")
+		myconf+=("--with-sdl" "--disable-sdl2")
+	elif use backend-sdl2; then
+		myconf+=("--with-sdl2")
 	else
 		myconf+=("--with-null-ui")
-	fi
-
-	if use joystick; then
-		myconf+=( $(use_enable backend-sdl ui-joystick) )
 	fi
 
 	econf "${myconf[@]}"
