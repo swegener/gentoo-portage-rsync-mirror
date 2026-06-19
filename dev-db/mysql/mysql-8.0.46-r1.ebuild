@@ -25,7 +25,7 @@ S="${WORKDIR}/mysql"
 LICENSE="GPL-2"
 SLOT="8.0"
 # -ppc for bug #761715
-KEYWORDS="amd64 arm arm64 ~hppa ~mips -ppc ppc64 ~riscv ~s390 ~sparc x86 ~x64-macos ~x64-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips -ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~x64-macos ~x64-solaris"
 IUSE="cjk cracklib debug jemalloc latin1 numa +perl profiling router selinux +server tcmalloc test test-install"
 RESTRICT="!test? ( test )"
 
@@ -47,12 +47,12 @@ COMMON_DEPEND="
 	>=app-arch/lz4-1.9.4:=
 	>=app-arch/zstd-1.2.0:=
 	>=dev-libs/openssl-1.0.0:=
+	net-libs/libtirpc:=
 	sys-libs/ncurses:=
 	>=virtual/zlib-1.2.13:=
 	server? (
 		dev-libs/icu:=
 		dev-libs/libevent:=[ssl,threads(+)]
-		net-libs/libtirpc:=
 		cjk? ( app-text/mecab )
 		jemalloc? ( dev-libs/jemalloc:= )
 		kernel_linux? (
@@ -119,6 +119,8 @@ PATCHES=(
 	"${FILESDIR}"/mysql-8.0.37-fix-bundled-boost.patch
 	# Needed due to bundled abseil-cpp-20230802, this fix is included in abseil-cpp-20240722
 	"${FILESDIR}"/mysql-8.0.37-fix-bundled-abseil.patch
+	# bug #977642
+	"${FILESDIR}"/mysql-8.0.46-CVE-2026-46863.patch
 )
 
 mysql_init_vars() {
@@ -493,6 +495,8 @@ src_test() {
 		"rpl.rpl_innodb_info_tbl_slave_tmp_tbl_mismatch;0;Unstable test"
 		"rpl_gtid.rpl_multi_source_mtr_includes;97844;Unstable test"
 		"main.partition_datatype;0;Unstable test"
+		"innodb_undo.truncate_xa;0;Unstable test"
+		"rpl.rpl_json;0;Unstable test"
 
 		"sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware"
 
@@ -500,15 +504,6 @@ src_test() {
 
 		"main.keyring_migration_password;0;Known test failure -- no upstream bug yet"
 		"innodb.upgrade_orphan;0;Known test failure -- no upstream bug yet"
-
-		# Updated in newer versions
-		# https://github.com/mysql/mysql-server/commit/269f4ef1e091c7a4404450f97c5ae1845443eb25
-		"auth_sec.admin_channel_tls;0;Certificate expired"
-		"auth_sec.admin_channel_tls_startup;0;Certificate expired"
-		"auth_sec.cert_verify;0;Certificate expired"
-		"auth_sec.cert_verify_openssl;0;Certificate expired"
-		"x.mysqlxtest_mode_ssl;0;Certificate expired"
-		"x.mysqlxtest_mode_ssl_unixsocket;0;Certificate expired"
 	)
 
 	if ! hash zip 1>/dev/null 2>&1 ; then

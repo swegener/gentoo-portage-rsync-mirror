@@ -1,9 +1,9 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Android File Transfer for Linux"
@@ -13,10 +13,8 @@ if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/whoozle/android-file-transfer-linux.git"
 else
-	COMMIT="b8ab1eccebfb5805d4bfbf39f7c2ca231e7dcc70"
-	SRC_URI="https://github.com/whoozle/android-file-transfer-linux/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
-	S="${WORKDIR}/${PN}-${COMMIT}"
+	SRC_URI="https://github.com/whoozle/android-file-transfer-linux/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~riscv ~x86"
 fi
 
 LICENSE="LGPL-2.1"
@@ -27,7 +25,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	sys-apps/file
 	sys-libs/readline:0=
-	fuse? ( sys-fs/fuse:0 )
+	fuse? ( sys-fs/fuse:3= )
 	gui? ( dev-qt/qtbase:6[gui,network,widgets] )
 	python? (
 		${PYTHON_DEPS}
@@ -65,4 +63,15 @@ src_configure() {
 	use python && mycmakeargs+=( -DPython_EXECUTABLE="${PYTHON}" )
 
 	cmake_src_configure
+}
+
+src_install() {
+	cmake_src_install
+
+	if use python; then
+		dodoc -r python/example
+		echo "from .aftl import *" > "${BUILD_DIR}"/python/__init__.py || die
+		python_moduleinto aftl
+		python_domodule "${BUILD_DIR}"/python/{__init__.py,*.so}
+	fi
 }
