@@ -11,13 +11,11 @@ HOMEPAGE="https://cider.mx/
 
 if [[ "${PV}" == *9999* ]] ; then
 	inherit git-r3
-
 	EGIT_REPO_URI="https://github.com/clojure-emacs/${PN}"
 else
 	SRC_URI="https://github.com/clojure-emacs/${PN}/archive/v${PV}.tar.gz
 		-> ${P}.gh.tar.gz"
-
-	KEYWORDS="amd64"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="GPL-3+"
@@ -39,13 +37,11 @@ BDEPEND="
 
 ELISP_REMOVE="
 	test/${PN}-find-tests.el
-	test/${PN}-jar-tests.el
 	test/${PN}-repl-tests.el
 	test/${PN}-tests.el
 	test/nrepl-bencode-tests.el
 	test/nrepl-client-tests.el
 "
-
 DOCS=( CHANGELOG.md README.md ROADMAP.md refcard )
 SITEFILE="50${PN}-gentoo.el"
 
@@ -63,6 +59,5 @@ src_prepare() {
 
 src_install() {
 	elisp_src_install
-
 	optfeature "Connecting to leiningen REPL" dev-java/leiningen dev-java/leiningen-bin
 }
