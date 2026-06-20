@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/15r10nk/inline-snapshot
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1 pypi
 
@@ -18,7 +18,7 @@ HOMEPAGE="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/asttokens-2.0.5[${PYTHON_USEDEP}]
@@ -33,6 +33,7 @@ BDEPEND="
 		>=dev-python/black-23.3.0[${PYTHON_USEDEP}]
 		>=dev-python/dirty-equals-0.7.0[${PYTHON_USEDEP}]
 		>=dev-python/hypothesis-6.75.5[${PYTHON_USEDEP}]
+		dev-python/isort[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			dev-python/mypy[${PYTHON_USEDEP}]
 		' 'python*')
@@ -42,7 +43,7 @@ BDEPEND="
 
 EPYTEST_PLUGIN_LOAD_VIA_ENV=1
 EPYTEST_PLUGINS=( "${PN}" pytest-{freezer,mock,xdist} )
-EPYTEST_XDIST=1
+# TODO: EPYTEST_XDIST=1 gotten flaky with 0.33.0
 distutils_enable_tests pytest
 
 python_test() {

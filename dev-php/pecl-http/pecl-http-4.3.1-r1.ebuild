@@ -9,7 +9,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="no"
 PHP_INI_NAME="50-http"
 
-USE_PHP="php8-2 php8-3"
+USE_PHP="php8-2 php8-3 php8-4 php8-5"
 
 inherit php-ext-pecl-r3
 
@@ -21,7 +21,7 @@ IUSE="ssl curl_ssl_gnutls +curl_ssl_openssl"
 
 COMMON_DEPEND="app-arch/brotli:=
 	dev-libs/libevent
-	>=dev-php/pecl-raphf-2.0.1:7[php_targets_php8-2(-)?,php_targets_php8-3(-)?]
+	>=dev-php/pecl-raphf-2.0.1:7[php_targets_php8-2(-)?,php_targets_php8-3(-)?,php_targets_php8-4(-)?,php_targets_php8-5(-)?]
 	net-dns/libidn2
 	virtual/zlib:=
 	ssl? ( net-misc/curl[ssl,curl_ssl_gnutls(-)=,curl_ssl_openssl(-)=] )
@@ -29,7 +29,9 @@ COMMON_DEPEND="app-arch/brotli:=
 "
 DEPEND="
 	php_targets_php8-2? ( ${COMMON_DEPEND} dev-lang/php:8.2[session(-),iconv(-)] )
-	php_targets_php8-3? ( ${COMMON_DEPEND} dev-lang/php:8.3[session(-),iconv(-)] )"
+	php_targets_php8-3? ( ${COMMON_DEPEND} dev-lang/php:8.3[session(-),iconv(-)] )
+	php_targets_php8-4? ( ${COMMON_DEPEND} dev-lang/php:8.4[session(-),iconv(-)] )
+	php_targets_php8-5? ( ${COMMON_DEPEND} dev-lang/php:8.5[session(-),iconv(-)] )"
 RDEPEND="${DEPEND}"
 
 PHP_EXT_ECONF_ARGS=( --with-http --without-http-shared-deps
