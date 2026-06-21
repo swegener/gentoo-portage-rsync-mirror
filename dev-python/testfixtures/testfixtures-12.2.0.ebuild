@@ -19,6 +19,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~sparc ~x86"
 
+RDEPEND="
+	$(python_gen_cond_dep '
+		>=dev-python/typing-extensions-4.12[${PYTHON_USEDEP}]
+	' 3.12)
+"
 BDEPEND="
 	test? (
 		$(python_gen_impl_dep sqlite)

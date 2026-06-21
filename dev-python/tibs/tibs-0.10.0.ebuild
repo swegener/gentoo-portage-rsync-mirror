@@ -5,7 +5,7 @@ EAPI=8
 
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=maturin
-PYTHON_COMPAT=( python3_{11..15} )
+PYTHON_COMPAT=( python3_{12..15} )
 
 RUST_MIN_VER="1.87.0"
 CRATES="
@@ -13,29 +13,30 @@ CRATES="
 	anyhow@1.0.102
 	bitflags@2.11.0
 	bitvec@1.0.1
-	block-buffer@0.10.4
+	block-buffer@0.12.0
 	bytemuck@1.25.0
 	cc@1.2.60
 	cfg-if@1.0.4
 	chacha20@0.10.0
-	cpufeatures@0.2.17
+	const-oid@0.10.2
 	cpufeatures@0.3.0
 	crunchy@0.2.4
-	crypto-common@0.1.7
-	digest@0.10.7
+	crypto-common@0.2.2
+	digest@0.11.3
 	equivalent@1.0.2
 	find-msvc-tools@0.1.9
 	foldhash@0.1.5
 	foldhash@0.2.0
 	funty@2.0.0
-	generic-array@0.14.7
 	getrandom@0.3.4
 	getrandom@0.4.1
 	half@2.7.1
 	hashbrown@0.15.5
 	hashbrown@0.16.1
+	hashbrown@0.17.1
 	heck@0.5.0
 	hex@0.4.3
+	hybrid-array@0.4.12
 	id-arena@2.3.0
 	indexmap@2.13.0
 	itoa@1.0.17
@@ -43,18 +44,18 @@ CRATES="
 	leb128fmt@0.1.0
 	libc@0.2.182
 	log@0.4.29
-	lru@0.16.3
-	memchr@2.7.6
+	lru@0.18.0
+	memchr@2.8.1
 	once_cell@1.21.3
 	pkg-config@0.3.33
 	portable-atomic@1.13.1
 	prettyplease@0.2.37
 	proc-macro2@1.0.106
-	pyo3-build-config@0.28.2
-	pyo3-ffi@0.28.2
-	pyo3-macros-backend@0.28.2
-	pyo3-macros@0.28.2
-	pyo3@0.28.2
+	pyo3-build-config@0.29.0
+	pyo3-ffi@0.29.0
+	pyo3-macros-backend@0.29.0
+	pyo3-macros@0.29.0
+	pyo3@0.29.0
 	quote@1.0.44
 	r-efi@5.3.0
 	radium@0.7.0
@@ -65,15 +66,14 @@ CRATES="
 	serde_core@1.0.228
 	serde_derive@1.0.228
 	serde_json@1.0.149
-	sha2@0.10.9
+	sha2@0.11.0
 	shlex@1.3.0
 	syn@2.0.117
 	tap@1.0.1
 	target-lexicon@0.13.5
-	typenum@1.19.0
+	typenum@1.20.1
 	unicode-ident@1.0.24
 	unicode-xid@0.2.6
-	version_check@0.9.5
 	wasip2@1.0.2+wasi-0.2.9
 	wasip3@0.4.0+wasi-0.3.0-rc-2026-01-06
 	wasm-encoder@0.244.0
