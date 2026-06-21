@@ -49,6 +49,7 @@ RDEPEND="
 		>=dev-python/sqlglot-30.8.0[${PYTHON_USEDEP}]
 		<dev-python/sqlparse-0.6.0[${PYTHON_USEDEP}]
 		>=dev-python/sqlparse-0.3.0[${PYTHON_USEDEP}]
+		>=dev-python/yaspin-3.4.0[${PYTHON_USEDEP}]
 		>=dev-python/wcwidth-0.6.0[${PYTHON_USEDEP}]
 		ssh? (
 			~dev-python/paramiko-3.5.1[${PYTHON_USEDEP}]
