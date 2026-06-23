@@ -3,12 +3,12 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{11..14} )
+DISTUTILS_USE_PEP517=flit-core
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 
-SAMPLE_COMMIT=65e82ed36c1efd9bd7172a35c8dcfd6e18aabfb2
+SAMPLE_COMMIT=818dc013ad1f537198e9fcfae8a6b0dffe25ffa3
 DESCRIPTION="Python library to work with PDF files"
 HOMEPAGE="
 	https://pypi.org/project/pypdf/
@@ -25,11 +25,12 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~x86"
 
 BDEPEND="
 	test? (
-		dev-python/cryptography[${PYTHON_USEDEP}]
+		>=dev-python/cryptography-3.1[${PYTHON_USEDEP}]
+		dev-python/fonttools[${PYTHON_USEDEP}]
 		>=dev-python/pillow-8.0.0[jpeg,jpeg2k,tiff,zlib,${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
 		media-libs/jbig2dec[png]
