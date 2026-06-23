@@ -12,10 +12,10 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/strawberrymusicplayer/strawberry/releases/download/${PV}/${P}.tar.xz"
-	KEYWORDS="amd64 ~arm64 ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
 
-LICENSE="GPL-3 discord? ( MIT )"
+LICENSE="GPL-3"
 SLOT="0"
 IUSE="alsa cdda chromaprint +dbus debug discord kde +loudness ipod moodbar mtp +pulseaudio streaming test X"
 RESTRICT="!test? ( test )"
@@ -53,7 +53,6 @@ RDEPEND="${COMMON_DEPEND}
 DEPEND="${COMMON_DEPEND}
 	dev-cpp/sparsehash
 	dev-libs/boost
-	discord? ( dev-libs/rapidjson )
 	test? ( dev-cpp/gtest )
 "
 BDEPEND="
@@ -95,6 +94,8 @@ src_configure() {
 		-DENABLE_MTP="$(usex mtp)"
 		-DENABLE_GPOD="$(usex ipod)"
 		-DENABLE_MOODBAR="$(usex moodbar)"
+		-DENABLE_GSTFASTSPECTRUM="$(usex moodbar)"
+		-DENABLE_WAVEFORM="$(usex moodbar)"
 		-DENABLE_EBUR128="$(usex loudness)"
 		-DENABLE_SUBSONIC="$(usex streaming)"
 		-DENABLE_TIDAL="$(usex streaming)"
