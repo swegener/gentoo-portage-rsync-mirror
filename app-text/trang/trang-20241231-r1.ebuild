@@ -29,11 +29,13 @@ CP_DEPEND="
 
 JAVACC_SLOT="7.0.13"
 
+# min jdk-11 because of compilation error in test-class:
+# bad class file: /usr/share/testng/lib/testng.jar(org/testng/Assert.class)
+#  class file has wrong version 55.0, should be 52.0
 DEPEND="
 	${CP_DEPEND}
 	dev-java/javacc:${JAVACC_SLOT}
-	dev-java/testng:0
-	>=virtual/jdk-1.8:*
+	>=virtual/jdk-11:*
 "
 
 RDEPEND="
@@ -41,12 +43,12 @@ RDEPEND="
 	>=virtual/jre-1.8:*
 "
 
-JAVA_CLASSPATH_EXTRA="testng"
 JAVA_GENTOO_CLASSPATH_EXTRA="util:helper"
 JAVA_JAR_FILENAME="trang.jar"
 JAVA_MAIN_CLASS="com.thaiopensource.relaxng.translate.Driver"
 JAVA_RESOURCE_DIRS=( meta resources/src/main )
 JAVA_SRC_DIR=( {gen,}src/main )
+JAVA_TEST_GENTOO_CLASSPATH="testng"
 JAVA_TEST_RESOURCE_DIRS="src/test"
 JAVA_TEST_SRC_DIR="src/test"
 
