@@ -3,7 +3,8 @@
 
 EAPI=8
 
-USE_RUBY="ruby31 ruby32 ruby33"
+# ruby40 is fine, but needs dev-ruby/yard to support it
+USE_RUBY="ruby32 ruby33 ruby34"
 
 # The tests are dangerous and shouldn't be run by anyone!
 # They mess with your local postgres databases.
