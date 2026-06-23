@@ -1,7 +1,7 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=8
+EAPI=9
 
 JAVA_PKG_IUSE="doc source"
 
@@ -12,6 +12,7 @@ MY_P="gnu.regexp-${PV}"
 DESCRIPTION="GNU regular expression package for Java"
 HOMEPAGE="https://savannah.gnu.org/projects/gnu-regexp"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
+S="${WORKDIR}/${MY_P}"
 
 LICENSE="LGPL-2.1"
 SLOT="1"
@@ -23,12 +24,11 @@ RDEPEND="
 	${CDEPEND}
 	>=virtual/jre-1.8:*"
 
+# max jdk 25 for bug #977086
 DEPEND="
 	${CDEPEND}
-	>=virtual/jdk-1.8:*
+	<virtual/jdk-26:*
 	source? ( app-arch/zip )"
-
-S="${WORKDIR}/${MY_P}"
 
 JAVA_SRC_DIR="src"
 
