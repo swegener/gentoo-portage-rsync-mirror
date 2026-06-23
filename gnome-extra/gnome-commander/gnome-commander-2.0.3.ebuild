@@ -137,7 +137,7 @@ CRATES="
 	wit-bindgen@0.45.1
 	zmij@1.0.17
 "
-
+RUST_MIN_VER="1.92"
 inherit cargo gnome2 meson optfeature xdg
 
 DESCRIPTION="A graphical, full featured, twin-panel file manager"
@@ -169,7 +169,6 @@ RDEPEND="
 BDEPEND="
 	doc? ( app-text/yelp-tools )
 	dev-util/glib-utils
-	dev-build/gtk-doc-am
 	app-alternatives/lex
 	>=sys-devel/gettext-0.19.7
 "
@@ -178,9 +177,10 @@ DEPEND="
 	${RDEPEND}
 "
 
-src_unpack() {
-	cargo_src_unpack
-}
+# Rust
+QA_FLAGS_IGNORED="usr/bin/gnome-commander"
+# This one should be fixable
+QA_PRESTRIPPED="usr/bin/gnome-commander"
 
 src_prepare() {
 	default
