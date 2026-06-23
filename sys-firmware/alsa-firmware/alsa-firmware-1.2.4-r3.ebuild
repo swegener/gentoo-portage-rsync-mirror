@@ -60,11 +60,11 @@ RDEPEND="
 	alsa_cards_hdspm? ( media-sound/alsa-tools )
 	deduplicate? (
 		alsa_cards_ca0132? ( sys-kernel/linux-firmware[redistributable] )
-		alsa_cards_korg1212? ( sys-kernel/linux-firmware[unknown-license] )
-		alsa_cards_maestro3? ( sys-kernel/linux-firmware[unknown-license] )
-		alsa_cards_sb16? ( sys-kernel/linux-firmware[unknown-license] )
-		alsa_cards_wavefront? ( sys-kernel/linux-firmware[unknown-license] )
-		alsa_cards_ymfpci? ( sys-kernel/linux-firmware[unknown-license] )
+		alsa_cards_korg1212? ( sys-kernel/linux-firmware[unknown-license(-)] )
+		alsa_cards_maestro3? ( sys-kernel/linux-firmware[unknown-license(-)] )
+		alsa_cards_sb16? ( sys-kernel/linux-firmware[unknown-license(-)] )
+		alsa_cards_wavefront? ( sys-kernel/linux-firmware[unknown-license(-)] )
+		alsa_cards_ymfpci? ( sys-kernel/linux-firmware[unknown-license(-)] )
 	)
 "
 BDEPEND="verify-sig? ( sec-keys/openpgp-keys-alsa )"
