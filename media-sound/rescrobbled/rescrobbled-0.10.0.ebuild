@@ -1,23 +1,23 @@
-# Copyright 2023-2025 Gentoo Authors
+# Copyright 2023-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-CRATES="
-"
+CRATES=""
+RUST_MIN_VER="1.87.0"
 
 inherit cargo systemd
 
 DESCRIPTION="MPRIS music scrobbler daemon"
 HOMEPAGE="https://github.com/InputUsername/rescrobbled"
-SRC_URI="https://github.com/InputUsername/rescrobbled/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~juippis/distfiles/rescrobbled-${PV}-crates.tar.xz"
+SRC_URI="https://github.com/InputUsername/rescrobbled/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI+=" https://github.com/gentoo-crate-dist/rescrobbled/releases/download/v${PV}/${P}-crates.tar.xz"
 
 LICENSE="GPL-3"
 # Dependent crate licenses
 LICENSE+=" Apache-2.0 MIT MPL-2.0 Unicode-3.0"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 
 RDEPEND="dev-libs/openssl:=
 	sys-apps/dbus"
