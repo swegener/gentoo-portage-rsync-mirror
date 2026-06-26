@@ -58,7 +58,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	<dev-cpp/doctest-2.5
+	dev-cpp/doctest
 	>=dev-libs/xxhash-0.8.0
 "
 BDEPEND="
