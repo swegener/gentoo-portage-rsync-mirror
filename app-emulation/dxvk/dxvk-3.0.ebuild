@@ -1,9 +1,9 @@
-# Copyright 2022-2025 Gentoo Authors
+# Copyright 2022-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 MULTILIB_ABIS="amd64 x86" # allow usage on /no-multilib/
 MULTILIB_COMPAT=( abi_x86_{32,64} )
 inherit eapi9-ver flag-o-matic meson-multilib python-any-r1
@@ -11,25 +11,10 @@ inherit eapi9-ver flag-o-matic meson-multilib python-any-r1
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/doitsujin/dxvk.git"
-	EGIT_SUBMODULES=(
-		# picky about headers and is cross-compiled making -I/usr/include troublesome
-		include/{spirv,vulkan}
-		subprojects/libdisplay-info
-	)
 else
-	HASH_SPIRV=8b246ff75c6615ba4532fe4fde20f1be090c3764
-	HASH_VULKAN=46dc0f6e514f5730784bb2cac2a7c731636839e8
-	HASH_DISPLAYINFO=275e6459c7ab1ddd4b125f28d0440716e4888078
-	SRC_URI="
-		https://github.com/doitsujin/dxvk/archive/refs/tags/v${PV}.tar.gz
-			-> ${P}.tar.gz
-		https://github.com/KhronosGroup/SPIRV-Headers/archive/${HASH_SPIRV}.tar.gz
-			-> spirv-headers-${HASH_SPIRV}.tar.gz
-		https://github.com/KhronosGroup/Vulkan-Headers/archive/${HASH_VULKAN}.tar.gz
-			-> vulkan-headers-${HASH_VULKAN}.tar.gz
-		https://gitlab.freedesktop.org/JoshuaAshton/libdisplay-info/-/archive/${HASH_DISPLAYINFO}/libdisplay-info-${HASH_DISPLAYINFO}.tar.bz2
-	"
-	KEYWORDS="-* amd64 x86"
+	# tarball is same as upstream except for including git submodules
+	SRC_URI="https://distfiles.gentoo.org/pub/dev/ionen@gentoo.org/${P}.tar.xz"
+	KEYWORDS="-* ~amd64 ~x86"
 fi
 
 DESCRIPTION="Vulkan-based implementation of D3D9, D3D10 and D3D11 for Linux / Wine"
@@ -56,7 +41,6 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10.3-wow64-setup.patch
-	"${FILESDIR}"/${PN}-2.3.1-gcc14.patch
 	"${FILESDIR}"/${PN}-2.4-d3d8-setup.patch
 )
 
@@ -82,12 +66,6 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	if [[ ${PV} != 9999 ]]; then
-		rmdir include/{spirv,vulkan} subprojects/libdisplay-info || die
-		mv ../SPIRV-Headers-${HASH_SPIRV} include/spirv || die
-		mv ../Vulkan-Headers-${HASH_VULKAN} include/vulkan || die
-		mv ../libdisplay-info-${HASH_DISPLAYINFO} subprojects/libdisplay-info || die
-	fi
 	cp -- "${DISTDIR}"/setup_dxvk.sh . || die
 
 	default
