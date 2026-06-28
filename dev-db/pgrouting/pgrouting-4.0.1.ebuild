@@ -12,12 +12,12 @@ inherit cmake postgres-multi
 
 DESCRIPTION="pgRouting extends PostGIS and PostgreSQL with geospatial routing functionality"
 HOMEPAGE="https://pgrouting.org/"
-LICENSE="GPL-2 MIT Boost-1.0"
+SRC_URI="https://github.com/pgRouting/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
+LICENSE="GPL-2 MIT Boost-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-SRC_URI="https://github.com/pgRouting/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-IUSE=""
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 
 RDEPEND="${POSTGRES_DEP}
 	>=dev-db/postgis-2.0
