@@ -4,12 +4,12 @@
 EAPI=8
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.asc
-DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..14} )
-PYTHON_REQ_USE="sqlite(+)"
 DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_USE_PEP517=setuptools
+PYTHON_COMPAT=( python3_{12..14} )
+PYTHON_REQ_USE="sqlite(+)"
 
-inherit desktop distutils-r1 verify-sig virtualx
+inherit desktop distutils-r1 toolchain-funcs verify-sig virtualx
 
 DESCRIPTION="Clean junk to free disk space and to maintain privacy"
 HOMEPAGE="https://www.bleachbit.org"
@@ -27,8 +27,14 @@ RDEPEND="
 		dev-python/chardet[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/urllib3[${PYTHON_USEDEP}]
 	')
+	dev-libs/glib:2[introspection]
+	x11-libs/gdk-pixbuf:2[introspection]
 	x11-libs/gtk+:3[introspection]
+	x11-libs/libnotify[introspection]
+	x11-libs/pango[introspection]
 "
 BDEPEND="
 	sys-devel/gettext
@@ -38,25 +44,22 @@ BDEPEND="
 distutils_enable_tests unittest
 
 PATCHES=(
-	"${FILESDIR}"/bleachbit-5.0.2-chardet-6.patch
-	"${FILESDIR}"/bleachbit-5.0.2-py3.14.patch
-	"${FILESDIR}"/bleachbit-5.0.2-pygobject-deprecation.patch
-	"${FILESDIR}"/bleachbit-5.0.2-fix_locale_test.patch
+	"${FILESDIR}"/${P}-fix_locale_test.patch
+	"${FILESDIR}"/${PN}-6.0.0-noupdate.patch
 )
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
 	if use test; then
+		sed -e "s:'strings':'$(tc-getSTRINGS)':g" \
+			-i tests/TestWipePath.py || die
+
 		# avoid tests requiring internet access
 		rm tests/Test{Chaff,GuiChaff,Network,Update}.py || die
 
 		sed -e "s/test_chaff(self)/_&/" \
 			-i tests/TestGUI.py || die
-
-		# fails due to invalid language code format pt_pt
-		sed -e "s/test_assertIsLanguageCode_live(self)/_&/" \
-			-i tests/TestCommon.py || die
 
 		# fails due to non-existent $HOME/.profile
 		rm tests/TestInit.py || die
@@ -68,10 +71,11 @@ python_prepare_all() {
 		# only applicable to Windows
 		rm tests/{TestNsisUtilities,TestWindows}.py || die
 
-		# random failures, some also on upstream CI
+		# slow test (50s)
 		sed -e "s/test_notify(self)/_&/" \
 			-i tests/TestGUI.py || die
 
+		# random failures, some also on upstream CI
 		sed -e "s/test_get_proc_swaps(self)/_&/" \
 			-i tests/TestMemory.py || die
 
@@ -110,6 +114,7 @@ python_install() {
 }
 
 python_install_all() {
+	# reproduce the install phase from Makefile, not adapted for python_sitedir
 	distutils-r1_python_install_all
 	emake -C po DESTDIR="${D}" install
 
@@ -117,7 +122,15 @@ python_install_all() {
 	doins cleaners/*.xml
 
 	insinto /usr/share/bleachbit
-	doins data/app-menu.ui
+	doins share/*
+
+	insinto /usr/share/metainfo
+	doins org.bleachbit.BleachBit.metainfo.xml
+
+	insinto /usr/share/polkit-1/actions
+	doins org.bleachbit.policy
+
+	dodoc doc/*
 
 	doicon ${PN}.png
 	domenu org.${PN}.BleachBit.desktop
