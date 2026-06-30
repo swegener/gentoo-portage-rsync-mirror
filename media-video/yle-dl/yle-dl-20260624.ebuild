@@ -43,9 +43,9 @@ distutils_enable_tests pytest
 
 DOCS=( COPYING ChangeLog README.fi.md README.sv.md README.md yledl.conf.sample )
 
-src_test() {
+python_test() {
 	# By default the service is available only to Finnish IP addresses.
-	distutils-r1_src_test --geoblocked
+	epytest --geoblocked
 }
 
 src_install() {
