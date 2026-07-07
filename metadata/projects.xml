@@ -521,23 +521,23 @@
       <role>Council member</role>
     </member>
     <member>
+      <email>eschwartz@gentoo.org</email>
+      <name>Eli Schwartz</name>
+      <role>Council member</role>
+    </member>
+    <member>
+      <email>floppym@gentoo.org</email>
+      <name>Mike Gilbert</name>
+      <role>Council member</role>
+    </member>
+    <member>
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
       <role>Council member</role>
     </member>
     <member>
-      <email>robbat2@gentoo.org</email>
-      <name>Robin Johnson</name>
-      <role>Council member</role>
-    </member>
-    <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
-      <role>Council member</role>
-    </member>
-    <member>
-      <email>soap@gentoo.org</email>
-      <name>David Seifert</name>
       <role>Council member</role>
     </member>
     <member>
