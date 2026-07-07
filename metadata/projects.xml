@@ -1525,6 +1525,10 @@
     <url>https://wiki.gentoo.org/wiki/Project:ML</url>
     <description>The ML Project maintains packages related to the ML programming language family.</description>
     <member>
+      <email>laumann@gentoo.org</email>
+      <name>Thomas Bracht Laumann Jespersen</name>
+    </member>
+    <member>
       <email>sam@gentoo.org</email>
       <name>Sam James</name>
     </member>
