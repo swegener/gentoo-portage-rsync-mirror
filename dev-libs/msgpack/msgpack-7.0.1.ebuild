@@ -31,6 +31,12 @@ BDEPEND="doc? ( app-text/doxygen[dot] )
 
 S="${WORKDIR}"/${MY_P}
 
+src_prepare() {
+	# Avoid cmake 3.5 deprecation warning
+	rm example/cmake/CMakeLists.txt || die
+	cmake_src_prepare
+}
+
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DMSGPACK_BUILD_EXAMPLES=OFF
