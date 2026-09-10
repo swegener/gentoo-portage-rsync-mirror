@@ -3,11 +3,11 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..14} )
-inherit autotools python-r1 systemd tmpfiles verify-sig
+PYTHON_COMPAT=( python3_{12..15} )
+inherit autotools eapi9-ver python-r1 systemd tmpfiles verify-sig
 
 # subslot: libknot major.libdnssec major.libzscanner major
-KNOT_SUBSLOT="15.9.4"
+KNOT_SUBSLOT="16.10.5"
 
 DESCRIPTION="High-performance authoritative-only DNS server"
 HOMEPAGE="https://www.knot-dns.cz/ https://gitlab.nic.cz/knot/knot-dns"
@@ -16,17 +16,20 @@ SRC_URI="
 	!doc? ( https://raw.githubusercontent.com/PPN-SD/gentoo-manpages/refs/tags/${P}/${P}-manpages.tar.xz )
 	verify-sig? ( https://knot-dns.nic.cz/release/${P}.tar.xz.asc )
 "
-LICENSE="GPL-3+"
+LICENSE="GPL-2+"
 SLOT="0/${KNOT_SUBSLOT}"
-KEYWORDS="amd64 ~arm64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~riscv ~x86"
 
-# Modules without dep. Built unconditionally.
+# Modules without dep and enabled by default. Built unconditionally.
 KNOT_MODULES=(
+	"alias"
 	"authsignal"
 	"cookies"
+	"dnserr"
 	"dnsproxy"
 	"noudp"
 	"onlinesign"
+	"probe"
 	"queryacl"
 	"rrl"
 	"stats"
@@ -39,7 +42,7 @@ KNOT_MODULES_OPT=(
 	"geoip"
 )
 
-IUSE="caps +daemon dbus doc doh +fastparser +idn pkcs11 prometheus python quic selinux systemd test +utils xdp ${KNOT_MODULES_OPT[@]}"
+IUSE="caps +daemon dbus doc doh +fastparser +idn pkcs11 prometheus python quic redis selinux systemd test +utils xdp ${KNOT_MODULES_OPT[@]}"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	prometheus? ( python )
@@ -64,6 +67,7 @@ RDEPEND="
 		caps? ( sys-libs/libcap-ng )
 		dbus? ( sys-apps/dbus )
 		geoip? ( dev-libs/libmaxminddb:= )
+		redis? ( >=dev-libs/hiredis-1.1.0:= )
 		systemd? ( sys-apps/systemd:= )
 	)
 	prometheus? (
@@ -87,15 +91,15 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
+	dnstap? (
+		dev-libs/protobuf[protoc(+)]
+		dev-libs/protobuf-c
+	)
 	doc? (
 		$(python_gen_any_dep '
 			dev-python/sphinx[${PYTHON_USEDEP}]
 			dev-python/sphinx-panels[${PYTHON_USEDEP}]
 		')
-	)
-	dnstap? (
-		dev-libs/protobuf[protoc(+)]
-		dev-libs/protobuf-c
 	)
 	python? ( ${PYTHON_DEPS} )
 	test? (
@@ -104,11 +108,6 @@ BDEPEND="
 	verify-sig? ( sec-keys/openpgp-keys-knot )
 "
 
-PATCHES=(
-	# PR 1830 merged
-	"${FILESDIR}"/${PN}-3.5.2-fix_automagic_pkcs11.patch
-)
-
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.asc
 
 # Used to check cpuset_t in sched.h with NetBSD.
@@ -116,15 +115,14 @@ VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/${PN}.asc
 QA_CONFIG_IMPL_DECL_SKIP=( cpuset_create cpuset_destroy )
 
 python_check_deps() {
+	# redundant but clearly marks doc dependencies
 	use doc || return 0
 	python_has_version "dev-python/sphinx[${PYTHON_USEDEP}]" \
 		"dev-python/sphinx-panels[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
-	if use doc || use python; then
-		python_setup
-	fi
+	[[ ${MERGE_TYPE} != binary ]] && use doc && python_setup
 }
 
 src_unpack() {
@@ -157,6 +155,7 @@ src_configure() {
 		$(use_with idn libidn)
 		$(use_enable pkcs11)
 		$(use_enable quic)
+		$(use_enable redis redis $(usex daemon client))
 		$(use_enable systemd)
 		$(use_enable utils utilities)
 		$(use_enable xdp)
@@ -197,16 +196,49 @@ src_install() {
 	if use doc; then
 		local HTML_DOCS=( doc/_build/html/{*.html,*.js,_sources,_static} )
 	else
-		doman "${WORKDIR}"/man/*
+		# install the manpages only for the activated options, order from doc/Makefile.am
+		pushd "${WORKDIR}"/man/ >/dev/null || die
+		local manp=()
+		if use daemon; then
+			manp+=(
+				knot.conf.5
+				knotc.8
+				knotd.8
+			)
+		fi
+		if use utils; then
+			use daemon && manp+=(
+				kcatalogprint.8
+				keymgr.8
+				kjournalprint.8
+				kzonecheck.1
+				kzonesign.1
+			)
+			manp+=(
+				kdig.1
+				khost.1
+				knsupdate.1
+				knsec3hash.1
+			)
+			use xdp && manp+=(
+				kxdpgun.8
+			)
+		fi
+		[[ "${#manp[@]}" -ne 0 ]] && doman "${manp[@]}"
+		popd >/dev/null || die
 	fi
 
 	if use python; then
-		python_foreach_impl python_domodule python/libknot/libknot
+		# install only .py files, not build system leftovers (e.g. .in)
+		python_moduleinto libknot
+		python_foreach_impl python_domodule python/libknot/libknot/*.py
 		newdoc python/libknot/README.md README.python.md
 	fi
 
 	if use prometheus; then
-		python_foreach_impl python_domodule python/knot_exporter/knot_exporter
+		# reset module target
+		python_moduleinto knot_exporter
+		python_foreach_impl python_domodule python/knot_exporter/knot_exporter/.
 		python_scriptinto /usr/sbin
 		python_foreach_impl python_newscript python/knot_exporter/knot_exporter/knot_exporter.py knot-exporter
 		newdoc python/knot_exporter/README.md README.knot_exporter.md
@@ -217,6 +249,8 @@ src_install() {
 	if use daemon; then
 		rm -r "${ED}"/var/run/ || die
 
+		keepdir /var/lib/knot
+
 		newinitd "${FILESDIR}"/knot-3.init knot
 		newconfd "${FILESDIR}"/knot.confd knot
 
@@ -226,10 +260,18 @@ src_install() {
 	fi
 
 	find "${D}" -name '*.la' -delete || die
-
-	keepdir /var/lib/knot
 }
 
 pkg_postinst() {
 	use daemon && tmpfiles_process ${PN}.conf
+
+	if has_version net-dns/redis-knot || use redis; then
+		ewarn "To use redis, ${EPREFIX}/usr/$(get_libdir)/knot/redis/knot.so from net-dns/redis-knot"
+		ewarn "must be loaded by an instance of Redis."
+	fi
+
+	if ver_replacing -lt 3.5; then
+		elog "See documentation for migration:"
+		elog "https://www.knot-dns.cz/docs/3.5/html/migration.html#upgrade-3-4-x-to-3-5-x"
+	fi
 }
