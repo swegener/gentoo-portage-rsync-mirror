@@ -39,17 +39,17 @@ BDEPEND="
 "
 RDEPEND="
 	dev-libs/pugixml
-	dev-qt/qtbase:6[concurrent,dbus,gui,network,opengl,widgets,xml,X]
+	dev-qt/qtbase:6[concurrent,dbus,gui,network,opengl,ssl,widgets,xml,X]
 	dev-qt/qt5compat:6[qml]
 	dev-qt/qtdeclarative:6
 	dev-qt/qtnetworkauth:6
-	dev-qt/qtscxml:6
 	dev-qt/qtsvg:6
 	media-libs/alsa-lib
 	media-libs/flac:=
 	media-libs/freetype
 	media-libs/harfbuzz:=
 	media-libs/libopusenc
+	media-libs/libsndfile[-minimal]
 	media-libs/opus
 	media-sound/lame
 	virtual/zlib:=
@@ -62,6 +62,14 @@ DEPEND="${RDEPEND}
 	dev-libs/utfcpp
 	test? ( dev-cpp/gtest )
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-4.7.3-missing-includes.patch"
+	"${FILESDIR}/${PN}-4.7.3-symlinks-destdir.patch"
+	"${FILESDIR}/${PN}-4.7.4-StyledDropdown-fix.patch"
+	# unbundle 3rd libs
+	"${FILESDIR}/${PN}-4.7.3-unbundle-gtest.patch"
+)
 
 src_unpack() {
 	if [[ ${PV} == "9999" ]]; then
@@ -85,13 +93,13 @@ src_prepare() {
 		audio/thirdparty/opusenc
 		draw/thirdparty/freetype
 		global/thirdparty/pugixml
-		global/thirdparty/utfcpp
+		global/thirdparty/utfcpp/utf8{,.h}
 		testing/thirdparty/googletest
 	)
 
 	local bundle
 	for bundle in "${rm_deps[@]}"; do
-		rm -r muse/framework/"${bundle}" || die
+		rm -r src/framework/"${bundle}" || die
 	done
 
 	cmake_src_prepare
@@ -111,21 +119,25 @@ src_configure() {
 		-DCMAKE_C_FLAGS_RELEASE="${CFLAGS}"
 		-DCMAKE_SKIP_RPATH=TRUE
 		-DGZIP_EXECUTABLE=OFF # avoid compressed manpages
+		-DMUE_BUILD_IMPEXP_MNX_MODULE=OFF # mnxdom is unpackaged
 		-DMUE_BUILD_IMPEXP_VIDEOEXPORT_MODULE="$(usex video)"
 		-DMUE_COMPILE_USE_SYSTEM_FLAC=ON
 		-DMUE_COMPILE_USE_SYSTEM_FREETYPE=ON
+		-DMUE_COMPILE_USE_SYSTEM_HARFBUZZ=ON
+		-DMUE_COMPILE_USE_SYSTEM_LAME=ON
 		-DMUE_COMPILE_USE_SYSTEM_OPUS=ON
 		-DMUE_COMPILE_USE_SYSTEM_OPUSENC=ON
-		-DMUE_COMPILE_USE_SYSTEM_HARFBUZZ=ON
+		-DMUE_COMPILE_USE_SYSTEM_PUGIXML=ON
+		-DMUE_COMPILE_USE_SYSTEM_UTF8CPP=ON
 		-DMUE_DOWNLOAD_SOUNDFONT=OFF
 		-DMUSE_APP_BUILD_MODE="release"
 		-DMUSE_COMPILE_USE_COMPILER_CACHE=OFF
 		-DMUSE_COMPILE_USE_PCH=OFF
 		-DMUSE_MODULE_AUDIO_JACK="$(usex jack)"
+		-DMUSE_MODULE_AUDIO_PIPEWIRE="$(usex pipewire)"
 		-DMUSE_MODULE_DIAGNOSTICS_CRASHPAD_CLIENT=OFF
 		-DMUSE_MODULE_NETWORK_WEBSOCKET="$(usex websockets)"
 		-DMUSE_MODULE_UPDATE=OFF
-		-DMUSE_PIPEWIRE_AUDIO_DRIVER="$(usex pipewire)"
 		# tests
 		-DMUSE_ENABLE_UNIT_TESTS="$(usex test)"
 		-DMUE_BUILD_BRAILLE_TESTS="$(usex test)"
@@ -148,6 +160,8 @@ src_test() {
 		muse_audio_tests
 		# see bug #950450 too
 		iex_musicxml_tests
+		# fixed in master
+		converter_tests
 	)
 
 	QT_QPA_PLATFORM=offscreen cmake_src_test
