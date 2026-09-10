@@ -3,9 +3,9 @@
 
 EAPI=8
 
-inherit go-module
+inherit go-module optfeature shell-completion sysroot
 
-EGIT_COMMIT="1220ce7ec2701d485a9b1beeea63dae3da134fb5"
+EGIT_COMMIT="347782c28efe1753d5cc9652f6304752ed431221"
 
 DESCRIPTION="Docker-compatible CLI for containerd, with support for Compose"
 HOMEPAGE="https://github.com/containerd/nerdctl"
@@ -18,15 +18,8 @@ LICENSE="Apache-2.0"
 LICENSE+=" BSD BSD-2 ISC MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="rootless"
 
-DEPEND="
-	rootless? (
-		app-containers/slirp4netns
-		sys-apps/rootlesskit
-	)
-"
-RDEPEND="${DEPEND}"
+BDEPEND=">=dev-lang/go-1.26.3"
 
 src_unpack() {
 	unpack "${P}.tar.gz"
@@ -35,8 +28,18 @@ src_unpack() {
 	mv home/runner/work/nerdctl/nerdctl/vendor . || die
 }
 
+src_prepare() {
+	default
+	sed -e 's/TestGet/_&/' -i pkg/resolvconf/resolvconf_linux_test.go || die
+}
+
 src_compile() {
-	emake VERSION=v${PV} REVISION="${EGIT_COMMIT}"
+	emake VERSION=v${PV} REVISION="${EGIT_COMMIT}" GO_BUILD_LDFLAGS="-w"
+
+	einfo "generating shell completion files"
+	sysroot_try_run_prefixed ./_output/nerdctl completion bash > ${PN}.bash || die
+	sysroot_try_run_prefixed ./_output/nerdctl completion zsh > ${PN}.zsh || die
+	sysroot_try_run_prefixed ./_output/nerdctl completion fish > ${PN}.fish || die
 }
 
 src_install() {
@@ -50,4 +53,12 @@ src_install() {
 	emake "${emake_args[@]}" install
 	local DOCS=( README.md docs/* examples )
 	einstalldocs
+
+	[[ -s ${PN}.bash ]] && newbashcomp ${PN}.bash ${PN}
+	[[ -s ${PN}.zsh ]] && newzshcomp ${PN}.zsh _${PN}
+	[[ -s ${PN}.fish ]] && dofishcomp ${PN}.fish
+}
+
+pkg_postinst() {
+	optfeature "rootless mode" "app-containers/slirp4netns sys-apps/rootlesskit"
 }
