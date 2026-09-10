@@ -13,14 +13,15 @@ S="${WORKDIR}/${PN}-v${PV}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS="~amd64"
 IUSE="barcode chromecast devil exif extensions ffmpegthumbnailer geolocation graphicsmagick +imagemagick lcms mpv pdf raw test vips wayland"
 REQUIRED_USE="chromecast? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
+# slot op: Uses Qt::GuiPrivate for rhi/qrhi.h
 COMMON_DEPEND="
 	app-arch/libarchive:=
-	dev-qt/qtbase:6[concurrent,dbus,gui,icu,network,opengl,sql,sqlite,widgets,xml]
+	dev-qt/qtbase:6=[concurrent,dbus,gui,icu,network,opengl,sql,sqlite,widgets,xml]
 	dev-qt/qtdeclarative:6[opengl]
 	dev-qt/qtimageformats:6
 	dev-qt/qtmultimedia:6[qml]
@@ -33,10 +34,7 @@ COMMON_DEPEND="
 	)
 	devil? ( media-libs/devil )
 	exif? ( media-gfx/exiv2:=[bmff] )
-	extensions? (
-		app-crypt/qca:2
-		dev-cpp/yaml-cpp:=
-	)
+	extensions? ( dev-cpp/yaml-cpp:= )
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	imagemagick? (
 		!graphicsmagick? ( media-gfx/imagemagick:=[cxx,hdri] )
@@ -71,11 +69,6 @@ BDEPEND="
 	chromecast? ( ${PYTHON_DEPS} )
 "
 
-PATCHES=(
-	# PR merged
-	"${FILESDIR}"/${P}-fix_mpv_testsrcs.patch
-)
-
 pkg_setup() {
 	use chromecast && python-single-r1_pkg_setup
 }
@@ -89,7 +82,7 @@ src_configure() {
 		-DWITH_DEVIL=$(usex devil)
 		-DWITH_EXIV2=$(usex exif)
 		-DWITH_EXIV2_ENABLE_BMFF=$(usex exif)
-		-DWITH_EXTENSIONS_LIBRARY_VERIFICATION=OFF # do not sign SO
+		-DWITH_EXTENSIONS_NONSYS_OPENSSL=OFF # do not sign SO for now
 		-DWITH_EXTENSIONS_SUPPORT=$(usex extensions)
 		-DWITH_FFMPEGTHUMBNAILER=$(usex ffmpegthumbnailer)
 		-DWITH_LOCATION=$(usex geolocation)
@@ -100,6 +93,8 @@ src_configure() {
 		-DWITH_POPPLER=$(usex pdf)
 		-DWITH_LIBRAW=$(usex raw)
 		-DWITH_LIBVIPS=$(usex vips)
+		-DWITH_PHOTOSPHERE=ON
+		-DWITH_PHOTOSPHERE_QRHI=ON
 		-DWITH_WAYLANDSPECIFIC=$(usex wayland)
 		-DWITH_ADAPTSOURCE=ON # adapt the sources according to the Qt version
 		-DWITH_LIBSAI=OFF # Wunkolo/libsai, no release, experimental
