@@ -37,6 +37,7 @@ app-accessibility/speech-dispatcher:espeak - Adds support for espeak-ng speech e
 app-accessibility/speech-dispatcher:flite - Adds support for flite speech engine
 app-accessibility/speech-dispatcher:pipewire - Enables support for PipeWire. Recommended for latency related advantages if it works in your setup.
 app-admin/calamares:livecd - USE flag for Gentoo modules branding on LIVEDVD
+app-admin/chipass:yubikey - YubiKey HMAC-SHA1 challenge-response database protection
 app-admin/clsync:apidoc - Provide doxygen generated API docs.
 app-admin/clsync:cgroups - Use cgroups to limit /dev access.
 app-admin/clsync:clsync - Build clsync binary. Most likely you want it. However it is possible to build only libclsync without clsync itself.
