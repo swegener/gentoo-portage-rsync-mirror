@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -10,7 +10,7 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/gnome-connections"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~loong"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -25,6 +25,7 @@ DEPEND="
 	app-crypt/libsecret[vala]
 
 	>=net-misc/freerdp-2.0.0:=
+	net-misc/spice-gtk[gtk3,introspection,vala]
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
