@@ -3,9 +3,9 @@
 
 EAPI=8
 
-RUST_MIN_VER="1.88.0"
+RUST_MIN_VER="1.94.0"
 CRATES=""
-inherit eapi9-ver cargo systemd
+inherit cargo systemd
 
 DESCRIPTION="Push daemon for Nextcloud clients"
 HOMEPAGE="https://github.com/nextcloud/notify_push"
@@ -41,7 +41,7 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}-r1.confd" "${PN}"
 	newinitd "${FILESDIR}/${PN}-r2.init" "${PN}"
 	systemd_newunit "${FILESDIR}/${PN}.service-r1" "${PN}.service"
-	systemd_install_serviced "${FILESDIR}/${PN}.service.conf" "${PN}"
+	#systemd_install_serviced "${FILESDIR}/${PN}.service.conf" "${PN}"
 
 	# restrict access because conf.d entry could contain
 	# database credentials
@@ -49,12 +49,22 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ver_replacing -lt "0.6.6"; then
-		ewarn "You are upgrading to ${PVR}"
-		ewarn "The systemd unit file for nextcloud-notify_push no longer sources ${EPREFIX}/etc/conf.d/nextcloud-notify_push ."
-		ewarn "Configuration is still done via ${EPREFIX}/etc/conf.d/nextcloud-notify_push for OpenRC systems"
-		ewarn "while for systemd systems, a systemd drop-in file located at"
-		ewarn "${EPREFIX}/etc/systemd/system/nextcloud-notify_push.d/00gentoo.conf"
-		ewarn "is used for configuration."
+	if has_version sys-apps/systemd; then
+		elog "Configure nextcloud-notify_push before you start the service:"
+		elog
+		elog "systemctl edit --drop-in=nextcloud nextcloud-notify_push.service"
+		elog
+		elog "add a section [Service],  add the path to the nextcloud config file"
+		elog "as well as the user and group your webserver runs as (apache, nginx)."
+		elog
+		elog "Exapmle:"
+		elog "[Service]"
+		elog 'Environment=NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE="/var/www/cloud.example.com/htdocs/config/config.php'
+		elog "User=apache"
+		elog "Group=apache"
+		elog
+		elog "If you need options for the notify_push process, you can override ExecStart. Just add (adjust to your needs):"
+		elog "ExecStart="
+		elog "ExecStart=/usr/bin/nextcloud-notify_push $NOTIFY_PUSH_NEXTCLOUD_CONFIGFILE --bind 127.0.0.1 --nextcloud-url https://cloud.example.com"
 	fi
 }
