@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=meson-python
 PYPI_VERIFY_REPO=https://github.com/matplotlib/matplotlib-release
-PYTHON_COMPAT=( pypy3_11 python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 pypi virtualx
@@ -25,7 +25,7 @@ HOMEPAGE="
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
 SLOT="0"
 if [[ ${PV} != *_rc* ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~arm64-macos ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm64 ~ppc ~ppc64 ~riscv ~x86"
 fi
 IUSE="cairo excel gtk3 latex qt6 tk webagg wxwidgets"
 
@@ -52,7 +52,7 @@ RDEPEND="
 	${DEPEND}
 	>=dev-python/contourpy-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/cycler-0.10.0-r1[${PYTHON_USEDEP}]
-	>=dev-python/fonttools-4.22.0[${PYTHON_USEDEP}]
+	>=dev-python/fonttools-4.28.2[${PYTHON_USEDEP}]
 	>=dev-python/kiwisolver-1.3.1[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
 	>=dev-python/pillow-8[jpeg,webp,${PYTHON_USEDEP}]
