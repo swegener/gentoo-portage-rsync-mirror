@@ -1,8 +1,8 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..14} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
@@ -13,19 +13,19 @@ LICENSE="GPL-2+"
 SLOT="0"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-KEYWORDS="amd64 arm64 ~ppc64 ~riscv x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~riscv ~x86"
 
 DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.67.1:2
 	>=dev-libs/gobject-introspection-1.82.0-r2:=
 	>=gui-libs/gtk-4.16.0:4[introspection]
-	>=gui-libs/libadwaita-1.6:1=[introspection]
+	>=gui-libs/libadwaita-1.8:1=[introspection]
 	>=media-libs/libmediaart-1.9.1:2.0[introspection]
 	net-libs/libsoup:3.0[introspection]
 	app-misc/tinysparql:3=[introspection(+)]
 	>=x11-libs/pango-1.44:=
 	$(python_gen_cond_dep '
-		>=dev-python/pygobject-3.50.0:3[cairo,${PYTHON_USEDEP}]
+		>=dev-python/pygobject-3.54.0:3[cairo,${PYTHON_USEDEP}]
 		>=dev-python/pycairo-1.14.0[${PYTHON_USEDEP}]
 	')
 	>=media-libs/grilo-0.3.15-r1:0.3[introspection]
