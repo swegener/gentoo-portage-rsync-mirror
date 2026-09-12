@@ -23,11 +23,11 @@ RDEPEND="
 	>=dev-libs/libgweather-4.2.0:4=[introspection]
 	>=sci-geosciences/geocode-glib-3.15.2:2[introspection]
 	dev-libs/libportal:=[introspection]
-	>=media-libs/libshumate-1.5_alpha:1.0=[introspection]
+	>=media-libs/libshumate-1.6_alpha:1.0=[introspection]
 	dev-libs/libxml2:2=
 	>=net-libs/rest-0.9.1:1.0[introspection]
 	>=gnome-base/librsvg-2.0
-	>=dev-libs/json-glib-1.0
+	>=dev-libs/json-glib-1.0[introspection]
 
 	app-crypt/libsecret[introspection]
 	media-libs/graphene[introspection]
@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
+	>=dev-util/blueprint-compiler-0.19
 	virtual/pkgconfig
 "
 
