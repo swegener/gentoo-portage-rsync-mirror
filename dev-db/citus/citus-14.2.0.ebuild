@@ -3,7 +3,7 @@
 
 EAPI=8
 
-POSTGRES_COMPAT=( 15 16 17 )
+POSTGRES_COMPAT=( 16 17 18 )
 
 inherit postgres-multi
 
@@ -14,8 +14,8 @@ SRC_URI="https://github.com/citusdata/citus/archive/refs/tags/v${PV}.tar.gz -> $
 LICENSE="POSTGRESQL AGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-REQUIRED_USE="${POSTGRES_REQ_USE}"
 RESTRICT="test"
+REQUIRED_USE="${POSTGRES_REQ_USE}"
 
 DEPEND="${POSTGRES_DEP}
 	app-arch/lz4
