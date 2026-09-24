@@ -26,7 +26,7 @@ S=${WORKDIR}/${MY_P}
 LICENSE="AGPL-3"
 SLOT="0/$(ver_cut 1-2)"
 WEBAPP_MANUAL_SLOT="yes"
-KEYWORDS="amd64 arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="agent +agent2 curl frontend gnutls ipv6 java ldap libxml2 mysql odbc openipmi +openssl +postgres proxy selinux server snmp sqlite ssh static"
 REQUIRED_USE="|| ( agent agent2 frontend proxy server )
 	?? ( gnutls openssl )
@@ -108,7 +108,7 @@ DEPEND="${COMMON_DEPEND}
 BDEPEND="
 	virtual/pkgconfig
 	agent2? (
-		>=dev-lang/go-1.12
+		>=dev-lang/go-1.25.12
 		app-arch/unzip
 	)
 "
@@ -295,11 +295,12 @@ src_install() {
 		doexe src/zabbix_java/bin/zabbix-java-gateway-"${MY_PV}".jar
 		exeinto /${ZABBIXJAVA_BASE}/lib
 		doexe \
-			src/zabbix_java/lib/logback-classic-1.5.16.jar \
+			src/zabbix_java/lib/logback-classic-1.5.25.jar \
 			src/zabbix_java/lib/logback-console.xml \
-			src/zabbix_java/lib/logback-core-1.5.16.jar \
+			src/zabbix_java/lib/logback-core-1.5.25.jar \
 			src/zabbix_java/lib/logback.xml \
 			src/zabbix_java/lib/android-json-4.3_r3.1.jar \
+			src/zabbix_java/lib/dnsjava-3.6.4.jar \
 			src/zabbix_java/lib/slf4j-api-2.0.16.jar
 		newinitd "${FILESDIR}"/zabbix-jmx-proxy.init zabbix-jmx-proxy
 		newconfd "${FILESDIR}"/zabbix-jmx-proxy.conf zabbix-jmx-proxy
