@@ -454,7 +454,7 @@ src_install() {
 
 	fowners -R ceph:ceph /var/log/ceph
 
-	newinitd "${FILESDIR}/rbdmap.initd-r1" rbdmap
+	newinitd "${FILESDIR}/rbdmap.initd-r2" rbdmap
 	newinitd "${FILESDIR}/${PN}.initd-r14" ${PN}
 	newconfd "${FILESDIR}/${PN}.confd-r5" ${PN}
 
