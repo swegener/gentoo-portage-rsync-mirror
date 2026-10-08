@@ -10,9 +10,8 @@ PYTHON_COMPAT=( python3_{12..15} )
 
 RUST_MIN_VER="1.85.0"
 CRATES="
-	arrayref@0.3.9
 	arrayvec@0.7.7
-	blake3@1.8.5
+	blake3@1.8.7
 	cc@1.2.65
 	cfg-if@1.0.4
 	constant_time_eq@0.4.2
@@ -29,11 +28,11 @@ CRATES="
 	once_cell@1.21.4
 	portable-atomic@1.13.1
 	proc-macro2@1.0.106
-	pyo3-build-config@0.29.0
-	pyo3-ffi@0.29.0
-	pyo3-macros-backend@0.29.0
-	pyo3-macros@0.29.0
-	pyo3@0.29.0
+	pyo3-build-config@0.29.2
+	pyo3-ffi@0.29.2
+	pyo3-macros-backend@0.29.2
+	pyo3-macros@0.29.2
+	pyo3@0.29.2
 	quote@1.0.46
 	rayon-core@1.13.0
 	rayon@1.12.0
@@ -66,7 +65,7 @@ LICENSE="
 "
 # Dependent crate licenses
 LICENSE+="
-	Apache-2.0-with-LLVM-exceptions BSD-2 Unicode-3.0
+	Apache-2.0-with-LLVM-exceptions Unicode-3.0
 	|| ( Apache-2.0 CC0-1.0 MIT-0 )
 	|| ( Apache-2.0 MIT )
 "
