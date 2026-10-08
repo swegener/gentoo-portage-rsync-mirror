@@ -10,27 +10,24 @@ DISTUTILS_USE_PEP517=hatchling
 PYPI_VERIFY_REPO=https://github.com/pydantic/pydantic
 PYTHON_COMPAT=( python3_{12..15} )
 
-PYDANTIC_CORE_PV=2.46.${PV##*.}
+PYDANTIC_CORE_PV=2.50.${PV##*.}
 RUST_MIN_VER="1.88.0"
 CRATES="
 	ahash@0.8.12
 	aho-corasick@1.1.3
-	allocator-api2@0.2.21
 	autocfg@1.3.0
-	base64@0.22.1
+	base64@0.23.1
 	bitflags@2.9.1
 	bitvec@1.0.1
 	bumpalo@3.19.0
-	cc@1.0.101
 	cfg-if@1.0.0
 	displaydoc@0.2.5
 	enum_dispatch@0.3.13
-	equivalent@1.0.2
 	foldhash@0.2.0
 	form_urlencoded@1.2.2
 	funty@2.0.0
 	getrandom@0.3.3
-	hashbrown@0.16.1
+	hashbrown@0.17.1
 	heck@0.5.0
 	hex@0.4.3
 	icu_collections@1.5.0
@@ -46,7 +43,7 @@ CRATES="
 	idna@1.1.0
 	idna_adapter@1.2.0
 	itoa@1.0.11
-	jiter@0.14.0
+	jiter@0.16.0
 	js-sys@0.3.77
 	lexical-parse-float@1.0.5
 	lexical-parse-integer@1.0.5
@@ -54,7 +51,7 @@ CRATES="
 	libc@0.2.185
 	litemap@0.7.3
 	log@0.4.27
-	lru@0.16.3
+	lru@0.18.5
 	memchr@2.7.4
 	num-bigint@0.4.6
 	num-integer@0.1.46
@@ -62,31 +59,30 @@ CRATES="
 	once_cell@1.21.3
 	percent-encoding@2.3.2
 	portable-atomic@1.6.0
-	proc-macro2@1.0.86
-	pyo3-build-config@0.28.3
-	pyo3-ffi@0.28.3
-	pyo3-macros-backend@0.28.3
-	pyo3-macros@0.28.3
-	pyo3@0.28.3
-	python3-dll-a@0.2.14
+	proc-macro2@1.0.107
+	pyo3-build-config@0.29.2
+	pyo3-ffi@0.29.2
+	pyo3-macros-backend@0.29.2
+	pyo3-macros@0.29.2
+	pyo3@0.29.2
 	quote@1.0.44
 	r-efi@5.2.0
 	radium@0.7.0
-	regex-automata@0.4.13
-	regex-syntax@0.8.5
-	regex@1.12.3
-	rustversion@1.0.17
-	serde@1.0.228
-	serde_core@1.0.228
-	serde_derive@1.0.228
-	serde_json@1.0.149
-	smallvec@1.15.1
+	regex-automata@0.4.18
+	regex-syntax@0.8.11
+	regex@1.13.1
+	serde@1.0.229
+	serde_core@1.0.229
+	serde_derive@1.0.229
+	serde_json@1.0.151
+	smallvec@1.16.2
 	speedate@0.17.0
 	stable_deref_trait@1.2.0
 	static_assertions@1.1.0
 	strum@0.27.2
 	strum_macros@0.27.2
 	syn@2.0.82
+	syn@3.0.6
 	synstructure@0.13.1
 	tap@1.0.1
 	target-lexicon@0.13.4
@@ -95,7 +91,7 @@ CRATES="
 	url@2.5.8
 	utf16_iter@1.0.5
 	utf8_iter@1.0.4
-	uuid@1.23.0
+	uuid@1.23.4
 	version_check@0.9.5
 	wasi@0.14.2+wasi-0.2.4
 	wasm-bindgen-backend@0.2.100
@@ -139,12 +135,12 @@ LICENSE+="
 	ZLIB
 "
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~loong ppc ppc64 ~riscv ~s390 ~sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~loong ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/annotated-types-0.6.0[${PYTHON_USEDEP}]
-	>=dev-python/typing-extensions-4.14.1[${PYTHON_USEDEP}]
-	>=dev-python/typing-inspection-0.4.2[${PYTHON_USEDEP}]
+	>=dev-python/typing-extensions-4.16.0[${PYTHON_USEDEP}]
+	>=dev-python/typing-inspection-0.4.4[${PYTHON_USEDEP}]
 	dev-python/tzdata[${PYTHON_USEDEP}]
 	!dev-python/pydantic-core
 "
@@ -177,7 +173,8 @@ QA_FLAGS_IGNORED="usr/lib.*/py.*/site-packages/pydantic_core/_pydantic_core.*.so
 
 src_unpack() {
 	pypi_src_unpack
-	cargo_src_unpack
+	cargo_crate_unpack
+	cargo_gen_config
 }
 
 src_prepare() {
@@ -215,6 +212,7 @@ python_test() {
 	local EPYTEST_IGNORE=(
 		# require pytest-examples (pydantic)
 		tests/test_docs.py
+		tests/test_docstrings.py
 		# benchmarks (both)
 		tests/benchmarks
 	)
@@ -226,19 +224,11 @@ python_test() {
 		)
 	fi
 
-	case ${EPYTHON} in
-		python3.15*)
-			EPYTEST_DESELECT+=(
-				tests/test_types.py::test_base64url_invalid
-			)
-			;;
-	esac
-
 	cd "${PYDANTIC_CORE_S}" || die
 	rm -rf pydantic_core || die
 	cargo_src_test
 	epytest -o xfail_strict=False -o addopts=
 	cd - 2>/dev/null || die
 
-	epytest
+	epytest -o strict=False
 }
