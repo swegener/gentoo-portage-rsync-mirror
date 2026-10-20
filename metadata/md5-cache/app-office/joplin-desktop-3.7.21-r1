@@ -11,4 +11,4 @@ RESTRICT=bindist splitdebug
 SLOT=0
 SRC_URI=https://github.com/laurent22/joplin/releases/download/v3.7.21/Joplin-3.7.21.AppImage
 _eclasses_=desktop	e447b5f77146d69797e9f03ff177f3f1	xdg	3ef49a87c52c8b77c476351195dfe575	xdg-utils	42869b3c8d86a70ef3cf75165a395e09
-_md5_=9695ccf7bc214b5f0432fbb1b43b5bb7
+_md5_=3700f66f2b17c35547ec6484f54a951a
