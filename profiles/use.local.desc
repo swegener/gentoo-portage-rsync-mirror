@@ -2055,6 +2055,7 @@ dev-libs/cutlass:tools - Enable CUTLASS Tools
 dev-libs/cyberjack:tools - Build and install optional management tools.
 dev-libs/cyrus-sasl:authdaemond - Add Courier-IMAP authdaemond unix socket support (net-mail/courier-imap, mail-mta/courier)
 dev-libs/cyrus-sasl:ldapdb - Enable ldapdb plugin
+dev-libs/cyrus-sasl:ntlm - Enable NTLM authentication (discouraged)
 dev-libs/cyrus-sasl:openldap - Add ldap support for saslauthd
 dev-libs/cyrus-sasl:sample - Enable sample client and server
 dev-libs/cyrus-sasl:srp - Enable SRP authentication
