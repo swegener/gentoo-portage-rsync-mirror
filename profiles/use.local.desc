@@ -1527,7 +1527,8 @@ dev-db/unixODBC:minimal - Disable bundled drivers and extra libraries (most user
 dev-db/unixODBC:odbcmanual - Administrator, Internal Structure, Programmer and User documentation
 dev-db/valkey:tcmalloc - Use tcmalloc from dev-util/google-perftools for allocations.
 dev-debug/bpftrace:pcap - Enable skb_output using net-libs/libpcap
-dev-debug/drgn:debuginfod - Enable debuginfod support
+dev-debug/drgn:debuginfod - Enable debuginfod support.
+dev-debug/drgn:json - Use dev-libs/json-c for app-emulation/qemu debugging over the QEMU Machine Protocol (QMP).
 dev-debug/drgn:lzma - Support XZ-compressed debug information (MiniDebugInfo).
 dev-debug/dtrace:test-install - Install the testsuite for manual use. It is not suitable for automatic execution within the ebuild because it requires root privileges. BTF must be available for the running kernel at build-time with this flag.
 dev-debug/gdb:babeltrace - Enable dev-util/babeltrace support
@@ -3388,6 +3389,8 @@ games-strategy/freeciv:sound - Add support for sound provided by media-libs/sdl3
 games-strategy/freeciv:system-lua - Use dev-lang/lua instead of the bundled liblua
 games-strategy/freeciv:web-server - Build the freeciv-web server in place of the freeciv server
 games-strategy/freeorion:client - Build game client
+games-strategy/hedgewars:ffmpeg - Enable video recording feature
+games-strategy/hedgewars:server - Enable local server
 games-strategy/ja2-stracciatella:editor - Adds necessary file to run the editor
 games-strategy/ja2-stracciatella:launcher - Build the ja2-stracciatella launcher
 games-strategy/ja2-stracciatella:ru-gold - Support for russian gold ja2 version
