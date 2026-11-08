@@ -1,5 +1,5 @@
 BDEPEND=virtual/pkgconfig doc? ( virtual/latex-base )
-DEFINED_PHASES=configure
+DEFINED_PHASES=configure install
 DEPEND=<sci-libs/suitesparseconfig-7
 DESCRIPTION=Simple but educational LDL^T matrix factorization algorithm
 EAPI=7
@@ -10,4 +10,4 @@ LICENSE=LGPL-2.1+
 RDEPEND=<sci-libs/suitesparseconfig-7
 SLOT=0
 SRC_URI=https://github.com/kiwifb/suitesparse_splitbuild/releases/download/v5.4.0/ldl-2.2.6.tar.bz2
-_md5_=3d1fae43453e5562a4b34281229a6ae3
+_md5_=72a65c9186ee963a062abaf600e61b45
